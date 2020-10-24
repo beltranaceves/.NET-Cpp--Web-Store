@@ -6,3 +6,7 @@ C:\Users\diego\Documents\MaD\PracticaMaD\Model\obj\Debug\netstandard2.0\Model.cs
 C:\Users\diego\Documents\MaD\PracticaMaD\Model\obj\Debug\netstandard2.0\Model.AssemblyInfoInputs.cache
 C:\Users\diego\Documents\MaD\PracticaMaD\Model\obj\Debug\netstandard2.0\Model.AssemblyInfo.cs
 C:\Users\diego\Documents\MaD\PracticaMaD\Model\obj\Debug\netstandard2.0\Model.csproj.CopyComplete
+C:\Users\beltr\software\Mad2021\PracticaMaD\Model\obj\Debug\netstandard2.0\Model.csprojAssemblyReference.cache
+C:\Users\beltr\software\Mad2021\PracticaMaD\Model\obj\Debug\netstandard2.0\Model.csproj.CoreCompileInputs.cache
+C:\Users\beltr\software\Mad2021\PracticaMaD\Model\obj\Debug\netstandard2.0\Model.AssemblyInfoInputs.cache
+C:\Users\beltr\software\Mad2021\PracticaMaD\Model\obj\Debug\netstandard2.0\Model.AssemblyInfo.cs
