@@ -220,23 +220,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\diego\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\Jacobo\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\diego\\Documents\\MaD\\PracticaMaD\\Model\\Model.csproj",
+      "projectUniqueName": "C:\\Users\\Jacobo\\Desktop\\FIC\\Q7\\MAD\\PRACTICA\\Mad2021\\PracticaMaD\\Model\\Model.csproj",
       "projectName": "Model",
-      "projectPath": "C:\\Users\\diego\\Documents\\MaD\\PracticaMaD\\Model\\Model.csproj",
-      "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\diego\\Documents\\MaD\\PracticaMaD\\Model\\obj\\",
+      "projectPath": "C:\\Users\\Jacobo\\Desktop\\FIC\\Q7\\MAD\\PRACTICA\\Mad2021\\PracticaMaD\\Model\\Model.csproj",
+      "packagesPath": "C:\\Users\\Jacobo\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jacobo\\Desktop\\FIC\\Q7\\MAD\\PRACTICA\\Mad2021\\PracticaMaD\\Model\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Jacobo\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -272,10 +268,16 @@
           }
         },
         "imports": [
-          "net461"
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
         ],
         "assetTargetFallback": true,
-        "warn": true
+        "warn": true,
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -6,76 +6,67 @@
 DROP TABLE Product;
 DROP TABLE Category;
 DROP TABLE CreditCard;
-DROP TABLE User;
-DROP TABLE Order;
-DROP TABLE OrderLines;
+DROP TABLE Client;
+DROP TABLE ClientOrder;
 
 
-CREATE TABLE User (
-    id BIGINT NOT NULL AUTO_INCREMENT,
-    login VARCHAR(60) COLLATE latin1_bin NOT NULL,
-    password VARCHAR(60) NOT NULL, 
-    name VARCHAR(60) NOT NULL,
-	firstName VARCHAR(60) NOT NULL,
-    lastName VARCHAR(60) NOT NULL, 
-	address VARCHAR(60) NOT NULL, 
+CREATE TABLE Client (
+    clientId AUTOINCREMENT,
+    clientLogin VARCHAR(60) COLLATE latin1_bin NOT NULL,
+    clientPassword VARCHAR(60) NOT NULL, 
+    clientName VARCHAR(60) NOT NULL,
+	clientFirstName VARCHAR(60) NOT NULL,
+    clientLastName VARCHAR(60) NOT NULL, 
+	clientAddress VARCHAR(60) NOT NULL, 
     email VARCHAR(60) NOT NULL,
-	language VARCHAR(60) NOT NULL,
-    CONSTRAINT UserPK PRIMARY KEY (id),
-    CONSTRAINT UserNameUniqueKey UNIQUE (login)
-) ENGINE = InnoDB;
+	clientLanguage VARCHAR(60) NOT NULL,
+);
+
+
+
 
 CREATE TABLE CreditCard (
-	number VARCHAR(20) NOT NULL,
-	type VARCHAR(20) NOT NULL,
+	cardId AUTOINCREMENT,
+	number VARCHAR(20) NOT NULL ,
+	cardType VARCHAR(20) NOT NULL,
 	verificationCode BIGINT NOT NULL,
 	expeditionDate DATETIME NOT NULL,
-    CONSTRAINT CreditCardPK PRIMARY KEY (number);
-    
-) ENGINE = InnoDB;
 
+) 
 
-CREATE TABLE Order (
-CONSTRAINT CreditCardNumberFK FOREIGN KEY (creditCardNumber)
-		REFERENCES CreditCard (number),
-CONSTRAINT AdresssFK FOREIGN KEY (clientAdress)
-		REFERENCES User (address),	
-
-orderDate DATETIME NOT NULL,
-id BIGINT NOT NULL AUTO_INCREMENT,
-CONSTRAINT OrderPK PRIMARY KEY (id);    
-) ENGINE = InnoDB;
+CREATE TABLE ClientOrder (
+	orderDate DATETIME NOT NULL,
+	orderId AUTOINCREMENT, 
+)
 
 
 CREATE TABLE Product (
-	id BIGINT NOT NULL AUTO_INCREMENT,
-	name VARCHAR(20) NOT NULL,
+	productId AUTOINCREMENT,
+	productName VARCHAR(20) NOT NULL,
 	price float NOT NULL,
 	registerDate DATETIME NOT NULL,
-	stock smallint NOT NULL,
-	CONSTRAINT CategoryFK FOREIGN KEY (productCategory)
-		REFERENCES Category (name),
-    CONSTRAINT ProductPK PRIMARY KEY (id);
-    
-) ENGINE = InnoDB;
+	stock Int NOT NULL,
+)
 
 
 CREATE TABLE Category (
-	name VARCHAR(20) NOT NULL,
-    CONSTRAINT CategoryPK PRIMARY KEY (name);
-    
-) ENGINE = InnoDB;
-
-INSERT INTO User (login,password,name,firstName,lastName,address,email, languaje) VALUES ('DigoStorm','1234','Diego','Villanueva','Farina','Mi Casa','d@udc.es','Español');
-INSERT INTO User (login,password,name,firstName,lastName,address,email, languaje) VALUES ('Jacojh21','1234','Jacobo','Jorge','Hermida','Su Casa','j@udc.es','Español');
-
-INSERT INTO CreditCard (number,type,name,verificationCode,expeditionDate) VALUES ('123456789','VISA',888,(DATE_ADD(DATE(NOW()), INTERVAL '0 20:55' DAY_MINUTE)));
-
-INSERT INTO Order (creditCardNumber,clientAdress,orderDate) VALUES ('123456789','Mi Casa',(DATE_ADD(DATE(NOW()), INTERVAL '0 20:55' DAY_MINUTE)));
-
-INSERT INTO Category (name) VALUES ('Sillas');
+	categoryId AUTOINCREMENT,
+	categoryName VARCHAR(20) NOT NULL,
+)
 
 
-INSERT INTO Product (name,price,registerDate,stock,productCategory) VALUES ('Silla Gamming',999,(DATE_ADD(DATE(NOW()), INTERVAL '0 20:55' DAY_MINUTE)),9,'Sillas');
+ALTER TABLE Client ADD CONSTRAINT ClientIdPK PRIMARY KEY (clientId);
+ALTER TABLE Client ADD CONSTRAINT ClientLoginUK UNIQUE (clientLogin);
 
 
+ALTER TABLE CreditCard ADD CONSTRAINT CreditCardPK PRIMARY KEY (cardId);
+ALTER TABLE CreditCard ADD CONSTRAINT CardNumberUK UNIQUE (number);
+
+
+ALTER TABLE ClientOrder ADD CONSTRAINT ClientOrderPK PRIMARY KEY (orderId);
+
+ALTER TABLE Product ADD CONSTRAINT ProductIdPK PRIMARY KEY (productId);
+ALTER TABLE Product ADD CONSTRAINT CardNumberUK UNIQUE (number);
+
+ALTER TABLE Category ADD CONSTRAINT CategoryIdPK PRIMARY KEY (categoryId);
+ALTER TABLE Category ADD CONSTRAINT CardNumberUK UNIQUE (number);
