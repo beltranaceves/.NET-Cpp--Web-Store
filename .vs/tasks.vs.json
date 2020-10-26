@@ -1,0 +1,10 @@
+{
+  "version": "0.2.1",
+  "tasks": [
+    {
+      "taskLabel": "task-Entities",
+      "appliesTo": "PracticaMAD/Model/Entities/",
+      "type": "launch"
+    }
+  ]
+}
