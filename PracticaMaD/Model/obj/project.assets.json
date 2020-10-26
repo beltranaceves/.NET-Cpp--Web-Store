@@ -220,23 +220,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\beltr\\.nuget\\packages\\": {},
+    "C:\\Users\\diego\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\beltr\\software\\Mad2021\\PracticaMaD\\Model\\Model.csproj",
+      "projectUniqueName": "C:\\Users\\diego\\Documents\\Git\\Mad2021\\PracticaMaD\\Model\\Model.csproj",
       "projectName": "Model",
-      "projectPath": "C:\\Users\\beltr\\software\\Mad2021\\PracticaMaD\\Model\\Model.csproj",
-      "packagesPath": "C:\\Users\\beltr\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\beltr\\software\\Mad2021\\PracticaMaD\\Model\\obj\\",
+      "projectPath": "C:\\Users\\diego\\Documents\\Git\\Mad2021\\PracticaMaD\\Model\\Model.csproj",
+      "packagesPath": "C:\\Users\\diego\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\diego\\Documents\\Git\\Mad2021\\PracticaMaD\\Model\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\beltr\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\diego\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
