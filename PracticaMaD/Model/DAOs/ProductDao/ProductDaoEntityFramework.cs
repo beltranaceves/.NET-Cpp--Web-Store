@@ -74,7 +74,7 @@ namespace Es.Udc.DotNet.MiniPortal.Model.ProductDao
             return productList;
         }
 
-        public List<Product> findByProductNameKeywordAndCategory(String keyword, Category, category)
+        public List<Product> findByProductNameKeywordAndCategory(String keyword, Category category)
         {
             List<Product> productList= null;
 
