@@ -1,9 +1,9 @@
 using Es.Udc.DotNet.ModelUtil.Dao;
 using System;
 
-namespace Es.Udc.DotNet.PracticaMAD.Model.DAOs.CreditCardDAO
+namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.CreditCardDAO
 {
-    public interface ICredirCardDao : IGenericDao<CredirCard, Int64>
+    public interface ICreditCardDao : IGenericDao<CreditCard, Int64>
     {
         /* <summary>
          * Check if the card is valid

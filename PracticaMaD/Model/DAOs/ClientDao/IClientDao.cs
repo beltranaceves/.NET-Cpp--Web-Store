@@ -1,7 +1,7 @@
-using Es.Udc.DotNet.ModelUtil.Dao;
 using System;
+using Es.Udc.DotNet.ModelUtil.Dao;
 
-namespace Es.Udc.DotNet.PracticaMAD.Model.DAOs.ClientDao
+namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientDao
 {
     public interface IClientDao : IGenericDao<IClientDao, Int64>
     {
@@ -11,6 +11,7 @@ namespace Es.Udc.DotNet.PracticaMAD.Model.DAOs.ClientDao
          * <param name ="clientLogin">clientLogin</param>
          * <returns> A boolean </returns>
          */
+
         Boolean existsLogin(String clientLogin);
     }
 }

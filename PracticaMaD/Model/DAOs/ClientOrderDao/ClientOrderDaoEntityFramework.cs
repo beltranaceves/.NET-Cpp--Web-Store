@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using Es.Udc.DotNet.ModelUtil.Dao;
+using System;
 
-namespace Es.Udc.DotNet.PracticaMAD.Model.DAOs.ClientOrderDao
+namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientDao
 {
-    public class ClientOrderDaoEntityFramework:
+    public class ClientOrderDaoEntityFramework :
         GenericDaoEntityFramework<ClientOrder, Int64>, IClientOrderDao
     {
         #region IClientOrderDao Orders
@@ -39,8 +41,6 @@ namespace Es.Udc.DotNet.PracticaMAD.Model.DAOs.ClientOrderDao
             return result;
 
             #endregion Option 1: Using Linq.
-
-
         }
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Model
+namespace Es.Udc.DotNet.PracticaMad.Model
 {
     using System;
     using System.Collections.Generic;
@@ -17,9 +17,9 @@ namespace Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Client()
         {
-            this.ClientOrders = new HashSet<ClientOrder>();
-            this.ProductComments = new HashSet<ProductComment>();
-            this.CreditCards = new HashSet<CreditCard>();
+            this.ClientOrder = new HashSet<ClientOrder>();
+            this.ProductComment = new HashSet<ProductComment>();
+            this.CreditCard = new HashSet<CreditCard>();
         }
     
         public long clientId { get; set; }
@@ -34,10 +34,10 @@ namespace Model
         public string rol { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ClientOrder> ClientOrders { get; set; }
+        public virtual ICollection<ClientOrder> ClientOrder { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductComment> ProductComments { get; set; }
+        public virtual ICollection<ProductComment> ProductComment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CreditCard> CreditCards { get; set; }
+        public virtual ICollection<CreditCard> CreditCard { get; set; }
     }
 }

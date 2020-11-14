@@ -5,13 +5,12 @@ using System.Data.Common;
 using System.Data.Entity;
 using System.Linq;
 
-namespace Es.Udc.DotNet.MiniPortal.Model.ProductDao
+namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.CategoryDao
 {
     /// <summary>
     /// Specific Operations for Product
     /// </summary>
-    public class ProductDaoEntityFramework : GenericDaoEntityFramework<Product, Int64>, IProductDao
+    public class CategoryDaoEntityFramework : GenericDaoEntityFramework<Category, Int64>, ICategoryDao
     {
     }
-
 }

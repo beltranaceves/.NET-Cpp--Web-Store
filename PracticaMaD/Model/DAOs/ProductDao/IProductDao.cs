@@ -2,9 +2,9 @@ using Es.Udc.DotNet.ModelUtil.Dao;
 using Es.Udc.DotNet.ModelUtil.Exceptions;
 using System;
 
-namespace Es.Udc.DotNet.PracticaMaD.Model
+namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
 {
-    public interface IUserProfileDao : IGenericDao<Product, Int64>
+    public interface IProductDao : IGenericDao<Product, Int64>
     {
         /// <summary>
         /// Finds all products by categoryId
@@ -17,6 +17,5 @@ namespace Es.Udc.DotNet.PracticaMaD.Model
         List<Category> findByProductNameKeyword(String keyword);
 
         List<Category> findByProductNameKeywordAndCategory(String keyword, Category category);
-
     }
 }

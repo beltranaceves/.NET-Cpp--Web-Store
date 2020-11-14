@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Model
+namespace Es.Udc.DotNet.PracticaMad.Model
 {
     using System;
     using System.Collections.Generic;
@@ -17,7 +17,7 @@ namespace Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ClientOrder()
         {
-            this.ClientOrderLines = new HashSet<ClientOrderLine>();
+            this.ClientOrderLine = new HashSet<ClientOrderLine>();
         }
     
         public long orderId { get; set; }
@@ -30,6 +30,6 @@ namespace Model
         public virtual Client Client { get; set; }
         public virtual CreditCard CreditCard { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ClientOrderLine> ClientOrderLines { get; set; }
+        public virtual ICollection<ClientOrderLine> ClientOrderLine { get; set; }
     }
 }

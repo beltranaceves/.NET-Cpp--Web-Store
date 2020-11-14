@@ -3,8 +3,10 @@ using System;
 using System.Data.Common;
 using System.Data.Entity;
 using System.Linq;
+using Es.Udc.DotNet.ModelUtil.Dao;
+using Es.Udc.DotNet.PracticaMad.Model.Client;
 
-namespace Es.Udc.DotNet.PracticaMAD.Model.DAOs.ClientDao
+namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientDao
 {
     /// <summary>
     /// Specific Operations for Client
@@ -20,6 +22,9 @@ namespace Es.Udc.DotNet.PracticaMAD.Model.DAOs.ClientDao
         public ClientDaoEntityFramework()
         {
         }
+
+        #endregion Public Constructors
+
         public Boolean existsLogin(string clientLogin)
         {
             client client = null;

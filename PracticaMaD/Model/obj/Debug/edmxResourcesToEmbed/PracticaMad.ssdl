@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Es.Udc.DotNet.PracticaMad.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="categoryId" />
+    </Key>
+    <Property Name="categoryId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="categoryName" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="clientId" />
+    </Key>
+    <Property Name="clientId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="clientLogin" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="clientPassword" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="clientName" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="firstName" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="lastName" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="clientAddress" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="clientLanguage" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="rol" Type="varchar" MaxLength="60" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ClientOrder">
+    <Key>
+      <PropertyRef Name="orderId" />
+    </Key>
+    <Property Name="orderId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orderDate" Type="datetime" Nullable="false" />
+    <Property Name="orderName" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="creditCardId" Type="bigint" />
+    <Property Name="clientOrderAddress" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="clientId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="ClientOrderLine">
+    <Key>
+      <PropertyRef Name="orderLineId" />
+    </Key>
+    <Property Name="orderLineId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="orderId" Type="bigint" Nullable="false" />
+    <Property Name="productId" Type="bigint" Nullable="false" />
+    <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="price" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CreditCard">
+    <Key>
+      <PropertyRef Name="cardId" />
+    </Key>
+    <Property Name="cardId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cardNumber" Type="varchar" MaxLength="16" Nullable="false" />
+    <Property Name="cardType" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="verificationCode" Type="bigint" Nullable="false" />
+    <Property Name="expeditionDate" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="defaultCard" Type="bit" Nullable="false" />
+    <Property Name="clientId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="productId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="productName" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="price" Type="float" Nullable="false" />
+    <Property Name="registerDate" Type="datetime" Nullable="false" />
+    <Property Name="stock" Type="int" Nullable="false" />
+    <Property Name="categoryId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductComment">
+    <Key>
+      <PropertyRef Name="commentId" />
+    </Key>
+    <Property Name="commentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="productId" Type="bigint" Nullable="false" />
+    <Property Name="commentText" Type="varchar" MaxLength="260" Nullable="false" />
+    <Property Name="commentDate" Type="datetime" Nullable="false" />
+    <Property Name="clientId" Type="bigint" Nullable="false" />
+    <Property Name="tagId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tag">
+    <Key>
+      <PropertyRef Name="tagId" />
+    </Key>
+    <Property Name="tagId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="tagName" Type="varchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ClientOrder_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="ClientOrder" Type="Self.ClientOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="clientId" />
+      </Principal>
+      <Dependent Role="ClientOrder">
+        <PropertyRef Name="clientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientOrder_CreditCard">
+    <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="0..1" />
+    <End Role="ClientOrder" Type="Self.ClientOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CreditCard">
+        <PropertyRef Name="cardId" />
+      </Principal>
+      <Dependent Role="ClientOrder">
+        <PropertyRef Name="creditCardId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientOrderLine_ClientOrder">
+    <End Role="ClientOrder" Type="Self.ClientOrder" Multiplicity="1" />
+    <End Role="ClientOrderLine" Type="Self.ClientOrderLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ClientOrder">
+        <PropertyRef Name="orderId" />
+      </Principal>
+      <Dependent Role="ClientOrderLine">
+        <PropertyRef Name="orderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ClientOrderLine_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ClientOrderLine" Type="Self.ClientOrderLine" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="productId" />
+      </Principal>
+      <Dependent Role="ClientOrderLine">
+        <PropertyRef Name="productId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_ClientId">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="ProductComment" Type="Self.ProductComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="clientId" />
+      </Principal>
+      <Dependent Role="ProductComment">
+        <PropertyRef Name="clientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="ProductComment" Type="Self.ProductComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="productId" />
+      </Principal>
+      <Dependent Role="ProductComment">
+        <PropertyRef Name="productId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_Tag">
+    <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+    <End Role="ProductComment" Type="Self.ProductComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="tagId" />
+      </Principal>
+      <Dependent Role="ProductComment">
+        <PropertyRef Name="tagId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CreditCard_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="clientId" />
+      </Principal>
+      <Dependent Role="CreditCard">
+        <PropertyRef Name="clientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="categoryId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="categoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EsUdcDotNetPracticaMadModelStoreContainer">
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClientOrder" EntityType="Self.ClientOrder" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ClientOrderLine" EntityType="Self.ClientOrderLine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CreditCard" EntityType="Self.CreditCard" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductComment" EntityType="Self.ProductComment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_ClientOrder_Client" Association="Self.FK_ClientOrder_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="ClientOrder" EntitySet="ClientOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientOrder_CreditCard" Association="Self.FK_ClientOrder_CreditCard">
+      <End Role="CreditCard" EntitySet="CreditCard" />
+      <End Role="ClientOrder" EntitySet="ClientOrder" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientOrderLine_ClientOrder" Association="Self.FK_ClientOrderLine_ClientOrder">
+      <End Role="ClientOrder" EntitySet="ClientOrder" />
+      <End Role="ClientOrderLine" EntitySet="ClientOrderLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ClientOrderLine_Product" Association="Self.FK_ClientOrderLine_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ClientOrderLine" EntitySet="ClientOrderLine" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_ClientId" Association="Self.FK_Comment_ClientId">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="ProductComment" EntitySet="ProductComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_Product" Association="Self.FK_Comment_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="ProductComment" EntitySet="ProductComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_Tag" Association="Self.FK_Comment_Tag">
+      <End Role="Tag" EntitySet="Tag" />
+      <End Role="ProductComment" EntitySet="ProductComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CreditCard_Client" Association="Self.FK_CreditCard_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="CreditCard" EntitySet="CreditCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

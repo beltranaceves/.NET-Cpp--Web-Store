@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Model
+namespace Es.Udc.DotNet.PracticaMad.Model
 {
     using System;
     using System.Collections.Generic;
@@ -17,13 +17,13 @@ namespace Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Tag()
         {
-            this.ProductComments = new HashSet<ProductComment>();
+            this.ProductComment = new HashSet<ProductComment>();
         }
     
         public long tagId { get; set; }
         public string tagName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductComment> ProductComments { get; set; }
+        public virtual ICollection<ProductComment> ProductComment { get; set; }
     }
 }

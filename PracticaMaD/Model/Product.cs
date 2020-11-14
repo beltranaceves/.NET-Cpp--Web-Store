@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Model
+namespace Es.Udc.DotNet.PracticaMad.Model
 {
     using System;
     using System.Collections.Generic;
@@ -17,8 +17,8 @@ namespace Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
-            this.ClientOrderLines = new HashSet<ClientOrderLine>();
-            this.ProductComments = new HashSet<ProductComment>();
+            this.ClientOrderLine = new HashSet<ClientOrderLine>();
+            this.ProductComment = new HashSet<ProductComment>();
         }
     
         public long productId { get; set; }
@@ -30,8 +30,8 @@ namespace Model
     
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ClientOrderLine> ClientOrderLines { get; set; }
+        public virtual ICollection<ClientOrderLine> ClientOrderLine { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductComment> ProductComments { get; set; }
+        public virtual ICollection<ProductComment> ProductComment { get; set; }
     }
 }

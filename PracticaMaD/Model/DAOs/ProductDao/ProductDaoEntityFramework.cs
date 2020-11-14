@@ -4,8 +4,9 @@ using System;
 using System.Data.Common;
 using System.Data.Entity;
 using System.Linq;
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao;
 
-namespace Es.Udc.DotNet.MiniPortal.Model.ProductDao
+namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
 {
     /// <summary>
     /// Specific Operations for Product
@@ -32,7 +33,7 @@ namespace Es.Udc.DotNet.MiniPortal.Model.ProductDao
         /// <returns>A list of Product</returns>
         public List<Product> findByCategory(Category category)
         {
-            List<Product> productList= null;
+            List<Product> productList = null;
 
             DbSet<Product> products = Context.Set<Product>();
 
@@ -41,9 +42,7 @@ namespace Es.Udc.DotNet.MiniPortal.Model.ProductDao
                  where p.categoryId == category.categoryId
                  select p).ToList();
 
-            productList = result;            
-
-            
+            productList = result;
 
             if (productList == null)
                 throw new InstanceNotFoundException(category.categoryId,
@@ -54,7 +53,7 @@ namespace Es.Udc.DotNet.MiniPortal.Model.ProductDao
 
         public List<Product> findByProductNameKeyword(String keyword)
         {
-            List<Product> productList= null;
+            List<Product> productList = null;
 
             DbSet<Product> products = Context.Set<Product>();
 
@@ -63,9 +62,7 @@ namespace Es.Udc.DotNet.MiniPortal.Model.ProductDao
                  where p.productName.ToLower().Contains(keyword.ToLower())
                  select p).ToList();
 
-            productList = result;            
-
-            
+            productList = result;
 
             if (productList == null)
                 throw new InstanceNotFoundException(keyword,
@@ -76,7 +73,7 @@ namespace Es.Udc.DotNet.MiniPortal.Model.ProductDao
 
         public List<Product> findByProductNameKeywordAndCategory(String keyword, Category category)
         {
-            List<Product> productList= null;
+            List<Product> productList = null;
 
             DbSet<Product> products = Context.Set<Product>();
 
@@ -85,9 +82,7 @@ namespace Es.Udc.DotNet.MiniPortal.Model.ProductDao
                  where (p.productName.ToLower().Contains(keyword.ToLower()) && p.categoryId == category.categoryId)
                  select p).ToList();
 
-            productList = result;            
-
-            
+            productList = result;
 
             if (productList == null)
                 throw new InstanceNotFoundException(keyword,
@@ -96,7 +91,6 @@ namespace Es.Udc.DotNet.MiniPortal.Model.ProductDao
             return productList;
         }
 
-        #endregion IProductDao Members
+        #endregion IProductDao Members. Specific Operations
     }
-
 }
