@@ -162,17 +162,27 @@ CREATE TABLE ProductComment (
 	commentText VARCHAR(260) NOT NULL,
 	commentDate DATETIME NOT NULL,
 	clientId BIGINT NOT NULL,
-	tagId BIGINT NOT NULL,
 
 	CONSTRAINT [PK_Comment] PRIMARY KEY (commentId),
 	CONSTRAINT [FK_Comment_ClientId] FOREIGN KEY (clientId) REFERENCES Client (clientId),
-	CONSTRAINT [FK_Comment_Product] FOREIGN KEY (productId) REFERENCES Product (productId),
-	CONSTRAINT [FK_Comment_Tag] FOREIGN KEY (tagId) REFERENCES Tag (tagId)
+	CONSTRAINT [FK_Comment_Product] FOREIGN KEY (productId) REFERENCES Product (productId)
 ) 
 
 CREATE NONCLUSTERED INDEX [IX_CommentIndexByProductId] ON ProductComment (commentId ASC, productId ASC );
 
 PRINT N'Table Comment created.'
+GO
+
+CREATE TABLE ProductCommentTag (
+	productCommentId BIGINT IDENTITY(1, 1) NOT NULL,
+	commentId BIGINT NOT NULL,
+	tagId BIGINT NOT NULL,
+
+	CONSTRAINT [PK_ProductCommentTag] PRIMARY KEY (productCommentId),
+	CONSTRAINT [Unique_CommentIdTagId] UNIQUE (commentId, tagId)
+)
+
+PRINT N'Table ProductCommentTag created.'
 GO
 
 
