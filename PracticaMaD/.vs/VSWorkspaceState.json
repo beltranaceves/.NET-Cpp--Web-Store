@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\Model",
+    "\\Model\\DAOs",
+    "\\Model\\DAOs\\ProductCommentDao",
+    "\\Model\\DAOs\\ProductDao",
+    "\\Model\\DAOs\\TagDao",
+    "\\Model\\SQL"
+  ],
+  "SelectedNode": "\\Model\\ProductComment.cs",
+  "PreviewInSolutionExplorer": false
+}

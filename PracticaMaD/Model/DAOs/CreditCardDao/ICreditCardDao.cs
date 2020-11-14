@@ -3,7 +3,7 @@ using System;
 
 namespace Es.Udc.DotNet.PracticaMAD.Model.DAOs.CreditCardDAO
 {
-    public interface ICredirCardDao : IGenericDao<ICredirCardDao, Int64>
+    public interface ICredirCardDao : IGenericDao<CredirCard, Int64>
     {
         /* <summary>
          * Check if the card is valid
@@ -11,6 +11,8 @@ namespace Es.Udc.DotNet.PracticaMAD.Model.DAOs.CreditCardDAO
          * <param name ="cardNumber">cardNumber</param>
          * <returns> A boolean </returns>
          */
+
+        // TODO: Quitamos esto y lo ponemos en el servicio
         Boolean isValidCard(String cardNumber);
     }
 }

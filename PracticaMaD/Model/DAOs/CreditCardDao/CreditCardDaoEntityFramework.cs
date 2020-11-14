@@ -13,16 +13,17 @@ namespace Es.Udc.DotNet.PracticaMAD.Model.DAOs.CreditCardDAO
         GenericDaoEntityFramework<CreditCard, Int64>, ICreditCardDao
     {
         #region Public Constructors
-
         /// <summary>
         /// Public Constructor
-        /// </summary>
+        /// </summary>\
         public CreditCardDaoEntityFramework()
         {
         }
+        #endregion Public Constructors
+
+        // TODO: Quitamos esto y lo ponemos en el servicio
         public Boolean isValidCard(string cardNumber)
         {
-           
             return cardNumber.Length == 16;
         }
     }
