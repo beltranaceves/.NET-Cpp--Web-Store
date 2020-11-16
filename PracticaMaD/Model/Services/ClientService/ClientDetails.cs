@@ -10,6 +10,8 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
     {
         #region Properties Region
 
+        public string ClientName { get; private set; }
+
         public string FirstName { get; private set; }
 
         public string Lastname { get; private set; }
@@ -28,15 +30,17 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
         /// Initializes a new instance of the <see cref="ClientDetails"/>
         /// class.
         /// </summary>
+        /// <param name="clientName">The client's  name.</param>
         /// <param name="firstName">The client's first name.</param>
         /// <param name="lastName">The client's last name.</param>
         /// <param name="email">The client's email.</param>
         /// <param name="clientLanguage">The language.</param>
         /// <param name="clientAddress">The address.</param>
         /// <param name="rol">The role.</param>
-        public ClientDetails(string firstName, string lastName, string email,
+        public ClientDetails(string clientName, string firstName, string lastName, string email,
             string clientLanguage, string clientAddress, string rol)
         {
+            this.ClientName = clientName;
             this.FirstName = firstName;
             this.Lastname = lastName;
             this.Email = email;

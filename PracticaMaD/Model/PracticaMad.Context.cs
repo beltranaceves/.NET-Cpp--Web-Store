@@ -32,6 +32,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model
         public virtual DbSet<CreditCard> CreditCard { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductComment> ProductComment { get; set; }
+        public virtual DbSet<ProductCommentTag> ProductCommentTag { get; set; }
         public virtual DbSet<Tag> Tag { get; set; }
     }
 }

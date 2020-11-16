@@ -75,6 +75,13 @@
     <Property Name="commentText" Type="varchar" MaxLength="260" Nullable="false" />
     <Property Name="commentDate" Type="datetime" Nullable="false" />
     <Property Name="clientId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductCommentTag">
+    <Key>
+      <PropertyRef Name="productCommentId" />
+    </Key>
+    <Property Name="productCommentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="commentId" Type="bigint" Nullable="false" />
     <Property Name="tagId" Type="bigint" Nullable="false" />
   </EntityType>
   <EntityType Name="Tag">
@@ -156,18 +163,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Comment_Tag">
-    <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
-    <End Role="ProductComment" Type="Self.ProductComment" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tag">
-        <PropertyRef Name="tagId" />
-      </Principal>
-      <Dependent Role="ProductComment">
-        <PropertyRef Name="tagId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_CreditCard_Client">
     <End Role="Client" Type="Self.Client" Multiplicity="1">
       <OnDelete Action="Cascade" />
@@ -202,6 +197,7 @@
     <EntitySet Name="CreditCard" EntityType="Self.CreditCard" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductComment" EntityType="Self.ProductComment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductCommentTag" EntityType="Self.ProductCommentTag" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_ClientOrder_Client" Association="Self.FK_ClientOrder_Client">
       <End Role="Client" EntitySet="Client" />
@@ -225,10 +221,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_Comment_Product" Association="Self.FK_Comment_Product">
       <End Role="Product" EntitySet="Product" />
-      <End Role="ProductComment" EntitySet="ProductComment" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Comment_Tag" Association="Self.FK_Comment_Tag">
-      <End Role="Tag" EntitySet="Tag" />
       <End Role="ProductComment" EntitySet="ProductComment" />
     </AssociationSet>
     <AssociationSet Name="FK_CreditCard_Client" Association="Self.FK_CreditCard_Client">

@@ -3,15 +3,14 @@ using Es.Udc.DotNet.ModelUtil.Dao;
 
 namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientDao
 {
-    public interface IClientDao : IGenericDao<IClientDao, Int64>
+    public interface IClientDao : IGenericDao<Client, Int64>
     {
-        /* <summary>
-         * See if the client exists
-         * </summary>
-         * <param name ="clientLogin">clientLogin</param>
-         * <returns> A boolean </returns>
-         */
-
-        Boolean existsLogin(String clientLogin);
+        /// <summary>
+        /// Finds a Client by clientLogin
+        /// </summary>
+        /// <param name="clientLogin">clientLogin</param>
+        /// <returns>The Client</returns>
+        /// <exception cref="InstanceNotFoundException"/>
+        Client FindByLogin(String clientLogin);
     }
 }

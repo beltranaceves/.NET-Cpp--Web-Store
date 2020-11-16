@@ -81,6 +81,14 @@
           <ScalarProperty Name="commentText" ColumnName="commentText" />
           <ScalarProperty Name="commentDate" ColumnName="commentDate" />
           <ScalarProperty Name="clientId" ColumnName="clientId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductCommentTag">
+      <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaMad.Model.ProductCommentTag">
+        <MappingFragment StoreEntitySet="ProductCommentTag">
+          <ScalarProperty Name="productCommentId" ColumnName="productCommentId" />
+          <ScalarProperty Name="commentId" ColumnName="commentId" />
           <ScalarProperty Name="tagId" ColumnName="tagId" />
         </MappingFragment>
       </EntityTypeMapping>

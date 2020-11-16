@@ -1,5 +1,6 @@
 using Es.Udc.DotNet.ModelUtil.Dao;
 using System;
+using System.Collections.Generic;
 
 namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientDao
 {

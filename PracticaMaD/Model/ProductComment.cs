@@ -19,10 +19,8 @@ namespace Es.Udc.DotNet.PracticaMad.Model
         public string commentText { get; set; }
         public System.DateTime commentDate { get; set; }
         public long clientId { get; set; }
-        public long tagId { get; set; }
     
         public virtual Client Client { get; set; }
         public virtual Product Product { get; set; }
-        public virtual Tag Tag { get; set; }
     }
 }

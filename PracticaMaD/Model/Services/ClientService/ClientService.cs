@@ -1,7 +1,8 @@
 using Es.Udc.DotNet.ModelUtil.Exceptions;
 using Es.Udc.DotNet.ModelUtil.Transactions;
 using Ninject;
-using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientDao
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientDao;
+using Es.Udc.DotNet.PracticaMad.Model.Services.Common;
 
 namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
 {
@@ -12,33 +13,34 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
 
         /// <exception cref="DuplicateInstanceException"/>
         [Transactional]
-        public long RegisterUser(string clientLogin, string clearPassword,
+        public long RegisterClient(string clientLogin, string clearPassword,
         ClientDetails clientDetails)
         {
             try
             {
-                UserProfileDao.FindByLoginName(clientLogin);
+                ClientDao.FindByLogin(clientLogin);
 
                 throw new DuplicateInstanceException(clientLogin,
-                    typeof(UserProfile).FullName);
+                    typeof(Client).FullName);
             }
             catch (InstanceNotFoundException)
             {
-                String encryptedPassword = PasswordEncrypter.Crypt(clearPassword);
+                string encryptedPassword = PasswordEncrypter.Crypt(clearPassword);
 
-                UserProfile userProfile = new UserProfile();
+                Client client = new Client();
 
-                userProfile.clientLogin = clientLogin;
-                userProfile.enPassword = encryptedPassword;
-                userProfile.firstName = clientDetails.FirstName;
-                userProfile.lastName = clientDetails.Lastname;
-                userProfile.email = clientDetails.Email;
-                userProfile.language = clientDetails.Language;
-                userProfile.country = clientDetails.ClientAddress;
+                client.clientLogin = clientLogin;
+                client.clientPassword = encryptedPassword;
+                client.clientName = clientDetails.ClientName;
+                client.firstName = clientDetails.FirstName;
+                client.lastName = clientDetails.Lastname;
+                client.email = clientDetails.Email;
+                client.clientLanguage = clientDetails.ClientLanguage;
+                client.clientAddress = clientDetails.ClientAddress;
 
-                UserProfileDao.Create(userProfile);
+                ClientDao.Create(client);
 
-                return userProfile.usrId;
+                return client.clientId;
             }
         }
     }

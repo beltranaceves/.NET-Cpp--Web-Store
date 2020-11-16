@@ -44,11 +44,11 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Practices.EnterpriseLibrary.2008.4.1\lib\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Practices.EnterpriseLibrary.2008.4.1\lib\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
     </Reference>
     <Reference Include="ModelUtil">
       <HintPath>..\Lib\ModelUtil.dll</HintPath>
@@ -91,6 +91,22 @@
     <Compile Include="CreditCard.cs">
       <DependentUpon>PracticaMad.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAOs\CategoryDao\CategoryDaoEntityFramework.cs" />
+    <Compile Include="DAOs\CategoryDao\ICategoryDao.cs" />
+    <Compile Include="DAOs\ClientDao\ClientDaoEntityFramework.cs" />
+    <Compile Include="DAOs\ClientDao\IClientDao.cs" />
+    <Compile Include="DAOs\ClientOrderDao\ClientOrderDaoEntityFramework.cs" />
+    <Compile Include="DAOs\ClientOrderDao\IClientOrderDao.cs" />
+    <Compile Include="DAOs\ClientOrderLineDao\ClientOrderLineDaoEntityFramework.cs" />
+    <Compile Include="DAOs\ClientOrderLineDao\IClientOrderLineDao.cs" />
+    <Compile Include="DAOs\CreditCardDao\CreditCardDaoEntityFramework.cs" />
+    <Compile Include="DAOs\CreditCardDao\ICreditCardDao.cs" />
+    <Compile Include="DAOs\ProductCommentDao\IProductCommentDao.cs" />
+    <Compile Include="DAOs\ProductCommentDao\ProductCommentDaoEntityFramework.cs" />
+    <Compile Include="DAOs\ProductDao\IProductDao.cs" />
+    <Compile Include="DAOs\ProductDao\ProductDaoEntityFramework.cs" />
+    <Compile Include="DAOs\TagDao\ITagDao.cs" />
+    <Compile Include="DAOs\TagDao\TagDaoEntityFramework.cs" />
     <Compile Include="PracticaMad.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -112,8 +128,31 @@
     <Compile Include="ProductComment.cs">
       <DependentUpon>PracticaMad.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProductCommentTag.cs">
+      <DependentUpon>PracticaMad.tt</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CategoryService\CategoryService.cs" />
+    <Compile Include="Services\CategoryService\ICategoryService.cs" />
+    <Compile Include="Services\ClientOrderLineService\ClientOrderLineService.cs" />
+    <Compile Include="Services\ClientOrderLineService\IClientOrderLineService.cs" />
+    <Compile Include="Services\ClientOrderService\ClientOrderService.cs" />
+    <Compile Include="Services\ClientOrderService\IClientOrderService.cs" />
+    <Compile Include="Services\ClientService\ClientDetails.cs" />
+    <Compile Include="Services\ClientService\ClientService.cs" />
+    <Compile Include="Services\ClientService\IClientService.cs" />
+    <Compile Include="Services\ClientService\LoginResult.cs" />
+    <Compile Include="Services\Common\PasswordEncrypter.cs" />
+    <Compile Include="Services\CreditCardService\CreditCardService.cs" />
+    <Compile Include="Services\CreditCardService\ICreditCardService.cs" />
+    <Compile Include="Services\Exceptions\IncorrectPasswordException.cs" />
+    <Compile Include="Services\ProductCommentService\IProductCommentService.cs" />
+    <Compile Include="Services\ProductCommentService\ProductCommentService.cs" />
+    <Compile Include="Services\ProductService\IProductService.cs" />
+    <Compile Include="Services\ProductService\ProductService.cs" />
+    <Compile Include="Services\TagService\ITagService.cs" />
+    <Compile Include="Services\TagService\TagService.cs" />
     <Compile Include="Tag.cs">
       <DependentUpon>PracticaMad.tt</DependentUpon>
     </Compile>
@@ -146,7 +185,10 @@
       <DependentUpon>PracticaMad.edmx</DependentUpon>
       <LastGenOutput>PracticaMad.cs</LastGenOutput>
     </Content>
+    <Content Include="Sql\SqlServerCreateDatabase.sql" />
+    <Content Include="Sql\SqlServerCreateTables.sql" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -1,3 +1,7 @@
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[ProductCommentTag]') 
+AND type in ('U')) DROP TABLE [ProductCommentTag]
+GO
+
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[ProductComment]') 
 AND type in ('U')) DROP TABLE [ProductComment]
 GO

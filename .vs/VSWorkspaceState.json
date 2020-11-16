@@ -3,11 +3,10 @@
     "",
     "\\PracticaMaD",
     "\\PracticaMaD\\Model",
-    "\\PracticaMaD\\Model\\DAOs",
-    "\\PracticaMaD\\Model\\DAOs\\ClientOrderDao",
-    "\\PracticaMaD\\Model\\DAOs\\ClientOrderLineDao",
-    "\\PracticaMaD\\Model\\DAOs\\CreditCardDao"
+    "\\PracticaMaD\\Model\\Sql",
+    "\\PracticaMaD\\Test",
+    "\\PracticaMaD\\TestResults"
   ],
-  "SelectedNode": "\\PracticaMaD\\Model\\DAOs\\ClientOrderLineDao\\IClientOrderLineDao.cs",
+  "SelectedNode": "\\PracticaMaD\\Test\\IClientServiceTest.cs",
   "PreviewInSolutionExplorer": false
 }

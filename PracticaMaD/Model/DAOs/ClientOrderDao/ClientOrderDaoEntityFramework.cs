@@ -15,12 +15,13 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientDao
         {
             #region Option 1: Using Linq.
 
-            DbSet<CLientOrder> accountOperations = Context.Set<ClientOrder>();
+            DbSet<ClientOrder> clientOrder = Context.Set<ClientOrder>();
 
             List<ClientOrder> result =
                 (from cliOrd in clientOrder
                  where cliOrd.clientId == clientId
                  select cliOrd).Skip(startIndex).Take(count).ToList();
+            return result;
 
             #endregion Option 1: Using Linq.
         }
@@ -30,7 +31,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientDao
         {
             #region Option 1: Using Linq.
 
-            DbSet<ClientOrder> orders = Context.Set<ClientOrder>();
+            DbSet<ClientOrder> clientOrder = Context.Set<ClientOrder>();
 
             var result =
                  (from c in clientOrder
@@ -42,5 +43,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientDao
 
             #endregion Option 1: Using Linq.
         }
+
+        #endregion IClientOrderDao Orders
     }
 }
