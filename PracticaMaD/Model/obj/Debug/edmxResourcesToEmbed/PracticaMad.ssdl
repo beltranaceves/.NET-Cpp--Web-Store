@@ -14,9 +14,9 @@
     <Property Name="clientId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="clientLogin" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="clientPassword" Type="varchar" MaxLength="60" Nullable="false" />
-    <Property Name="clientName" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="firstName" Type="varchar" MaxLength="60" Nullable="false" />
-    <Property Name="lastName" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="firstSurname" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="lastSurname" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="clientAddress" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="email" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="clientLanguage" Type="varchar" MaxLength="60" Nullable="false" />

@@ -31,7 +31,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientDao
         /// <param name="clientLogin"></param>
         /// <returns></returns>
         /// <exception cref="InstanceNotFoundException"></exception>
-        public Client FindByLogin(string clientLogin)
+        public Client FindByLogin(String clientLogin)
         {
             Client client = null;
 

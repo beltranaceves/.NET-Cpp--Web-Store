@@ -15,9 +15,9 @@
           <ScalarProperty Name="clientId" ColumnName="clientId" />
           <ScalarProperty Name="clientLogin" ColumnName="clientLogin" />
           <ScalarProperty Name="clientPassword" ColumnName="clientPassword" />
-          <ScalarProperty Name="clientName" ColumnName="clientName" />
           <ScalarProperty Name="firstName" ColumnName="firstName" />
-          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="firstSurname" ColumnName="firstSurname" />
+          <ScalarProperty Name="lastSurname" ColumnName="lastSurname" />
           <ScalarProperty Name="clientAddress" ColumnName="clientAddress" />
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="clientLanguage" ColumnName="clientLanguage" />

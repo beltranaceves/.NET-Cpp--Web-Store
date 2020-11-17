@@ -3,10 +3,7 @@
     "",
     "\\PracticaMaD",
     "\\PracticaMaD\\Model",
-    "\\PracticaMaD\\Model\\Sql",
-    "\\PracticaMaD\\Test",
-    "\\PracticaMaD\\TestResults"
+    "\\PracticaMaD\\Test"
   ],
-  "SelectedNode": "\\PracticaMaD\\Test\\IClientServiceTest.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -25,9 +25,9 @@ namespace Es.Udc.DotNet.PracticaMad.Model
         public long clientId { get; set; }
         public string clientLogin { get; set; }
         public string clientPassword { get; set; }
-        public string clientName { get; set; }
         public string firstName { get; set; }
-        public string lastName { get; set; }
+        public string firstSurname { get; set; }
+        public string lastSurname { get; set; }
         public string clientAddress { get; set; }
         public string email { get; set; }
         public string clientLanguage { get; set; }
