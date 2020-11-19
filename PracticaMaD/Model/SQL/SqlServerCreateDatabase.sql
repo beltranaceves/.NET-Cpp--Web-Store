@@ -15,4 +15,6 @@ INSERT INTO ClientOrderLine (orderId, productId, quantity, price) VALUES (1,1, 2
 
 INSERT INTO Tag (tagName) VALUES ('Buen producto');
 
-INSERT INTO ProductComment (productId ,commentText, commentDate, clientId ,tagId) VALUES (1,'Muy buena silla, muy comoda para pasar horas jugando',GETDATE(),1,1);
+INSERT INTO ProductComment (productId ,commentText, commentDate, clientId) VALUES (1,'Muy buena silla, muy comoda para pasar horas jugando',GETDATE(),1);
+
+INSERT INTO ProductCommentTag(commentId, tagId) VALUES (1, 1);

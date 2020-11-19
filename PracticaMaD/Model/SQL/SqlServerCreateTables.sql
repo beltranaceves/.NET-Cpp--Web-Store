@@ -179,7 +179,7 @@ PRINT N'Table Comment created.'
 GO
 
 CREATE TABLE ProductCommentTag (
-	productCommentId BIGINT IDENTITY(1, 1) NOT NULL,
+	productCommentTagId BIGINT IDENTITY(1, 1) NOT NULL,
 	commentId BIGINT NOT NULL,
 	tagId BIGINT NOT NULL,
 

@@ -22,3 +22,7 @@ C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\obj\Debug\
 C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\obj\Debug\Model.csproj.CopyComplete
 C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\obj\Debug\Model.exe
 C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\obj\Debug\Model.pdb
+C:\Users\beltr\software\Mad2021\PracticaMaD\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\beltr\software\Mad2021\PracticaMaD\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\beltr\software\Mad2021\PracticaMaD\Model\obj\Debug\Model.exe
+C:\Users\beltr\software\Mad2021\PracticaMaD\Model\obj\Debug\Model.pdb

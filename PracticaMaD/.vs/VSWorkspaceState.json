@@ -3,12 +3,8 @@
     "",
     "\\Model",
     "\\Model\\DAOs",
-    "\\Model\\DAOs\\CreditCardDao",
-    "\\Model\\DAOs\\ProductCommentDao",
-    "\\Model\\DAOs\\ProductDao",
-    "\\Model\\DAOs\\TagDao",
     "\\Model\\SQL"
   ],
-  "SelectedNode": "\\Model\\DAOs\\CreditCardDao\\ICreditCardDao.cs",
+  "SelectedNode": "\\Model\\DAOs",
   "PreviewInSolutionExplorer": false
 }
