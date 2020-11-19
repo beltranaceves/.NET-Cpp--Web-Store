@@ -55,15 +55,16 @@ CREATE TABLE Client (
     clientId BIGINT IDENTITY(1,1) NOT NULL,
     clientLogin VARCHAR(60)  NOT NULL,
     clientPassword VARCHAR(60) NOT NULL, 
-    clientName VARCHAR(60) NOT NULL,
-	firstName VARCHAR(60) NOT NULL,
-    lastName VARCHAR(60) NOT NULL, 
+    firstName VARCHAR(60) NOT NULL,
+	firstSurname VARCHAR(60) NOT NULL,
+    lastSurname VARCHAR(60) NOT NULL, 
 	clientAddress VARCHAR(60) NOT NULL, 
     email VARCHAR(60) NOT NULL,
 	clientLanguage VARCHAR(60) NOT NULL,
 	rol varchar(60) NOT NULL,
 	CONSTRAINT [PK_Client] PRIMARY KEY (clientId),
-	CONSTRAINT [Unique_ClientLogin] UNIQUE (clientLogin)
+	CONSTRAINT [Unique_ClientLogin] UNIQUE (clientLogin),
+	CONSTRAINT [Unique_ClientEmail] UNIQUE (email)
 )
 
 CREATE NONCLUSTERED INDEX [IX_ClientIndexByClientLogin] ON Client (clientId ASC, clientLogin ASC);

@@ -3,7 +3,9 @@
     "",
     "\\PracticaMaD",
     "\\PracticaMaD\\Model",
+    "\\PracticaMaD\\Model\\SQL",
     "\\PracticaMaD\\Test"
   ],
+  "SelectedNode": "\\PracticaMaD\\Model\\SQL\\SqlServerCreateTables.sql",
   "PreviewInSolutionExplorer": false
 }

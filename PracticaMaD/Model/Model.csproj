@@ -103,6 +103,8 @@
     <Compile Include="DAOs\CreditCardDao\ICreditCardDao.cs" />
     <Compile Include="DAOs\ProductCommentDao\IProductCommentDao.cs" />
     <Compile Include="DAOs\ProductCommentDao\ProductCommentDaoEntityFramework.cs" />
+    <Compile Include="DAOs\ProductCommentTagDao\ProductCommentTagDaoEntityFramework.cs" />
+    <Compile Include="DAOs\ProductCommentTagDao\IProductCommentTagDao.cs" />
     <Compile Include="DAOs\ProductDao\IProductDao.cs" />
     <Compile Include="DAOs\ProductDao\ProductDaoEntityFramework.cs" />
     <Compile Include="DAOs\TagDao\ITagDao.cs" />
