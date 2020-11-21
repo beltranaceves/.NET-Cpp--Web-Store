@@ -3,8 +3,14 @@
     "",
     "\\Model",
     "\\Model\\DAOs",
-    "\\Model\\SQL"
+    "\\Model\\Services",
+    "\\Model\\Services\\ClientService",
+    "\\Model\\Services\\CreditCardService",
+    "\\Model\\Services\\ProductService",
+    "\\Model\\SQL",
+    "\\Test",
+    "\\Test\\Scripts"
   ],
-  "SelectedNode": "\\Model\\DAOs",
+  "SelectedNode": "\\Model\\Product.cs",
   "PreviewInSolutionExplorer": false
 }
