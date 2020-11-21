@@ -9,17 +9,15 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderService
     [Serializable()]
     public class ClientOrderDetails
     {
-        public long OrderId { get; }
         public System.DateTime OrderDate { get; }
         public string OrderName { get;  }
-        public Nullable<long> CreditCardId { get; }
+        public long CreditCardId { get; }
         public string ClientOrderAddress { get;  }
         public Nullable<long> ClientId { get; set; }
 
-        public ClientOrderDetails(long orderId, DateTime orderDate, string orderName, long creditCardId,
+        public ClientOrderDetails(DateTime orderDate, string orderName, long creditCardId,
         string clientOrderAddress,long clientId)
         {
-            this.OrderId = orderId;
             this.OrderDate = orderDate;
             this.OrderName = orderName;
             this.CreditCardId = creditCardId;

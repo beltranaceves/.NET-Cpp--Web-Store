@@ -48,13 +48,15 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
             
             for (int i = 0; i < productList.Count; i++)
             {
-                long productId = productList.ElementAt(i);
+                String productName = productList.ElementAt(i).ProductName;
 
-                Product product = ProductDao.Find(productId);
+                Product product = ProductDao.FindByProductName(productName);
+
+                long productId = product.productId;
+
+                int stock = productList.ElementAt(i).Stock;
                 
-                int stock = productList.ElementAt(i).stock;
-                
-                int newStock = product.stock - productList.ElementAt(i).stock;
+                int newStock = product.stock - productList.ElementAt(i).Stock;
                 
                 if (newStock < 0)
                     throw new NotEnoughStockException(product.productName, newStock);
@@ -69,7 +71,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
                 clientOrderLine.productId = productId;
                 clientOrderLine.quantity = stock;
                 clientOrderLine.price = product.price;
-                clientOrderLine.Create(clientOrderLine);
+                ClientOrderLineDao.Create(clientOrderLine);
             }
             return orderId;
         }
@@ -98,32 +100,34 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
                 
                 for (int j = 0; j < clientOrderLines.Count; j++)
                 {
-                    string productName = clientOrderLines.ElementAt(j).Product.productName;
+                    long productId = clientOrderLines.ElementAt(j).Product.productId;
                     int quantity = clientOrderLines.ElementAt(j).quantity;
-                    float price = (float)clientOrderLines.ElementAt(j).price;
+                    double price = (double)clientOrderLines.ElementAt(j).price;
                     
-                    ClientOrderLineDetails clientOrderLine = new ClientOrderLineDetails(clientOrders.ElementAt(i).orderId, productName, numberOfUnits, unitPrize);
+                    ClientOrderLineDetails clientOrderLine = new ClientOrderLineDetails(clientOrders.ElementAt(i).orderId, productId, quantity, price);
                     
                     clientOrderLinesDetails.Add(clientOrderLine);
                 }
                 
+                long cardId =clientOrders.ElementAt(i).CreditCard.cardId;
                 long orderId = clientOrders.ElementAt(i).orderId;
-                string cardNumber = CreditCardDao.Find(clientOrders.ElementAt(i).creditCardId).cardNumber;
+                //string cardNumber = CreditCardDao.Find(clientOrders.ElementAt(i).creditCardId).cardNumber;
                 String postalAddress = clientOrders.ElementAt(i).clientOrderAddress;
                 DateTime orderDate = clientOrders.ElementAt(i).orderDate;
-                
-                clientOrdersDetails.Add(new ClientOrderDetails(orderId, usrId, cardNumber, postalAddress, orderDate, orderLinesDetails));
+                var orderName = " Order";
+                clientOrdersDetails.Add(new ClientOrderDetails(orderDate, orderName, cardId,postalAddress,clientId));
                 
                 k++;
             }
-            return ordersDetails;
+            return clientOrdersDetails;
         }
 
         public ClientOrderDetails FindOrder(long orderId)
         {
             ClientOrder order = ClientOrderDao.Find(orderId);
             
-            ClientOrderDetails orderDetails = new ClientOrderDetails(order.orderId,order.usrId,CardDao.Find(order.idCard).cardNumber,order.postalAddress,order.orderDate);
+            ClientOrderDetails orderDetails = new ClientOrderDetails(order.orderDate,order.orderName,order.CreditCard.cardId,
+                order.clientOrderAddress,order.Client.clientId);
             
             return orderDetails;
         }

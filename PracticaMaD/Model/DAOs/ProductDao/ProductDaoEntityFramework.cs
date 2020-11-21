@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao;
 using System.Collections.Generic;
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.CreditCardDao;
 
 namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
 {
@@ -39,7 +40,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
             DbSet<Product> products = Context.Set<Product>();
 
             var result =
-                (from p in Product
+                (from p in products
                  where p.categoryId == category.categoryId
                  select p).ToList();
 
@@ -47,7 +48,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
 
             if (productList == null)
                 throw new InstanceNotFoundException(category.categoryId,
-                    typeof(Product).productId);
+                    typeof(Product).FullName);
 
             return productList;
         }
@@ -59,7 +60,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
             DbSet<Product> products = Context.Set<Product>();
 
             var result =
-                (from p in Product
+                (from p in products
                  where p.productName.ToLower().Contains(keyword.ToLower())
                  select p).ToList();
 
@@ -67,7 +68,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
 
             if (productList == null)
                 throw new InstanceNotFoundException(keyword,
-                    typeof(keyword));
+                    typeof(Product).FullName);
 
             return productList;
         }
@@ -79,7 +80,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
             DbSet<Product> products = Context.Set<Product>();
 
             var result =
-                (from p in Product
+                (from p in products
                  where (p.productName.ToLower().Contains(keyword.ToLower()) && p.categoryId == category.categoryId)
                  select p).ToList();
 
@@ -87,11 +88,41 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
 
             if (productList == null)
                 throw new InstanceNotFoundException(keyword,
-                    typeof(keyword));
+                    typeof(Product).FullName);
 
             return productList;
         }
+        /// <summary>
+        /// Finds a card by its number
+        /// </summary>
+        /// <param name="ProductName"></param>
+        /// <returns></returns>
+        /// <exception cref="InstanceNotFoundException"></exception>
 
+
+        public Product FindByProductName(string ProductName)
+        {
+        
+            DbSet<Product> products = Context.Set<Product>();
+
+            Product product = null;
+
+            var result =
+                 (from p in products
+                  where p.productName == ProductName
+                  select p);
+
+            product = result.FirstOrDefault();
+
+            if (product == null)
+                throw new InstanceNotFoundException(ProductName,
+                    typeof(Product).FullName);  
+            
+            return product;
+
+        }
         #endregion IProductDao Members. Specific Operations
     }
+
+    
 }

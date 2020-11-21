@@ -26,7 +26,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService
         void SelectDefaultCard(long clientId, long cardId);
 
         [Transactional]
-        List<CreditCardDetails> GetClientCards(long clientId,int count);
+        List<CreditCardDetails> GetClientCards(long clientId);
 
        
 

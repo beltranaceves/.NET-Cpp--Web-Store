@@ -151,7 +151,7 @@
     <Compile Include="Services\CreditCardService\CreditCardDetails.cs" />
     <Compile Include="Services\CreditCardService\CreditCardService.cs" />
     <Compile Include="Services\CreditCardService\ICreditCardService.cs" />
-    <Compile Include="Services\Exceptions\Class1.cs" />
+    <Compile Include="Services\Exceptions\NotEnoughStockException.cs" />
     <Compile Include="Services\Exceptions\IncorrectPasswordException.cs" />
     <Compile Include="Services\ProductCommentService\IProductCommentService.cs" />
     <Compile Include="Services\ProductCommentService\ProductCommentService.cs" />

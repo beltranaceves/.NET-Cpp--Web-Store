@@ -31,7 +31,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
         long CreateOrder(long clienId, long cardId, string clientOrderAddress, List<ProductDetails> productList);
 
         [Transactional]
-        List<ClientOrderDetails> getClientOrders(long clientId, int startIndex, int count);
+        List<ClientOrderDetails> getClientOrders(long clientId);
 
         [Transactional]
         int GetOrdersByClient(long usrId);
