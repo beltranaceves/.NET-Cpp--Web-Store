@@ -47,3 +47,7 @@ C:\Users\beltr\software\Mad2021\PracticaMaD\Model\bin\Debug\Ninject.xml
 C:\Users\beltr\software\Mad2021\PracticaMaD\Model\bin\Debug\Ninject.Extensions.Interception.xml
 C:\Users\beltr\software\Mad2021\PracticaMaD\Model\bin\Debug\Ninject.Extensions.Interception.DynamicProxy.xml
 C:\Users\beltr\software\Mad2021\PracticaMaD\Model\obj\Debug\Model.csproj.CopyComplete
+C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\obj\Debug\Model.exe
+C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\obj\Debug\Model.pdb

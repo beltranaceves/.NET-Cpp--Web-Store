@@ -1,9 +1,9 @@
 using Es.Udc.DotNet.ModelUtil.Dao;
 using System;
 
-namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientDao
+namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientOrderLineDao
 {
-    public interface ICLientOrderLineDAO : IGenericDao<ClientOrder, Int64>
+    public interface IClientOrderLineDao : IGenericDao<ClientOrderLine, Int64>
     {
     }
 }

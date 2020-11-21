@@ -137,8 +137,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\CategoryService\CategoryService.cs" />
     <Compile Include="Services\CategoryService\ICategoryService.cs" />
+    <Compile Include="Services\ClientOrderLineService\ClientOrderLineDetails.cs" />
     <Compile Include="Services\ClientOrderLineService\ClientOrderLineService.cs" />
     <Compile Include="Services\ClientOrderLineService\IClientOrderLineService.cs" />
+    <Compile Include="Services\ClientOrderService\ClientOrderDetails.cs" />
     <Compile Include="Services\ClientOrderService\ClientOrderService.cs" />
     <Compile Include="Services\ClientOrderService\IClientOrderService.cs" />
     <Compile Include="Services\ClientService\ClientDetails.cs" />
@@ -146,12 +148,15 @@
     <Compile Include="Services\ClientService\IClientService.cs" />
     <Compile Include="Services\ClientService\LoginResult.cs" />
     <Compile Include="Services\Common\PasswordEncrypter.cs" />
+    <Compile Include="Services\CreditCardService\CreditCardDetails.cs" />
     <Compile Include="Services\CreditCardService\CreditCardService.cs" />
     <Compile Include="Services\CreditCardService\ICreditCardService.cs" />
+    <Compile Include="Services\Exceptions\Class1.cs" />
     <Compile Include="Services\Exceptions\IncorrectPasswordException.cs" />
     <Compile Include="Services\ProductCommentService\IProductCommentService.cs" />
     <Compile Include="Services\ProductCommentService\ProductCommentService.cs" />
     <Compile Include="Services\ProductService\IProductService.cs" />
+    <Compile Include="Services\ProductService\ProductDetails.cs" />
     <Compile Include="Services\ProductService\ProductService.cs" />
     <Compile Include="Services\TagService\ITagService.cs" />
     <Compile Include="Services\TagService\TagService.cs" />
