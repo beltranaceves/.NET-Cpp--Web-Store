@@ -17,7 +17,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ClientOrder()
         {
-            this.ClientOrderLine = new HashSet<OrderLineDetails>();
+            this.ClientOrderLine = new HashSet<ClientOrderLine>();
         }
     
         public long orderId { get; set; }
@@ -30,6 +30,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model
         public virtual Client Client { get; set; }
         public virtual CreditCard CreditCard { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OrderLineDetails> ClientOrderLine { get; set; }
+        public virtual ICollection<ClientOrderLine> ClientOrderLine { get; set; }
     }
 }

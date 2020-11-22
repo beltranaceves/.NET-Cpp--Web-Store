@@ -28,7 +28,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<Client> Client { get; set; }
         public virtual DbSet<ClientOrder> ClientOrder { get; set; }
-        public virtual DbSet<OrderLineDetails> ClientOrderLine { get; set; }
+        public virtual DbSet<ClientOrderLine> ClientOrderLine { get; set; }
         public virtual DbSet<CreditCard> CreditCard { get; set; }
         public virtual DbSet<Product> Product { get; set; }
         public virtual DbSet<ProductComment> ProductComment { get; set; }

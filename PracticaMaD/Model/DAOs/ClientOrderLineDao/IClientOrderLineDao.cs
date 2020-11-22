@@ -3,7 +3,7 @@ using System;
 
 namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientOrderLineDao
 {
-    public interface IClientOrderLineDao : IGenericDao<OrderLineDetails, Int64>
+    public interface IClientOrderLineDao : IGenericDao<ClientOrderLine, Int64>
     {
     }
 }

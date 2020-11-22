@@ -27,7 +27,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
         /// <returns> The product comments</returns>
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
-        List<ProductComment> FindByProductId(long productId);
+        List<ProductCommentDetails> FindByProductId(long productId);
 
         /// <summary>
         /// Adds a comment to a product.

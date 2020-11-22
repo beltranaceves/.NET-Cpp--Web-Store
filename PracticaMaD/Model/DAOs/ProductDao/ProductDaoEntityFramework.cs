@@ -80,6 +80,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
 
             return productList;
         }
+
         /// <summary>
         /// Finds a card by its number
         /// </summary>
@@ -87,10 +88,8 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
         /// <returns></returns>
         /// <exception cref="InstanceNotFoundException"></exception>
 
-
         public Product FindByProductName(string ProductName)
         {
-
             DbSet<Product> products = Context.Set<Product>();
 
             Product product = null;
@@ -103,10 +102,8 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
             product = result.FirstOrDefault();
 
             return product;
-
         }
+
         #endregion IProductDao Members. Specific Operations
     }
-
-
 }

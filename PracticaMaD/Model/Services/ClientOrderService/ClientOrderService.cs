@@ -54,7 +54,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
                 int quantity = orderLine.ElementAt(i).Quantity;
                 int stock = product.stock;
 
-                if (stock > quantity)
+                if (stock < quantity)
                     throw new NotEnoughStockException(product.productName, quantity);
 
                 product.stock = stock - quantity;
@@ -65,7 +65,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
             ClientOrderDao.Create(order);
             for (int i = 0; i < orderLine.Count; i++)
             {
-                OrderLineDetails orderLineAdd = new OrderLineDetails();
+                ClientOrderLine orderLineAdd = new ClientOrderLine();
                 orderLineAdd.orderId = order.orderId;
                 orderLineAdd.quantity = orderLine.ElementAt(i).Quantity;
                 orderLineAdd.productId = orderLine.ElementAt(i).ProductId;
@@ -74,7 +74,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
                 ClientOrderLineDao.Create(orderLineAdd);
             }
 
-            return orderId;
+            return order.orderId;
         }
 
         [Transactional]
@@ -93,7 +93,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
                 if (k == clientOrders.Count)
                     break;
 
-                List<OrderLineDetails> clientOrderLines = clientOrders.ElementAt(i).ClientOrderLine.ToList();
+                List<ClientOrderLine> clientOrderLines = clientOrders.ElementAt(i).ClientOrderLine.ToList();
 
                 List<ClientOrderLineDetails> clientOrderLinesDetails = new List<ClientOrderLineDetails>();
 
@@ -113,7 +113,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
                 //string cardNumber = CreditCardDao.Find(clientOrders.ElementAt(i).creditCardId).cardNumber;
                 String postalAddress = clientOrders.ElementAt(i).clientOrderAddress;
                 DateTime orderDate = clientOrders.ElementAt(i).orderDate;
-                var orderName = "Order";
+                String orderName = clientOrders.ElementAt(i).orderName;
                 clientOrdersDetails.Add(new ClientOrderDetails(orderDate, orderName, cardId, postalAddress, clientId));
 
                 k++;

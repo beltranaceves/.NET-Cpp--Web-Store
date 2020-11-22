@@ -10,7 +10,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
 {
     public class ProductCommentService : IProductCommentService
     {
-
         [Inject]
         public IProductCommentDao ProductCommentDao { private get; set; }
 
@@ -30,17 +29,17 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
             productComment.clientId = clientId;
 
             ProductCommentDao.Create(productComment);
-
         }
 
-        public List<ProductComment> FindByProductId(long productId)
+        public List<ProductCommentDetails> FindByProductId(long productId)
         {
-            List<ProductComment> productComments = ProductCommentDao.FindByProductId(productId);
+            List<ProductCommentDetails> productComments = ProductCommentDao.FindByProductId(productId);
             List<Tag> tags = new List<Tag>();
-            foreach (ProductComment productComment in productComments)
+
+            foreach (ProductCommentDetails productComment in productComments)
             {
                 List<ProductCommentTag> productCommentTags =
-                    ProductCommentTagDao.FindByProductCommentId(productComment.commentId);
+                    ProductCommentTagDao.FindByProductCommentId(productComment.CommentId);
                 foreach (ProductCommentTag productCommentTag in productCommentTags)
                 {
                     tags.Add(TagDao.Find(productCommentTag.tagId));
@@ -53,25 +52,24 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
 
         public void TagProductComment(long productCommentId, String tagName)
         {
-            Tag tag;
+            Tag tag = new Tag();
             if (!TagDao.existsByTagName(tagName))
             {
-                TagDao.Create(new Tag(tagName));
+                tag.tagName = tagName;
+                TagDao.Create(tag);
             }
             tag = TagDao.FindByTagName(tagName);
 
-            ProductCommentTag productCommentTag = new ProductCommentTag(productCommentId, tag.tagId);
+            ProductCommentTag productCommentTag = new ProductCommentTag();
+            productCommentTag.commentId = productCommentId;
+            productCommentTag.tagId = tag.tagId;
+
             if (ProductCommentTagDao.ExistsByProductCommentIdAndTagId(productCommentId, tag.tagId))
             {
                 throw new DuplicateInstanceException(productCommentTag, typeof(ProductCommentTag).FullName);
             }
 
             ProductCommentTagDao.Create(productCommentTag);
-
         }
-
-        #region IProductCommentService Members
-
-        #endregion IProductCommentService Members
     }
 }

@@ -159,11 +159,12 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 Assert.AreEqual(clientId, clientOrder.clientId);
                 Assert.AreEqual(cardId, clientOrder.creditCardId);
                 Assert.AreEqual("toHome", clientOrder.clientOrderAddress);
+                Assert.AreEqual("PedidoEjemplo", clientOrder.orderName);
                 Assert.AreEqual(8, clientOrder.ClientOrderLine.ElementAt(0).Product.stock);
-                Assert.AreEqual(cart[0].ProductId, clientOrder.ClientOrderLine.ElementAt(0).Product.productName);
+                Assert.AreEqual(cart[0].ProductId, clientOrder.ClientOrderLine.ElementAt(0).Product.productId);
                 Assert.AreEqual(cart[0].Quantity, clientOrder.ClientOrderLine.ElementAt(0).quantity);
-                Assert.AreEqual(cart[0].Price, clientOrder.ClientOrderLine.ElementAt(0).Product.productName);
-                Assert.AreEqual(17, clientOrder.ClientOrderLine.ElementAt(0).Product.stock);
+                Assert.AreEqual(cart[0].Price, clientOrder.ClientOrderLine.ElementAt(0).Product.price);
+                Assert.AreEqual(17, clientOrder.ClientOrderLine.ElementAt(1).Product.stock);
                 Assert.AreEqual(cart[1].ProductId, clientOrder.ClientOrderLine.ElementAt(1).Product.productId);
                 Assert.AreEqual(cart[1].Quantity, clientOrder.ClientOrderLine.ElementAt(1).quantity);
                 Assert.AreEqual(cart[1].Price, clientOrder.ClientOrderLine.ElementAt(1).Product.price);

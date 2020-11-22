@@ -8,6 +8,6 @@ using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientDao;
 namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientOrderLineDao
 {
     public class ClientOrderLineDaoEntityFramework :
-        GenericDaoEntityFramework<OrderLineDetails, Int64>, IClientOrderLineDao
-    {}
+        GenericDaoEntityFramework<ClientOrderLine, Int64>, IClientOrderLineDao
+    { }
 }
