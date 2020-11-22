@@ -22,7 +22,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         /// <returns> The product details </returns>
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
-        Product FindProduct(long productId);
+        ProductDetails FindProductDetails(long productId);
 
         /// <summary>
         /// Updates the product details.

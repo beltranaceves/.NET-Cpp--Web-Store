@@ -23,11 +23,12 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
 
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
-        public Product FindProduct(long productId)
+        public ProductDetails FindProductDetails(long productId)
         {
             Product product = ProductDao.Find(productId);
 
-            return product;
+            ProductDetails productDetails = new ProductDetails(product.productName, product.price, product.registerDate, product.stock, product.categoryId);
+            return productDetails;
         }
      
 
