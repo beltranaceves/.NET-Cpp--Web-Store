@@ -1,7 +1,5 @@
 using Es.Udc.DotNet.ModelUtil.Dao;
-using Es.Udc.DotNet.ModelUtil.Exceptions;
 using System;
-using System.Data.Common;
 using System.Data.Entity;
 using System.Linq;
 
@@ -30,13 +28,24 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.TagDao
 
             tag = result.FirstOrDefault();
 
-             if(tag==null)
-                throw new InstanceNotFoundException(tagName,
-                    typeof(Tag).FullName);
-
             return tag;
         }
 
+        public Boolean existsByTagName(String tagName)
+        {
+            Tag tag = null;
+
+            DbSet<Tag> tags = Context.Set<Tag>();
+
+            var result =
+                (from t in tags
+                 where t.tagName == tagName
+                 select t);
+
+            tag = result.FirstOrDefault();
+
+            return tag.tagName == tagName;
+        }
 
     }
 }

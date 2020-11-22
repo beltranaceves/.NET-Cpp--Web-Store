@@ -28,6 +28,8 @@ namespace Es.Udc.DotNet.PracticaMad.Model
     
         public virtual Client Client { get; set; }
         public virtual Product Product { get; set; }
+        public virtual List<Tag> Tags { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductCommentTag> ProductCommentTag { get; set; }
     }

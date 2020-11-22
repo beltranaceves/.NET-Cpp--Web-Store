@@ -17,7 +17,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentTagDao
 
             List<ProductCommentTag> result =
                 (from prodCommTag in productCommentTags
-                 where prodCommTag.productCommentId == productCommentId
+                 where prodCommTag.commentId == productCommentId
                  select prodCommTag).ToList();
             return result;
 

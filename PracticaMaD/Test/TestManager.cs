@@ -10,6 +10,7 @@ using Es.Udc.DotNet.PracticaMad.Model.DAOs.CategoryDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientOrderLineDao;
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientOrderDao;
 
 namespace Es.Udc.DotNet.PracticaMad.Test
 {

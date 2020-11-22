@@ -1,12 +1,8 @@
 using Es.Udc.DotNet.ModelUtil.Exceptions;
-using Es.Udc.DotNet.ModelUtil.Transactions;
 using Ninject;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentDao;
-using Es.Udc.DotNet.PracticaMad.Model.Services.Common;
 using System;
-using Es.Udc.DotNet.PracticaMad.Model.Services.Exceptions;
 using System.Collections.Generic;
-using Es.Udc.DotNet.PracticaMad.Model.DAOs.CategoryDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentTagDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.TagDao;
 
@@ -34,7 +30,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
             productComment.clientId = clientId;
 
             ProductCommentDao.Create(productComment);
-            
+
         }
 
         public List<ProductComment> FindByProductId(long productId)

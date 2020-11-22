@@ -19,6 +19,11 @@ namespace Es.Udc.DotNet.PracticaMad.Model
         {
             this.ProductCommentTag = new HashSet<ProductCommentTag>();
         }
+
+        public Tag(String tagName)
+        {
+            this.tagName = tagName;
+        }
     
         public long tagId { get; set; }
         public string tagName { get; set; }

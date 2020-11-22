@@ -113,7 +113,7 @@ GO
 
 
 CREATE TABLE Product (
-	productId BIGINT IDENTITY(1, 1),
+	productId BIGINT IDENTITY(1, 1) NOT NULL,
 	productName VARCHAR(60) NOT NULL,
 	price float NOT NULL,
 	registerDate DATETIME NOT NULL,
@@ -150,7 +150,7 @@ GO
 
 
 CREATE TABLE Tag (
-	tagId BIGINT IDENTITY(1, 1),
+	tagId BIGINT IDENTITY(1, 1) NOT NULL,
 	tagName VARCHAR(20) NOT NULL,
 
 	CONSTRAINT [PK_Tag] PRIMARY KEY (tagId),
