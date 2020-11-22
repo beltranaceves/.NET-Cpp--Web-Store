@@ -1,6 +1,8 @@
 using Es.Udc.DotNet.ModelUtil.Transactions;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.CategoryDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao;
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientOrderDao;
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.TagDao;
 using Ninject;
 using System;
 using System.Collections.Generic;
@@ -32,6 +34,5 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
 
         [Transactional]
         List<ProductDetails> GetClientOrderLineProductsByClientOrderId(long orderId);
-
     }
 }

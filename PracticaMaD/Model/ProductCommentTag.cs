@@ -14,15 +14,11 @@ namespace Es.Udc.DotNet.PracticaMad.Model
     
     public partial class ProductCommentTag
     {
-
-        public ProductCommentTag(long commentId, long tagId)
-        {
-            this.commentId = commentId;
-            this.tagId = tagId;
-        }
-
-        public long productCommentId { get; set; }
+        public long productCommentTagId { get; set; }
         public long commentId { get; set; }
         public long tagId { get; set; }
+    
+        public virtual ProductComment ProductComment { get; set; }
+        public virtual Tag Tag { get; set; }
     }
 }

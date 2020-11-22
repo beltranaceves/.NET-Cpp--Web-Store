@@ -12,7 +12,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
 {
     public class ProductService : IProductService
     {
-
         [Inject]
         public IProductDao ProductDao { private get; set; }
 
@@ -22,7 +21,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         [Inject]
         public ICategoryDao ClientOrderDao { private get; set; }
 
-
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
         public ProductDetails FindProduct(long productId)
@@ -30,17 +28,16 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             Product product = ProductDao.Find(productId);
 
             var productDetails = new ProductDetails(product.productName,
-            product.price,product.registerDate,product.stock,product.categoryId);
+            product.price, product.registerDate, product.stock, product.categoryId);
 
             return productDetails;
-
         }
-     
+
         [Transactional]
         public List<ProductDetails> FindByKeywords(string keywords)
         {
             List<ProductDetails> products = new List<ProductDetails>();
-            
+
             try
             {
                 List<Product> productList = ProductDao.FindByKeywords(keywords);
@@ -53,20 +50,18 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
                     DateTime registerDate = productList.ElementAt(i).RegisterDate;
                     double prize = productList.ElementAt(i).Price;
                     int stock = productList.ElementAt(i).Stock;
-                    
-                    products.Add(new ProductDetails(productName,price,registerDate
-                    ,stock,categoryId));
-                }
-            }catch (InstanceNotFoundException e)
-            {
 
+                    products.Add(new ProductDetails(productName, price, registerDate
+                    , stock, categoryId));
+                }
+            }
+            catch (InstanceNotFoundException e)
+            {
             }
             return products;
         }
 
-
-
-         [Transactional]
+        [Transactional]
         public List<ProductDetails> FindByTag(long tagId)
         {
             List<ProductDetails> products = new List<ProductDetails>();
@@ -79,13 +74,13 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
                 if (j == productList.Count)
                     break;
                 long productId = productList.ElementAt(i).ProductId;
-                    string productName = productList.ElementAt(i).ProductName;
-                    long categoryId = productList.ElementAt(i).CategoryId;
-                    DateTime registerDate = productList.ElementAt(i).RegisterDate;
-                    double prize = productList.ElementAt(i).Price;
-                    int stock = productList.ElementAt(i).Stock;
-                    products.Add(new ProductDetails(productName,price,registerDate
-                    ,stock,categoryId));
+                string productName = productList.ElementAt(i).ProductName;
+                long categoryId = productList.ElementAt(i).CategoryId;
+                DateTime registerDate = productList.ElementAt(i).RegisterDate;
+                double prize = productList.ElementAt(i).Price;
+                int stock = productList.ElementAt(i).Stock;
+                products.Add(new ProductDetails(productName, price, registerDate
+                , stock, categoryId));
                 j++;
             }
             return products;
@@ -100,11 +95,11 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             for (int i = 0; i < order.OrderLines.Count; i++)
             {
                 Product p = ProductDao.Find(order.ClientOrderLines.ElementAt(i).productId);
-                ProductDetails productDetails = new ProductDetails(p.productname, p.price,p.registerDate, 
-                p.stock,p.categoryId);
+                ProductDetails productDetails = new ProductDetails(p.productname, p.price, p.registerDate,
+                p.stock, p.categoryId);
             }
 
             return productsDetails;
         }
-
+    }
 }

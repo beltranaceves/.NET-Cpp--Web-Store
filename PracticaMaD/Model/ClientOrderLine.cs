@@ -12,7 +12,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ClientOrderLine
+    public partial class OrderLineDetails
     {
         public long orderLineId { get; set; }
         public long orderId { get; set; }

@@ -10,7 +10,5 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
         List<Product> FindByKeywords(String keyword);
 
         Product FindByProductName(string Productname);
-
     }
 }
-

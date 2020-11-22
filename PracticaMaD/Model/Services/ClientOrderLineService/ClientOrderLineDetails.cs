@@ -1,33 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderLineService
 
 {
+    /// <summary>
+    /// VO Class which contains the orderline details
+    /// </summary>
     [Serializable()]
     public class ClientOrderLineDetails
     {
         #region Properties region
-        private long OrderId;
 
-        private long ProductId;
+        public long ProductId { get; set; }
 
-        private int Quantity;
+        public int Quantity { get; set; }
 
-        private double Price;
+        public double Price { get; set; }
 
-        #endregion
-        public ClientOrderLineDetails(long orderId, long productId,int quantity, double price)
+        #endregion Properties region
+
+        public ClientOrderLineDetails(long productId, int quantity, double price)
         {
-            this.OrderId = orderId;
             this.ProductId = productId;
             this.Quantity = quantity;
             this.Price = price;
         }
     }
 }
-
-

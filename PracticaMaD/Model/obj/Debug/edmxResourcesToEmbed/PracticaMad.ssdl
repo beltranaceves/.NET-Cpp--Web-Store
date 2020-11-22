@@ -78,9 +78,9 @@
   </EntityType>
   <EntityType Name="ProductCommentTag">
     <Key>
-      <PropertyRef Name="productCommentId" />
+      <PropertyRef Name="productCommentTagId" />
     </Key>
-    <Property Name="productCommentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="productCommentTagId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="commentId" Type="bigint" Nullable="false" />
     <Property Name="tagId" Type="bigint" Nullable="false" />
   </EntityType>
@@ -189,6 +189,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ProductCommentTag_ProductComment">
+    <End Role="ProductComment" Type="Self.ProductComment" Multiplicity="1" />
+    <End Role="ProductCommentTag" Type="Self.ProductCommentTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductComment">
+        <PropertyRef Name="commentId" />
+      </Principal>
+      <Dependent Role="ProductCommentTag">
+        <PropertyRef Name="commentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductCommentTag_Tag">
+    <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+    <End Role="ProductCommentTag" Type="Self.ProductCommentTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="tagId" />
+      </Principal>
+      <Dependent Role="ProductCommentTag">
+        <PropertyRef Name="tagId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="EsUdcDotNetPracticaMadModelStoreContainer">
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
@@ -230,6 +254,14 @@
     <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
       <End Role="Category" EntitySet="Category" />
       <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductCommentTag_ProductComment" Association="Self.FK_ProductCommentTag_ProductComment">
+      <End Role="ProductComment" EntitySet="ProductComment" />
+      <End Role="ProductCommentTag" EntitySet="ProductCommentTag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductCommentTag_Tag" Association="Self.FK_ProductCommentTag_Tag">
+      <End Role="Tag" EntitySet="Tag" />
+      <End Role="ProductCommentTag" EntitySet="ProductCommentTag" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -10,17 +10,18 @@ using Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.CreditCardDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientDao;
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientOrderDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientOrderLineDao;
 using Es.Udc.DotNet.PracticaMad.Model;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.CategoryDao;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderLineService;
 
 namespace Es.Udc.DotNet.PracticaMad.Test
 {
-
     [TestClass]
-    public class IOrderServiceTest
+    public class IClientOrderServiceTest
     {
         private static IKernel kernel;
 
@@ -36,7 +37,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         private static ICreditCardDao creditCardDao;
         private static IClientOrderDao clientOrderDao;
         private static IClientOrderLineDao clientOrderLineDao;
-
 
         public TestContext TestContext { get; set; }
 
@@ -68,7 +68,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         [TestInitialize()]
         public void MyTestInitialize()
         {
-
         }
 
         [TestCleanup()]
@@ -76,7 +75,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         {
         }
 
-        #endregion
+        #endregion Additional test attributes
 
         private static long CreateProduct(long categoryId, string productName, int stock, float price)
         {
@@ -86,37 +85,36 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             p.stock = stock;
             p.price = price;
             p.registerDate = DateTime.Now;
-            
+
             productDao.Create(p);
-            
+
             return p.productId;
         }
 
         private static long CreateCategory(string categoryName)
         {
             Category category = new Category();
-            
+
             category.categoryName = categoryName;
-            
+
             categoryDao.Create(category);
-            
+
             return category.categoryId;
         }
 
-        private static long RegisterClient(string clientLogin,string clientPassword)
+        private static long RegisterClient(string clientLogin, string clientPassword)
         {
-            ClientDetails client = new ClientDetails("firstaname", "firstSurname","lastSurname", 
+            ClientDetails client = new ClientDetails("firstaname", "firstSurname", "lastSurname",
             "email@udc.es", "spanish", "home", "user");
             return clientService.RegisterClient(clientLogin, clientPassword, client);
         }
 
         private static void AddCard(long clientId)
         {
-            CreditCardDetails creditCard = new CreditCardDetails("1234567890123456",000, "02/21", "Visa");
+            CreditCardDetails creditCard = new CreditCardDetails("1234567890123456", 000, "02/21", "Visa");
             creditCardService.AddCard(clientId, creditCard);
         }
 
-       
         [TestMethod()]
         public void GenerateOrderTest()
         {
@@ -127,46 +125,48 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 // Create a product
                 long productId = CreateProduct(categoryId, "Avatar la leyenda de Aang", 10, 10);
-                long product2Id = CreateProduct(categoryId, "La leyenda de Korra", 10, 20);
+                int quantity = 2;
+                long productId2 = CreateProduct(categoryId, "La leyenda de Korra", 20, 20);
+                int quantity2 = 3;
 
                 // Register User
-                ClientDetails client = new ClientDetails("client", "firstSurname","secondONe", 
+                ClientDetails client = new ClientDetails("client", "firstSurname", "secondONe",
                 "client@udc.es", "spanish", "myhome", "user");
                 long clientId = clientService.RegisterClient("Client222", "password", client);
 
+                // Create the cart
 
+                List<ClientOrderLineDetails> cart = new List<ClientOrderLineDetails>();
 
-                // Get Products
-                
-                List<ProductDetails> cart = new List<ProductDetails>();
+                ClientOrderLineDetails orderLine1 = new ClientOrderLineDetails(productId, quantity, 10);
+                cart.Add(orderLine1);
 
-                ProductDetails product = productService.FindProduct(productId);
-
-                product.Stock = 1;
-                
-                ProductDetails product2 = productService.FindProduct(product2Id);
-                
-                cart.Add(product);
-                cart.Add(product2);
+                ClientOrderLineDetails orderLine2 = new ClientOrderLineDetails(productId2, quantity2, 20);
+                cart.Add(orderLine2);
 
                 // Add card
                 CreditCardDetails card = new CreditCardDetails("098765432109876", 000, "02/21", "Visa");
                 creditCardService.AddCard(clientId, card);
-                
+
                 long cardId = clientDao.Find(clientId).CreditCard.ElementAt(0).cardId;
 
                 // Generate order
-                long clientOrderId = clientOrderService.CreateOrder(clientId, cardId, "toHome", cart);
+                long clientOrderId = clientOrderService.CreateOrder(clientId, cardId, "PedidoEjemplo", "toHome", cart);
 
                 ClientOrder clientOrder = clientOrderDao.Find(clientOrderId);
 
                 Assert.AreEqual(clientOrderId, clientOrder.orderId);
-                Assert.AreEqual(clientOrder.clientId, clientId);
+                Assert.AreEqual(clientId, clientOrder.clientId);
                 Assert.AreEqual(cardId, clientOrder.creditCardId);
                 Assert.AreEqual("toHome", clientOrder.clientOrderAddress);
-                //Assert.AreEqual(cart.Count, order.OrderLines.Count);
-                Assert.AreEqual(cart[0].ProductName, clientOrder.ClientOrderLine.ElementAt(0).Product.productName);
-                Assert.AreEqual(cart[1].ProductName, clientOrder.ClientOrderLine.ElementAt(1).Product.productName);
+                Assert.AreEqual(8, clientOrder.ClientOrderLine.ElementAt(0).Product.stock);
+                Assert.AreEqual(cart[0].ProductId, clientOrder.ClientOrderLine.ElementAt(0).Product.productName);
+                Assert.AreEqual(cart[0].Quantity, clientOrder.ClientOrderLine.ElementAt(0).quantity);
+                Assert.AreEqual(cart[0].Price, clientOrder.ClientOrderLine.ElementAt(0).Product.productName);
+                Assert.AreEqual(17, clientOrder.ClientOrderLine.ElementAt(0).Product.stock);
+                Assert.AreEqual(cart[1].ProductId, clientOrder.ClientOrderLine.ElementAt(1).Product.productId);
+                Assert.AreEqual(cart[1].Quantity, clientOrder.ClientOrderLine.ElementAt(1).quantity);
+                Assert.AreEqual(cart[1].Price, clientOrder.ClientOrderLine.ElementAt(1).Product.price);
             }
         }
 
@@ -175,38 +175,38 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         {
             using (TransactionScope scope = new TransactionScope())
             {
-                   // Create a category
+                // Create a category
                 long categoryId = CreateCategory("Books");
 
                 // Create a product
                 long productId = CreateProduct(categoryId, "Avatar la leyenda de Aang", 10, 10);
-                long product2Id = CreateProduct(categoryId, "La leyenda de Korra", 10, 20);
+                int quantity = 2;
+                long productId2 = CreateProduct(categoryId, "La leyenda de Korra", 10, 20);
+                int quantity2 = 3;
 
                 // Register User
-                ClientDetails client = new ClientDetails("client", "firstSurname","secondONe", 
+                ClientDetails client = new ClientDetails("client", "firstSurname", "secondONe",
                 "client@udc.es", "spanish", "myhome", "user");
                 long clientId = clientService.RegisterClient("Client333", "password", client);
 
-                // Get Products
-                
-                List<ProductDetails> cart = new List<ProductDetails>();
+                // Create the cart
 
-                ProductDetails product = productService.FindProduct(productId);
-                product.Stock = 1;
-                
-                ProductDetails product2 = productService.FindProduct(product2Id);
-                
-                cart.Add(product);
-                cart.Add(product2);
+                List<ClientOrderLineDetails> cart = new List<ClientOrderLineDetails>();
+
+                ClientOrderLineDetails orderLine1 = new ClientOrderLineDetails(productId, quantity, 10);
+                cart.Add(orderLine1);
+
+                ClientOrderLineDetails orderLine2 = new ClientOrderLineDetails(productId2, quantity2, 20);
+                cart.Add(orderLine2);
 
                 // Add card
                 CreditCardDetails card = new CreditCardDetails("1234567890123456", 000, "02/21", "Visa");
                 creditCardService.AddCard(clientId, card);
-                
+
                 long cardId = clientDao.Find(clientId).CreditCard.ElementAt(0).cardId;
 
                 // Generate order
-                long clientOrderId = clientOrderService.CreateOrder(clientId, cardId, "toHome", cart);
+                long clientOrderId = clientOrderService.CreateOrder(clientId, cardId, "PedidoEjemplo", "toHome", cart);
 
                 // FinOrder
                 ClientOrderDetails clientOrder = clientOrderService.FindOrder(clientOrderId);
@@ -220,7 +220,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             }
         }
 
-     
         [TestMethod()]
         public void GetClientOrdersTest()
         {
@@ -231,42 +230,41 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 // Create a product
                 long productId = CreateProduct(categoryId, "Avatar la leyenda de Aang", 10, 10);
-                long product2Id = CreateProduct(categoryId, "La leyenda de Korra", 10, 20);
+                int quantity = 2;
+                long productId2 = CreateProduct(categoryId, "La leyenda de Korra", 20, 20);
+                int quantity2 = 3;
 
                 // Register User
-                ClientDetails client = new ClientDetails("client", "firstSurname","secondONe", 
+                ClientDetails client = new ClientDetails("client", "firstSurname", "secondONe",
                 "client@udc.es", "spanish", "myhome", "user");
                 long clientId = clientService.RegisterClient("Client333", "password", client);
 
-                // Get Products
-                
-                List<ProductDetails> cart = new List<ProductDetails>();
+                // Create the cart
 
-                ProductDetails product = productService.FindProduct(productId);
-                product.Stock = 1;
-                
-                ProductDetails product2 = productService.FindProduct(product2Id);
-                
-                cart.Add(product);
-                cart.Add(product2);
+                List<ClientOrderLineDetails> cart = new List<ClientOrderLineDetails>();
+
+                ClientOrderLineDetails orderLine1 = new ClientOrderLineDetails(productId, quantity, 10);
+                cart.Add(orderLine1);
+
+                ClientOrderLineDetails orderLine2 = new ClientOrderLineDetails(productId2, quantity2, 20);
+                cart.Add(orderLine2);
 
                 // Add card
                 CreditCardDetails card = new CreditCardDetails("1234567890123456", 000, "02/21", "Visa");
                 creditCardService.AddCard(clientId, card);
-                
+
                 long cardId = clientDao.Find(clientId).CreditCard.ElementAt(0).cardId;
 
                 // Generate order
-                long clientOrderId = clientOrderService.CreateOrder(clientId, cardId, "toHome", cart);
+                long clientOrderId = clientOrderService.CreateOrder(clientId, cardId, "NombrePedido", "toHome", cart);
 
-           
                 // FinOrder
                 List<ClientOrderDetails> clientOrders = clientOrderService.getClientOrders(clientId);
 
                 ClientOrder clientOrder = clientOrderDao.Find(clientOrderId);
 
                 Assert.AreEqual(clientOrders.ElementAt(0).OrderName, clientOrder.orderName);
-                Assert.AreEqual(clientOrders.ElementAt(0).ClientId,clientOrder.clientId);
+                Assert.AreEqual(clientOrders.ElementAt(0).ClientId, clientOrder.clientId);
                 Assert.AreEqual(clientOrders.ElementAt(0).CreditCardId, clientOrder.creditCardId);
                 Assert.AreEqual(clientOrders.ElementAt(0).ClientOrderAddress, "toHome");
             }
@@ -280,39 +278,38 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         {
             using (TransactionScope scope = new TransactionScope())
             {
-                 // Create a category
+                // Create a category
                 long categoryId = CreateCategory("Books");
 
                 // Create a product
                 long productId = CreateProduct(categoryId, "Avatar la leyenda de Aang", 10, 10);
-                long product2Id = CreateProduct(categoryId, "La leyenda de Korra", 10, 20);
-
+                int quantity = 2;
+                long productId2 = CreateProduct(categoryId, "La leyenda de Korra", 20, 20);
+                int quantity2 = 3;
                 // Register User
-                ClientDetails client = new ClientDetails("client", "firstSurname","secondONe", 
+                ClientDetails client = new ClientDetails("client", "firstSurname", "secondONe",
                 "client@udc.es", "spanish", "myhome", "user");
                 long clientId = clientService.RegisterClient("Client333", "password", client);
 
-                // Get Products
-                
-                List<ProductDetails> cart = new List<ProductDetails>();
+                // Create the cart
 
-                ProductDetails product = productService.FindProduct(productId);
-                product.Stock = 1;
-                
-                ProductDetails product2 = productService.FindProduct(product2Id);
-                
-                cart.Add(product);
-                cart.Add(product2);
+                List<ClientOrderLineDetails> cart = new List<ClientOrderLineDetails>();
+
+                ClientOrderLineDetails orderLine1 = new ClientOrderLineDetails(productId, quantity, 10);
+                cart.Add(orderLine1);
+
+                ClientOrderLineDetails orderLine2 = new ClientOrderLineDetails(productId2, quantity2, 20);
+                cart.Add(orderLine2);
 
                 // Add card
                 CreditCardDetails card = new CreditCardDetails("1234567890123456", 000, "02/21", "Visa");
                 creditCardService.AddCard(clientId, card);
-                
+
                 long cardId = clientDao.Find(clientId).CreditCard.ElementAt(0).cardId;
 
                 // Generate order
-                long clientOrderId = clientOrderService.CreateOrder(clientId, cardId, "toHome", cart);
- 
+                long clientOrderId = clientOrderService.CreateOrder(clientId, cardId, "Pedido", "toHome", cart);
+
                 int clientOrdersByClient = clientOrderService.GetNumberOfOrdersByClient(clientId);
 
                 // Check the data

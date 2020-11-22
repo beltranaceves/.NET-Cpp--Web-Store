@@ -17,11 +17,10 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
     {
         public List<Product> FindByKeywords(String keywords)
         {
-            List<Product> productList= new List<Product>();
+            List<Product> productList = new List<Product>();
 
             DbSet<Product> products = Context.Set<Product>();
-            
-            
+
             var result =
                  (from p in products
                   where p.productName like @keywords
@@ -29,18 +28,15 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
 
             productList = result;
 
-
             if (!productList.Any())
-                throw new InstanceNotFoundException(name,
+                throw new InstanceNotFoundException(keywords,
                     typeof(Product).FullName);
 
             return productList;
         }
 
-
         public Product FindByProductName(string ProductName)
         {
-        
             DbSet<Product> products = Context.Set<Product>();
 
             Product product = null;
@@ -51,12 +47,10 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
                   select p);
 
             product = result.FirstOrDefault();
-            
+
             return product;
-
         }
-        #endregion IProductDao Members. Specific Operations
-    }
 
-    
+#endregion IProductDao Members. Specific Operations
+    }
 }

@@ -14,13 +14,16 @@ namespace Es.Udc.DotNet.PracticaMad.Model
     
     public partial class Tag
     {
-
-        public Tag(String tagName)
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Tag()
         {
-            this.tagName = tagName;
+            this.ProductCommentTag = new HashSet<ProductCommentTag>();
         }
-
+    
         public long tagId { get; set; }
         public string tagName { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductCommentTag> ProductCommentTag { get; set; }
     }
 }

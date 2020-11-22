@@ -87,7 +87,7 @@
     <EntitySetMapping Name="ProductCommentTag">
       <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaMad.Model.ProductCommentTag">
         <MappingFragment StoreEntitySet="ProductCommentTag">
-          <ScalarProperty Name="productCommentId" ColumnName="productCommentId" />
+          <ScalarProperty Name="productCommentTagId" ColumnName="productCommentTagId" />
           <ScalarProperty Name="commentId" ColumnName="commentId" />
           <ScalarProperty Name="tagId" ColumnName="tagId" />
         </MappingFragment>

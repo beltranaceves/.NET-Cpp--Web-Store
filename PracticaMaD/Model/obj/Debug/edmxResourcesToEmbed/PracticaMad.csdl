@@ -91,14 +91,17 @@
     <Property Name="clientId" Type="Int64" Nullable="false" />
     <NavigationProperty Name="Client" Relationship="Self.FK_Comment_ClientId" FromRole="ProductComment" ToRole="Client" />
     <NavigationProperty Name="Product" Relationship="Self.FK_Comment_Product" FromRole="ProductComment" ToRole="Product" />
+    <NavigationProperty Name="ProductCommentTag" Relationship="Self.FK_ProductCommentTag_ProductComment" FromRole="ProductComment" ToRole="ProductCommentTag" />
   </EntityType>
   <EntityType Name="ProductCommentTag">
     <Key>
-      <PropertyRef Name="productCommentId" />
+      <PropertyRef Name="productCommentTagId" />
     </Key>
-    <Property Name="productCommentId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productCommentTagId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="commentId" Type="Int64" Nullable="false" />
     <Property Name="tagId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="ProductComment" Relationship="Self.FK_ProductCommentTag_ProductComment" FromRole="ProductCommentTag" ToRole="ProductComment" />
+    <NavigationProperty Name="Tag" Relationship="Self.FK_ProductCommentTag_Tag" FromRole="ProductCommentTag" ToRole="Tag" />
   </EntityType>
   <EntityType Name="Tag">
     <Key>
@@ -106,6 +109,7 @@
     </Key>
     <Property Name="tagId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="tagName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ProductCommentTag" Relationship="Self.FK_ProductCommentTag_Tag" FromRole="Tag" ToRole="ProductCommentTag" />
   </EntityType>
   <Association Name="FK_Product_Category">
     <End Role="Category" Type="Self.Category" Multiplicity="1" />
@@ -205,6 +209,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ProductCommentTag_ProductComment">
+    <End Role="ProductComment" Type="Self.ProductComment" Multiplicity="1" />
+    <End Role="ProductCommentTag" Type="Self.ProductCommentTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductComment">
+        <PropertyRef Name="commentId" />
+      </Principal>
+      <Dependent Role="ProductCommentTag">
+        <PropertyRef Name="commentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductCommentTag_Tag">
+    <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
+    <End Role="ProductCommentTag" Type="Self.ProductCommentTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="tagId" />
+      </Principal>
+      <Dependent Role="ProductCommentTag">
+        <PropertyRef Name="tagId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="practicaMADEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Category" EntityType="Self.Category" />
     <EntitySet Name="Client" EntityType="Self.Client" />
@@ -246,6 +274,14 @@
     <AssociationSet Name="FK_Comment_Product" Association="Self.FK_Comment_Product">
       <End Role="Product" EntitySet="Product" />
       <End Role="ProductComment" EntitySet="ProductComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductCommentTag_ProductComment" Association="Self.FK_ProductCommentTag_ProductComment">
+      <End Role="ProductComment" EntitySet="ProductComment" />
+      <End Role="ProductCommentTag" EntitySet="ProductCommentTag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductCommentTag_Tag" Association="Self.FK_ProductCommentTag_Tag">
+      <End Role="Tag" EntitySet="Tag" />
+      <End Role="ProductCommentTag" EntitySet="ProductCommentTag" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
