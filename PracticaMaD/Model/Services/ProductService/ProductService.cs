@@ -22,7 +22,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         [Inject]
         public ICategoryDao ClientOrderDao { private get; set; }
 
-        #region IProductService Members
 
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
@@ -54,6 +53,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
                     DateTime registerDate = productList.ElementAt(i).RegisterDate;
                     double prize = productList.ElementAt(i).Price;
                     int stock = productList.ElementAt(i).Stock;
+                    
                     products.Add(new ProductDetails(productName,price,registerDate
                     ,stock,categoryId));
                 }
@@ -106,7 +106,5 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
 
             return productsDetails;
         }
-
-
 
 }
