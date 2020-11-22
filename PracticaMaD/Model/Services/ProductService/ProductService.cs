@@ -37,47 +37,76 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
 
         }
      
-
-        /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
-        public void UpdateProduct(long productId, Product updatedProduct)
+        public List<ProductDetails> FindByKeywords(string keywords)
         {
-            Product product =
-                ProductDao.Find(productId);
+            List<ProductDetails> products = new List<ProductDetails>();
+            
+            try
+            {
+                List<Product> productList = ProductDao.FindByKeywords(keywords);
 
-            product.productName = updatedProduct.productName;
-            product.price= updatedProduct.price;
-            product.registerDate= updatedProduct.registerDate;
-            product.stock= updatedProduct.stock;
-            product.categoryId= updatedProduct.categoryId;
-            updatedProduct.productId = productId;
-            ProductDao.Update(updatedProduct);
+                for (int i = 0; i < productList.Count; i++)
+                {
+                    long productId = productList.ElementAt(i).ProductId;
+                    string productName = productList.ElementAt(i).ProductName;
+                    long categoryId = productList.ElementAt(i).CategoryId;
+                    DateTime registerDate = productList.ElementAt(i).RegisterDate;
+                    double prize = productList.ElementAt(i).Price;
+                    int stock = productList.ElementAt(i).Stock;
+                    products.Add(new ProductDetails(productName,price,registerDate
+                    ,stock,categoryId));
+                }
+            }catch (InstanceNotFoundException e)
+            {
+
+            }
+            return products;
         }
 
 
-        [Transactional]
-        public List<Product> FindProductByProductNameKeyword(String keyword) {
-            List<Product> products = ProductDao.FindByProductNameKeyword(keyword); 
+
+         [Transactional]
+        public List<ProductDetails> FindByTag(long tagId)
+        {
+            List<ProductDetails> products = new List<ProductDetails>();
+            List<Product> productList = TagDao.Find(tagId).Products.ToList<Product>();
+
+            int j = 0;
+
+            for (int i = 0; i < productList.Count; i++)
+            {
+                if (j == productList.Count)
+                    break;
+                long productId = productList.ElementAt(i).ProductId;
+                    string productName = productList.ElementAt(i).ProductName;
+                    long categoryId = productList.ElementAt(i).CategoryId;
+                    DateTime registerDate = productList.ElementAt(i).RegisterDate;
+                    double prize = productList.ElementAt(i).Price;
+                    int stock = productList.ElementAt(i).Stock;
+                    products.Add(new ProductDetails(productName,price,registerDate
+                    ,stock,categoryId));
+                j++;
+            }
             return products;
         }
 
         [Transactional]
-        public List<Product> FindProductByProductNameKeywordAndCategory(String keyword, long categoryId) {
+        public List<ProductDetails> GetClientOrderLineProductsByClientOrderId(long orderId)
+        {
+            ClientOrder order = ClientOrderDao.Find(orderId);
+            List<ProductDetails> productsDetails = new List<ProductDetails>();
 
-            Category category = CategoryDao.Find(categoryId);
+            for (int i = 0; i < order.OrderLines.Count; i++)
+            {
+                Product p = ProductDao.Find(order.ClientOrderLines.ElementAt(i).productId);
+                ProductDetails productDetails = new ProductDetails(p.productname, p.price,p.registerDate, 
+                p.stock,p.categoryId);
+            }
 
-            List<Product> products = ProductDao.FindByProductNameKeywordAndCategory(keyword, category); 
-            return products;
+            return productsDetails;
         }
 
-        [Transactional]
-        public List<Product> FindProductByCategory(long categoryId) {
 
-            Category category = CategoryDao.Find(categoryId);
 
-            List<Product> products = ProductDao.FindByCategory(category); 
-            return products;
-        }
-        #endregion IProductService Members
-    }
 }

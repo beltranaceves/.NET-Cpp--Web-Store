@@ -15,77 +15,27 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
     /// </summary>
     public class ProductDaoEntityFramework : GenericDaoEntityFramework<Product, Int64>, IProductDao
     {
-        #region Public Constructors
-
-        /// <summary>
-        /// Public Constructor
-        /// </summary>
-        public ProductDaoEntityFramework()
+        public List<Product> FindByKeywords(String keywords)
         {
-        }
-
-        #endregion Public Constructors
-
-        #region IProductDao Members. Specific Operations
-
-        /// <summary>
-        /// Finds all products by categoryId
-        /// </summary>
-        /// <param name="categoryId">categoryId</param>
-        /// <returns>A list of Product</returns>
-        public List<Product> FindByCategory(Category category)
-        {
-            List<Product> productList = null;
+            List<Product> productList= new List<Product>();
 
             DbSet<Product> products = Context.Set<Product>();
-
+            
+            
             var result =
-                (from p in products
-                 where p.categoryId == category.categoryId
-                 select p).ToList();
+                 (from p in products
+                  where p.productName like @keywords
+                  select p);
 
             productList = result;
 
-            return productList;
-        }
 
-        public List<Product> FindByProductNameKeyword(String keyword)
-        {
-            List<Product> productList = null;
-
-            DbSet<Product> products = Context.Set<Product>();
-
-            var result =
-                (from p in products
-                 where p.productName.ToLower().Contains(keyword.ToLower())
-                 select p).ToList();
-
-            productList = result;
+            if (!productList.Any())
+                throw new InstanceNotFoundException(name,
+                    typeof(Product).FullName);
 
             return productList;
         }
-
-        public List<Product> FindByProductNameKeywordAndCategory(String keyword, Category category)
-        {
-            List<Product> productList = null;
-
-            DbSet<Product> products = Context.Set<Product>();
-
-            var result =
-                (from p in products
-                 where (p.productName.ToLower().Contains(keyword.ToLower()) && p.categoryId == category.categoryId)
-                 select p).ToList();
-
-            productList = result;
-
-            return productList;
-        }
-        /// <summary>
-        /// Finds a card by its number
-        /// </summary>
-        /// <param name="ProductName"></param>
-        /// <returns></returns>
-        /// <exception cref="InstanceNotFoundException"></exception>
 
 
         public Product FindByProductName(string ProductName)

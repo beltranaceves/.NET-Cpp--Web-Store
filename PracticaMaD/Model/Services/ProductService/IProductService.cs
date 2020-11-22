@@ -10,51 +10,28 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
     public interface IProductService
     {
         [Inject]
+        IClientOrderDao ClientOrderDao { set; }
+
+        [Inject]
         IProductDao ProductDao { set; }
 
         [Inject]
         ICategoryDao CategoryDao { set; }
 
-        /// <summary>
-        /// Finds the product details.
-        /// </summary>
-        /// <param name="productId"> The product id. </param>
-        /// <returns> The product details </returns>
-        /// <exception cref="InstanceNotFoundException"/>
-        [Transactional]
-        ProductDetails FindProduct(long productId);
+        [Inject]
+        ITagDao TagDao { set; }
 
-        /// <summary>
-        /// Updates the product details.
-        /// </summary>
-        /// <param name="productId"> The product id. </param>
-        /// <param name="updatedProduct"> The updatedProduct data. </param>
-        /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
-        void UpdateProduct(long productId, Product updatedProduct);
+        List<ProductDetails> FindByKeywords(String keywords);
 
-        /// <summary>
-        /// Finds products by name keyword.
-        /// </summary>
-        /// <param name="keyword"> The product name keyword. </param>
         [Transactional]
-        List<Product> FindProductByProductNameKeyword(String keyword);
+        List<ProductDetails> FindByTag(long tagId);
 
-        /// <summary>
-        /// Finds products by name keyword and category.
-        /// </summary>
-        /// <param name="keyword"> The product name keyword. </param>
-        /// <param name="category"> The product category. </param>
-        /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
-        List<Product> FindProductByProductNameKeywordAndCategory(String keyword, long categoryId);
+        ProductDetails FindProduct(long id);
 
-        /// <summary>
-        /// Finds products by category.
-        /// </summary>
-        /// <param name="category"> The product category. </param>
-        /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
-        List<Product> FindProductByCategory(long categoryId);
+        List<ProductDetails> GetClientOrderLineProductsByClientOrderId(long orderId);
+
     }
 }
