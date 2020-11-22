@@ -5,6 +5,11 @@ using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientDao;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClientService;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.CreditCardDao;
 using Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService;
+using Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService;
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.CategoryDao;
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientOrderLineDao;
 
 namespace Es.Udc.DotNet.PracticaMad.Test
 {
@@ -32,6 +37,28 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
             kernel.Bind<ICreditCardService>().
                 To<CreditCardService>();
+
+
+            kernel.Bind<IClientOrderDao>().
+              To<ClientOrderDaoEntityFramework>();
+
+            kernel.Bind<IClientOrderService>().
+                To<ClientOrderService>();
+
+            kernel.Bind<ICategoryDao>().
+             To<CategoryDaoEntityFramework>();
+
+            kernel.Bind<IProductDao>().
+               To<ProductDaoEntityFramework>();
+
+            kernel.Bind<IProductService>().
+                To<ProductService>();
+
+
+            kernel.Bind<IClientOrderLineDao>().
+              To<ClientOrderLineDaoEntityFramework>();
+
+         
 
             string connectionString =
                 ConfigurationManager.ConnectionStrings["practicaMADEntities"].ConnectionString;

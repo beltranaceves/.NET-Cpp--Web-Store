@@ -13,7 +13,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderService
         public string OrderName { get;  }
         public long CreditCardId { get; }
         public string ClientOrderAddress { get;  }
-        public Nullable<long> ClientId { get; set; }
+        public long ClientId { get; set; }
 
         public ClientOrderDetails(DateTime orderDate, string orderName, long creditCardId,
         string clientOrderAddress,long clientId)
@@ -25,13 +25,12 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderService
             this.ClientId = clientId;
         }
 
-       /* public OrderDetails(long orderId, long usrId, string cardNumber, int postalAddress, DateTime orderDate)
+        public ClientOrderDetails(long clientId, long creditCardId, string clientOrderAddress, DateTime orderDate)
         {
-            this.OrderId = orderId;
-            this.UsrId = usrId;
-            this.CardNumber = cardNumber;
-            this.PostalAddress = postalAddress;
+            this.ClientId = clientId;
+            this.CreditCardId = creditCardId;
+            this.ClientOrderAddress = clientOrderAddress;
             this.OrderDate = orderDate;
-        }*/
+        }
     }
 }

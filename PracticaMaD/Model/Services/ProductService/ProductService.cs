@@ -19,16 +19,22 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         [Inject]
         public ICategoryDao CategoryDao { private get; set; }
 
+        [Inject]
+        public ICategoryDao ClientOrderDao { private get; set; }
+
         #region IProductService Members
 
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
-        public ProductDetails FindProductDetails(long productId)
+        public ProductDetails FindProduct(long productId)
         {
             Product product = ProductDao.Find(productId);
 
-            ProductDetails productDetails = new ProductDetails(product.productName, product.price, product.registerDate, product.stock, product.categoryId);
+            var productDetails = new ProductDetails(product.productName,
+            product.price,product.registerDate,product.stock,product.categoryId);
+
             return productDetails;
+
         }
      
 

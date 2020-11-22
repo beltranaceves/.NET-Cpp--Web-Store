@@ -42,9 +42,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         private static ICreditCardService creditCardService;
         private static IClientService clientService;
 
-        TransactionScope transaction;
-
-
 
         public TestContext TestContext
         {get; set; }
@@ -304,7 +301,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 int verificationCode2 = 111;
                 String expeditionDate2 = "01/01";
                 
-                CreditCardDetails creditCardDetails2 = new CreditCardDetails(cardNumber2, verificationCode, expeditionDate,cardType);
+                CreditCardDetails creditCardDetails2 = new CreditCardDetails(cardNumber2, verificationCode2, expeditionDate2,cardType2);
                 creditCardService.AddCard(clientId, creditCardDetails2);
 
                 

@@ -28,15 +28,17 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
         IClientOrderLineDao ClientOrderLineDao { set; }
 
         [Transactional]
-        long CreateOrder(long clienId, long cardId, string clientOrderAddress, List<ProductDetails> productList);
-
-        [Transactional]
         List<ClientOrderDetails> getClientOrders(long clientId);
 
         [Transactional]
-        int GetOrdersByClient(long usrId);
+        int GetNumberOfOrdersByClient(long usrId);
 
         [Transactional]
         ClientOrderDetails FindOrder(long orderId);
+
+        [Transactional]
+        long CreateOrder(long clienId, long cardId, string clientOrderAddress, List<ProductDetails> productList);
+
+      
     }
 }

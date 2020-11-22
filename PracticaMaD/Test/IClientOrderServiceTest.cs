@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Transactions;
 using Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService;
-using Es.Udc.DotNet.PracticaMaD.Model.ProductDao;
 using Ninject;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClientService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService;
@@ -15,6 +14,7 @@ using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientOrderLineDao;
 using Es.Udc.DotNet.PracticaMad.Model;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.CategoryDao;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderService;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
 
 namespace Es.Udc.DotNet.PracticaMad.Test
 {
@@ -37,8 +37,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         private static IClientOrderDao clientOrderDao;
         private static IClientOrderLineDao clientOrderLineDao;
 
-        TransactionScope transaction;
-        private TestContext testContextInstance;
 
         public TestContext TestContext { get; set; }
 
@@ -114,7 +112,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
         private static void AddCard(long clientId)
         {
-            CreditCardDetails creditCard = new CreditCardDetails("1234567890123456","Visa",000,DateTime.Now);
+            CreditCardDetails creditCard = new CreditCardDetails("1234567890123456",000, "02/21", "Visa");
             creditCardService.AddCard(clientId, creditCard);
         }
 
@@ -136,12 +134,15 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 "client@udc.es", "spanish", "myhome", "user");
                 long clientId = clientService.RegisterClient("Client222", "password", client);
 
+
+
                 // Get Products
                 
                 List<ProductDetails> cart = new List<ProductDetails>();
 
                 ProductDetails product = productService.FindProduct(productId);
-                product.numberOfUnits = 1;
+
+                product.Stock = 1;
                 
                 ProductDetails product2 = productService.FindProduct(product2Id);
                 
@@ -149,7 +150,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 cart.Add(product2);
 
                 // Add card
-                CreditCardDetails card = new CreditCardDetails("0987654321098765","MasterCard",111,DateTime.Now);
+                CreditCardDetails card = new CreditCardDetails("098765432109876", 000, "02/21", "Visa");
                 creditCardService.AddCard(clientId, card);
                 
                 long cardId = clientDao.Find(clientId).CreditCard.ElementAt(0).cardId;
@@ -164,13 +165,13 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 Assert.AreEqual(cardId, clientOrder.creditCardId);
                 Assert.AreEqual("toHome", clientOrder.clientOrderAddress);
                 //Assert.AreEqual(cart.Count, order.OrderLines.Count);
-                Assert.AreEqual(cart[0].productId, clientOrder.ClientOrderLine.ElementAt(0).productId);
-                Assert.AreEqual(cart[1].productId, clientOrder.ClientOrderLine.ElementAt(1).productId);
+                Assert.AreEqual(cart[0].ProductName, clientOrder.ClientOrderLine.ElementAt(0).Product.productName);
+                Assert.AreEqual(cart[1].ProductName, clientOrder.ClientOrderLine.ElementAt(1).Product.productName);
             }
         }
 
         [TestMethod()]
-        public void getClientOrderTest()
+        public void FindOrderTest()
         {
             using (TransactionScope scope = new TransactionScope())
             {
@@ -191,7 +192,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 List<ProductDetails> cart = new List<ProductDetails>();
 
                 ProductDetails product = productService.FindProduct(productId);
-                product.numberOfUnits = 1;
+                product.Stock = 1;
                 
                 ProductDetails product2 = productService.FindProduct(product2Id);
                 
@@ -199,7 +200,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 cart.Add(product2);
 
                 // Add card
-                CreditCardDetails card = new CreditCardDetails("1526237162782716","Visa",123,DateTime.Now);
+                CreditCardDetails card = new CreditCardDetails("1234567890123456", 000, "02/21", "Visa");
                 creditCardService.AddCard(clientId, card);
                 
                 long cardId = clientDao.Find(clientId).CreditCard.ElementAt(0).cardId;
@@ -212,16 +213,16 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 ClientOrder order = clientOrderDao.Find(clientOrderId);
 
-                Assert.AreEqual(clientOrder.OrderId, order.orderId);
+                Assert.AreEqual(clientOrder.OrderName, order.orderName);
                 Assert.AreEqual(clientOrder.ClientId, order.clientId);
-                Assert.AreEqual(clientOrder.creditCardId, cardId);
-                Assert.AreEqual(clientOrder.PostalAddress, "toHome");
+                Assert.AreEqual(clientOrder.CreditCardId, cardId);
+                Assert.AreEqual(clientOrder.ClientOrderAddress, "toHome");
             }
         }
 
      
         [TestMethod()]
-        public void getClientOrders()
+        public void GetClientOrdersTest()
         {
             using (TransactionScope scope = new TransactionScope())
             {
@@ -242,7 +243,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 List<ProductDetails> cart = new List<ProductDetails>();
 
                 ProductDetails product = productService.FindProduct(productId);
-                product.numberOfUnits = 1;
+                product.Stock = 1;
                 
                 ProductDetails product2 = productService.FindProduct(product2Id);
                 
@@ -250,7 +251,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 cart.Add(product2);
 
                 // Add card
-                CreditCardDetails card = new CreditCardDetails("1526237162782716","Visa",123,DateTime.Now);
+                CreditCardDetails card = new CreditCardDetails("1234567890123456", 000, "02/21", "Visa");
                 creditCardService.AddCard(clientId, card);
                 
                 long cardId = clientDao.Find(clientId).CreditCard.ElementAt(0).cardId;
@@ -260,14 +261,14 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
            
                 // FinOrder
-                List<ClientOrderDetails> clientOrders = clientOrderService.getClientOrders(clientId,0,2);
+                List<ClientOrderDetails> clientOrders = clientOrderService.getClientOrders(clientId);
 
-                ClientOrder clientOrder = clientOrderDao.Find(orderId);
+                ClientOrder clientOrder = clientOrderDao.Find(clientOrderId);
 
-                Assert.AreEqual(clientOrders.ElementAt(0).OrderId, clientOrder.orderId);
+                Assert.AreEqual(clientOrders.ElementAt(0).OrderName, clientOrder.orderName);
                 Assert.AreEqual(clientOrders.ElementAt(0).ClientId,clientOrder.clientId);
-                Assert.AreEqual(clientOrders.ElementAt(0).creditCardId, clientOrder.cardId);
-                Assert.AreEqual(clientOrders.ElementAt(0).clientOrderAddress, "toHome");
+                Assert.AreEqual(clientOrders.ElementAt(0).CreditCardId, clientOrder.creditCardId);
+                Assert.AreEqual(clientOrders.ElementAt(0).ClientOrderAddress, "toHome");
             }
         }
 
@@ -275,7 +276,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         ///A test for GetOrdersByUser
         ///</summary>
         [TestMethod()]
-        public void GetOrdersByClientTest()
+        public void GetNumberOfOrdersByClientTest()
         {
             using (TransactionScope scope = new TransactionScope())
             {
@@ -296,7 +297,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 List<ProductDetails> cart = new List<ProductDetails>();
 
                 ProductDetails product = productService.FindProduct(productId);
-                product.numberOfUnits = 1;
+                product.Stock = 1;
                 
                 ProductDetails product2 = productService.FindProduct(product2Id);
                 
@@ -304,7 +305,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 cart.Add(product2);
 
                 // Add card
-                CreditCardDetails card = new CreditCardDetails("1526237162782716","Visa",123,DateTime.Now);
+                CreditCardDetails card = new CreditCardDetails("1234567890123456", 000, "02/21", "Visa");
                 creditCardService.AddCard(clientId, card);
                 
                 long cardId = clientDao.Find(clientId).CreditCard.ElementAt(0).cardId;
@@ -312,7 +313,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 // Generate order
                 long clientOrderId = clientOrderService.CreateOrder(clientId, cardId, "toHome", cart);
  
-                int clientOrdersByClient = clientOrderService.GetOrdersByClient(clientId);
+                int clientOrdersByClient = clientOrderService.GetNumberOfOrdersByClient(clientId);
 
                 // Check the data
                 Assert.AreEqual(1, clientOrdersByClient);

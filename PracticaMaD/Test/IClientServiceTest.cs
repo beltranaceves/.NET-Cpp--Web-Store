@@ -33,8 +33,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         private static IClientService clientService;
         private static IClientDao clientDao;
 
-        private TransactionScope transaction;
-
         /// <summary>
         /// Gets or sets the test context which provides information about and functionality for the
         /// current test run.

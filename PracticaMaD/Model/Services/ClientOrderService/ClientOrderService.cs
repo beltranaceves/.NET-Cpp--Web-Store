@@ -41,7 +41,8 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
             order.creditCardId = cardId;
             order.orderDate = DateTime.Now;
             order.clientOrderAddress = clientOrderAddress;
-            
+            order.orderName = "Order";
+
             ClientOrderDao.Create(order);
 
             long orderId = order.orderId;
@@ -114,13 +115,15 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
                 //string cardNumber = CreditCardDao.Find(clientOrders.ElementAt(i).creditCardId).cardNumber;
                 String postalAddress = clientOrders.ElementAt(i).clientOrderAddress;
                 DateTime orderDate = clientOrders.ElementAt(i).orderDate;
-                var orderName = " Order";
+                var orderName = "Order";
                 clientOrdersDetails.Add(new ClientOrderDetails(orderDate, orderName, cardId,postalAddress,clientId));
                 
                 k++;
             }
             return clientOrdersDetails;
         }
+
+        //Returns the order given its id
 
         public ClientOrderDetails FindOrder(long orderId)
         {
@@ -132,17 +135,20 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
             return orderDetails;
         }
 
-        public int GetOrdersByClient(long usrId)
+
+        //Counts how many orders a client has 
+
+        public int GetNumberOfOrdersByClient(long usrId)
         {
-            int n = 0;
+            int number = 0;
             try
             {
-                n = ClientDao.Find(usrId).ClientOrder.Count;
+                number = ClientDao.Find(usrId).ClientOrder.Count;
             } catch (InstanceNotFoundException e)
             {
                 throw new InstanceNotFoundException(usrId, "Client not found");
             }
-            return n;
+            return number;
         }
     }
 }

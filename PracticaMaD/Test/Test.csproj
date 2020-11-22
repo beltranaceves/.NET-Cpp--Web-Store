@@ -90,6 +90,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IClientOrderServiceTest.cs" />
     <Compile Include="IClientServiceTest.cs" />
     <Compile Include="ICreditCardServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
