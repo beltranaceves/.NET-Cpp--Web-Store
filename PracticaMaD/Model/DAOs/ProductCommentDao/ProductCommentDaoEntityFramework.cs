@@ -9,19 +9,16 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentDao
     public class ProductCommentDaoEntityFramework :
         GenericDaoEntityFramework<ProductComment, Int64>, IProductCommentDao
     {
-        public List<Product> FindByProduct(Product product)
+        public List<ProductComment> FindByProductId(long productId)
         {
             #region Option 1: Using Linq.
 
             DbSet<ProductComment> productComment = Context.Set<ProductComment>();
 
-            DbSet<Product> products = Context.Set<Product>();
-
-            List<Product> result =
+            List<ProductComment> result =
                 (from prodComm in productComment
-                 join prod in products on prodComm.productId equals prod.productId
-                 where prodComm.productId == product.productId
-                 select prod).ToList();
+                 where prodComm.productId == productId
+                 select prodComm).ToList();
             return result;
 
             #endregion Option 1: Using Linq.

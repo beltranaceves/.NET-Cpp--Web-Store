@@ -50,7 +50,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
 
         [Transactional]
         public List<Product> FindProductByProductNameKeyword(String keyword) {
-            List<Product> products = ProductDao.findByProductNameKeyword(keyword); 
+            List<Product> products = ProductDao.FindByProductNameKeyword(keyword); 
             return products;
         }
 
@@ -59,7 +59,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
 
             Category category = CategoryDao.Find(categoryId);
 
-            List<Product> products = ProductDao.findByProductNameKeywordAndCategory(keyword, category); 
+            List<Product> products = ProductDao.FindByProductNameKeywordAndCategory(keyword, category); 
             return products;
         }
 
@@ -68,7 +68,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
 
             Category category = CategoryDao.Find(categoryId);
 
-            List<Product> products = ProductDao.findByCategory(category); 
+            List<Product> products = ProductDao.FindByCategory(category); 
             return products;
         }
         #endregion IProductService Members

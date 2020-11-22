@@ -33,7 +33,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
         /// </summary>
         /// <param name="categoryId">categoryId</param>
         /// <returns>A list of Product</returns>
-        public List<Product> findByCategory(Category category)
+        public List<Product> FindByCategory(Category category)
         {
             List<Product> productList = null;
 
@@ -46,14 +46,10 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
 
             productList = result;
 
-            if (productList == null)
-                throw new InstanceNotFoundException(category.categoryId,
-                    typeof(Product).FullName);
-
             return productList;
         }
 
-        public List<Product> findByProductNameKeyword(String keyword)
+        public List<Product> FindByProductNameKeyword(String keyword)
         {
             List<Product> productList = null;
 
@@ -66,14 +62,10 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
 
             productList = result;
 
-            if (productList == null)
-                throw new InstanceNotFoundException(keyword,
-                    typeof(Product).FullName);
-
             return productList;
         }
 
-        public List<Product> findByProductNameKeywordAndCategory(String keyword, Category category)
+        public List<Product> FindByProductNameKeywordAndCategory(String keyword, Category category)
         {
             List<Product> productList = null;
 
@@ -85,10 +77,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
                  select p).ToList();
 
             productList = result;
-
-            if (productList == null)
-                throw new InstanceNotFoundException(keyword,
-                    typeof(Product).FullName);
 
             return productList;
         }
@@ -113,10 +101,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
                   select p);
 
             product = result.FirstOrDefault();
-
-            if (product == null)
-                throw new InstanceNotFoundException(ProductName,
-                    typeof(Product).FullName);  
             
             return product;
 

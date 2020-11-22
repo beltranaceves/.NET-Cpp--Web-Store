@@ -22,5 +22,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model
     
         public virtual Client Client { get; set; }
         public virtual Product Product { get; set; }
+
+        public virtual List<Tag> Tags { get; set; }
     }
 }

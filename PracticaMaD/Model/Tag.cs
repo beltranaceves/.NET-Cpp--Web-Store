@@ -14,6 +14,12 @@ namespace Es.Udc.DotNet.PracticaMad.Model
     
     public partial class Tag
     {
+
+        public Tag(String tagName)
+        {
+            this.tagName = tagName;
+        }
+
         public long tagId { get; set; }
         public string tagName { get; set; }
     }

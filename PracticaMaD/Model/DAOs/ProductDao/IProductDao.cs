@@ -13,11 +13,11 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
         /// <param name="categoryId">categoryId</param>
         /// <returns>A list of Product</returns>
 
-        List<Product> findByCategory(Category category);
+        List<Product> FindByCategory(Category category);
 
-        List<Product> findByProductNameKeyword(String keyword);
+        List<Product> FindByProductNameKeyword(String keyword);
 
-        List<Product> findByProductNameKeywordAndCategory(String keyword, Category category);
+        List<Product> FindByProductNameKeywordAndCategory(String keyword, Category category);
 
         Product FindByProductName(string Productname);
 

@@ -18,20 +18,20 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
 
         public int Stock { get; private set; }
 
-        public long CategoryId{ get; private set; }
+        public long CategoryId { get; private set; }
 
         #endregion Properties Region
 
- 
-        public ProductDetails(String productName,double price, DateTime registerDate, int stock, long categoryId)
+
+        public ProductDetails(String productName, double price, DateTime registerDate, int stock, long categoryId)
         {
-          this.ProductName = productName;
-          this.Price = price;
-          this.RegisterDate = registerDate;
-          this.Stock = stock;
-          this.CategoryId = categoryId;
+            this.ProductName = productName;
+            this.Price = price;
+            this.RegisterDate = registerDate;
+            this.Stock = stock;
+            this.CategoryId = categoryId;
         }
 
-        
+
     }
 }

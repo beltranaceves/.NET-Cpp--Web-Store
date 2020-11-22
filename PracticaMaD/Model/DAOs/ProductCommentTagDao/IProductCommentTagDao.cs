@@ -8,7 +8,8 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentTagDao
     public interface IProductCommentTagDao : IGenericDao<ProductCommentTag, Int64>
     {
 
-        List<Product> FindByProductComment(ProductComment productComment);
+        List<ProductCommentTag> FindByProductCommentId(long productCommentId);
 
+        Boolean ExistsByProductCommentIdAndTagId(long productCommentId, long tagId);
     }
 }

@@ -184,7 +184,9 @@ CREATE TABLE ProductCommentTag (
 	tagId BIGINT NOT NULL,
 
 	CONSTRAINT [PK_ProductCommentTag] PRIMARY KEY (productCommentId),
-	CONSTRAINT [Unique_CommentIdTagId] UNIQUE (commentId, tagId)
+	CONSTRAINT [Unique_CommentIdTagId] UNIQUE (commentId, tagId),
+	CONSTRAINT [FK_ProductCommentTag_ProductComment] FOREIGN KEY (commentId) REFERENCES ProductComment (commentId),
+	CONSTRAINT [FK_ProductCommentTag_Tag] FOREIGN KEY (tagId) REFERENCES Tag (tagId)
 )
 
 PRINT N'Table ProductCommentTag created.'
