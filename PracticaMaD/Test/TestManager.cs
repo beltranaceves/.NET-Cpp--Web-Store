@@ -11,6 +11,10 @@ using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientOrderLineDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientOrderDao;
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentDao;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService;
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.TagDao;
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentTagDao;
 
 namespace Es.Udc.DotNet.PracticaMad.Test
 {
@@ -46,8 +50,10 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             kernel.Bind<IClientOrderService>().
                 To<ClientOrderService>();
 
+
             kernel.Bind<ICategoryDao>().
              To<CategoryDaoEntityFramework>();
+
 
             kernel.Bind<IProductDao>().
                To<ProductDaoEntityFramework>();
@@ -55,6 +61,20 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             kernel.Bind<IProductService>().
                 To<ProductService>();
 
+
+            kernel.Bind<IProductCommentDao>().
+               To<ProductCommentDaoEntityFramework>();
+
+            kernel.Bind<IProductCommentService>().
+                To<ProductCommentService>();
+
+
+            kernel.Bind<IProductCommentTagDao>().
+               To<ProductCommentTagDaoEntityFramework>();
+
+
+            kernel.Bind<ITagDao>().
+               To<TagDaoEntityFramework>();
 
             kernel.Bind<IClientOrderLineDao>().
               To<ClientOrderLineDaoEntityFramework>();

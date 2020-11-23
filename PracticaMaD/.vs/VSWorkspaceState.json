@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\Lib",
     "\\Model",
+    "\\Model\\bin",
+    "\\Model\\bin\\Debug",
+    "\\Model\\bin\\Debug\\amd64\\Microsoft.VC90.CRT",
     "\\Model\\DAOs",
+    "\\Model\\Properties",
     "\\Model\\Services",
-    "\\Model\\Services\\ClientService",
-    "\\Model\\Services\\CreditCardService",
-    "\\Model\\Services\\ProductService",
-    "\\Model\\SQL",
-    "\\Test",
-    "\\Test\\Scripts"
+    "\\Model\\Services\\ClientService"
   ],
-  "SelectedNode": "\\Model\\ClientOrderLine.cs",
+  "SelectedNode": "\\Test\\TestManager.cs",
   "PreviewInSolutionExplorer": false
 }

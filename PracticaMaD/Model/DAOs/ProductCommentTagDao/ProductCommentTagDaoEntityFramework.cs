@@ -37,7 +37,14 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentTagDao
 
             productCommentTag = result.FirstOrDefault();
 
-            return (productCommentTag.commentId == productCommentId && productCommentTag.tagId == tagId);
+            if (productCommentTag is null)
+            {
+                return false;
+            }
+            else
+            {
+                return (productCommentTag.commentId == productCommentId && productCommentTag.tagId == tagId);
+            }
         }
     }
 }

@@ -83,7 +83,8 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
             productDao = kernel.Get<IProductDao>();
             categoryDao = kernel.Get<ICategoryDao>();
-            productService= kernel.Get<IProductService>();
+            
+            productService = kernel.Get<IProductService>();
             
         }
 

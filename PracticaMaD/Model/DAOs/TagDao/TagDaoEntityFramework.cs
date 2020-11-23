@@ -44,7 +44,15 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.TagDao
 
             tag = result.FirstOrDefault();
 
-            return tag.tagName == tagName;
+            if (tag is null)
+            {
+                return false;
+            }
+            else
+            {
+                return tag.tagName == tagName;
+            }
+
         }
 
     }

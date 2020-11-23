@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentTagDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.TagDao;
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao;
 
 namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
 {
@@ -12,6 +13,9 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
     {
         [Inject]
         public IProductCommentDao ProductCommentDao { private get; set; }
+
+        [Inject]
+        public IProductDao ProductDao { private get; set; }
 
         [Inject]
         public IProductCommentTagDao ProductCommentTagDao { private get; set; }
@@ -23,7 +27,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
         {
             ProductComment productComment = new ProductComment();
 
-            productComment.productId = productId;
+            productComment.productId = ProductDao.Find(productId).productId;
             productComment.commentText = commentText;
             productComment.commentDate = System.DateTime.Now;
             productComment.clientId = clientId;
