@@ -31,7 +31,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model
         public string clientAddress { get; set; }
         public string email { get; set; }
         public string clientLanguage { get; set; }
-        public string rol { get; set; }
+        public string country { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClientOrder> ClientOrder { get; set; }

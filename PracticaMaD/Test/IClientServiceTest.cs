@@ -27,7 +27,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         private const string email = "user@udc.es";
         private const string clientLanguage = "es";
         private const string clientAddress = "Calle coruña Nº1";
-        private const string rol = "USER";
+        private const string country = "ES";
         private const long NON_EXISTENT_CLIENT_ID = -1;
         private static IKernel kernel;
         private static IClientService clientService;
@@ -50,7 +50,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 // Register client and find profile
                 var clientId =
                     clientService.RegisterClient(clientLogin, clientPassword,
-                        new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                        new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 var client = clientDao.Find(clientId);
 
@@ -64,7 +64,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 Assert.AreEqual(email, client.email);
                 Assert.AreEqual(clientLanguage, client.clientLanguage);
                 Assert.AreEqual(clientAddress, client.clientAddress);
-                Assert.AreEqual(rol, client.rol);
+                Assert.AreEqual(country, client.country);
 
                 // transaction.Complete() is not called, so Rollback is executed.
             }
@@ -81,11 +81,11 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             {
                 // Register client
                 clientService.RegisterClient(clientLogin, clientPassword,
-                    new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                    new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 // Register the same client
                 clientService.RegisterClient(clientLogin, clientPassword,
-                    new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                    new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 // transaction.Complete() is not called, so Rollback is executed.
             }
@@ -101,10 +101,10 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             {
                 // Register client
                 var clientId = clientService.RegisterClient(clientLogin, clientPassword,
-                    new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                    new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 var expected = new LoginResult(clientId, firstName,
-                    PasswordEncrypter.Crypt(clientPassword), clientLanguage, clientAddress);
+                    PasswordEncrypter.Crypt(clientPassword), clientLanguage, clientAddress, country);
 
                 // Login with clear password
                 var actual =
@@ -128,10 +128,10 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             {
                 // Register client
                 var clientId = clientService.RegisterClient(clientLogin, clientPassword,
-                   new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                   new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 var expected = new LoginResult(clientId, firstName,
-                    PasswordEncrypter.Crypt(clientPassword), clientLanguage, clientAddress);
+                    PasswordEncrypter.Crypt(clientPassword), clientLanguage, clientAddress, country);
 
                 // Login with encrypted password
                 var obtained =
@@ -156,7 +156,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             {
                 // Register client
                 var clientId = clientService.RegisterClient(clientLogin, clientPassword,
-                   new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                   new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 // Login with incorrect (clear) password
                 var actual =
@@ -187,7 +187,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             using (var scope = new TransactionScope())
             {
                 var expected =
-                   new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol);
+                   new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country);
 
                 var clientId =
                     clientService.RegisterClient(clientLogin, clientPassword, expected);
@@ -222,7 +222,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             {
                 // Register client and update details
                 var clientId = clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 var expected =
                     new ClientDetails(firstName + "X", firstSurname + "X", lastSurname + "X",
@@ -250,7 +250,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             using (var scope = new TransactionScope())
             {
                 clientService.UpdateClientDetails(NON_EXISTENT_CLIENT_ID,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 // transaction.Complete() is not called, so Rollback is executed.
             }
@@ -266,7 +266,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             {
                 // Register client
                 var clientId = clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 // Change password
                 var newClearPassword = clientPassword + "X";
@@ -291,7 +291,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             {
                 // Register client
                 var clientId = clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 // Change password
                 var newClearPassword = clientPassword + "X";
@@ -322,7 +322,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             {
                 // Register client
                 clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 bool clientExists = clientService.ClientExists(clientLogin);
 

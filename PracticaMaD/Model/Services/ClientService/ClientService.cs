@@ -41,7 +41,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
                 client.email = clientDetails.Email;
                 client.clientLanguage = clientDetails.ClientLanguage;
                 client.clientAddress = clientDetails.ClientAddress;
-                client.rol = clientDetails.Rol;
+                client.country = clientDetails.Country;
 
                 ClientDao.Create(client);
 
@@ -80,7 +80,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
                 new ClientDetails(client.firstName,
                     client.firstSurname, client.lastSurname,
                     client.email, client.clientLanguage,
-                    client.clientAddress, client.rol);
+                    client.clientAddress, client.country);
 
             return clientDetails;
         }
@@ -112,7 +112,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
             }
 
             return new LoginResult(client.clientId, client.firstName,
-                storedPassword, client.clientLanguage, client.clientAddress);
+                storedPassword, client.clientLanguage, client.clientAddress, client.country);
         }
 
         /// <exception cref="InstanceNotFoundException"/>
@@ -129,7 +129,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
             client.email = clientDetails.Email;
             client.clientLanguage = clientDetails.ClientLanguage;
             client.clientAddress = clientDetails.ClientAddress;
-            client.rol = clientDetails.Rol;
+            client.country = clientDetails.Country;
             ClientDao.Update(client);
         }
 

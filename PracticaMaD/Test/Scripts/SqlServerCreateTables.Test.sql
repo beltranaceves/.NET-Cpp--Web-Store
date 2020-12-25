@@ -60,8 +60,8 @@ CREATE TABLE Client (
     lastSurname VARCHAR(60) NOT NULL, 
 	clientAddress VARCHAR(60) NOT NULL, 
     email VARCHAR(60) NOT NULL,
-	clientLanguage VARCHAR(60) NOT NULL,
-	rol varchar(60) NOT NULL,
+	clientLanguage VARCHAR(2) NOT NULL,
+	country VARCHAR(2) NOT NULL,
 	CONSTRAINT [PK_Client] PRIMARY KEY (clientId),
 	CONSTRAINT [Unique_ClientLogin] UNIQUE (clientLogin),
 	CONSTRAINT [Unique_ClientEmail] UNIQUE (email)

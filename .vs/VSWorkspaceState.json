@@ -1,11 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\PracticaMaD",
-    "\\PracticaMaD\\Model",
-    "\\PracticaMaD\\Model\\SQL",
-    "\\PracticaMaD\\Test"
+    ""
   ],
-  "SelectedNode": "\\PracticaMaD\\Model\\SQL\\SqlServerCreateTables.sql",
+  "SelectedNode": "\\PracticaMaD.sln",
   "PreviewInSolutionExplorer": false
 }

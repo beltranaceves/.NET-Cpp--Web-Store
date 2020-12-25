@@ -8,7 +8,7 @@
     <ProjectGuid>{FD054FB2-BF77-471A-887D-46E30090275D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Es.Udc.DotNet.PracticaMad.Model</RootNamespace>
-    <AssemblyName>Model</AssemblyName>
+    <AssemblyName>PracticaMad.Model</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

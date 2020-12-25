@@ -20,14 +20,16 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
         /// <param name="encryptedPassword">The encrypted password.</param>
         /// <param name="clientLanguage">The language.</param>
         /// <param name="clientAddress">The address.</param>
+        /// <param name="country">The country.</param>
         public LoginResult(long clientId, String clientName,
-            String encryptedPassword, String clientLanguage, String clientAddress)
+            String encryptedPassword, String clientLanguage, String clientAddress, String country)
         {
             this.ClientId = clientId;
             this.ClientName = clientName;
             this.EncryptedPassword = encryptedPassword;
             this.ClientLanguage = clientLanguage;
             this.ClientAddress = clientAddress;
+            this.Country = country;
         }
 
         #region Properties Region
@@ -57,6 +59,12 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
         public string ClientLanguage { get; private set; }
 
         /// <summary>
+        /// Gets the client country code.
+        /// </summary>
+        /// <value>The client country code.</value>
+        public string Country { get; private set; }
+
+        /// <summary>
         /// Gets the client id.
         /// </summary>
         /// <value>The client id.</value>
@@ -72,7 +80,8 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
                    && (this.ClientName == target.ClientName)
                    && (this.EncryptedPassword == target.EncryptedPassword)
                    && (this.ClientLanguage == target.ClientLanguage)
-                   && (this.ClientAddress == target.ClientAddress);
+                   && (this.ClientAddress == target.ClientAddress)
+                   && (this.Country == target.Country);
         }
 
         // The GetHashCode method is used in hashing algorithms and data
@@ -100,7 +109,8 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
                 "clienName = " + ClientName + " | " +
                 "encryptedPassword = " + EncryptedPassword + " | " +
                 "clientLanguage = " + ClientLanguage + " | " +
-                "clientAddress = " + ClientAddress + " ]";
+                "clientAddress = " + ClientAddress + " | " +
+                "country = " + Country + " ]";
 
             return strLoginResult;
         }

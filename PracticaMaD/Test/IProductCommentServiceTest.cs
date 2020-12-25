@@ -7,7 +7,6 @@ using System.Transactions;
 using System;
 using Es.Udc.DotNet.ModelUtil.Exceptions;
 
-
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.CreditCardDao;
 using Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService;
 using Es.Udc.DotNet.PracticaMad.Model;
@@ -21,7 +20,6 @@ using Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService;
 
 namespace Es.Udc.DotNet.PracticaMad.Test
 {
-
     [TestClass]
     public class IProductCommentServiceTest
     {
@@ -34,9 +32,8 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         private const String lastSurname = "2SurName";
         private const String clientAddress = "Calle Test";
         private const String email = "user@udc.es";
-        private const String clientLanguage = "spanish";
-        private const String rol = "user";
-
+        private const String clientLanguage = "es";
+        private const String country = "ES";
 
         private const long NO_CLIENID_FOUND = -1;
 
@@ -51,7 +48,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         private static IProductService productService;
         private static IProductCommentService productCommentService;
         private static IClientService clientService;
-
 
         public TestContext TestContext
         { get; set; }
@@ -110,7 +106,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         [TestInitialize()]
         public void MyTestInitialize()
         {
-
         }
 
         //Use TestCleanup to run code after each test has run
@@ -119,7 +114,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         {
         }
 
-        #endregion
+        #endregion Additional test attributes
 
         [TestMethod()]
         public void AddProductCommentAndFindByProductIdTest()
@@ -139,7 +134,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 var clientId =
                    clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 productCommentService.AddProductComment(productId, productCommentText, clientId);
 
@@ -169,7 +164,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 var clientId =
                    clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 productCommentService.AddProductComment(productId, productCommentText, clientId);
 
@@ -184,7 +179,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         {
             using (TransactionScope scope = new TransactionScope())
             {
-
                 // Create a product
                 long productId = 2;
 
@@ -192,7 +186,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 var clientId =
                    clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 productCommentService.AddProductComment(productId, productCommentText, clientId);
 
@@ -223,7 +217,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 var clientId =
                    clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 productCommentService.AddProductComment(productId, productCommentText, clientId);
 
@@ -237,10 +231,8 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 Assert.AreEqual(productComments[0].Tags[0].tagName, tagName);
 
-
                 //transaction.Complete() is not called, so Rollback is executed.
             }
         }
-
     }
 }

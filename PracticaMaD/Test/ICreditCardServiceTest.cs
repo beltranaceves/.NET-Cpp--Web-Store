@@ -7,7 +7,6 @@ using System.Transactions;
 using System;
 using Es.Udc.DotNet.ModelUtil.Exceptions;
 
-
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.CreditCardDao;
 using Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService;
 using Es.Udc.DotNet.PracticaMad.Model;
@@ -15,7 +14,6 @@ using System.Collections.Generic;
 
 namespace Es.Udc.DotNet.PracticaMad.Test
 {
-
     [TestClass]
     public class ICreditCardServiceTest
     {
@@ -28,23 +26,21 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         private const String lastSurname = "2SurName";
         private const String clientAddress = "Calle Test";
         private const String email = "user@udc.es";
-        private const String clientLanguage = "spanish";
-        private const String rol = "user";
+        private const String clientLanguage = "es";
+        private const String country = "ES";
 
-      
         private const long NO_CLIENID_FOUND = -1;
 
         private static IKernel kernel;
-       
+
         private static ICreditCardDao creditCardDao;
         private static IClientDao clientDao;
 
         private static ICreditCardService creditCardService;
         private static IClientService clientService;
 
-
         public TestContext TestContext
-        {get; set; }
+        { get; set; }
 
         #region Additional test attributes
 
@@ -71,7 +67,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         [TestInitialize()]
         public void MyTestInitialize()
         {
-
         }
 
         //Use TestCleanup to run code after each test has run
@@ -80,33 +75,30 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         {
         }
 
-        #endregion
+        #endregion Additional test attributes
 
-       
         [TestMethod()]
         public void AddCreditCardTest()
         {
             using (TransactionScope scope = new TransactionScope())
             {
-
                 var clientId =
                    clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 var client = clientDao.Find(clientId);
-
 
                 string cardNumber = "1234567890123456";
                 string cardType = "Visa";
                 int verificationCode = 000;
                 String expeditionDate = "01/01";
 
-                var creditCardDetails = new CreditCardDetails(cardNumber, verificationCode, expeditionDate,cardType);
+                var creditCardDetails = new CreditCardDetails(cardNumber, verificationCode, expeditionDate, cardType);
 
                 creditCardService.AddCard(clientId, creditCardDetails);
 
                 var creditCard = creditCardDao.FindByCreditCardNumber(cardNumber);
-                
+
                 Assert.AreEqual(cardNumber, creditCard.cardNumber);
                 Assert.AreEqual(clientId, creditCard.clientId);
                 Assert.AreEqual(verificationCode, creditCard.verificationCode);
@@ -119,24 +111,17 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             }
         }
 
-
-
-
-
-
         [TestMethod]
         [ExpectedException(typeof(DuplicateInstanceException))]
         public void AddDuplicatedCreditCardTest()
         {
             using (TransactionScope scope = new TransactionScope())
             {
-
                 var clientId =
                    clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 var client = clientDao.Find(clientId);
-
 
                 string cardNumber = "1234567890123456";
                 string cardType = "Visa";
@@ -146,7 +131,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 var creditCardDetails = new CreditCardDetails(cardNumber, verificationCode, expeditionDate, cardType);
 
                 creditCardService.AddCard(clientId, creditCardDetails);
-
 
                 string cardNumber2 = "1234567890123456";
                 string cardType2 = "Visa";
@@ -168,13 +152,12 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         [TestMethod()]
         public void ViewCardByUserTest()
         {
-
             using (TransactionScope scope = new TransactionScope())
             {
                 // Register user and find profile
                 var clientId =
                   clientService.RegisterClient(clientLogin, clientPassword,
-                      new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                      new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 var client = clientDao.Find(clientId);
 
@@ -183,38 +166,35 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 string cardType = "Visa";
                 int verificationCode = 000;
                 String expeditionDate = "01/01";
-                
-                CreditCardDetails creditCardDetails = new CreditCardDetails(cardNumber, verificationCode, expeditionDate,cardType);
+
+                CreditCardDetails creditCardDetails = new CreditCardDetails(cardNumber, verificationCode, expeditionDate, cardType);
                 creditCardService.AddCard(clientId, creditCardDetails);
 
-                 string cardNumber2 = "9876654321098765";
-                 string cardType2 = "MasterCard";
-                 int verificationCode2 = 111;
-                 String expeditionDate2 = "01/01";
+                string cardNumber2 = "9876654321098765";
+                string cardType2 = "MasterCard";
+                int verificationCode2 = 111;
+                String expeditionDate2 = "01/01";
 
-                 CreditCardDetails creditCardDetails2 = new CreditCardDetails(cardNumber2, verificationCode2, expeditionDate2,cardType2);
-                 creditCardService.AddCard(clientId, creditCardDetails2);
+                CreditCardDetails creditCardDetails2 = new CreditCardDetails(cardNumber2, verificationCode2, expeditionDate2, cardType2);
+                creditCardService.AddCard(clientId, creditCardDetails2);
 
-                  
                 List<CreditCardDetails> cards = creditCardService.GetClientCards(clientId);
-                 // Check data
+                // Check data
 
                 Assert.AreEqual(cardNumber, cards[0].CardNumber);
                 Assert.AreEqual(verificationCode, cards[0].VerificationCode);
                 Assert.AreEqual(expeditionDate, cards[0].ExpeditionDate);
                 Assert.AreEqual(cardType, cards[0].CardType);
-                
+
                 // Check data
                 Assert.AreEqual(cardNumber2, cards[1].CardNumber);
                 Assert.AreEqual(verificationCode2, cards[1].VerificationCode);
                 Assert.AreEqual(expeditionDate2, cards[1].ExpeditionDate);
                 Assert.AreEqual(cardType2, cards[1].CardType);
 
-               
                 clientDao.Remove(clientId);
             }
         }
-
 
         [TestMethod()]
         public void ChangeDefaultCardTest()
@@ -223,7 +203,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             {
                 var clientId =
                    clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 var client = clientDao.Find(clientId);
 
@@ -232,22 +212,22 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 string cardType = "Visa";
                 int verificationCode = 000;
                 String expeditionDate = "01/01";
-                
-                CreditCardDetails creditCardDetails = new CreditCardDetails(cardNumber, verificationCode, expeditionDate,cardType);
+
+                CreditCardDetails creditCardDetails = new CreditCardDetails(cardNumber, verificationCode, expeditionDate, cardType);
                 creditCardService.AddCard(clientId, creditCardDetails);
 
                 string cardNumber2 = "9876654321098765";
                 string cardType2 = "MasterCard";
                 int verificationCode2 = 111;
                 String expeditionDate2 = "01/01";
-                
-                CreditCardDetails creditCardDetails2 = new CreditCardDetails(cardNumber2, verificationCode2, expeditionDate2,cardType2);
+
+                CreditCardDetails creditCardDetails2 = new CreditCardDetails(cardNumber2, verificationCode2, expeditionDate2, cardType2);
                 creditCardService.AddCard(clientId, creditCardDetails2);
 
                 // Change the default card
                 CreditCard card2 = creditCardDao.FindByCreditCardNumber(cardNumber2);
                 creditCardService.SelectDefaultCard(clientId, card2.cardId);
-                
+
                 CreditCard card = creditCardDao.FindByCreditCardNumber(cardNumber);
                 card2 = creditCardDao.FindByCreditCardNumber(cardNumber2);
 
@@ -271,7 +251,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             }
         }
 
-
         /// <summary>
         ///A test for GetUserDefaultCardTest
         ///</summary>
@@ -283,7 +262,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 // Register user and find profile
                 var clientId =
                    clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, rol));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
 
                 var client = clientDao.Find(clientId);
 
@@ -292,19 +271,18 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 string cardType = "Visa";
                 int verificationCode = 000;
                 String expeditionDate = "01/01";
-                
-                CreditCardDetails creditCardDetails = new CreditCardDetails(cardNumber, verificationCode, expeditionDate,cardType);
+
+                CreditCardDetails creditCardDetails = new CreditCardDetails(cardNumber, verificationCode, expeditionDate, cardType);
                 creditCardService.AddCard(clientId, creditCardDetails);
 
                 string cardNumber2 = "9876654321098765";
                 string cardType2 = "MasterCard";
                 int verificationCode2 = 111;
                 String expeditionDate2 = "01/01";
-                
-                CreditCardDetails creditCardDetails2 = new CreditCardDetails(cardNumber2, verificationCode2, expeditionDate2,cardType2);
+
+                CreditCardDetails creditCardDetails2 = new CreditCardDetails(cardNumber2, verificationCode2, expeditionDate2, cardType2);
                 creditCardService.AddCard(clientId, creditCardDetails2);
 
-                
                 CreditCardDetails defaultCard = creditCardService.GetClientDefaultCard(clientId);
 
                 // Check the data

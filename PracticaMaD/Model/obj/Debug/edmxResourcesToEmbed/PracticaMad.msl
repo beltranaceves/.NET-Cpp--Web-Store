@@ -21,7 +21,7 @@
           <ScalarProperty Name="clientAddress" ColumnName="clientAddress" />
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="clientLanguage" ColumnName="clientLanguage" />
-          <ScalarProperty Name="rol" ColumnName="rol" />
+          <ScalarProperty Name="country" ColumnName="country" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

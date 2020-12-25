@@ -69,7 +69,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             client.email = "jsmith@acme.com";
             client.clientLanguage = "en";
             client.clientAddress = "County Hwy V, Hancock, WI 54943, EE. UU.";
-            client.rol = "USER";
+            client.country = "EN";
 
             clientDao.Create(client);
         }
@@ -198,7 +198,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 newClient.email = "john.smith@acme.com";
                 newClient.clientLanguage = "en";
                 newClient.clientAddress = "County Hwy V, Hancock, WI 54943, EE. UU.";
-                newClient.rol = "USER";
+                newClient.country = "EN";
 
                 clientDao.Create(newClient);
 

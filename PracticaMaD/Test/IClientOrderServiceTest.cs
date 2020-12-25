@@ -131,7 +131,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 // Register User
                 ClientDetails client = new ClientDetails("client", "firstSurname", "secondONe",
-                "client@udc.es", "spanish", "myhome", "user");
+                "client@udc.es", "es", "myhome", "ES");
                 long clientId = clientService.RegisterClient("Client222", "password", client);
 
                 // Create the cart
@@ -187,7 +187,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 // Register User
                 ClientDetails client = new ClientDetails("client", "firstSurname", "secondONe",
-                "client@udc.es", "spanish", "myhome", "user");
+                "client@udc.es", "es", "myhome", "ES");
                 long clientId = clientService.RegisterClient("Client333", "password", client);
 
                 // Create the cart
@@ -237,7 +237,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 // Register User
                 ClientDetails client = new ClientDetails("client", "firstSurname", "secondONe",
-                "client@udc.es", "spanish", "myhome", "user");
+                "client@udc.es", "es", "myhome", "ES");
                 long clientId = clientService.RegisterClient("Client333", "password", client);
 
                 // Create the cart
@@ -289,7 +289,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 int quantity2 = 3;
                 // Register User
                 ClientDetails client = new ClientDetails("client", "firstSurname", "secondONe",
-                "client@udc.es", "spanish", "myhome", "user");
+                "client@udc.es", "es", "myhome", "ES");
                 long clientId = clientService.RegisterClient("Client333", "password", client);
 
                 // Create the cart

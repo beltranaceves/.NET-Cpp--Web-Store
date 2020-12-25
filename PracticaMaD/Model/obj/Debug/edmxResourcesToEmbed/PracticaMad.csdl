@@ -20,8 +20,8 @@
     <Property Name="lastSurname" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="clientAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="email" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="clientLanguage" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="rol" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="clientLanguage" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="country" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="ClientOrder" Relationship="Self.FK_ClientOrder_Client" FromRole="Client" ToRole="ClientOrder" />
     <NavigationProperty Name="ProductComment" Relationship="Self.FK_Comment_ClientId" FromRole="Client" ToRole="ProductComment" />
     <NavigationProperty Name="CreditCard" Relationship="Self.FK_CreditCard_Client" FromRole="Client" ToRole="CreditCard" />
