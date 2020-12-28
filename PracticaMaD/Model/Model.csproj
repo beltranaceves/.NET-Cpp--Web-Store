@@ -78,19 +78,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Category.cs">
-      <DependentUpon>PracticaMad.tt</DependentUpon>
+      <DependentUpon>PracticaMad.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Client.cs">
-      <DependentUpon>PracticaMad.tt</DependentUpon>
+      <DependentUpon>PracticaMad.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="ClientOrder.cs">
-      <DependentUpon>PracticaMad.tt</DependentUpon>
+      <DependentUpon>PracticaMad.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="ClientOrderLine.cs">
-      <DependentUpon>PracticaMad.tt</DependentUpon>
+      <DependentUpon>PracticaMad.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="CreditCard.cs">
-      <DependentUpon>PracticaMad.tt</DependentUpon>
+      <DependentUpon>PracticaMad.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="DAOs\CategoryDao\CategoryDaoEntityFramework.cs" />
     <Compile Include="DAOs\CategoryDao\ICategoryDao.cs" />
@@ -104,8 +104,6 @@
     <Compile Include="DAOs\CreditCardDao\ICreditCardDao.cs" />
     <Compile Include="DAOs\ProductCommentDao\IProductCommentDao.cs" />
     <Compile Include="DAOs\ProductCommentDao\ProductCommentDaoEntityFramework.cs" />
-    <Compile Include="DAOs\ProductCommentTagDao\ProductCommentTagDaoEntityFramework.cs" />
-    <Compile Include="DAOs\ProductCommentTagDao\IProductCommentTagDao.cs" />
     <Compile Include="DAOs\ProductDao\IProductDao.cs" />
     <Compile Include="DAOs\ProductDao\ProductDaoEntityFramework.cs" />
     <Compile Include="DAOs\TagDao\ITagDao.cs" />
@@ -126,13 +124,10 @@
       <DependentUpon>PracticaMad.edmx</DependentUpon>
     </Compile>
     <Compile Include="Product.cs">
-      <DependentUpon>PracticaMad.tt</DependentUpon>
+      <DependentUpon>PracticaMad.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductComment.cs">
-      <DependentUpon>PracticaMad.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ProductCommentTag.cs">
-      <DependentUpon>PracticaMad.tt</DependentUpon>
+      <DependentUpon>PracticaMad.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -161,7 +156,7 @@
     <Compile Include="Services\TagService\ITagService.cs" />
     <Compile Include="Services\TagService\TagService.cs" />
     <Compile Include="Tag.cs">
-      <DependentUpon>PracticaMad.tt</DependentUpon>
+      <DependentUpon>PracticaMad.Context.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

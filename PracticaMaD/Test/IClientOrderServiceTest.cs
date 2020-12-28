@@ -105,13 +105,13 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         private static long RegisterClient(string clientLogin, string clientPassword)
         {
             ClientDetails client = new ClientDetails("firstaname", "firstSurname", "lastSurname",
-            "email@udc.es", "spanish", "home", "user");
+            "email@udc.es", "es", "home", "ES", "user");
             return clientService.RegisterClient(clientLogin, clientPassword, client);
         }
 
         private static void AddCard(long clientId)
         {
-            CreditCardDetails creditCard = new CreditCardDetails("1234567890123456", 000, "02/21", "Visa");
+            CreditCardDetails creditCard = new CreditCardDetails("1234567890123456", "Visa", 000, "02/21", true, clientId);
             creditCardService.AddCard(clientId, creditCard);
         }
 
@@ -131,7 +131,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 // Register User
                 ClientDetails client = new ClientDetails("client", "firstSurname", "secondONe",
-                "client@udc.es", "es", "myhome", "ES");
+                "client@udc.es", "es", "myhome", "ES", "USER");
                 long clientId = clientService.RegisterClient("Client222", "password", client);
 
                 // Create the cart
@@ -145,7 +145,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 cart.Add(orderLine2);
 
                 // Add card
-                CreditCardDetails card = new CreditCardDetails("098765432109876", 000, "02/21", "Visa");
+                CreditCardDetails card = new CreditCardDetails("098765432109876", "Visa", 000, "02/21", true, clientId);
                 creditCardService.AddCard(clientId, card);
 
                 long cardId = clientDao.Find(clientId).CreditCard.ElementAt(0).cardId;
@@ -187,7 +187,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 // Register User
                 ClientDetails client = new ClientDetails("client", "firstSurname", "secondONe",
-                "client@udc.es", "es", "myhome", "ES");
+                "client@udc.es", "es", "myhome", "ES", "USER");
                 long clientId = clientService.RegisterClient("Client333", "password", client);
 
                 // Create the cart
@@ -201,7 +201,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 cart.Add(orderLine2);
 
                 // Add card
-                CreditCardDetails card = new CreditCardDetails("1234567890123456", 000, "02/21", "Visa");
+                CreditCardDetails card = new CreditCardDetails("1234567890123456", "Visa", 000, "02/21", true, clientId);
                 creditCardService.AddCard(clientId, card);
 
                 long cardId = clientDao.Find(clientId).CreditCard.ElementAt(0).cardId;
@@ -237,7 +237,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 // Register User
                 ClientDetails client = new ClientDetails("client", "firstSurname", "secondONe",
-                "client@udc.es", "es", "myhome", "ES");
+                "client@udc.es", "es", "myhome", "ES", "USER");
                 long clientId = clientService.RegisterClient("Client333", "password", client);
 
                 // Create the cart
@@ -251,7 +251,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 cart.Add(orderLine2);
 
                 // Add card
-                CreditCardDetails card = new CreditCardDetails("1234567890123456", 000, "02/21", "Visa");
+                CreditCardDetails card = new CreditCardDetails("1234567890123456", "Visa", 000, "02/21", true, clientId);
                 creditCardService.AddCard(clientId, card);
 
                 long cardId = clientDao.Find(clientId).CreditCard.ElementAt(0).cardId;
@@ -289,7 +289,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 int quantity2 = 3;
                 // Register User
                 ClientDetails client = new ClientDetails("client", "firstSurname", "secondONe",
-                "client@udc.es", "es", "myhome", "ES");
+                "client@udc.es", "es", "myhome", "ES", "USER");
                 long clientId = clientService.RegisterClient("Client333", "password", client);
 
                 // Create the cart
@@ -303,7 +303,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 cart.Add(orderLine2);
 
                 // Add card
-                CreditCardDetails card = new CreditCardDetails("1234567890123456", 000, "02/21", "Visa");
+                CreditCardDetails card = new CreditCardDetails("1234567890123456", "Visa", 0000, "02/21", true, clientId);
                 creditCardService.AddCard(clientId, card);
 
                 long cardId = clientDao.Find(clientId).CreditCard.ElementAt(0).cardId;

@@ -107,7 +107,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages
                     ClientDetails clientDetailsVO =
                         new ClientDetails(txtFirstName.Text, txtFirstSurname.Text, txtSecondSurname.Text,
                             txtEmail.Text, comboLanguage.SelectedValue, txtAddress.Text,
-                            comboCountry.SelectedValue);
+                            comboCountry.SelectedValue, "USER");
 
                     SessionManager.RegisterClient(Context, txtClientLogin.Text,
                         txtPassword.Text, clientDetailsVO);

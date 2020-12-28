@@ -9,7 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService
 {
     public class CreditCardService : ICreditCardService
@@ -21,146 +20,87 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService
         public ICreditCardDao CreditCardDao { private get; set; }
 
         [Transactional]
-        public void AddCard(long clientId, CreditCardDetails newCard)
+        public void AddCard(long clientId, CreditCardDetails creditCard)
         {
-             var Client = ClientDao.Find(clientId);
-
-            try
+            if (!ClientDao.Exists(clientId))
             {
-                CreditCardDao.FindByCreditCardNumber(newCard.CardNumber);
-                throw new DuplicateInstanceException(newCard.CardNumber,
-                    typeof(CreditCard).FullName);
-
-            } catch (InstanceNotFoundException)
-            {
-                
-                CreditCard creditCard = new CreditCard();
-
-                creditCard.cardNumber = newCard.CardNumber;
-                creditCard.cardType = newCard.CardType;
-                creditCard.verificationCode = newCard.VerificationCode;
-                creditCard.expeditionDate = newCard.ExpeditionDate;
-                creditCard.clientId = Client.clientId;
-                
-                if (!Client.CreditCard.Any())
-                    creditCard.defaultCard = true;
-                else
-                    creditCard.defaultCard = false;
-                
-                CreditCardDao.Create(creditCard);
+                throw new InstanceNotFoundException(clientId, "The clien't doesnt exist");
             }
-        }
-
-            public CreditCardDetails GetClientDefaultCard(long clientId)
-        {
-            CreditCardDetails defaultCard = null;
-            Client client = null;
-            try
+            if (CreditCardDao.ExistsByCreditCardNumberAndClientId(creditCard.CardNumber, clientId))
             {
-                client = ClientDao.Find(clientId);
-            } catch (InstanceNotFoundException e)
-            {
-                throw new InstanceNotFoundException(clientId,"Client not found");
+                throw new DuplicateInstanceException(creditCard, "You Already have this CreditCard");
             }
-            List<CreditCard> clientCards = client.CreditCard.ToList();
-            if (clientCards != null) {
-                for (int i = 0; i < clientCards.Count; i++)
+            if (creditCard.DefaultCard)
+            {
+                //Comprobamos si hay alguna tarjeta por defecto y la desmarcamos como default
+                CreditCard defaultCard = CreditCardDao.GetDefaultCreditCardByClientId(clientId);
+                if (defaultCard != null)
                 {
-                    if (clientCards.ElementAt(i).defaultCard)
-                    {
-                        string cardNumber = clientCards.ElementAt(i).cardNumber;
-                        string cardType = clientCards.ElementAt(i).cardType;
-                        long verificationCode = clientCards.ElementAt(i).verificationCode;
-                        String expirationDate = clientCards.ElementAt(i).expeditionDate;
-                        bool DC = clientCards.ElementAt(i).defaultCard;
-                        long cId = clientCards.ElementAt(i).clientId;
-                        
-                        defaultCard = new CreditCardDetails(cardNumber, cardType, verificationCode, expirationDate, DC,cId);
-                    }
+                    defaultCard.defaultCard = false;
+                    CreditCardDao.Update(defaultCard);
                 }
             }
-            return defaultCard;
+
+            CreditCard newCard = new CreditCard();
+            newCard.cardNumber = creditCard.CardNumber;
+            newCard.cardType = creditCard.CardType;
+            newCard.verificationCode = creditCard.VerificationCode;
+            newCard.expeditionDate = creditCard.ExpeditionDate;
+            newCard.clientId = clientId;
+            newCard.defaultCard = creditCard.DefaultCard;
+            CreditCardDao.Create(newCard);
         }
 
+        public CreditCardDetails GetClientDefaultCard(long clientId)
+        {
+            CreditCard defaultCard = CreditCardDao.GetDefaultCreditCardByClientId(clientId);
+            if (defaultCard == null)
+            {
+                throw new InstanceNotFoundException(clientId, "You dont have default creditCard");
+            }
+
+            return new CreditCardDetails(defaultCard.cardNumber, defaultCard.cardType, defaultCard.verificationCode,
+                    defaultCard.expeditionDate, defaultCard.defaultCard, defaultCard.clientId);
+        }
 
         [Transactional]
         public void SelectDefaultCard(long clientId, long cardID)
         {
-            Client client = null;
-            CreditCard card = null;
-            try
+            //Comprobamos si hay alguna tarjeta por defecto y la desmarcamos como default
+            CreditCard defaultCard = CreditCardDao.GetDefaultCreditCardByClientId(clientId);
+            if (defaultCard != null)
             {
-                client = ClientDao.Find(clientId);
-            } catch (InstanceNotFoundException e)
-            {
-                throw new InstanceNotFoundException(clientId,"Client not found");
+                defaultCard.defaultCard = false;
+                CreditCardDao.Update(defaultCard);
             }
 
-            List<CreditCard> clientCards = client.CreditCard.ToList<CreditCard>();
-
-            for (int i = 0; i < clientCards.Count; i++)
-            {
-                if (clientCards.ElementAt(i).defaultCard == true)
-                {
-                    clientCards.ElementAt(i).defaultCard = false;
-                    CreditCardDao.Update(clientCards.ElementAt(i));
-                }
-            }
-            try
-            {
-
-                card = CreditCardDao.Find(cardID);
-            } catch(InstanceNotFoundException e)
-            {
-                throw new InstanceNotFoundException(cardID, "Card not found");
-            }
-            card.defaultCard = true;
-            CreditCardDao.Update(card);
+            CreditCard creditCard = CreditCardDao.Find(cardID);
+            creditCard.defaultCard = true;
+            CreditCardDao.Update(creditCard);
         }
-
 
         [Transactional]
         public List<CreditCardDetails> GetClientCards(long clientId)
         {
-
             List<CreditCardDetails> clientCards = new List<CreditCardDetails>();
-            
+
             List<CreditCard> cards = null;
             Client client = null;
 
+            client = ClientDao.Find(clientId);
 
-            try
+            if (client == null)
             {
-                client = ClientDao.Find(clientId);
-            }
-            catch (InstanceNotFoundException)
-            {
-                throw new InstanceNotFoundException(clientId,"Client not found");
+                throw new InstanceNotFoundException(clientId, "Client not found");
             }
 
             cards = client.CreditCard.ToList();
-            
-            int  j= 0;
 
-            for (int i = 0; i < cards.Count; i++)
+            foreach (CreditCard creditCard in cards)
             {
-                if (j == cards.Count)
-                    break;
-
-                        string cardNumber = cards.ElementAt(i).cardNumber;
-                        string cardType = cards.ElementAt(i).cardType;
-                        long verificationCode = cards.ElementAt(i).verificationCode;
-                        String expirationDate = cards.ElementAt(i).expeditionDate;
-                        bool defaultCard = cards.ElementAt(i).defaultCard;
-                        long cId = cards.ElementAt(i).clientId;
-                               
-                clientCards.Add(new CreditCardDetails(cardNumber, cardType, verificationCode, expirationDate, defaultCard,cId));
-                
-                j++;
+                clientCards.Add(new CreditCardDetails(creditCard.cardNumber, creditCard.cardType, creditCard.verificationCode, creditCard.expeditionDate, creditCard.defaultCard, creditCard.clientId));
             }
             return clientCards;
         }
- 
     }
-
 }

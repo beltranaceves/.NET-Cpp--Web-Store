@@ -7,32 +7,3 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Es.Udc.DotNet.PracticaMad.Model
-{
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
-    
-    public partial class practicaMADEntities : DbContext
-    {
-        public practicaMADEntities()
-            : base("name=practicaMADEntities")
-        {
-        }
-    
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            throw new UnintentionalCodeFirstException();
-        }
-    
-        public virtual DbSet<Category> Category { get; set; }
-        public virtual DbSet<Client> Client { get; set; }
-        public virtual DbSet<ClientOrder> ClientOrder { get; set; }
-        public virtual DbSet<ClientOrderLine> ClientOrderLine { get; set; }
-        public virtual DbSet<CreditCard> CreditCard { get; set; }
-        public virtual DbSet<Product> Product { get; set; }
-        public virtual DbSet<ProductComment> ProductComment { get; set; }
-        public virtual DbSet<ProductCommentTag> ProductCommentTag { get; set; }
-        public virtual DbSet<Tag> Tag { get; set; }
-    }
-}

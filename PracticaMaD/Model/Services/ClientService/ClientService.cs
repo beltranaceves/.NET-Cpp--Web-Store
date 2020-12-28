@@ -42,7 +42,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
                 client.clientLanguage = clientDetails.ClientLanguage;
                 client.clientAddress = clientDetails.ClientAddress;
                 client.country = clientDetails.Country;
-
+                client.rol = "USER";
                 ClientDao.Create(client);
 
                 return client.clientId;
@@ -80,7 +80,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
                 new ClientDetails(client.firstName,
                     client.firstSurname, client.lastSurname,
                     client.email, client.clientLanguage,
-                    client.clientAddress, client.country);
+                    client.clientAddress, client.country, client.rol);
 
             return clientDetails;
         }
@@ -130,6 +130,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
             client.clientLanguage = clientDetails.ClientLanguage;
             client.clientAddress = clientDetails.ClientAddress;
             client.country = clientDetails.Country;
+            client.rol = clientDetails.Rol;
             ClientDao.Update(client);
         }
 

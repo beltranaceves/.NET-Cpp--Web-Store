@@ -62,6 +62,7 @@ CREATE TABLE Client (
     email VARCHAR(60) NOT NULL,
 	clientLanguage VARCHAR(2) NOT NULL,
 	country VARCHAR(2) NOT NULL,
+	rol VARCHAR(60) NOT NULL,
 	CONSTRAINT [PK_Client] PRIMARY KEY (clientId),
 	CONSTRAINT [Unique_ClientLogin] UNIQUE (clientLogin),
 	CONSTRAINT [Unique_ClientEmail] UNIQUE (email)
@@ -97,7 +98,9 @@ CREATE TABLE ClientOrder (
 	orderName VARCHAR(60) NOT NULL,
 	creditCardId BIGINT,
 	clientOrderAddress VARCHAR(60) NOT NULL,
+	totalPrize FLOAT NOT NULL,
 	clientId BIGINT,
+	
 
 	CONSTRAINT [PK_ClientOrder] PRIMARY KEY (orderId),
 	CONSTRAINT [FK_ClientOrder_Client] FOREIGN KEY (clientId) REFERENCES Client (clientId),
@@ -179,12 +182,10 @@ PRINT N'Table Comment created.'
 GO
 
 CREATE TABLE ProductCommentTag (
-	productCommentTagId BIGINT IDENTITY(1, 1) NOT NULL,
 	commentId BIGINT NOT NULL,
 	tagId BIGINT NOT NULL,
 
-	CONSTRAINT [PK_ProductCommentTag] PRIMARY KEY (productCommentTagId),
-	CONSTRAINT [Unique_CommentIdTagId] UNIQUE (commentId, tagId),
+	CONSTRAINT [PK_ProductCommentTag] PRIMARY KEY (commentId, tagId),
 	CONSTRAINT [FK_ProductCommentTag_ProductComment] FOREIGN KEY (commentId) REFERENCES ProductComment (commentId),
 	CONSTRAINT [FK_ProductCommentTag_Tag] FOREIGN KEY (tagId) REFERENCES Tag (tagId)
 )

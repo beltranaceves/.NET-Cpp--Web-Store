@@ -26,6 +26,7 @@
           <Property Name="email" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="clientLanguage" Type="varchar" MaxLength="2" Nullable="false" />
           <Property Name="country" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="rol" Type="varchar" MaxLength="60" Nullable="false" />
         </EntityType>
         <EntityType Name="ClientOrder">
           <Key>
@@ -36,6 +37,7 @@
           <Property Name="orderName" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="creditCardId" Type="bigint" />
           <Property Name="clientOrderAddress" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="totalPrize" Type="float" Nullable="false" />
           <Property Name="clientId" Type="bigint" />
         </EntityType>
         <EntityType Name="ClientOrderLine">
@@ -83,9 +85,9 @@
         </EntityType>
         <EntityType Name="ProductCommentTag">
           <Key>
-            <PropertyRef Name="productCommentTagId" />
+            <PropertyRef Name="commentId" />
+            <PropertyRef Name="tagId" />
           </Key>
-          <Property Name="productCommentTagId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="commentId" Type="bigint" Nullable="false" />
           <Property Name="tagId" Type="bigint" Nullable="false" />
         </EntityType>
@@ -296,6 +298,7 @@
           <Property Name="email" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="clientLanguage" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="country" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rol" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="ClientOrder" Relationship="Self.FK_ClientOrder_Client" FromRole="Client" ToRole="ClientOrder" />
           <NavigationProperty Name="ProductComment" Relationship="Self.FK_Comment_ClientId" FromRole="Client" ToRole="ProductComment" />
           <NavigationProperty Name="CreditCard" Relationship="Self.FK_CreditCard_Client" FromRole="Client" ToRole="CreditCard" />
@@ -309,6 +312,7 @@
           <Property Name="orderName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="creditCardId" Type="Int64" />
           <Property Name="clientOrderAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="totalPrize" Type="Double" Nullable="false" />
           <Property Name="clientId" Type="Int64" />
           <NavigationProperty Name="Client" Relationship="Self.FK_ClientOrder_Client" FromRole="ClientOrder" ToRole="Client" />
           <NavigationProperty Name="CreditCard" Relationship="Self.FK_ClientOrder_CreditCard" FromRole="ClientOrder" ToRole="CreditCard" />
@@ -365,17 +369,7 @@
           <Property Name="clientId" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Comment_ClientId" FromRole="ProductComment" ToRole="Client" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Comment_Product" FromRole="ProductComment" ToRole="Product" />
-          <NavigationProperty Name="ProductCommentTag" Relationship="Self.FK_ProductCommentTag_ProductComment" FromRole="ProductComment" ToRole="ProductCommentTag" />
-        </EntityType>
-        <EntityType Name="ProductCommentTag">
-          <Key>
-            <PropertyRef Name="productCommentTagId" />
-          </Key>
-          <Property Name="productCommentTagId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="commentId" Type="Int64" Nullable="false" />
-          <Property Name="tagId" Type="Int64" Nullable="false" />
-          <NavigationProperty Name="ProductComment" Relationship="Self.FK_ProductCommentTag_ProductComment" FromRole="ProductCommentTag" ToRole="ProductComment" />
-          <NavigationProperty Name="Tag" Relationship="Self.FK_ProductCommentTag_Tag" FromRole="ProductCommentTag" ToRole="Tag" />
+          <NavigationProperty Name="Tag" Relationship="Self.ProductCommentTag" FromRole="ProductComment" ToRole="Tag" />
         </EntityType>
         <EntityType Name="Tag">
           <Key>
@@ -383,7 +377,7 @@
           </Key>
           <Property Name="tagId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="tagName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ProductCommentTag" Relationship="Self.FK_ProductCommentTag_Tag" FromRole="Tag" ToRole="ProductCommentTag" />
+          <NavigationProperty Name="ProductComment" Relationship="Self.ProductCommentTag" FromRole="Tag" ToRole="ProductComment" />
         </EntityType>
         <Association Name="FK_Product_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
@@ -483,29 +477,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ProductCommentTag_ProductComment">
-          <End Role="ProductComment" Type="Self.ProductComment" Multiplicity="1" />
-          <End Role="ProductCommentTag" Type="Self.ProductCommentTag" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProductComment">
-              <PropertyRef Name="commentId" />
-            </Principal>
-            <Dependent Role="ProductCommentTag">
-              <PropertyRef Name="commentId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ProductCommentTag_Tag">
-          <End Role="Tag" Type="Self.Tag" Multiplicity="1" />
-          <End Role="ProductCommentTag" Type="Self.ProductCommentTag" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Tag">
-              <PropertyRef Name="tagId" />
-            </Principal>
-            <Dependent Role="ProductCommentTag">
-              <PropertyRef Name="tagId" />
-            </Dependent>
-          </ReferentialConstraint>
+        <Association Name="ProductCommentTag">
+          <End Role="ProductComment" Type="Self.ProductComment" Multiplicity="*" />
+          <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
         </Association>
         <EntityContainer Name="practicaMADEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Category" EntityType="Self.Category" />
@@ -515,7 +489,6 @@
           <EntitySet Name="CreditCard" EntityType="Self.CreditCard" />
           <EntitySet Name="Product" EntityType="Self.Product" />
           <EntitySet Name="ProductComment" EntityType="Self.ProductComment" />
-          <EntitySet Name="ProductCommentTag" EntityType="Self.ProductCommentTag" />
           <EntitySet Name="Tag" EntityType="Self.Tag" />
           <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
             <End Role="Category" EntitySet="Category" />
@@ -549,13 +522,9 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="ProductComment" EntitySet="ProductComment" />
           </AssociationSet>
-          <AssociationSet Name="FK_ProductCommentTag_ProductComment" Association="Self.FK_ProductCommentTag_ProductComment">
+          <AssociationSet Name="ProductCommentTag" Association="Self.ProductCommentTag">
             <End Role="ProductComment" EntitySet="ProductComment" />
-            <End Role="ProductCommentTag" EntitySet="ProductCommentTag" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ProductCommentTag_Tag" Association="Self.FK_ProductCommentTag_Tag">
             <End Role="Tag" EntitySet="Tag" />
-            <End Role="ProductCommentTag" EntitySet="ProductCommentTag" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -585,6 +554,7 @@
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="clientLanguage" ColumnName="clientLanguage" />
                 <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="rol" ColumnName="rol" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -596,6 +566,7 @@
                 <ScalarProperty Name="orderName" ColumnName="orderName" />
                 <ScalarProperty Name="creditCardId" ColumnName="creditCardId" />
                 <ScalarProperty Name="clientOrderAddress" ColumnName="clientOrderAddress" />
+                <ScalarProperty Name="totalPrize" ColumnName="totalPrize" />
                 <ScalarProperty Name="clientId" ColumnName="clientId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -647,15 +618,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ProductCommentTag">
-            <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaMad.Model.ProductCommentTag">
-              <MappingFragment StoreEntitySet="ProductCommentTag">
-                <ScalarProperty Name="productCommentTagId" ColumnName="productCommentTagId" />
-                <ScalarProperty Name="commentId" ColumnName="commentId" />
-                <ScalarProperty Name="tagId" ColumnName="tagId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Tag">
             <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaMad.Model.Tag">
               <MappingFragment StoreEntitySet="Tag">
@@ -664,6 +626,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="ProductCommentTag" TypeName="Es.Udc.DotNet.PracticaMad.Model.ProductCommentTag" StoreEntitySet="ProductCommentTag">
+            <EndProperty Name="ProductComment">
+              <ScalarProperty Name="commentId" ColumnName="commentId" />
+            </EndProperty>
+            <EndProperty Name="Tag">
+              <ScalarProperty Name="tagId" ColumnName="tagId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

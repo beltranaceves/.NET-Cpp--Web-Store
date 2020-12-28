@@ -28,6 +28,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         private const String email = "user@udc.es";
         private const String clientLanguage = "es";
         private const String country = "ES";
+        private const String rol = "USER";
 
         private const long NO_CLIENID_FOUND = -1;
 
@@ -84,7 +85,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             {
                 var clientId =
                    clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country, rol));
 
                 var client = clientDao.Find(clientId);
 
@@ -93,7 +94,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 int verificationCode = 000;
                 String expeditionDate = "01/01";
 
-                var creditCardDetails = new CreditCardDetails(cardNumber, verificationCode, expeditionDate, cardType);
+                var creditCardDetails = new CreditCardDetails(cardNumber, cardType, verificationCode, expeditionDate, true, clientId);
 
                 creditCardService.AddCard(clientId, creditCardDetails);
 
@@ -106,7 +107,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 Assert.AreEqual(cardType, creditCard.cardType);
                 Assert.AreEqual(true, creditCard.defaultCard);
 
-                clientDao.Remove(clientId);
                 //transaction.Complete() is not called, so Rollback is executed.
             }
         }
@@ -119,7 +119,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             {
                 var clientId =
                    clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country, rol));
 
                 var client = clientDao.Find(clientId);
 
@@ -128,7 +128,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 int verificationCode = 000;
                 String expeditionDate = "01/01";
 
-                var creditCardDetails = new CreditCardDetails(cardNumber, verificationCode, expeditionDate, cardType);
+                var creditCardDetails = new CreditCardDetails(cardNumber, cardType, verificationCode, expeditionDate, true, clientId);
 
                 creditCardService.AddCard(clientId, creditCardDetails);
 
@@ -137,11 +137,10 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 int verificationCode2 = 000;
                 String expeditionDate2 = "01/01";
 
-                var creditCardDetails2 = new CreditCardDetails(cardNumber2, verificationCode2, expeditionDate2, cardType2);
+                var creditCardDetails2 = new CreditCardDetails(cardNumber2, cardType2, verificationCode2, expeditionDate2, true, clientId);
 
                 creditCardService.AddCard(clientId, creditCardDetails2);
 
-                clientDao.Remove(clientId);
                 //transaction.Complete() is not called, so Rollback is executed.
             }
         }
@@ -157,7 +156,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 // Register user and find profile
                 var clientId =
                   clientService.RegisterClient(clientLogin, clientPassword,
-                      new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
+                      new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country, rol));
 
                 var client = clientDao.Find(clientId);
 
@@ -167,7 +166,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 int verificationCode = 000;
                 String expeditionDate = "01/01";
 
-                CreditCardDetails creditCardDetails = new CreditCardDetails(cardNumber, verificationCode, expeditionDate, cardType);
+                CreditCardDetails creditCardDetails = new CreditCardDetails(cardNumber, cardType, verificationCode, expeditionDate, true, clientId);
                 creditCardService.AddCard(clientId, creditCardDetails);
 
                 string cardNumber2 = "9876654321098765";
@@ -175,7 +174,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 int verificationCode2 = 111;
                 String expeditionDate2 = "01/01";
 
-                CreditCardDetails creditCardDetails2 = new CreditCardDetails(cardNumber2, verificationCode2, expeditionDate2, cardType2);
+                CreditCardDetails creditCardDetails2 = new CreditCardDetails(cardNumber2, cardType2, verificationCode2, expeditionDate2, true, clientId);
                 creditCardService.AddCard(clientId, creditCardDetails2);
 
                 List<CreditCardDetails> cards = creditCardService.GetClientCards(clientId);
@@ -191,8 +190,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 Assert.AreEqual(verificationCode2, cards[1].VerificationCode);
                 Assert.AreEqual(expeditionDate2, cards[1].ExpeditionDate);
                 Assert.AreEqual(cardType2, cards[1].CardType);
-
-                clientDao.Remove(clientId);
             }
         }
 
@@ -203,7 +200,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             {
                 var clientId =
                    clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country, rol));
 
                 var client = clientDao.Find(clientId);
 
@@ -213,7 +210,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 int verificationCode = 000;
                 String expeditionDate = "01/01";
 
-                CreditCardDetails creditCardDetails = new CreditCardDetails(cardNumber, verificationCode, expeditionDate, cardType);
+                CreditCardDetails creditCardDetails = new CreditCardDetails(cardNumber, cardType, verificationCode, expeditionDate, true, clientId);
                 creditCardService.AddCard(clientId, creditCardDetails);
 
                 string cardNumber2 = "9876654321098765";
@@ -221,7 +218,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 int verificationCode2 = 111;
                 String expeditionDate2 = "01/01";
 
-                CreditCardDetails creditCardDetails2 = new CreditCardDetails(cardNumber2, verificationCode2, expeditionDate2, cardType2);
+                CreditCardDetails creditCardDetails2 = new CreditCardDetails(cardNumber2, cardType2, verificationCode2, expeditionDate2, true, clientId);
                 creditCardService.AddCard(clientId, creditCardDetails2);
 
                 // Change the default card
@@ -232,22 +229,11 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 card2 = creditCardDao.FindByCreditCardNumber(cardNumber2);
 
                 // Check data
-                Assert.AreEqual(cardNumber, card.cardNumber);
-                Assert.AreEqual(clientId, card.clientId);
-                Assert.AreEqual(verificationCode, card.verificationCode);
-                Assert.AreEqual(expeditionDate, card.expeditionDate);
-                Assert.AreEqual(cardType, card.cardType);
                 Assert.AreEqual(false, card.defaultCard);
 
                 // Check data
-                Assert.AreEqual(cardNumber2, card2.cardNumber);
-                Assert.AreEqual(clientId, card2.clientId);
-                Assert.AreEqual(verificationCode2, card2.verificationCode);
-                Assert.AreEqual(expeditionDate2, card2.expeditionDate);
-                Assert.AreEqual(cardType2, card2.cardType);
-                Assert.AreEqual(true, card2.defaultCard);
 
-                clientDao.Remove(clientId);
+                Assert.AreEqual(true, card2.defaultCard);
             }
         }
 
@@ -262,7 +248,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 // Register user and find profile
                 var clientId =
                    clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country, rol));
 
                 var client = clientDao.Find(clientId);
 
@@ -272,7 +258,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 int verificationCode = 000;
                 String expeditionDate = "01/01";
 
-                CreditCardDetails creditCardDetails = new CreditCardDetails(cardNumber, verificationCode, expeditionDate, cardType);
+                CreditCardDetails creditCardDetails = new CreditCardDetails(cardNumber, cardType, verificationCode, expeditionDate, true, clientId);
                 creditCardService.AddCard(clientId, creditCardDetails);
 
                 string cardNumber2 = "9876654321098765";
@@ -280,16 +266,13 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 int verificationCode2 = 111;
                 String expeditionDate2 = "01/01";
 
-                CreditCardDetails creditCardDetails2 = new CreditCardDetails(cardNumber2, verificationCode2, expeditionDate2, cardType2);
+                CreditCardDetails creditCardDetails2 = new CreditCardDetails(cardNumber2, cardType2, verificationCode2, expeditionDate2, true, clientId);
                 creditCardService.AddCard(clientId, creditCardDetails2);
 
                 CreditCardDetails defaultCard = creditCardService.GetClientDefaultCard(clientId);
 
                 // Check the data
-                Assert.AreEqual(defaultCard.CardNumber, cardNumber);
-                Assert.AreEqual(defaultCard.ExpeditionDate, expeditionDate);
-                Assert.AreEqual(defaultCard.VerificationCode, verificationCode);
-                Assert.AreEqual(defaultCard.CardType, cardType);
+                Assert.AreEqual(defaultCard, creditCardDetails2);
             }
         }
     }

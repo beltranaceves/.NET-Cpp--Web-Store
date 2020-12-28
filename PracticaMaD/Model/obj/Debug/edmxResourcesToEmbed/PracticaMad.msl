@@ -22,6 +22,7 @@
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="clientLanguage" ColumnName="clientLanguage" />
           <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="rol" ColumnName="rol" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -33,6 +34,7 @@
           <ScalarProperty Name="orderName" ColumnName="orderName" />
           <ScalarProperty Name="creditCardId" ColumnName="creditCardId" />
           <ScalarProperty Name="clientOrderAddress" ColumnName="clientOrderAddress" />
+          <ScalarProperty Name="totalPrize" ColumnName="totalPrize" />
           <ScalarProperty Name="clientId" ColumnName="clientId" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -84,15 +86,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ProductCommentTag">
-      <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaMad.Model.ProductCommentTag">
-        <MappingFragment StoreEntitySet="ProductCommentTag">
-          <ScalarProperty Name="productCommentTagId" ColumnName="productCommentTagId" />
-          <ScalarProperty Name="commentId" ColumnName="commentId" />
-          <ScalarProperty Name="tagId" ColumnName="tagId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Tag">
       <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaMad.Model.Tag">
         <MappingFragment StoreEntitySet="Tag">
@@ -101,5 +94,13 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <AssociationSetMapping Name="ProductCommentTag" TypeName="Es.Udc.DotNet.PracticaMad.Model.ProductCommentTag" StoreEntitySet="ProductCommentTag">
+      <EndProperty Name="ProductComment">
+        <ScalarProperty Name="commentId" ColumnName="commentId" />
+      </EndProperty>
+      <EndProperty Name="Tag">
+        <ScalarProperty Name="tagId" ColumnName="tagId" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

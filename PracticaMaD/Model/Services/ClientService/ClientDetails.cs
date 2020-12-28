@@ -24,6 +24,8 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
 
         public String Country { get; private set; }
 
+        public String Rol { get; private set; }
+
         #endregion Properties Region
 
         /// <summary>
@@ -37,8 +39,9 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
         /// <param name="clientLanguage">The language.</param>
         /// <param name="clientAddress">The address.</param>
         /// <param name="country">The country of the Language.</param>
+        /// <param name="rol">The rol of the user.</param>
         public ClientDetails(String firstName, String firstSurname, String lastSurname, String email,
-            String clientLanguage, String clientAddress, String country)
+            String clientLanguage, String clientAddress, String country, String rol)
         {
             this.FirstName = firstName;
             this.FirstSurname = firstSurname;
@@ -47,6 +50,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
             this.ClientLanguage = clientLanguage;
             this.ClientAddress = clientAddress;
             this.Country = country;
+            this.Rol = rol;
         }
 
         public override bool Equals(object obj)
@@ -59,7 +63,8 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
                   && (this.Email == target.Email)
                   && (this.ClientLanguage == target.ClientLanguage)
                   && (this.ClientAddress == target.ClientAddress)
-                  && (this.Country == target.Country);
+                  && (this.Country == target.Country)
+                  && (this.Rol == target.Rol);
         }
 
         // The GetHashCode method is used in hashing algorithms and data
@@ -89,7 +94,8 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
                 "email = " + Email + " | " +
                 "clientLanguage = " + ClientLanguage + " | " +
                 "clientAddress = " + ClientAddress + " | " +
-                "country = " + Country + " ]";
+                "country = " + Country + " | " +
+                "rol = " + Rol + " ]";
 
             return strClientDetails;
         }

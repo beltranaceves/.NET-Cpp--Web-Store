@@ -21,6 +21,7 @@
     <Property Name="email" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="clientLanguage" Type="varchar" MaxLength="2" Nullable="false" />
     <Property Name="country" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="rol" Type="varchar" MaxLength="60" Nullable="false" />
   </EntityType>
   <EntityType Name="ClientOrder">
     <Key>
@@ -31,6 +32,7 @@
     <Property Name="orderName" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="creditCardId" Type="bigint" />
     <Property Name="clientOrderAddress" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="totalPrize" Type="float" Nullable="false" />
     <Property Name="clientId" Type="bigint" />
   </EntityType>
   <EntityType Name="ClientOrderLine">
@@ -78,9 +80,9 @@
   </EntityType>
   <EntityType Name="ProductCommentTag">
     <Key>
-      <PropertyRef Name="productCommentTagId" />
+      <PropertyRef Name="commentId" />
+      <PropertyRef Name="tagId" />
     </Key>
-    <Property Name="productCommentTagId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="commentId" Type="bigint" Nullable="false" />
     <Property Name="tagId" Type="bigint" Nullable="false" />
   </EntityType>

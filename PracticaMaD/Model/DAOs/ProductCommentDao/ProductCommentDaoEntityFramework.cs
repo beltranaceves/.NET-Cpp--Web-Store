@@ -15,16 +15,16 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentDao
             #region Option 1: Using Linq.
 
             DbSet<ProductComment> productComment = Context.Set<ProductComment>();
-
+            DbSet<Tag> tag = Context.Set<Tag>();
             List<ProductComment> result =
-                (from prodComm in productComment
+                (from prodComm in productComment.Include("Tag")
                  where prodComm.productId == productId
                  select prodComm).ToList();
             List<ProductCommentDetails> productDetails = new List<ProductCommentDetails>();
             foreach (ProductComment product in result)
             {
                 productDetails.Add(new ProductCommentDetails(product.commentId, product.productId, product.commentText, product.commentDate,
-                product.clientId));
+                product.clientId, product.Tag.ToList()));
             }
 
             return productDetails;

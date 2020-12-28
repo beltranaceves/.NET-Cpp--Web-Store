@@ -1,7 +1,6 @@
 using Es.Udc.DotNet.ModelUtil.Transactions;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.CategoryDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentDao;
-using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentTagDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.TagDao;
 using Ninject;
 using System;
@@ -15,13 +14,10 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
         IProductCommentDao ProductCommentDao { set; }
 
         [Inject]
-        IProductCommentTagDao ProductCommentTagDao { set; }
-
-        [Inject]
         ITagDao TagDao { set; }
 
         /// <summary>
-        /// Finds the product details.
+        /// Find all the comments for a product.
         /// </summary>
         /// <param name="productId"> The product id. </param>
         /// <returns> The product comments</returns>
@@ -33,17 +29,17 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
         /// Adds a comment to a product.
         /// </summary>
         /// <param name="productId"> The product id. </param>
-        /// <param name="productComment"> The `product comment. </param>
+        /// <param name="commentText"> The text of the comment. </param>
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
         void AddProductComment(long productId, String commentText, long clientId);
 
         /// <summary>
-        /// Tags a product comment.
+        /// Adds the tags to a product.
         /// </summary>
-        /// <param name="ProductCommentId"> The productId. </param>
-        /// <param name="tag"> The product comment tag. </param>
+        /// <param name="productCommentId"> The productId. </param>
+        /// <param name="tags"> The tags to add to the comment. </param>
         [Transactional]
-        void TagProductComment(long productCommentId, String tagName);
+        void TagProductComment(long productCommentId, List<Tag> tags);
     }
 }

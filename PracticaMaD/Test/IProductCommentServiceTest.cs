@@ -34,6 +34,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         private const String email = "user@udc.es";
         private const String clientLanguage = "es";
         private const String country = "ES";
+        private const String rol = "USER";
 
         private const long NO_CLIENID_FOUND = -1;
 
@@ -134,7 +135,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 var clientId =
                    clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country, rol));
 
                 productCommentService.AddProductComment(productId, productCommentText, clientId);
 
@@ -164,7 +165,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 var clientId =
                    clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country, rol));
 
                 productCommentService.AddProductComment(productId, productCommentText, clientId);
 
@@ -186,7 +187,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 var clientId =
                    clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country, rol));
 
                 productCommentService.AddProductComment(productId, productCommentText, clientId);
 
@@ -210,26 +211,32 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 String productName = "Avatar la leyenda de Aang";
                 int stock = 10;
                 float price = 10;
+
                 // Create a product
                 long productId = CreateProduct(categoryId, productName, stock, price);
 
                 String productCommentText = "mi libro favorito";
 
+                //Create a client
                 var clientId =
                    clientService.RegisterClient(clientLogin, clientPassword,
-                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country));
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country, rol));
 
+                //Add comment
                 productCommentService.AddProductComment(productId, productCommentText, clientId);
 
                 List<ProductCommentDetails> productComments = productCommentService.FindByProductId(productId);
 
-                String tagName = "Aburrido";
+                Tag tag1 = new Tag();
+                tag1.tagName = "prueba";
+                List<Tag> list_tags = new List<Tag>();
+                list_tags.Add(tag1);
 
-                productCommentService.TagProductComment(productComments[0].CommentId, tagName);
+                productCommentService.TagProductComment(productComments[0].CommentId, list_tags);
 
                 productComments = productCommentService.FindByProductId(productId);
 
-                Assert.AreEqual(productComments[0].Tags[0].tagName, tagName);
+                Assert.AreEqual(list_tags[0], productComments[0].Tags[0]);
 
                 //transaction.Complete() is not called, so Rollback is executed.
             }

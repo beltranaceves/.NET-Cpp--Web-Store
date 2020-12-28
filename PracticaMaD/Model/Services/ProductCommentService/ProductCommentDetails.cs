@@ -27,15 +27,5 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
             this.ClientId = clientId;
             this.Tags = tags;
         }
-
-        public ProductCommentDetails(long commentId, long productId, string commentText, DateTime commentDate,
-            long clientId)
-        {
-            this.CommentId = commentId;
-            this.ProductId = productId;
-            this.CommentText = commentText;
-            this.CommentDate = commentDate;
-            this.ClientId = clientId;
-        }
     }
 }

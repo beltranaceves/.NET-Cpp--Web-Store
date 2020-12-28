@@ -4,16 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="712fc3b410dc4a68aee0b5557c1f859a" Name="Diagram1">
+      <Diagram DiagramId="a3602fa302a84f8fa79296dba8ed08ef" Name="Diagram1" ZoomLevel="51">
         <EntityTypeShape EntityType="Es.Udc.DotNet.PracticaMad.Model.Category" Width="1.5" PointX="1.5" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Es.Udc.DotNet.PracticaMad.Model.Client" Width="1.5" PointX="0.75" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Es.Udc.DotNet.PracticaMad.Model.ClientOrder" Width="1.5" PointX="5.25" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Es.Udc.DotNet.PracticaMad.Model.ClientOrderLine" Width="1.5" PointX="7.5" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Es.Udc.DotNet.PracticaMad.Model.CreditCard" Width="1.5" PointX="3" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Es.Udc.DotNet.PracticaMad.Model.ClientOrder" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Es.Udc.DotNet.PracticaMad.Model.ClientOrderLine" Width="1.5" PointX="7.5" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Es.Udc.DotNet.PracticaMad.Model.CreditCard" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Es.Udc.DotNet.PracticaMad.Model.Product" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Es.Udc.DotNet.PracticaMad.Model.ProductComment" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Es.Udc.DotNet.PracticaMad.Model.ProductCommentTag" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Es.Udc.DotNet.PracticaMad.Model.Tag" Width="1.5" PointX="3" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Es.Udc.DotNet.PracticaMad.Model.Tag" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
         <AssociationConnector Association="Es.Udc.DotNet.PracticaMad.Model.FK_Product_Category" ManuallyRouted="false" />
         <AssociationConnector Association="Es.Udc.DotNet.PracticaMad.Model.FK_ClientOrder_Client" ManuallyRouted="false" />
         <AssociationConnector Association="Es.Udc.DotNet.PracticaMad.Model.FK_Comment_ClientId" ManuallyRouted="false" />
@@ -22,8 +21,7 @@
         <AssociationConnector Association="Es.Udc.DotNet.PracticaMad.Model.FK_ClientOrderLine_ClientOrder" ManuallyRouted="false" />
         <AssociationConnector Association="Es.Udc.DotNet.PracticaMad.Model.FK_ClientOrderLine_Product" ManuallyRouted="false" />
         <AssociationConnector Association="Es.Udc.DotNet.PracticaMad.Model.FK_Comment_Product" ManuallyRouted="false" />
-        <AssociationConnector Association="Es.Udc.DotNet.PracticaMad.Model.FK_ProductCommentTag_ProductComment" ManuallyRouted="false" />
-        <AssociationConnector Association="Es.Udc.DotNet.PracticaMad.Model.FK_ProductCommentTag_Tag" ManuallyRouted="false" />
+        <AssociationConnector Association="Es.Udc.DotNet.PracticaMad.Model.ProductCommentTag" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -7,7 +7,6 @@ using System.Transactions;
 using System;
 using Es.Udc.DotNet.ModelUtil.Exceptions;
 
-
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.CreditCardDao;
 using Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService;
 using Es.Udc.DotNet.PracticaMad.Model;
@@ -18,7 +17,6 @@ using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
 
 namespace Es.Udc.DotNet.PracticaMad.Test
 {
-
     [TestClass]
     public class IProductServiceTest
     {
@@ -34,7 +32,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         private const String clientLanguage = "spanish";
         private const String rol = "user";
 
-
         private const long NO_CLIENID_FOUND = -1;
 
         private static IKernel kernel;
@@ -43,7 +40,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         private static ICategoryDao categoryDao;
 
         private static IProductService productService;
-
 
         public TestContext TestContext
         { get; set; }
@@ -83,9 +79,8 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
             productDao = kernel.Get<IProductDao>();
             categoryDao = kernel.Get<ICategoryDao>();
-            
+
             productService = kernel.Get<IProductService>();
-            
         }
 
         //Use ClassCleanup to run code after all tests in a class have run
@@ -99,7 +94,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         [TestInitialize()]
         public void MyTestInitialize()
         {
-
         }
 
         //Use TestCleanup to run code after each test has run
@@ -108,8 +102,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         {
         }
 
-        #endregion
-
+        #endregion Additional test attributes
 
         [TestMethod()]
         public void FindProductDetailsTest()
@@ -132,7 +125,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 Assert.AreEqual(productDetails.Stock, stock);
                 Assert.AreEqual(productDetails.Price, price);
 
-
                 productDao.Remove(productId);
                 //transaction.Complete() is not called, so Rollback is executed.
             }
@@ -144,9 +136,8 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         {
             using (TransactionScope scope = new TransactionScope())
             {
-                long productId = (long) 1;
+                long productId = (long)1;
                 ProductDetails productDetails = productService.FindProductDetails(productId);
-
             }
         }
 
@@ -176,10 +167,9 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 productService.UpdateProduct(productId, p);
 
                 ProductDetails productDetails = productService.FindProductDetails(productId);
-                
+
                 Assert.AreEqual(productDetails.Stock, stock + 1);
 
-                productDao.Remove(productId);
                 //transaction.Complete() is not called, so Rollback is executed.
             }
         }
@@ -228,15 +218,13 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 // Create a product
                 long productId = CreateProduct(categoryId, productName, stock, price);
 
-                List<Product> products= productService.FindProductByProductNameKeyword("Avatar");
+                List<Product> products = productService.FindProductByProductNameKeyword("Avatar");
 
                 Assert.AreEqual(products[0].categoryId, categoryId);
                 Assert.AreEqual(products[0].productName, productName);
                 Assert.AreEqual(products[0].stock, stock);
                 Assert.AreEqual(products[0].price, price);
 
-
-                productDao.Remove(productId);
                 //transaction.Complete() is not called, so Rollback is executed.
             }
         }
@@ -266,9 +254,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 Assert.AreEqual(products[0].stock, stock);
                 Assert.AreEqual(products[0].price, price);
 
-
-                productDao.Remove(productId);
-                productDao.Remove(productId2);
                 //transaction.Complete() is not called, so Rollback is executed.
             }
         }
@@ -298,13 +283,8 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 Assert.AreEqual(products[0].stock, stock);
                 Assert.AreEqual(products[0].price, price);
 
-
-                productDao.Remove(productId);
-                productDao.Remove(productId2);
                 //transaction.Complete() is not called, so Rollback is executed.
             }
         }
     }
-
-
 }

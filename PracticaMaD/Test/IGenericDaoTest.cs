@@ -70,6 +70,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             client.clientLanguage = "en";
             client.clientAddress = "County Hwy V, Hancock, WI 54943, EE. UU.";
             client.country = "EN";
+            client.rol = "USER";
 
             clientDao.Create(client);
         }
@@ -199,7 +200,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 newClient.clientLanguage = "en";
                 newClient.clientAddress = "County Hwy V, Hancock, WI 54943, EE. UU.";
                 newClient.country = "EN";
-
+                newClient.rol = "USER";
                 clientDao.Create(newClient);
 
                 bool clientExists = clientDao.Exists(newClient.clientId);

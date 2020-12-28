@@ -7,5 +7,8 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.CreditCardDao
     {
         CreditCard FindByCreditCardNumber(string CreditCardNumber);
 
+        CreditCard GetDefaultCreditCardByClientId(long clientId);
+
+        Boolean ExistsByCreditCardNumberAndClientId(string creditCardNumber, long clientId);
     }
 }

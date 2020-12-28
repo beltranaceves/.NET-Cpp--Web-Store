@@ -67,7 +67,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.User
                 ClientDetails clientDetails =
                     new ClientDetails(txtFirstName.Text, txtFirstSurname.Text, txtSecondSurname.Text,
                         txtEmail.Text, comboLanguage.SelectedValue, txtAddress.Text,
-                        comboCountry.SelectedValue);
+                        comboCountry.SelectedValue, "USER");
 
                 SessionManager.UpdateClientDetails(Context,
                     clientDetails);
