@@ -52,5 +52,22 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
             }
             ProductCommentDao.Update(comment);
         }
+
+        public ProductCommentDetails EditProductComment(long commentId, ProductCommentDetails productCommentDetails)
+        {
+            ProductComment productComment = ProductCommentDao.Find(commentId);
+            if (productComment == null)
+            {
+                throw new InstanceNotFoundException(commentId, "No se encuentra el comentario que quieres editar");
+            }
+            productComment.productId = productCommentDetails.ProductId;
+            productComment.commentText = productCommentDetails.CommentText;
+            productComment.commentDate = System.DateTime.Now;
+            productComment.clientId = productCommentDetails.ClientId;
+            productComment.Tag = productCommentDetails.Tags;
+            ProductCommentDao.Update(productComment);
+
+            return productCommentDetails;
+        }
     }
 }

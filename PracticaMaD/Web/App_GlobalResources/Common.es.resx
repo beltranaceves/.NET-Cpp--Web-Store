@@ -100,4 +100,10 @@
   <data name="mandatoryField" xml:space="preserve">
     <value>Campo Obligatorio</value>
   </data>
+  <data name="typeError" xml:space="preserve">
+    <value>Tipo de dato no válido</value>
+  </data>
+  <data name="keyword" xml:space="preserve">
+    <value>palabra clave</value>
+  </data>
 </root>

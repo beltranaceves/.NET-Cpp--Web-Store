@@ -92,8 +92,8 @@ C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\bin\Debug\
 C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\bin\Debug\Ninject.xml
 C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\bin\Debug\Ninject.Extensions.Interception.xml
 C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\bin\Debug\Ninject.Extensions.Interception.DynamicProxy.xml
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\obj\Debug\Model.csprojAssemblyReference.cache
 C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\obj\Debug\Model.csproj.CopyComplete
 C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\obj\Debug\PracticaMad.Model.exe
 C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\obj\Debug\PracticaMad.Model.pdb
-C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\obj\Debug\Model.csprojAssemblyReference.cache

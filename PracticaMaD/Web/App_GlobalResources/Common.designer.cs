@@ -61,11 +61,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to keyword.
+        /// </summary>
+        internal static string keyword {
+            get {
+                return ResourceManager.GetString("keyword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mandatory Field.
         /// </summary>
         internal static string mandatoryField {
             get {
                 return ResourceManager.GetString("mandatoryField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid data type.
+        /// </summary>
+        internal static string typeError {
+            get {
+                return ResourceManager.GetString("typeError", resourceCulture);
             }
         }
     }

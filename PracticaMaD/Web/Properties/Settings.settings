@@ -1,0 +1,24 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Es.Udc.DotNet.PracticaMad.Web.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ObjectDS_Product_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Es.Udc.DotNet.PracticaMad.Model.Services.ProductService.IProductService</Value>
+    </Setting>
+    <Setting Name="ObjectDS_Product_SelectMethod" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">FindProductByProductNameKeyword</Value>
+    </Setting>
+    <Setting Name="ObjectDS_Product_CountMethod" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">CountProductByProductNameKeyword</Value>
+    </Setting>
+    <Setting Name="ObjectDS_Product_StartIndexParameter" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">startIndex</Value>
+    </Setting>
+    <Setting Name="ObjectDS_Product_CountParameter" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">count</Value>
+    </Setting>
+    <Setting Name="PracticaMad_defaultCount" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">5</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

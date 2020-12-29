@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClientService;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.View.ApplicationObjects;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Util;
 using Es.Udc.DotNet.ModelUtil.IoC;
@@ -90,6 +91,13 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             set { clientService = value; }
         }
 
+        private static IProductService productService;
+
+        public IProductService ProductService
+        {
+            set { productService = value; }
+        }
+
         static SessionManager()
         {
             IIoCManager iocManager =
@@ -97,6 +105,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
 
             clientService = iocManager.Resolve<IClientService>();
         }
+
+        #region Client methods
 
         /// <summary>
         /// Registers a new client.
@@ -255,7 +265,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
         /// Finds the client details with the id stored in the session.
         /// </summary>
         /// <param name="context">The context.</param>
-        /// <returns></returns>
+        /// <returns>The client details</returns>
         public static ClientDetails FindClientDetails(HttpContext context)
         {
             ClientSession clientSession =
@@ -390,5 +400,25 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
                 return;
             }
         }
+
+        #endregion Client methods
+
+        #region Product Methods
+
+        /// <summary>
+        /// Find product by keyword.
+        /// </summary>
+        /// <param name="keyword"> The keyword . </param>
+        /// <param name="page"> The page of the pagination. </param>
+        /// <param name="size"> The size of the page. </param>
+        /// <returns>List of products with that keyword</returns>
+        public static List<ProductDetails> FindProductByProductNameKeyword(String keyword, int page, int size)
+
+        {
+            List<ProductDetails> products = productService.FindProductByProductNameKeyword(keyword, page, size);
+            return products;
+        }
+
+        #endregion Product Methods
     }
 }

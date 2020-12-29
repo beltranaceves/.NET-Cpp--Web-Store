@@ -22,6 +22,19 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
 
         #region IProductService Members
 
+        /// <summary>
+        /// Count all the products of the search.
+        /// </summary>
+        /// <param name="keyword">The product name keyword. </param>
+        /// <returns> The number of products </returns>
+        /// <exception cref="InstanceNotFoundException"/>
+        [Transactional]
+        public int NumberOfProductsSearched(string keyword)
+        {
+            int numberOfProduct = ProductDao.CountByProductNameKeywordAndCategory(keyword);
+            return numberOfProduct;
+        }
+
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
         public ProductDetails FindProductDetails(long productId)
@@ -34,32 +47,40 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
 
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
-        public void UpdateProduct(long productId, Product updatedProduct)
+        public ProductDetails UpdateProduct(long productId, ProductDetails updatedProduct)
         {
             Product product =
                 ProductDao.Find(productId);
 
-            product.productName = updatedProduct.productName;
-            product.price = updatedProduct.price;
-            product.registerDate = updatedProduct.registerDate;
-            product.stock = updatedProduct.stock;
-            product.categoryId = updatedProduct.categoryId;
+            product.productName = updatedProduct.ProductName;
+            product.price = updatedProduct.Price;
+            product.registerDate = updatedProduct.RegisterDate;
+            product.stock = updatedProduct.Stock;
+            product.categoryId = updatedProduct.CategoryId;
             //updatedProduct.productId = productId;
             ProductDao.Update(product);
+
+            return new ProductDetails(product.productName, product.price, product.registerDate, product.stock, product.categoryId);
         }
 
         [Transactional]
-        public List<Product> FindProductByProductNameKeyword(String keyword)
+        public List<ProductDetails> FindProductByProductNameKeyword(String keyword, int startIndex, int count)
         {
-            List<Product> products = ProductDao.FindByProductNameKeyword(keyword);
+            List<Product> products = ProductDao.FindByProductNameKeyword(keyword, startIndex, count);
             var item = new CacheItem("keyword", products.ToString());
             var policy = new CacheItemPolicy();
             Cache.Add(item, policy);
-            return products;
+
+            List<ProductDetails> productsDetails = new List<ProductDetails>();
+            foreach (Product p in products)
+            {
+                productsDetails.Add(new ProductDetails(p.productName, p.price, p.registerDate, p.stock, p.categoryId));
+            }
+            return productsDetails;
         }
 
         [Transactional]
-        public List<Product> FindProductByProductNameKeywordAndCategory(String keyword, long categoryId)
+        public List<ProductDetails> FindProductByProductNameKeywordAndCategory(String keyword, long categoryId)
         {
             Category category = CategoryDao.Find(categoryId);
 
@@ -67,11 +88,17 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             var item = new CacheItem("keyword" + categoryId.ToString(), products.ToString());
             var policy = new CacheItemPolicy();
             Cache.Add(item, policy);
-            return products;
+
+            List<ProductDetails> productsDetails = new List<ProductDetails>();
+            foreach (Product p in products)
+            {
+                productsDetails.Add(new ProductDetails(p.productName, p.price, p.registerDate, p.stock, p.categoryId));
+            }
+            return productsDetails;
         }
 
         [Transactional]
-        public List<Product> FindProductByCategory(long categoryId)
+        public List<ProductDetails> FindProductByCategory(long categoryId)
         {
             Category category = CategoryDao.Find(categoryId);
 
@@ -79,7 +106,13 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             var item = new CacheItem(categoryId.ToString(), products.ToString());
             var policy = new CacheItemPolicy();
             Cache.Add(item, policy);
-            return products;
+
+            List<ProductDetails> productsDetails = new List<ProductDetails>();
+            foreach (Product p in products)
+            {
+                productsDetails.Add(new ProductDetails(p.productName, p.price, p.registerDate, p.stock, p.categoryId));
+            }
+            return productsDetails;
         }
 
         #endregion IProductService Members

@@ -41,5 +41,15 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
         /// <param name="tags"> The tags to add to the comment. </param>
         [Transactional]
         void TagProductComment(long productCommentId, List<Tag> tags);
+
+        /// <summary>
+        /// Edit a comment
+        /// </summary>
+        /// <param name="commentId"> The comment Id. </param>
+        /// <param name="productCommentDetails"> The comment. </param>
+        /// <returns> The new comment</returns>
+        /// <exception cref="InstanceNotFoundException"/>
+        [Transactional]
+        ProductCommentDetails EditProductComment(long commentId, ProductCommentDetails productCommentDetails);
     }
 }
