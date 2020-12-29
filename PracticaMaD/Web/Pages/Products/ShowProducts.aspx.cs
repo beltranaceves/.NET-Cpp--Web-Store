@@ -69,7 +69,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
         {
             /* Get the Service */
             IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
-            IProductService productService = iocManager.Resolve<IProductService>();
+            IProductService productService = (IProductService)iocManager.Resolve<IProductService>();
 
             e.ObjectInstance = productService;
         }
