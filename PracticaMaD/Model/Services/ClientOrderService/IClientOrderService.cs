@@ -9,6 +9,8 @@ using Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderLineService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
 using Ninject;
 using System.Collections.Generic;
+using System;
+using Es.Udc.DotNet.PracticaMad.Model.Objetos;
 
 namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
 {
@@ -39,6 +41,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
         ClientOrderDetails FindOrder(long orderId);
 
         [Transactional]
-        long CreateOrder(long clientId, long cardId, string orderName, string clientOrderAddress, List<ClientOrderLineDetails> orderLine);
+        long CreateOrder(long clientId, long? cardId, string orderName, string clientOrderAddress, ShoppingCart shoppingCart);
     }
 }

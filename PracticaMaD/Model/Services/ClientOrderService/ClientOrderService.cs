@@ -6,6 +6,7 @@ using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientOrderDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientOrderLineDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.CreditCardDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao;
+using Es.Udc.DotNet.PracticaMad.Model.Objetos;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderLineService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.Exceptions;
@@ -35,23 +36,61 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
         public IClientOrderDao ClientOrderDao { private get; set; }
 
         [Transactional]
-        public long CreateOrder(long clientId, long cardId, string orderName, string clientOrderAddress, List<ClientOrderLineDetails> orderLine)
+        public long CreateOrder(long clientId, long? cardId, string orderName, string clientOrderAddress, ShoppingCart shoppingCart)
         {
+
             ClientOrder order = new ClientOrder();
-            order.clientId = clientId;
-            order.creditCardId = cardId;
-            order.orderDate = DateTime.Now;
-            order.clientOrderAddress = clientOrderAddress;
-            order.orderName = orderName;
 
-            long orderId = order.orderId;
-
-            for (int i = 0; i < orderLine.Count; i++)
+            // Pasamos los productos de la cesta a la ClientOrderLine
+            foreach (ShoppingCartLine Sline in shoppingCart.shoppingCartLines)
             {
-                long productId = orderLine.ElementAt(i).ProductId;
+                ClientOrderLine line = new ClientOrderLine();
+
+                Product p = ProductDao.Find(Sline.productId);
+
+                if (p.stock - Sline.quantity < 0)
+                    throw new NotEnoughStockException(p.productName, Sline.quantity);
+                
+                line.productId = p.productId;
+                line.quantity = Sline.quantity;
+            
+                order.ClientOrderLine.Add(line);
+            }
+
+            //Ahora procedemos a añadir los campos restantes
+
+            Client client = ClientDao.Find(clientId);
+
+          // Si no se nos especifican estos campos, cogemos los de por defecto del usuario
+
+            if (cardId != null)
+                order.creditCardId = cardId;
+            else 
+             order.creditCardId = CreditCardDao.GetDefaultCreditCardByClientId(clientId).cardId;
+
+
+            if (clientOrderAddress != null)
+                order.clientOrderAddress = clientOrderAddress;
+            else   
+                order.clientOrderAddress = client.clientAddress;
+
+            order.orderName = orderName;
+            long orderId = order.orderId;
+            order.orderDate = DateTime.Now;
+            order.clientId = clientId;
+            
+            double totalPrice = 0;
+
+
+            //Actualizamos los productos y se va calculando el coste total
+            //Comprobando siempre que hay stock suficiente
+            foreach (ClientOrderLine ol in order.ClientOrderLine)
+            {
+
+                long productId = ol.productId;
 
                 Product product = ProductDao.Find(productId);
-                int quantity = orderLine.ElementAt(i).Quantity;
+                int quantity = ol.quantity;
                 int stock = product.stock;
 
                 if (stock < quantity)
@@ -60,19 +99,19 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
                 product.stock = stock - quantity;
 
                 ProductDao.Update(product);
+
+                double price = quantity * product.price;
+
+                ol.price = price;
+
+                totalPrice += price;
+
             }
+
+            //Establecemos  el coste total de la compra y la generamos
+            order.totalPrize = totalPrice;
 
             ClientOrderDao.Create(order);
-            for (int i = 0; i < orderLine.Count; i++)
-            {
-                ClientOrderLine orderLineAdd = new ClientOrderLine();
-                orderLineAdd.orderId = order.orderId;
-                orderLineAdd.quantity = orderLine.ElementAt(i).Quantity;
-                orderLineAdd.productId = orderLine.ElementAt(i).ProductId;
-                orderLineAdd.price = orderLine.ElementAt(i).Price;
-
-                ClientOrderLineDao.Create(orderLineAdd);
-            }
 
             return order.orderId;
         }

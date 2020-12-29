@@ -108,6 +108,8 @@
     <Compile Include="DAOs\ProductDao\ProductDaoEntityFramework.cs" />
     <Compile Include="DAOs\TagDao\ITagDao.cs" />
     <Compile Include="DAOs\TagDao\TagDaoEntityFramework.cs" />
+    <Compile Include="Objetos\ShoppingCart.cs" />
+    <Compile Include="Objetos\ShoppingCartLine.cs" />
     <Compile Include="PracticaMad.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -145,6 +147,7 @@
     <Compile Include="Services\CreditCardService\CreditCardDetails.cs" />
     <Compile Include="Services\CreditCardService\CreditCardService.cs" />
     <Compile Include="Services\CreditCardService\ICreditCardService.cs" />
+    <Compile Include="Services\Exceptions\AlreadyAddedException.cs" />
     <Compile Include="Services\Exceptions\NotEnoughStockException.cs" />
     <Compile Include="Services\Exceptions\IncorrectPasswordException.cs" />
     <Compile Include="Services\ProductCommentService\IProductCommentService.cs" />
@@ -153,6 +156,8 @@
     <Compile Include="Services\ProductService\IProductService.cs" />
     <Compile Include="Services\ProductService\ProductDetails.cs" />
     <Compile Include="Services\ProductService\ProductService.cs" />
+    <Compile Include="Services\ShoppingCartService\IShoppingCartService.cs" />
+    <Compile Include="Services\ShoppingCartService\ShoppingCartService.cs" />
     <Compile Include="Services\TagService\ITagService.cs" />
     <Compile Include="Services\TagService\TagService.cs" />
     <Compile Include="Tag.cs">

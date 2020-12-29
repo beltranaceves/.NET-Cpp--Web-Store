@@ -14,6 +14,7 @@ using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientOrderDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentDao;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.TagDao;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService;
 
 namespace Es.Udc.DotNet.PracticaMad.Test
 {
@@ -55,6 +56,9 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
             kernel.Bind<IProductService>().
                 To<ProductService>();
+
+            kernel.Bind<IShoppingCartService>().
+                To<ShoppingCartService>();
 
             kernel.Bind<IProductCommentDao>().
                To<ProductCommentDaoEntityFramework>();
