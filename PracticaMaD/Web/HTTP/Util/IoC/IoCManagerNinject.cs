@@ -4,6 +4,8 @@ using System.Data.Entity;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientDao;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClientService;
 using Es.Udc.DotNet.ModelUtil.IoC;
+using Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService;
+using Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderLineService;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Util.IoC
 {
@@ -24,6 +26,15 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Util.IoC
             /* ClientService */
             kernel.Bind<IClientService>().
                 To<ClientService>();
+
+            /* ClientOrderService */
+            kernel.Bind<IClientOrderService>().
+                To<ClientOrderService>();
+
+            /* ClientOrderLineService */
+            kernel.Bind<IClientOrderLineService>().
+                To<ClientOrderLineService>();
+
 
             /* DbContext */
             string connectionString =
