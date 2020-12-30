@@ -8,6 +8,8 @@ using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.View.ApplicationObjects;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Util;
 using Es.Udc.DotNet.ModelUtil.IoC;
+using Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderService;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
 {
@@ -21,7 +23,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
     ///    for authenticated clients, and is only of interest to the view. The
     ///    ClientSession object stores the firstName and the clientId</item>
     ///
-    ///  <item>* The client's language and the client's address, stored in the
+    ///  <item>* The client's language and the client's country, stored in the
     ///     Locale object under the key <c>LOCALE_SESSION_ATTRIBUTE</c>. This
     ///     attribute is only present for authenticated clients, and is only of
     ///     interest to the view.</item>
@@ -84,6 +86,9 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
         public static readonly String CLIENT_SESSION_ATTRIBUTE =
                "ClientSession";
 
+        public static readonly String PRODUCT_SESSION_ATTRIBUTE =
+               "ProductSession";
+
         private static IClientService clientService;
 
         public IClientService ClientService
@@ -98,12 +103,23 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             set { productService = value; }
         }
 
+        private static IClientOrderService clientOrderService;
+
+        public IClientOrderService ClientOrderService
+        {
+            set { clientOrderService = value; }
+        }
+
         static SessionManager()
         {
             IIoCManager iocManager =
                 (IIoCManager)HttpContext.Current.Application["managerIoC"];
 
             clientService = iocManager.Resolve<IClientService>();
+
+            productService = iocManager.Resolve<IProductService>();
+
+            clientOrderService = iocManager.Resolve<IClientOrderService>();
         }
 
         #region Client methods
@@ -129,7 +145,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             clientSession.FirstName = clientDetails.FirstName;
 
             Locale locale = new Locale(clientDetails.ClientLanguage,
-                clientDetails.ClientAddress);
+                clientDetails.Country);
 
             UpdateSessionForAuthenticatedClient(context, clientSession, locale);
 
@@ -190,7 +206,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             clientSession.FirstName = loginResult.ClientName;
 
             Locale locale =
-                new Locale(loginResult.ClientLanguage, loginResult.ClientAddress);
+                new Locale(loginResult.ClientLanguage, loginResult.Country);
 
             UpdateSessionForAuthenticatedClient(context, clientSession, locale);
 
@@ -254,7 +270,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             /* Update client's session objects. */
 
             Locale locale = new Locale(clientDetails.ClientLanguage,
-                clientDetails.ClientAddress);
+                clientDetails.Country);
 
             clientSession.FirstName = clientDetails.FirstName;
 
@@ -406,17 +422,18 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
         #region Product Methods
 
         /// <summary>
-        /// Find product by keyword.
+        /// Finds the product details.
         /// </summary>
-        /// <param name="keyword"> The keyword . </param>
-        /// <param name="page"> The page of the pagination. </param>
-        /// <param name="size"> The size of the page. </param>
-        /// <returns>List of products with that keyword</returns>
-        public static List<ProductDetails> FindProductByProductNameKeyword(String keyword, int page, int size)
-
+        /// <param name="context"> The product id. </param>
+        /// <returns> The product details </returns>
+        /// <exception cref="InstanceNotFoundException"/>
+        public static ProductDetails FindProductDetails(HttpContext context)
         {
-            List<ProductDetails> products = productService.FindProductByProductNameKeyword(keyword, page, size);
-            return products;
+            ProductSession productSession =
+                     (ProductSession)context.Session[PRODUCT_SESSION_ATTRIBUTE];
+            // ProductDetails product = productService.FindProductDetails(productSession.ProductId);
+            ProductDetails product = productService.FindProductDetails(1);
+            return product;
         }
 
         #endregion Product Methods

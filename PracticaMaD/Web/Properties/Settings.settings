@@ -20,5 +20,20 @@
     <Setting Name="PracticaMad_defaultCount" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">5</Value>
     </Setting>
+    <Setting Name="ObjectDS_OwnOrders_CountMethod" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">GetNumberOfOrdersByClient</Value>
+    </Setting>
+    <Setting Name="ObjectDS_OwnOrders_StartIndexParameter" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">startIndex</Value>
+    </Setting>
+    <Setting Name="ObjectDS_OwnOrders_CountParameter" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">count</Value>
+    </Setting>
+    <Setting Name="ObjectDS_OwnOrders_SelectMethod" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">GetClientOrders</Value>
+    </Setting>
+    <Setting Name="ObjectDS_OwnOrders_Service" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Es.Udc.DotNet.PracticaMad.Model.Services.ProductService.IClientOrderService</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

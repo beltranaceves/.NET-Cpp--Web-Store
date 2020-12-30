@@ -15,6 +15,15 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.User
     {
 
         /// <summary>
+        /// lclMenuExplanation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Localize lclMenuExplanation;
+
+        /// <summary>
         /// UpdateUserProfileForm control.
         /// </summary>
         /// <remarks>

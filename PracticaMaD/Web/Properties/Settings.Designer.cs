@@ -76,5 +76,50 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Properties {
                 return ((int)(this["PracticaMad_defaultCount"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("GetNumberOfOrdersByClient")]
+        public string ObjectDS_OwnOrders_CountMethod {
+            get {
+                return ((string)(this["ObjectDS_OwnOrders_CountMethod"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("startIndex")]
+        public string ObjectDS_OwnOrders_StartIndexParameter {
+            get {
+                return ((string)(this["ObjectDS_OwnOrders_StartIndexParameter"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("count")]
+        public string ObjectDS_OwnOrders_CountParameter {
+            get {
+                return ((string)(this["ObjectDS_OwnOrders_CountParameter"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("GetClientOrders")]
+        public string ObjectDS_OwnOrders_SelectMethod {
+            get {
+                return ((string)(this["ObjectDS_OwnOrders_SelectMethod"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Es.Udc.DotNet.PracticaMad.Model.Services.ProductService.IClientOrderService")]
+        public string ObjectDS_OwnOrders_Service {
+            get {
+                return ((string)(this["ObjectDS_OwnOrders_Service"]));
+            }
+        }
     }
 }

@@ -61,7 +61,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to keyword.
+        ///   Looks up a localized string similar to Keyword.
         /// </summary>
         internal static string keyword {
             get {
@@ -75,6 +75,24 @@ namespace Resources {
         internal static string mandatoryField {
             get {
                 return ResourceManager.GetString("mandatoryField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prize.
+        /// </summary>
+        internal static string prize {
+            get {
+                return ResourceManager.GetString("prize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product Name.
+        /// </summary>
+        internal static string productName {
+            get {
+                return ResourceManager.GetString("productName", resourceCulture);
             }
         }
         

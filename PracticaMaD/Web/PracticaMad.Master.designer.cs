@@ -123,6 +123,33 @@ namespace Es.Udc.DotNet.PracticaMad.Web
         protected global::System.Web.UI.WebControls.HyperLink lnkLogout;
 
         /// <summary>
+        /// lnkHome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkHome;
+
+        /// <summary>
+        /// lnkFindProducts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkFindProducts;
+
+        /// <summary>
+        /// lnkOwnOrders control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkOwnOrders;
+
+        /// <summary>
         /// ContentPlaceHolder_BodyContent control.
         /// </summary>
         /// <remarks>

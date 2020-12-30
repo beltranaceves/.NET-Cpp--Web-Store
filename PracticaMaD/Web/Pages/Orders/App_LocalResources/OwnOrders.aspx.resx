@@ -97,19 +97,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="mandatoryField" xml:space="preserve">
-    <value>Campo Obrigatorio</value>
-  </data>
-  <data name="typeError" xml:space="preserve">
-    <value>Tipo de dato non válido</value>
-  </data>
-  <data name="keyword" xml:space="preserve">
-    <value>Palabra clave</value>
-  </data>
-  <data name="productName" xml:space="preserve">
-    <value>Nome do Produto</value>
-  </data>
-  <data name="prize" xml:space="preserve">
-    <value>Prezo</value>
+  <data name="orderName" xml:space="preserve">
+    <value>Order Name</value>
   </data>
 </root>

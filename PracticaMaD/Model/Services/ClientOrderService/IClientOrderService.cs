@@ -9,6 +9,7 @@ using Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderLineService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
 using Ninject;
 using System.Collections.Generic;
+using Es.Udc.DotNet.PracticaMad.Model;
 
 namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
 {
@@ -30,7 +31,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
         IClientOrderLineDao ClientOrderLineDao { set; }
 
         [Transactional]
-        List<ClientOrderDetails> getClientOrders(long clientId);
+        List<ClientOrder> GetClientOrders(long clientId, int startIndex, int count);
 
         [Transactional]
         int GetNumberOfOrdersByClient(long clientId);

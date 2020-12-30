@@ -78,51 +78,15 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
         }
 
         [Transactional]
-        public List<ClientOrderDetails> getClientOrders(long clientId)
+        public List<ClientOrder> GetClientOrders(long clientId, int startIndex, int count)
         {
-            Client Client = ClientDao.Find(clientId);
+            List<ClientOrder> clientOrders = ClientOrderDao.FindByClientId(clientId, startIndex, count);
 
-            List<ClientOrderDetails> clientOrdersDetails = new List<ClientOrderDetails>();
-
-            List<ClientOrder> clientOrders = Client.ClientOrder.ToList();
-
-            int k = 0;
-
-            for (int i = 0; i < clientOrders.Count; i++)
-            {
-                if (k == clientOrders.Count)
-                    break;
-
-                List<ClientOrderLine> clientOrderLines = clientOrders.ElementAt(i).ClientOrderLine.ToList();
-
-                List<ClientOrderLineDetails> clientOrderLinesDetails = new List<ClientOrderLineDetails>();
-
-                for (int j = 0; j < clientOrderLines.Count; j++)
-                {
-                    long productId = clientOrderLines.ElementAt(j).Product.productId;
-                    int quantity = clientOrderLines.ElementAt(j).quantity;
-                    double price = (double)clientOrderLines.ElementAt(j).price;
-
-                    ClientOrderLineDetails clientOrderLine = new ClientOrderLineDetails(productId, quantity, price);
-
-                    clientOrderLinesDetails.Add(clientOrderLine);
-                }
-
-                long cardId = clientOrders.ElementAt(i).CreditCard.cardId;
-
-                //string cardNumber = CreditCardDao.Find(clientOrders.ElementAt(i).creditCardId).cardNumber;
-                String postalAddress = clientOrders.ElementAt(i).clientOrderAddress;
-                DateTime orderDate = clientOrders.ElementAt(i).orderDate;
-                String orderName = clientOrders.ElementAt(i).orderName;
-                clientOrdersDetails.Add(new ClientOrderDetails(orderDate, orderName, cardId, postalAddress, clientId));
-
-                k++;
-            }
-            return clientOrdersDetails;
+            return clientOrders;
         }
 
         //Returns the order given its id
-
+        [Transactional]
         public ClientOrderDetails FindOrder(long orderId)
         {
             ClientOrder order = ClientOrderDao.Find(orderId);
@@ -134,7 +98,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
         }
 
         //Counts how many orders a client has
-
+        [Transactional]
         public int GetNumberOfOrdersByClient(long clientId)
         {
             int number = 0;
