@@ -6,6 +6,8 @@ using Es.Udc.DotNet.PracticaMad.Model.Services.ClientService;
 using Es.Udc.DotNet.ModelUtil.IoC;
 using Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService;
 using Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderLineService;
+using Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService;
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.CreditCardDao;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Util.IoC
 {
@@ -30,6 +32,15 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Util.IoC
             /* ClientOrderService */
             kernel.Bind<IClientOrderService>().
                 To<ClientOrderService>();
+
+            /* CreditCardService */
+            kernel.Bind<ICreditCardService>().
+                To<CreditCardService>();
+
+            /* CreditCardDao */
+            kernel.Bind<ICreditCardDao>().
+                To<CreditCardDaoEntityFramework>();
+
 
             /* ClientOrderLineService */
             kernel.Bind<IClientOrderLineService>().

@@ -43,6 +43,16 @@
                     <asp:HyperLink ID="lnkLogout" runat="server"
                         NavigateUrl="~/Pages/User/Logout.aspx"
                         meta:resourcekey="lnkLogout" />
+                     <asp:Label ID="lblDash4" runat="server" Text="-" />
+                    <asp:HyperLink ID="lnkAddCard" runat="server"
+                        NavigateUrl="~/Pages/Card/AddCard.aspx"
+                        meta:resourcekey="lnkAddCard" />
+                     <asp:Label ID="lblDash5" runat="server" Text="-" />
+                    <asp:HyperLink ID="lnkSeeMyCards" runat="server"
+                        NavigateUrl="~/Pages/Card/SeeClientCards.aspx"
+                        meta:resourcekey="lnkSeeMyCards" />
+
+
                 </asp:ContentPlaceHolder>
             </span>
         </div>

@@ -127,6 +127,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HTTP\Session\CreditCardSession.cs" />
     <Compile Include="HTTP\Session\ClientSession.cs" />
     <Compile Include="HTTP\Session\SessionManager.cs" />
     <Compile Include="HTTP\Session\SpecificCulturePage.cs">
@@ -276,6 +277,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\User\App_LocalResources\UpdateClientDetails.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Card\App_LocalResources\AddCard.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Card\App_LocalResources\AddCard.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Card\App_LocalResources\AddCard.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Card\App_LocalResources\SeeClientCards.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Card\App_LocalResources\SeeClientCards.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Card\App_LocalResources\SeeClientCards.aspx.es.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -129,11 +129,17 @@
   <data name="lclPageTitle.Text" xml:space="preserve">
     <value>PracticaMad: A Sample MVC Web Application with .NET</value>
   </data>
+  <data name="lnkAddCard.Text" xml:space="preserve">
+    <value>Add card</value>
+  </data>
   <data name="lnkAuthenticate.Text" xml:space="preserve">
     <value>Authentication</value>
   </data>
   <data name="lnkLogout.Text" xml:space="preserve">
     <value>Logout</value>
+  </data>
+  <data name="lnkSeeMyCards.Text" xml:space="preserve">
+    <value>See own cards</value>
   </data>
   <data name="lnkUpdate.Text" xml:space="preserve">
     <value>Update Profile</value>
