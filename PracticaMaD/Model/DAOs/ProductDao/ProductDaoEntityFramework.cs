@@ -49,7 +49,19 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
             return productList;
         }
 
-        public List<Product> FindByProductNameKeyword(String keyword)
+        public int CountByProductNameKeywordAndCategory(String keyword)
+        {
+            DbSet<Product> products = Context.Set<Product>();
+
+            var result =
+                (from p in products
+                 where p.productName.ToLower().Contains(keyword.ToLower())
+                 select p).Count();
+
+            return result;
+        }
+
+        public List<Product> FindByProductNameKeyword(String keyword, int startIndex, int count)
         {
             List<Product> productList = null;
 
@@ -58,7 +70,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
             var result =
                 (from p in products
                  where p.productName.ToLower().Contains(keyword.ToLower())
-                 select p).ToList();
+                 select p).OrderBy(p => p.productId).Skip(startIndex).Take(count).ToList();
 
             productList = result;
 

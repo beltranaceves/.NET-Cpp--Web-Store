@@ -53,8 +53,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         public TestContext TestContext
         { get; set; }
 
-        #region Additional test attributes
-
         private static long CreateProduct(long categoryId, string productName, int stock, float price)
         {
             Product p = new Product();
@@ -79,43 +77,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
             return category.categoryId;
         }
-
-        //Use ClassInitialize to run code before running the first test in the class
-        [ClassInitialize()]
-        public static void MyClassInitialize(TestContext testContext)
-        {
-            kernel = TestManager.ConfigureNInjectKernel();
-
-            productDao = kernel.Get<IProductDao>();
-            categoryDao = kernel.Get<ICategoryDao>();
-            productCommentDao = kernel.Get<IProductCommentDao>();
-            tagDao = kernel.Get<ITagDao>();
-            clientDao = kernel.Get<IClientDao>();
-            productCommentService = kernel.Get<IProductCommentService>();
-            productService = kernel.Get<IProductService>();
-            clientService = kernel.Get<IClientService>();
-        }
-
-        //Use ClassCleanup to run code after all tests in a class have run
-        [ClassCleanup()]
-        public static void MyClassCleanup()
-        {
-            TestManager.ClearNInjectKernel(kernel);
-        }
-
-        //Use TestInitialize to run code before running each test
-        [TestInitialize()]
-        public void MyTestInitialize()
-        {
-        }
-
-        //Use TestCleanup to run code after each test has run
-        [TestCleanup()]
-        public void MyTestCleanup()
-        {
-        }
-
-        #endregion Additional test attributes
 
         [TestMethod()]
         public void AddProductCommentAndFindByProductIdTest()
@@ -145,9 +106,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 Assert.AreEqual(productComments[0].ClientId, clientId);
                 Assert.AreEqual(productComments[0].ProductId, productId);
 
-                productCommentDao.Remove(productComments[0].CommentId);
-                productDao.Remove(productId);
-                clientDao.Remove(clientId);
                 //transaction.Complete() is not called, so Rollback is executed.
             }
         }
@@ -169,7 +127,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 productCommentService.AddProductComment(productId, productCommentText, clientId);
 
-                clientDao.Remove(clientId);
                 //transaction.Complete() is not called, so Rollback is executed.
             }
         }
@@ -193,9 +150,6 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 List<ProductCommentDetails> productComments = productCommentService.FindByProductId(productId);
 
-                productCommentDao.Remove(productComments[0].CommentId);
-                productDao.Remove(productId);
-                clientDao.Remove(clientId);
                 //transaction.Complete() is not called, so Rollback is executed.
             }
         }
@@ -241,5 +195,44 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 //transaction.Complete() is not called, so Rollback is executed.
             }
         }
+
+        #region Additional test attributes
+
+        //Use ClassInitialize to run code before running the first test in the class
+        [ClassInitialize()]
+        public static void MyClassInitialize(TestContext testContext)
+        {
+            kernel = TestManager.ConfigureNInjectKernel();
+
+            productDao = kernel.Get<IProductDao>();
+            categoryDao = kernel.Get<ICategoryDao>();
+            productCommentDao = kernel.Get<IProductCommentDao>();
+            tagDao = kernel.Get<ITagDao>();
+            clientDao = kernel.Get<IClientDao>();
+            productCommentService = kernel.Get<IProductCommentService>();
+            productService = kernel.Get<IProductService>();
+            clientService = kernel.Get<IClientService>();
+        }
+
+        //Use ClassCleanup to run code after all tests in a class have run
+        [ClassCleanup()]
+        public static void MyClassCleanup()
+        {
+            TestManager.ClearNInjectKernel(kernel);
+        }
+
+        //Use TestInitialize to run code before running each test
+        [TestInitialize()]
+        public void MyTestInitialize()
+        {
+        }
+
+        //Use TestCleanup to run code after each test has run
+        [TestCleanup()]
+        public void MyTestCleanup()
+        {
+        }
+
+        #endregion Additional test attributes
     }
 }

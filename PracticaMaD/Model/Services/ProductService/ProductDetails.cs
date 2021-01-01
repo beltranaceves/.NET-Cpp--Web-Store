@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
 {
@@ -22,7 +23,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
 
         #endregion Properties Region
 
-
         public ProductDetails(String productName, double price, DateTime registerDate, int stock, long categoryId)
         {
             this.ProductName = productName;
@@ -31,7 +31,5 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             this.Stock = stock;
             this.CategoryId = categoryId;
         }
-
-
     }
 }

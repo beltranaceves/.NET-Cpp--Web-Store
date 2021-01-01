@@ -16,6 +16,15 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         ICategoryDao CategoryDao { set; }
 
         /// <summary>
+        /// Count all the products of the search.
+        /// </summary>
+        /// <param name="keyword">The product name keyword. </param>
+        /// <returns> The number of products </returns>
+        /// <exception cref="InstanceNotFoundException"/>
+        [Transactional]
+        int NumberOfProductsSearched(string keyword);
+
+        /// <summary>
         /// Finds the product details.
         /// </summary>
         /// <param name="productId"> The product id. </param>
@@ -31,14 +40,17 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         /// <param name="updatedProduct"> The updatedProduct data. </param>
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
-        void UpdateProduct(long productId, Product updatedProduct);
+        ProductDetails UpdateProduct(long productId, ProductDetails updatedProduct);
 
         /// <summary>
         /// Finds products by name keyword.
         /// </summary>
         /// <param name="keyword"> The product name keyword. </param>
+        /// <param name="startIndex"> the index (starting from 0) of the first
+        /// object to return.</param>
+        /// <param name="count">The maximum number of objects to return.</param>
         [Transactional]
-        List<Product> FindProductByProductNameKeyword(String keyword);
+        List<ProductDetails> FindProductByProductNameKeyword(String keyword, int startIndex, int count);
 
         /// <summary>
         /// Finds products by name keyword and category.
@@ -47,7 +59,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         /// <param name="category"> The product category. </param>
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
-        List<Product> FindProductByProductNameKeywordAndCategory(String keyword, long categoryId);
+        List<ProductDetails> FindProductByProductNameKeywordAndCategory(String keyword, long categoryId);
 
         /// <summary>
         /// Finds products by category.
@@ -55,6 +67,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         /// <param name="category"> The product category. </param>
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
-        List<Product> FindProductByCategory(long categoryId);
+        List<ProductDetails> FindProductByCategory(long categoryId);
     }
 }

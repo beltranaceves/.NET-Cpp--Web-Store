@@ -57,10 +57,31 @@
             </span>
         </div>
 
-        <!-- Body content. -->
-        <div id="content">
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder_BodyContent" runat="server" />
+        <!-- Main Content. -->
+        <div id="pageBody">
+
+            <div id="sidebar">
+
+                <ul>
+
+                    <li>
+                        <asp:HyperLink ID="lnkHome" runat="server"
+                            meta:resourcekey="lnkHome" NavigateUrl="~/Pages/MainPage.aspx" /></li>
+                    <li>
+                        <asp:HyperLink ID="lnkFindProducts" runat="server"
+                            meta:resourcekey="lnkFindProducts" NavigateUrl="~/Pages/Products/FindProducts.aspx" /></li>
+                    <li>
+                        <asp:HyperLink ID="lnkOwnOrders" runat="server"
+                            meta:resourcekey="lnkOwnOrders" NavigateUrl="~/Pages/Orders/OwnOrders.aspx" /></li>
+                </ul>
+            </div>
+
+            <div id="content">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder_BodyContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
         </div>
+
         <!-- Footer. -->
         <div id="footer">
             <asp:Localize ID="lclFooter" runat="server" meta:resourcekey="lclFooter" />

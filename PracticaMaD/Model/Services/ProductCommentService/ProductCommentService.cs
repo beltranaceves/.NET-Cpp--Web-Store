@@ -26,7 +26,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
             return productComments;
         }
 
-        public void AddProductComment(long productId, String commentText, long clientId)
+        public ProductComment AddProductComment(long productId, String commentText, long clientId)
         {
             ProductComment productComment = new ProductComment();
 
@@ -36,6 +36,8 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
             productComment.clientId = clientId;
 
             ProductCommentDao.Create(productComment);
+
+            return productComment;
         }
 
         public void TagProductComment(long productCommentId, List<Tag> tags)
@@ -51,6 +53,23 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
                 comment.Tag.Add(tag);
             }
             ProductCommentDao.Update(comment);
+        }
+
+        public ProductCommentDetails EditProductComment(long commentId, ProductCommentDetails productCommentDetails)
+        {
+            ProductComment productComment = ProductCommentDao.Find(commentId);
+            if (productComment == null)
+            {
+                throw new InstanceNotFoundException(commentId, "No se encuentra el comentario que quieres editar");
+            }
+            productComment.productId = productCommentDetails.ProductId;
+            productComment.commentText = productCommentDetails.CommentText;
+            productComment.commentDate = System.DateTime.Now;
+            productComment.clientId = productCommentDetails.ClientId;
+            productComment.Tag = productCommentDetails.Tags;
+            ProductCommentDao.Update(productComment);
+
+            return productCommentDetails;
         }
     }
 }

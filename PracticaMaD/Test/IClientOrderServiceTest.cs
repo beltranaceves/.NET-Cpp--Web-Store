@@ -249,14 +249,11 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 long clientOrderId = clientOrderService.CreateOrder(clientId, cardId, "PedidoEjemplo", "toHome", shoppingCart);
 
                 // FinOrder
-                List<ClientOrderDetails> clientOrders = clientOrderService.getClientOrders(clientId);
+                List<ClientOrder> clientOrders = clientOrderService.GetClientOrders(clientId, 0, 5);
 
                 ClientOrder clientOrder = clientOrderDao.Find(clientOrderId);
 
-                Assert.AreEqual(clientOrders.ElementAt(0).OrderName, clientOrder.orderName);
-                Assert.AreEqual(clientOrders.ElementAt(0).ClientId, clientOrder.clientId);
-                Assert.AreEqual(clientOrders.ElementAt(0).CreditCardId, clientOrder.creditCardId);
-                Assert.AreEqual(clientOrders.ElementAt(0).ClientOrderAddress, "toHome");
+                Assert.AreEqual(clientOrders.ElementAt(0), clientOrder);
             }
         }
 

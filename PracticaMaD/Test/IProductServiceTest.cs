@@ -44,7 +44,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         public TestContext TestContext
         { get; set; }
 
-        #region Additional test attributes
+        #region metodos apoyo
 
         private static long CreateProduct(long categoryId, string productName, int stock, float price)
         {
@@ -71,38 +71,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             return category.categoryId;
         }
 
-        //Use ClassInitialize to run code before running the first test in the class
-        [ClassInitialize()]
-        public static void MyClassInitialize(TestContext testContext)
-        {
-            kernel = TestManager.ConfigureNInjectKernel();
-
-            productDao = kernel.Get<IProductDao>();
-            categoryDao = kernel.Get<ICategoryDao>();
-
-            productService = kernel.Get<IProductService>();
-        }
-
-        //Use ClassCleanup to run code after all tests in a class have run
-        [ClassCleanup()]
-        public static void MyClassCleanup()
-        {
-            TestManager.ClearNInjectKernel(kernel);
-        }
-
-        //Use TestInitialize to run code before running each test
-        [TestInitialize()]
-        public void MyTestInitialize()
-        {
-        }
-
-        //Use TestCleanup to run code after each test has run
-        [TestCleanup()]
-        public void MyTestCleanup()
-        {
-        }
-
-        #endregion Additional test attributes
+        #endregion metodos apoyo
 
         [TestMethod()]
         public void FindProductDetailsTest()
@@ -155,20 +124,13 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 // Create a product
                 long productId = CreateProduct(categoryId, productName, stock, price);
 
-                Product p = new Product();
-
-                p.productId = productId;
-                p.categoryId = categoryId;
-                p.productName = productName;
-                p.stock = stock + 1;
-                p.price = price;
-                p.registerDate = DateTime.Now;
+                ProductDetails p = new ProductDetails(productName, price, DateTime.Now, stock + 12, categoryId);
 
                 productService.UpdateProduct(productId, p);
 
                 ProductDetails productDetails = productService.FindProductDetails(productId);
 
-                Assert.AreEqual(productDetails.Stock, stock + 1);
+                Assert.AreEqual(productDetails.Stock, stock + 12);
 
                 //transaction.Complete() is not called, so Rollback is executed.
             }
@@ -189,14 +151,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 // Create a product
                 long productId = 2;
 
-                Product p = new Product();
-
-                p.productId = productId;
-                p.categoryId = categoryId;
-                p.productName = productName;
-                p.stock = stock + 1;
-                p.price = price;
-                p.registerDate = DateTime.Now;
+                ProductDetails p = new ProductDetails(productName, price, DateTime.Now, stock + 12, categoryId);
 
                 productService.UpdateProduct(productId, p);
 
@@ -218,12 +173,12 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 // Create a product
                 long productId = CreateProduct(categoryId, productName, stock, price);
 
-                List<Product> products = productService.FindProductByProductNameKeyword("Avatar");
+                List<ProductDetails> products = productService.FindProductByProductNameKeyword("Avatar", 0, 5);
 
-                Assert.AreEqual(products[0].categoryId, categoryId);
-                Assert.AreEqual(products[0].productName, productName);
-                Assert.AreEqual(products[0].stock, stock);
-                Assert.AreEqual(products[0].price, price);
+                Assert.AreEqual(products[0].CategoryId, categoryId);
+                Assert.AreEqual(products[0].ProductName, productName);
+                Assert.AreEqual(products[0].Stock, stock);
+                Assert.AreEqual(products[0].Price, price);
 
                 //transaction.Complete() is not called, so Rollback is executed.
             }
@@ -247,12 +202,12 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 long productId2 = CreateProduct(categoryId2, productName, stock + 2, price);
 
-                List<Product> products = productService.FindProductByProductNameKeywordAndCategory("Avatar", categoryId);
+                List<ProductDetails> products = productService.FindProductByProductNameKeywordAndCategory("Avatar", categoryId);
 
-                Assert.AreEqual(products[0].categoryId, categoryId);
-                Assert.AreEqual(products[0].productName, productName);
-                Assert.AreEqual(products[0].stock, stock);
-                Assert.AreEqual(products[0].price, price);
+                Assert.AreEqual(products[0].CategoryId, categoryId);
+                Assert.AreEqual(products[0].ProductName, productName);
+                Assert.AreEqual(products[0].Stock, stock);
+                Assert.AreEqual(products[0].Price, price);
 
                 //transaction.Complete() is not called, so Rollback is executed.
             }
@@ -276,15 +231,50 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 long productId2 = CreateProduct(categoryId2, productName, stock + 2, price);
 
-                List<Product> products = productService.FindProductByCategory(categoryId);
+                List<ProductDetails> products = productService.FindProductByCategory(categoryId);
 
-                Assert.AreEqual(products[0].categoryId, categoryId);
-                Assert.AreEqual(products[0].productName, productName);
-                Assert.AreEqual(products[0].stock, stock);
-                Assert.AreEqual(products[0].price, price);
+                Assert.AreEqual(products[0].CategoryId, categoryId);
+                Assert.AreEqual(products[0].ProductName, productName);
+                Assert.AreEqual(products[0].Stock, stock);
+                Assert.AreEqual(products[0].Price, price);
 
                 //transaction.Complete() is not called, so Rollback is executed.
             }
         }
+
+        #region Additional test attributes
+
+        //Use ClassInitialize to run code before running the first test in the class
+        [ClassInitialize()]
+        public static void MyClassInitialize(TestContext testContext)
+        {
+            kernel = TestManager.ConfigureNInjectKernel();
+
+            productDao = kernel.Get<IProductDao>();
+            categoryDao = kernel.Get<ICategoryDao>();
+
+            productService = kernel.Get<IProductService>();
+        }
+
+        //Use ClassCleanup to run code after all tests in a class have run
+        [ClassCleanup()]
+        public static void MyClassCleanup()
+        {
+            TestManager.ClearNInjectKernel(kernel);
+        }
+
+        //Use TestInitialize to run code before running each test
+        [TestInitialize()]
+        public void MyTestInitialize()
+        {
+        }
+
+        //Use TestCleanup to run code after each test has run
+        [TestCleanup()]
+        public void MyTestCleanup()
+        {
+        }
+
+        #endregion Additional test attributes
     }
 }

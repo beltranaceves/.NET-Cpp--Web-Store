@@ -144,4 +144,13 @@
   <data name="lnkUpdate.Text" xml:space="preserve">
     <value>Actualizar información de usuario</value>
   </data>
+  <data name="lnkOwnOrders.Text" xml:space="preserve">
+    <value>Meus pedidos</value>
+  </data>
+  <data name="lnkHome.Text" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="lnkFindProducts.Text" xml:space="preserve">
+    <value>Buscar Produtos</value>
+  </data>
 </root>

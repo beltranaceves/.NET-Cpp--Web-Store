@@ -4,10 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClientService;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.View.ApplicationObjects;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Util;
 using Es.Udc.DotNet.ModelUtil.IoC;
 using Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderService;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService;
 using Es.Udc.DotNet.PracticaMad.Model;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
@@ -22,7 +25,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
     ///    for authenticated clients, and is only of interest to the view. The
     ///    ClientSession object stores the firstName and the clientId</item>
     ///
-    ///  <item>* The client's language and the client's address, stored in the
+    ///  <item>* The client's language and the client's country, stored in the
     ///     Locale object under the key <c>LOCALE_SESSION_ATTRIBUTE</c>. This
     ///     attribute is only present for authenticated clients, and is only of
     ///     interest to the view.</item>
@@ -87,6 +90,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
 
         public static readonly String CREDITCARD_SESSION_ATTRIBUTE =
              "CreditCardSession";
+        public static readonly String PRODUCT_SESSION_ATTRIBUTE =
+               "ProductSession";
 
         private static IClientService clientService;
 
@@ -106,6 +111,26 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
 
 
 
+        private static IProductService productService;
+
+        public IProductService ProductService
+        {
+            set { productService = value; }
+        }
+
+        private static IClientOrderService clientOrderService;
+
+        public IClientOrderService ClientOrderService
+        {
+            set { clientOrderService = value; }
+        }
+
+        private static IProductCommentService productCommentService;
+
+        public IProductCommentService ProductCommentService
+        {
+            set { productCommentService = value; }
+        }
 
         static SessionManager()
         {
@@ -116,7 +141,15 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             creditCardService = iocManager.Resolve<ICreditCardService>();
 
 
+
+            productService = iocManager.Resolve<IProductService>();
+
+            clientOrderService = iocManager.Resolve<IClientOrderService>();
+
+            productCommentService = iocManager.Resolve<IProductCommentService>();
         }
+
+        #region Client methods
 
         /// <summary>
         /// Registers a new client.
@@ -139,7 +172,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             clientSession.FirstName = clientDetails.FirstName;
 
             Locale locale = new Locale(clientDetails.ClientLanguage,
-                clientDetails.ClientAddress);
+                clientDetails.Country);
 
             UpdateSessionForAuthenticatedClient(context, clientSession, locale);
 
@@ -200,7 +233,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             clientSession.FirstName = loginResult.ClientName;
 
             Locale locale =
-                new Locale(loginResult.ClientLanguage, loginResult.ClientAddress);
+                new Locale(loginResult.ClientLanguage, loginResult.Country);
 
             UpdateSessionForAuthenticatedClient(context, clientSession, locale);
 
@@ -264,7 +297,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             /* Update client's session objects. */
 
             Locale locale = new Locale(clientDetails.ClientLanguage,
-                clientDetails.ClientAddress);
+                clientDetails.Country);
 
             clientSession.FirstName = clientDetails.FirstName;
 
@@ -275,7 +308,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
         /// Finds the client details with the id stored in the session.
         /// </summary>
         /// <param name="context">The context.</param>
-        /// <returns></returns>
+        /// <returns>The client details</returns>
         public static ClientDetails FindClientDetails(HttpContext context)
         {
             ClientSession clientSession =
@@ -443,6 +476,48 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             creditCardService.SelectDefaultCard(clientSession.ClientId, cardId);
         }
 
+        #endregion Client methods
+
+        #region Product Methods
+
+        /// <summary>
+        /// Finds the product details.
+        /// </summary>
+        /// <param name="context"> The product id. </param>
+        /// <returns> The product details </returns>
+        /// <exception cref="InstanceNotFoundException"/>
+        public static ProductDetails FindProductDetails(HttpContext context)
+        {
+            ProductSession productSession =
+                     (ProductSession)context.Session[PRODUCT_SESSION_ATTRIBUTE];
+            // ProductDetails product = productService.FindProductDetails(productSession.ProductId);
+            ProductDetails product = productService.FindProductDetails(1);
+            return product;
+        }
+
+        #endregion Product Methods
+
+        #region ProductComment Methods
+
+        /// <summary>
+        /// Add Comment.
+        /// </summary>
+        /// <param name="context"> The product and client id. </param>
+        /// <param name="comment"> The text of the comment. </param>
+        /// <exception cref="InstanceNotFoundException"/>
+        public static ProductComment AddProductComment(HttpContext context, string comment)
+        {
+            ProductSession productSession =
+                     (ProductSession)context.Session[PRODUCT_SESSION_ATTRIBUTE];
+            ClientSession clientSession =
+                   (ClientSession)context.Session[CLIENT_SESSION_ATTRIBUTE];
+
+            // productCommentService.AddProductComment(productSession.ProductId, comment, clientSession.ClientId);
+            ProductComment prodComment = productCommentService.AddProductComment(1, comment, clientSession.ClientId);
+            return prodComment;
+        }
+
+        #endregion ProductComment Methods
     }
 }
  

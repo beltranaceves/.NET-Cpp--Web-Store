@@ -32,7 +32,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
         IClientOrderLineDao ClientOrderLineDao { set; }
 
         [Transactional]
-        List<ClientOrderDetails> getClientOrders(long clientId);
+        List<ClientOrder> GetClientOrders(long clientId, int startIndex, int count);
 
         [Transactional]
         int GetNumberOfOrdersByClient(long clientId);
