@@ -10,6 +10,8 @@ using Es.Udc.DotNet.PracticaMad.Web.HTTP.Util;
 using Es.Udc.DotNet.ModelUtil.IoC;
 using Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderService;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService;
+using Es.Udc.DotNet.PracticaMad.Model;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
 {
@@ -110,6 +112,13 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             set { clientOrderService = value; }
         }
 
+        private static IProductCommentService productCommentService;
+
+        public IProductCommentService ProductCommentService
+        {
+            set { productCommentService = value; }
+        }
+
         static SessionManager()
         {
             IIoCManager iocManager =
@@ -120,6 +129,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             productService = iocManager.Resolve<IProductService>();
 
             clientOrderService = iocManager.Resolve<IClientOrderService>();
+
+            productCommentService = iocManager.Resolve<IProductCommentService>();
         }
 
         #region Client methods
@@ -437,5 +448,27 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
         }
 
         #endregion Product Methods
+
+        #region ProductComment Methods
+
+        /// <summary>
+        /// Add Comment.
+        /// </summary>
+        /// <param name="context"> The product and client id. </param>
+        /// <param name="comment"> The text of the comment. </param>
+        /// <exception cref="InstanceNotFoundException"/>
+        public static ProductComment AddProductComment(HttpContext context, string comment)
+        {
+            ProductSession productSession =
+                     (ProductSession)context.Session[PRODUCT_SESSION_ATTRIBUTE];
+            ClientSession clientSession =
+                   (ClientSession)context.Session[CLIENT_SESSION_ATTRIBUTE];
+
+            // productCommentService.AddProductComment(productSession.ProductId, comment, clientSession.ClientId);
+            ProductComment prodComment = productCommentService.AddProductComment(1, comment, clientSession.ClientId);
+            return prodComment;
+        }
+
+        #endregion ProductComment Methods
     }
 }

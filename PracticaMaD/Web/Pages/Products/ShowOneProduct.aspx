@@ -17,4 +17,9 @@
             <asp:TableCell ID="cellProductPrize" runat="server"></asp:TableCell>
         </asp:TableRow>
     </asp:Table>
+    <form id="AddCommentForm" method="post" runat="server">
+        <div class="button">
+            <asp:Button ID="btnAddComment" runat="server" meta:resourcekey="btnAddComment" OnClick="BtnAddCommentClick" />
+        </div>
+    </form>
 </asp:Content>

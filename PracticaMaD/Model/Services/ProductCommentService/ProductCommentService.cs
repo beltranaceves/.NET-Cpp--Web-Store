@@ -26,7 +26,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
             return productComments;
         }
 
-        public void AddProductComment(long productId, String commentText, long clientId)
+        public ProductComment AddProductComment(long productId, String commentText, long clientId)
         {
             ProductComment productComment = new ProductComment();
 
@@ -36,6 +36,8 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
             productComment.clientId = clientId;
 
             ProductCommentDao.Create(productComment);
+
+            return productComment;
         }
 
         public void TagProductComment(long productCommentId, List<Tag> tags)

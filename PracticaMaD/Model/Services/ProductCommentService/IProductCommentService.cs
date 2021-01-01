@@ -32,7 +32,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
         /// <param name="commentText"> The text of the comment. </param>
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
-        void AddProductComment(long productId, String commentText, long clientId);
+        ProductComment AddProductComment(long productId, String commentText, long clientId);
 
         /// <summary>
         /// Adds the tags to a product.

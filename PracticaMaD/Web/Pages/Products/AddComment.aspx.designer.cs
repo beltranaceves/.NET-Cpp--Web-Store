@@ -11,53 +11,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 {
 
 
-    public partial class ShowOneProduct
+    public partial class AddComment
     {
-
-        /// <summary>
-        /// TableProductInfo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Table TableProductInfo;
-
-        /// <summary>
-        /// cellCaptionProductName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableHeaderCell cellCaptionProductName;
-
-        /// <summary>
-        /// cellProductName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableCell cellProductName;
-
-        /// <summary>
-        /// cellCaptionProductPrize control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableHeaderCell cellCaptionProductPrize;
-
-        /// <summary>
-        /// cellProductPrize control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableCell cellProductPrize;
 
         /// <summary>
         /// AddCommentForm control.
@@ -67,6 +22,42 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm AddCommentForm;
+
+        /// <summary>
+        /// lnkChangePassword control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkChangePassword;
+
+        /// <summary>
+        /// lclComment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Localize lclComment;
+
+        /// <summary>
+        /// txtComment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtComment;
+
+        /// <summary>
+        /// rfvComment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvComment;
 
         /// <summary>
         /// btnAddComment control.

@@ -23,5 +23,17 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
                 cellProductPrize.Text = productDetails.Price.ToString();
             }
         }
+
+        protected void BtnAddCommentClick(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+                /* Do action. */
+                String url =
+                    String.Format("./AddComment.aspx");
+
+                Response.Redirect(Response.ApplyAppPathModifier(url));
+            }
+        }
     }
 }

@@ -100,12 +100,15 @@
     <Content Include="Global.asax" />
     <Content Include="Pages\MainPage.aspx" />
     <Content Include="Pages\Orders\OwnOrders.aspx" />
+    <Content Include="Pages\Products\AddComment.aspx" />
+    <Content Include="Pages\Products\CommentAdded.aspx" />
     <Content Include="Pages\Products\FindProducts.aspx" />
     <Content Include="Pages\Products\ShowOneProduct.aspx" />
     <Content Include="Pages\Products\ShowProducts.aspx" />
     <Content Include="Pages\User\Authentication.aspx" />
     <Content Include="Pages\User\ChangePassword.aspx" />
     <Content Include="Pages\User\Logout.aspx" />
+    <Content Include="Pages\User\MyComments.aspx" />
     <Content Include="Pages\User\Register.aspx" />
     <Content Include="Pages\User\UpdateClientDetails.aspx" />
     <Content Include="Web.config" />
@@ -154,6 +157,20 @@
     <Compile Include="Pages\Orders\OwnOrders.aspx.designer.cs">
       <DependentUpon>OwnOrders.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Products\AddComment.aspx.cs">
+      <DependentUpon>AddComment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Products\AddComment.aspx.designer.cs">
+      <DependentUpon>AddComment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Products\CommentAdded.aspx.cs">
+      <DependentUpon>CommentAdded.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Products\CommentAdded.aspx.designer.cs">
+      <DependentUpon>CommentAdded.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Products\FindProducts.aspx.cs">
       <DependentUpon>FindProducts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -195,6 +212,13 @@
     </Compile>
     <Compile Include="Pages\User\Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\User\MyComments.aspx.cs">
+      <DependentUpon>MyComments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\User\MyComments.aspx.designer.cs">
+      <DependentUpon>MyComments.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\User\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
@@ -320,6 +344,33 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\Orders\App_LocalResources\OwnOrders.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\AddComment.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\AddComment.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\AddComment.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\ShowOneProduct.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\ShowOneProduct.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\ShowOneProduct.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\CommentAdded.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\CommentAdded.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\CommentAdded.aspx.gl.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
