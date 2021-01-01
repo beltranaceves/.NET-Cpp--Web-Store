@@ -140,7 +140,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientService
             {
                 Client client = ClientDao.FindByLogin(clientLogin);
             }
-            catch (InstanceNotFoundException e)
+            catch (InstanceNotFoundException)
             {
                 return false;
             }

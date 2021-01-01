@@ -6,7 +6,7 @@
     <br />
     <form runat="server">
 
-         <p>
+        <p>
             <asp:Label ID="lblNoCards" meta:resourcekey="lblNoCards" runat="server"></asp:Label>
         </p>
 
@@ -16,20 +16,17 @@
             ShowHeaderWhenEmpty="True">
             <Columns>
                 <asp:BoundField DataField="cardnumber" HeaderText="<%$ Resources:, cardnumber %>" />
-                 <asp:BoundField DataField="cardType" HeaderText="<%$ Resources:, cardType %>" />
+                <asp:BoundField DataField="cardType" HeaderText="<%$ Resources:, cardType %>" />
                 <asp:BoundField DataField="verificationCode" HeaderText="<%$ Resources:, verificationCode %>" />
                 <asp:BoundField DataField="expeditionDate" HeaderText="<%$ Resources:, expeditionDate %>" />
-               <asp:BoundField DataField="DefaultCard" Visible="true"/>
-                <asp:TemplateField HeaderText="<%$ Resources:, DefaultCard %>" >
+                <asp:BoundField DataField="DefaultCard" Visible="true" />
+                <asp:TemplateField HeaderText="<%$ Resources:, DefaultCard %>">
                     <ItemTemplate>
-                        <asp:checkbox ID="changeDefaultCard" AutoPostBack="true" OnDataBinding="changeDefaultCard_DataBinding" runat="server" OnCheckedChanged="changeDefaultCard_CheckedChanged" />
+                        <asp:CheckBox ID="changeDefaultCard" AutoPostBack="true" OnDataBinding="changeDefaultCard_DataBinding" runat="server" OnCheckedChanged="changeDefaultCard_CheckedChanged" />
                     </ItemTemplate>
                 </asp:TemplateField>
-                 <asp:CommandField ShowSelectButton="true" SelectText="deleteCard" />
+                <asp:CommandField ShowSelectButton="true" SelectText="deleteCard" />
             </Columns>
         </asp:GridView>
     </form>
 </asp:Content>
-
-
-

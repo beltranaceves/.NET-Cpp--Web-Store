@@ -135,4 +135,7 @@
   <data name="btnAddCard.Text" xml:space="preserve">
     <value>Añadir tarjeta</value>
   </data>
+  <data name="lclEmail.Text" xml:space="preserve">
+    <value>Correo</value>
+  </data>
 </root>

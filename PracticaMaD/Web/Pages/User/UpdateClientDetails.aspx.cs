@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Es.Udc.DotNet.PracticaMad.Model.Services.ClientService;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.View.ApplicationObjects;
-using Es.Udc.DotNet.PracticaMad.Model.Services.ClientService;
+using System;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.Pages.User
 {

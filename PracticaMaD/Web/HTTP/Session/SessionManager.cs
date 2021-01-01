@@ -12,6 +12,7 @@ using Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService;
 using Es.Udc.DotNet.PracticaMad.Model;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
 {
@@ -90,6 +91,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
 
         public static readonly String CREDITCARD_SESSION_ATTRIBUTE =
              "CreditCardSession";
+
         public static readonly String PRODUCT_SESSION_ATTRIBUTE =
                "ProductSession";
 
@@ -100,16 +102,12 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             set { clientService = value; }
         }
 
-
         private static ICreditCardService creditCardService;
 
         public ICreditCardService CreditCardService
         {
             set { creditCardService = value; }
         }
-
-
-
 
         private static IProductService productService;
 
@@ -139,8 +137,6 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
 
             clientService = iocManager.Resolve<IClientService>();
             creditCardService = iocManager.Resolve<ICreditCardService>();
-
-
 
             productService = iocManager.Resolve<IProductService>();
 
@@ -444,8 +440,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             }
         }
 
-
-        public static List<CreditCardDetails>  GetAllCards(HttpContext context)
+        public static List<CreditCardDetails> GetAllCards(HttpContext context)
         {
             ClientSession cSession =
                      (ClientSession)context.Session[CLIENT_SESSION_ATTRIBUTE];
@@ -454,17 +449,13 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             return cards;
         }
 
-
-
-
         public static void AddCard(HttpContext context,
             CreditCardDetails card)
         {
             ClientSession clientSession =
                 (ClientSession)context.Session[CLIENT_SESSION_ATTRIBUTE];
 
-            creditCardService.AddCard(clientSession.ClientId ,card);
-
+            creditCardService.AddCard(clientSession.ClientId, card);
         }
 
         internal static void ChangeDefaultCard(HttpContext context, long cardId)
@@ -472,7 +463,6 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             ClientSession clientSession =
                             (ClientSession)context.Session[CLIENT_SESSION_ATTRIBUTE];
 
-  
             creditCardService.SelectDefaultCard(clientSession.ClientId, cardId);
         }
 
@@ -520,4 +510,3 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
         #endregion ProductComment Methods
     }
 }
- 

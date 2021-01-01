@@ -6,18 +6,16 @@ using Es.Udc.DotNet.PracticaMad.Model.Services.ClientService;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
 using Es.Udc.DotNet.ModelUtil.IoC;
-using Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService;
 using Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderLineService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.CreditCardDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.CategoryDao;
-using Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientOrderDao;
-using Es.Udc.DotNet.PracticaMad.Model.DAOs.CreditCardDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientOrderLineDao;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.TagDao;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Util.IoC
 {
@@ -54,11 +52,6 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Util.IoC
             /* CreditCardService */
             kernel.Bind<ICreditCardService>().
                 To<CreditCardService>();
-
-            /* CreditCardDao */
-            kernel.Bind<ICreditCardDao>().
-                To<CreditCardDaoEntityFramework>();
-
 
             /* ClientOrderLineService */
             kernel.Bind<IClientOrderLineService>().

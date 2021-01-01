@@ -1,16 +1,6 @@
 ﻿using System;
 using System.Web.UI;
-using Es.Udc.DotNet.PracticaMad.Model.Services.Exceptions;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
-using Es.Udc.DotNet.ModelUtil.Exceptions;
-using System.Web.Security;
-using System.Web.UI.WebControls;
-using Es.Udc.DotNet.PracticaMad.Web.Properties;
-using System.Data;
-using Es.Udc.DotNet.ModelUtil.IoC;
-using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
-using System.Web;
-using System.Reflection;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 {

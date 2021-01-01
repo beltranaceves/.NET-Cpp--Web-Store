@@ -1,16 +1,12 @@
 ﻿using Es.Udc.DotNet.ModelUtil.IoC;
-using Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderService;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
-using Es.Udc.DotNet.PracticaMad.Web.Properties;
-using Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Reflection;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService;
+using Es.Udc.DotNet.PracticaMad.Web.Properties;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 {

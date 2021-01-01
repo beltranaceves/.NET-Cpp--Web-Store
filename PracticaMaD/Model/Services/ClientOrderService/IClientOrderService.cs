@@ -12,7 +12,7 @@ using System.Collections.Generic;
 using System;
 using Es.Udc.DotNet.PracticaMad.Model.Objetos;
 
-namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
+namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService
 {
     public interface IClientOrderService
     {

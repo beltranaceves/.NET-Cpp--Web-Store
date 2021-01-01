@@ -1,10 +1,5 @@
 ﻿using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Es.Udc.DotNet.PracticaMad.Web
 {
@@ -26,6 +21,10 @@ namespace Es.Udc.DotNet.PracticaMad.Web
                     lnkLogout.Visible = false;
                 if (lnkOwnOrders != null)
                     lnkOwnOrders.Visible = false;
+                if (lnkAddCard != null)
+                    lnkAddCard.Visible = false;
+                if (lnkSeeMyCards != null)
+                    lnkSeeMyCards.Visible = false;
             }
             else
             {

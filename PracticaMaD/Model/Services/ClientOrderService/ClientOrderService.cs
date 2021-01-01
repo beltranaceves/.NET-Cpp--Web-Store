@@ -16,7 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
+namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService
 {
     public class ClientOrderService : IClientOrderService
     {
@@ -38,7 +38,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
         [Transactional]
         public long CreateOrder(long clientId, long? cardId, string orderName, string clientOrderAddress, ShoppingCart shoppingCart)
         {
-
             ClientOrder order = new ClientOrder();
 
             // Pasamos los productos de la cesta a la ClientOrderLine
@@ -50,10 +49,10 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
 
                 if (p.stock - Sline.quantity < 0)
                     throw new NotEnoughStockException(p.productName, Sline.quantity);
-                
+
                 line.productId = p.productId;
                 line.quantity = Sline.quantity;
-            
+
                 order.ClientOrderLine.Add(line);
             }
 
@@ -61,32 +60,29 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
 
             Client client = ClientDao.Find(clientId);
 
-          // Si no se nos especifican estos campos, cogemos los de por defecto del usuario
+            // Si no se nos especifican estos campos, cogemos los de por defecto del usuario
 
             if (cardId != null)
                 order.creditCardId = cardId;
-            else 
-             order.creditCardId = CreditCardDao.GetDefaultCreditCardByClientId(clientId).cardId;
-
+            else
+                order.creditCardId = CreditCardDao.GetDefaultCreditCardByClientId(clientId).cardId;
 
             if (clientOrderAddress != null)
                 order.clientOrderAddress = clientOrderAddress;
-            else   
+            else
                 order.clientOrderAddress = client.clientAddress;
 
             order.orderName = orderName;
             long orderId = order.orderId;
             order.orderDate = DateTime.Now;
             order.clientId = clientId;
-            
-            double totalPrice = 0;
 
+            double totalPrice = 0;
 
             //Actualizamos los productos y se va calculando el coste total
             //Comprobando siempre que hay stock suficiente
             foreach (ClientOrderLine ol in order.ClientOrderLine)
             {
-
                 long productId = ol.productId;
 
                 Product product = ProductDao.Find(productId);
@@ -105,7 +101,6 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
                 ol.price = price;
 
                 totalPrice += price;
-
             }
 
             //Establecemos  el coste total de la compra y la generamos
@@ -145,7 +140,7 @@ namespace Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService
             {
                 number = ClientDao.Find(clientId).ClientOrder.Count;
             }
-            catch (InstanceNotFoundException e)
+            catch (InstanceNotFoundException)
             {
                 throw new InstanceNotFoundException(clientId, "Client not found");
             }

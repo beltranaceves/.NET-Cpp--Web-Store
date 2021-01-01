@@ -3,7 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Transactions;
-using Es.Udc.DotNet.PracticaMaD.Model.Service.ClientOrderService;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService;
 using Ninject;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClientService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService;
@@ -108,10 +108,9 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             return category.categoryId;
         }
 
-   
         private static void AddCard(long clientId)
         {
-            CreditCardDetails creditCard = new CreditCardDetails("1234567890123456", "Visa", 000, "02/21",false,1);
+            CreditCardDetails creditCard = new CreditCardDetails("1234567890123456", "Visa", 000, "02/21", false, 1);
             creditCardService.AddCard(clientId, creditCard);
         }
 
@@ -149,30 +148,29 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 cartLine2.quantity = quantity2;
                 cartLine2.forGift = false;
 
-
                 ShoppingCart shoppingCartTest = new ShoppingCart();
 
-                //Añadimos las dos lineas al carito 
+                //Añadimos las dos lineas al carito
                 var e = shoppingCartService.AddToCart(cartLine1, shoppingCartTest);
                 shoppingCartService.AddToCart(cartLine2, shoppingCartTest);
-          
+
                 //Comprobamos que hay dos lineas en el carrito
                 Assert.AreEqual(2, shoppingCartTest.shoppingCartLines.Count);
 
-                //Actualizamos el numero de unidades de la linea 1 
-                shoppingCartService.UpdateNumberOfUnits(cartLine1,shoppingCartTest,5);
+                //Actualizamos el numero de unidades de la linea 1
+                shoppingCartService.UpdateNumberOfUnits(cartLine1, shoppingCartTest, 5);
 
                 Assert.AreEqual(5, shoppingCartTest.shoppingCartLines[0].quantity);
 
                 //Actualizamos el estado de si es para regalo o no
 
-                shoppingCartService.UpdateForGiftStatus(cartLine2, shoppingCartTest,true);
+                shoppingCartService.UpdateForGiftStatus(cartLine2, shoppingCartTest, true);
 
                 Assert.IsTrue(shoppingCartTest.shoppingCartLines[0].forGift);
 
                 //Buscamos por una linea en concreto
 
-                Assert.AreEqual(shoppingCartTest.shoppingCartLines[0],shoppingCartService.GetCartLine(cartLine1,shoppingCartTest));
+                Assert.AreEqual(shoppingCartTest.shoppingCartLines[0], shoppingCartService.GetCartLine(cartLine1, shoppingCartTest));
 
                 //Eliminamos ambas lineas de carrito
 
@@ -180,22 +178,18 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 shoppingCartService.RemoveFromCart(cartLine2, shoppingCartTest);
 
                 Assert.AreEqual(0, shoppingCartTest.shoppingCartLines.Count);
-
-
+            }
         }
-    }
-
-
 
         [TestMethod]
         [ExpectedException(typeof(AlreadyAddedException))]
-        public void DuplicatedShoppingCartLine(){
-
+        public void DuplicatedShoppingCartLine()
+        {
             ShoppingCartLine line1 = new ShoppingCartLine();
             ShoppingCart shoppingCart = new ShoppingCart();
 
-            shoppingCartService.AddToCart(line1,shoppingCart);
-            shoppingCartService.AddToCart(line1,shoppingCart);
+            shoppingCartService.AddToCart(line1, shoppingCart);
+            shoppingCartService.AddToCart(line1, shoppingCart);
         }
 
         [TestMethod]
@@ -220,26 +214,22 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
         [TestMethod]
         [ExpectedException(typeof(InstanceNotFoundException))]
-        public void GetNonAddedLine(){
-            
+        public void GetNonAddedLine()
+        {
             ShoppingCartLine line1 = new ShoppingCartLine();
             ShoppingCart shoppingCart = new ShoppingCart();
 
-            shoppingCartService.GetCartLine(line1,shoppingCart);
-
+            shoppingCartService.GetCartLine(line1, shoppingCart);
         }
-
 
         [TestMethod]
         [ExpectedException(typeof(InstanceNotFoundException))]
-        public void RemoveNonExistingLine(){
-            
-            ShoppingCartLine line1 = new ShoppingCartLine();    
+        public void RemoveNonExistingLine()
+        {
+            ShoppingCartLine line1 = new ShoppingCartLine();
             ShoppingCart shoppingCart = new ShoppingCart();
 
-            shoppingCartService.RemoveFromCart(line1,shoppingCart);
-
+            shoppingCartService.RemoveFromCart(line1, shoppingCart);
         }
     }
-
 }
