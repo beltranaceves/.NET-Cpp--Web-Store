@@ -31,5 +31,27 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentDao
 
             #endregion Option 1: Using Linq.
         }
+
+        public bool ExistByProductIdAndClientId(long productId, long clientId)
+        {
+            DbSet<ProductComment> productComment = Context.Set<ProductComment>();
+
+            ProductComment product = null;
+
+            var result =
+                 (from p in productComment
+                  where p.clientId == clientId &&
+                        p.productId == productId
+                  select p);
+
+            product = result.FirstOrDefault();
+
+            if (product == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

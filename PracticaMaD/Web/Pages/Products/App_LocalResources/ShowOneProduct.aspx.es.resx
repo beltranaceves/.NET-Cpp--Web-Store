@@ -100,4 +100,7 @@
   <data name="btnAddComment.Text" xml:space="preserve">
     <value>Añadir Comentario</value>
   </data>
+  <data name="btnEditComment.Text" xml:space="preserve">
+    <value>Editar mi comentario</value>
+  </data>
 </root>

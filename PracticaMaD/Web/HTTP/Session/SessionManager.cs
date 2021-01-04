@@ -528,6 +528,22 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             productCommentService.TagProductComment(commentId, tags);
         }
 
+        /// <summary>
+        /// See if a client comment the product
+        /// </summary>
+        /// <param name="productId"> The product Id. </param>
+        /// <param name="clientId"> The client Id. </param>
+        /// <returns> True-> exist a comment, False-> Doesnt exist the comment</returns>
+
+        public static bool ExistCommentFromClient(HttpContext context)
+        {
+            ProductSession productSession =
+                   (ProductSession)context.Session[PRODUCT_SESSION_ATTRIBUTE];
+            ClientSession clientSession =
+                   (ClientSession)context.Session[CLIENT_SESSION_ATTRIBUTE];
+            return productCommentService.ExistCommentFromClient(productSession.ProductId, clientSession.ClientId);
+        }
+
         #endregion ProductComment Methods
 
         #region Tag Methods

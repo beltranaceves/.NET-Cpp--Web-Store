@@ -21,5 +21,8 @@
         <div class="button">
             <asp:Button ID="btnAddComment" runat="server" meta:resourcekey="btnAddComment" OnClick="BtnAddCommentClick" />
         </div>
+        <div class="button">
+            <asp:Button ID="btnEditComment" runat="server" meta:resourcekey="btnEditComment" OnClick="BtnEditCommentClick" />
+        </div>
     </form>
 </asp:Content>

@@ -17,10 +17,17 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
             if (!IsPostBack)
             {
                 ProductDetails productDetails =
-                    SessionManager.FindProductDetails(Context);
-
+                 SessionManager.FindProductDetails(Context);
                 cellProductName.Text = productDetails.ProductName;
                 cellProductPrize.Text = productDetails.Price.ToString();
+                if (SessionManager.ExistCommentFromClient(Context))
+                {
+                    btnAddComment.Visible = false;
+                }
+                else
+                {
+                    btnEditComment.Visible = false;
+                }
             }
         }
 
@@ -31,6 +38,18 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
                 /* Do action. */
                 String url =
                     String.Format("./AddComment.aspx");
+
+                Response.Redirect(Response.ApplyAppPathModifier(url));
+            }
+        }
+
+        protected void BtnEditCommentClick(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+                /* Do action. */
+                String url =
+                    String.Format("./EditComment.aspx");
 
                 Response.Redirect(Response.ApplyAppPathModifier(url));
             }

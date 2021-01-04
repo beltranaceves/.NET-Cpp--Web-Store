@@ -9,5 +9,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentDao
     public interface IProductCommentDao : IGenericDao<ProductComment, Int64>
     {
         List<ProductCommentDetails> FindByProductId(long productId);
+
+        bool ExistByProductIdAndClientId(long productId, long clientId);
     }
 }

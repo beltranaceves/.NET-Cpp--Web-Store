@@ -51,5 +51,15 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
         ProductCommentDetails EditProductComment(long commentId, ProductCommentDetails productCommentDetails);
+
+        /// <summary>
+        /// See if a client comment the product
+        /// </summary>
+        /// <param name="productId"> The product Id. </param>
+        /// <param name="clientId"> The client Id. </param>
+        /// <returns> True-> exist a comment, False-> Doesnt exist the comment</returns>
+
+        [Transactional]
+        bool ExistCommentFromClient(long productId, long clientId);
     }
 }

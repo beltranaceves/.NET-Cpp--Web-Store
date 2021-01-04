@@ -71,5 +71,12 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
 
             return productCommentDetails;
         }
+
+        public bool ExistCommentFromClient(long productId, long clientId)
+        {
+            bool existComment = ProductCommentDao.ExistByProductIdAndClientId(productId, clientId);
+
+            return existComment;
+        }
     }
 }
