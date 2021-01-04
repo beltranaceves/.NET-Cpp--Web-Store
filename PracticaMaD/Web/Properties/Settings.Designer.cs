@@ -121,5 +121,14 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Properties {
                 return ((string)(this["ObjectDS_OwnOrders_Service"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/PracticaMad")]
+        public string PracticaMad_applicationURL {
+            get {
+                return ((string)(this["PracticaMad_applicationURL"]));
+            }
+        }
     }
 }

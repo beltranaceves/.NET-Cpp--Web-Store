@@ -120,4 +120,7 @@
   <data name="orderName" xml:space="preserve">
     <value>Nome do Pedido</value>
   </data>
+  <data name="lblNoOrders" xml:space="preserve">
+    <value>Vostede non fixo ningun pedido</value>
+  </data>
 </root>

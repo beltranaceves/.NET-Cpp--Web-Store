@@ -7,20 +7,32 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_BodyContent" runat="server">
     <br />
     <p>
-        <asp:Label ID="lblInvalidProduct" meta:resourcekey="lblInvalidProduct" runat="server" Visible="false"></asp:Label>
+        <asp:Label ID="lblNoProduct" meta:resourcekey="lblNoProduct" runat="server" Visible="false"></asp:Label>
     </p>
+
     <form runat="server">
 
-        <asp:GridView ID="gvProduct" runat="server"
-            AutoGenerateColumns="True"
-            OnPageIndexChanging="GvProductPageIndexChanging"
-            ShowHeaderWhenEmpty="True">
+        <asp:GridView ID="gvProduct" runat="server" CssClass="products" GridLines="None"
+            AutoGenerateColumns="False">
             <Columns>
+                <asp:BoundField DataField="ProductName" HeaderText="<%$ Resources:Common, productName %>" />
+                <asp:BoundField DataField="RegisterDate" HeaderText="<%$ Resources:Common, productDate %>" />
+                <asp:BoundField DataField="Price" HeaderText="<%$ Resources:Common, prize %>" />
             </Columns>
         </asp:GridView>
         <br />
-        <!-- "Previous" and "Next" links. -->
     </form>
+
+    <!-- "Previous" and "Next" links. -->
+    <div class="previousNextLinks">
+        <span class="previousLink">
+            <asp:HyperLink ID="lnkPrevious" Text="<%$ Resources:Common, Previous %>" runat="server"
+                Visible="False"></asp:HyperLink>
+        </span><span class="nextLink">
+            <asp:HyperLink ID="lnkNext" Text="<%$ Resources:Common, Next %>" runat="server" Visible="False"></asp:HyperLink>
+        </span>
+    </div>
+
     <br />
     <br />
 </asp:Content>

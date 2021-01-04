@@ -63,19 +63,19 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         }
 
         [Transactional]
-        public List<ProductDetails> FindProductByProductNameKeyword(string keyword, int startIndex, int count)
+        public ProductBlock FindProductByProductNameKeyword(string keyword, int startIndex, int count)
         {
-            List<Product> products = ProductDao.FindByProductNameKeyword(keyword, startIndex, count);
+            List<Product> products = ProductDao.FindByProductNameKeyword(keyword, startIndex, count + 1);
             var item = new CacheItem("keyword", products.ToString());
             var policy = new CacheItemPolicy();
             Cache.Add(item, policy);
 
-            List<ProductDetails> productsDetails = new List<ProductDetails>();
-            foreach (Product p in products)
-            {
-                productsDetails.Add(new ProductDetails(p.productName, p.price, p.registerDate, p.stock, p.categoryId));
-            }
-            return productsDetails;
+            bool existMoreProducts = (products.Count == count + 1);
+
+            if (existMoreProducts)
+                products.RemoveAt(count);
+
+            return new ProductBlock(products, existMoreProducts);
         }
 
         [Transactional]

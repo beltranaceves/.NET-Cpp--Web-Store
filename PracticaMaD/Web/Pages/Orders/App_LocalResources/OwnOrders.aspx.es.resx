@@ -100,4 +100,7 @@
   <data name="orderName" xml:space="preserve">
     <value>Nombre del pedido</value>
   </data>
+  <data name="lblNoOrders" xml:space="preserve">
+    <value>Usted no hizo ningún pedido</value>
+  </data>
 </root>

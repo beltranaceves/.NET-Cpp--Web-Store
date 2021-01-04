@@ -49,7 +49,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         /// object to return.</param>
         /// <param name="count">The maximum number of objects to return.</param>
         [Transactional]
-        List<ProductDetails> FindProductByProductNameKeyword(string keyword, int startIndex, int count);
+        ProductBlock FindProductByProductNameKeyword(string keyword, int startIndex, int count);
 
         /// <summary>
         /// Finds products by name keyword and category.

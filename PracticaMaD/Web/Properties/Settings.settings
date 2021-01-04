@@ -35,5 +35,8 @@
     <Setting Name="ObjectDS_OwnOrders_Service" Type="System.String" Scope="Application">
       <Value Profile="(Default)">Es.Udc.DotNet.PracticaMad.Model.Services.ProductService.IClientOrderService</Value>
     </Setting>
+    <Setting Name="PracticaMad_applicationURL" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">/PracticaMad</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

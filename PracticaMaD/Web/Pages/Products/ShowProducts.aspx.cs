@@ -3,75 +3,88 @@ using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
 using Es.Udc.DotNet.PracticaMad.Web.Properties;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Reflection;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 {
     public partial class ShowProducts : SpecificCulturePage
     {
-        private ObjectDataSource pbpDataSource = new ObjectDataSource();
-
         protected void Page_Load(object sender, EventArgs e)
         {
+            int startIndex, count;
+
+            lnkPrevious.Visible = false;
+            lnkNext.Visible = false;
+            lblNoProduct.Visible = false;
+
+            /* Get User Identifier passed as parameter in the request from
+             * the previous page
+             */
+            string keyword = Convert.ToString(Request.Params.Get("keyword"));
+
+            /* Get Start Index */
             try
             {
-                // ObjectCreating is executed before ObjectDataSource creates
-                // an instance of the type used as DataSource (ProductService).
-                // We need to intercept this call to replace the standard creation
-                // procedure (a new ProductService() sentence) to use the Unity
-                // Container that allows to complete the dependences (productDao,...)
-                pbpDataSource.ObjectCreating += this.PbpDataSource_ObjectCreating;
-
-                pbpDataSource.TypeName = "Es.Udc.DotNet.PracticaMad.Model.Services.ProductService.IProductService";
-
-                pbpDataSource.EnablePaging = true;
-
-                pbpDataSource.SelectMethod = "FindProductByProductNameKeyword";
-
-                /* Get Keyword */
-                String keyword = Convert.ToString(Request.Params.Get("keyword"));
-
-                pbpDataSource.SelectParameters.Add("keyword", DbType.Int64, keyword);
-
-                pbpDataSource.SelectCountMethod =
-                    "CountProductByProductNameKeyword";
-                pbpDataSource.StartRowIndexParameterName =
-                    "startIndex";
-                pbpDataSource.MaximumRowsParameterName =
-                    "count";
-
-                gvProduct.AllowPaging = true;
-                gvProduct.PageSize = 5;
-
-                gvProduct.DataSource = pbpDataSource;
-                gvProduct.DataBind();
+                startIndex = Int32.Parse(Request.Params.Get("startIndex"));
             }
-            catch (TargetInvocationException)
+            catch (ArgumentNullException)
             {
-                lblInvalidProduct.Visible = true;
+                startIndex = 0;
             }
-        }
 
-        protected void GvProductPageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            gvProduct.PageIndex = e.NewPageIndex;
+            /* Get Count */
+            try
+            {
+                count = Int32.Parse(Request.Params.Get("count"));
+            }
+            catch (ArgumentNullException)
+            {
+                count = Settings.Default.PracticaMad_defaultCount;
+            }
 
-            gvProduct.DataBind();
-        }
-
-        protected void PbpDataSource_ObjectCreating(object sender, ObjectDataSourceEventArgs e)
-        {
             /* Get the Service */
             IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
-            IProductService productService = (IProductService)iocManager.Resolve<IProductService>();
+            IProductService productService = iocManager.Resolve<IProductService>();
 
-            e.ObjectInstance = productService;
+            /* Get Accounts Info */
+            ProductBlock productBlock =
+                productService.FindProductByProductNameKeyword(keyword, startIndex, count);
+
+            if (productBlock.Product.Count == 0)
+            {
+                lblNoProduct.Visible = true;
+                return;
+            }
+
+            this.gvProduct.DataSource = productBlock.Product;
+            this.gvProduct.DataBind();
+
+            /* "Previous" link */
+            if ((startIndex - count) >= 0)
+            {
+                String url =
+                    "/Pages/Products/ShowProducts.aspx" + "?keyword=" + keyword +
+                    "&startIndex=" + (startIndex - count) + "&count=" +
+                    count;
+
+                this.lnkPrevious.NavigateUrl =
+                    Response.ApplyAppPathModifier(url);
+                this.lnkPrevious.Visible = true;
+            }
+
+            /* "Next" link */
+            if (productBlock.ExistMoreProduct)
+            {
+                String url =
+
+                    "/Pages/Products/ShowProducts.aspx" + "?keyword=" + keyword +
+                    "&startIndex=" + (startIndex + count) + "&count=" +
+                    count;
+
+                this.lnkNext.NavigateUrl =
+                    Response.ApplyAppPathModifier(url);
+                this.lnkNext.Visible = true;
+            }
         }
     }
 }

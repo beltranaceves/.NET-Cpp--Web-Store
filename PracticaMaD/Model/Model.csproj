@@ -136,6 +136,7 @@
     <Compile Include="Services\ClientOrderLineService\ClientOrderLineDetails.cs" />
     <Compile Include="Services\ClientOrderLineService\ClientOrderLineService.cs" />
     <Compile Include="Services\ClientOrderLineService\IClientOrderLineService.cs" />
+    <Compile Include="Services\ClientOrderService\ClientOrderBlock.cs" />
     <Compile Include="Services\ClientOrderService\ClientOrderDetails.cs" />
     <Compile Include="Services\ClientOrderService\ClientOrderService.cs" />
     <Compile Include="Services\ClientOrderService\IClientOrderService.cs" />
@@ -154,6 +155,7 @@
     <Compile Include="Services\ProductCommentService\ProductCommentDetails.cs" />
     <Compile Include="Services\ProductCommentService\ProductCommentService.cs" />
     <Compile Include="Services\ProductService\IProductService.cs" />
+    <Compile Include="Services\ProductService\ProductBlock.cs" />
     <Compile Include="Services\ProductService\ProductDetails.cs" />
     <Compile Include="Services\ProductService\ProductService.cs" />
     <Compile Include="Services\ShoppingCartService\IShoppingCartService.cs" />

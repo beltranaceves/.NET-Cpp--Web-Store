@@ -15,13 +15,13 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
     {
 
         /// <summary>
-        /// lblInvalidProduct control.
+        /// lblNoProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblInvalidProduct;
+        protected global::System.Web.UI.WebControls.Label lblNoProduct;
 
         /// <summary>
         /// gvProduct control.
@@ -31,5 +31,23 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvProduct;
+
+        /// <summary>
+        /// lnkPrevious control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkPrevious;
+
+        /// <summary>
+        /// lnkNext control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkNext;
     }
 }

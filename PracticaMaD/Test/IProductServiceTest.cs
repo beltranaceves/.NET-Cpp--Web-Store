@@ -173,12 +173,12 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 // Create a product
                 long productId = CreateProduct(categoryId, productName, stock, price);
 
-                List<ProductDetails> products = productService.FindProductByProductNameKeyword("Avatar", 0, 5);
+                ProductBlock products = productService.FindProductByProductNameKeyword("Avatar", 0, 5);
 
-                Assert.AreEqual(products[0].CategoryId, categoryId);
-                Assert.AreEqual(products[0].ProductName, productName);
-                Assert.AreEqual(products[0].Stock, stock);
-                Assert.AreEqual(products[0].Price, price);
+                Assert.AreEqual(products.Product[0].categoryId, categoryId);
+                Assert.AreEqual(products.Product[0].productName, productName);
+                Assert.AreEqual(products.Product[0].stock, stock);
+                Assert.AreEqual(products.Product[0].price, price);
 
                 //transaction.Complete() is not called, so Rollback is executed.
             }

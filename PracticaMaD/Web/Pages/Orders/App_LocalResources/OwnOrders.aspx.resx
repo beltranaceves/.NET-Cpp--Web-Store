@@ -100,4 +100,7 @@
   <data name="orderName" xml:space="preserve">
     <value>Order Name</value>
   </data>
+  <data name="lblNoOrders" xml:space="preserve">
+    <value>You don't have any order</value>
+  </data>
 </root>

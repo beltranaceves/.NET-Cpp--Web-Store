@@ -112,11 +112,15 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService
         }
 
         [Transactional]
-        public List<ClientOrder> GetClientOrders(long clientId, int startIndex, int count)
+        public ClientOrderBlock GetClientOrders(long clientId, int startIndex, int count)
         {
-            List<ClientOrder> clientOrders = ClientOrderDao.FindByClientId(clientId, startIndex, count);
+            List<ClientOrder> clientOrders = ClientOrderDao.FindByClientId(clientId, startIndex, count + 1);
 
-            return clientOrders;
+            bool existMoreOrders = (clientOrders.Count == count + 1);
+
+            if (existMoreOrders)
+                clientOrders.RemoveAt(count);
+            return new ClientOrderBlock(clientOrders, existMoreOrders);
         }
 
         //Returns the order given its id
@@ -129,22 +133,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService
                 order.clientOrderAddress, order.Client.clientId);
 
             return orderDetails;
-        }
-
-        //Counts how many orders a client has
-        [Transactional]
-        public int GetNumberOfOrdersByClient(long clientId)
-        {
-            int number = 0;
-            try
-            {
-                number = ClientDao.Find(clientId).ClientOrder.Count;
-            }
-            catch (InstanceNotFoundException)
-            {
-                throw new InstanceNotFoundException(clientId, "Client not found");
-            }
-            return number;
         }
     }
 }

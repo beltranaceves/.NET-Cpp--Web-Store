@@ -167,3 +167,11 @@ table.tagsComment {
     margin-left: auto;
     margin-right: auto;
 }
+
+/* Products*/
+table.products {
+    text-align: center;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}

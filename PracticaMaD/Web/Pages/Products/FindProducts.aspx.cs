@@ -20,7 +20,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 
                 /* Do action. */
                 String url =
-                    String.Format("./ShowProducts.aspx?keword={0}", keyword);
+                    String.Format("./ShowProducts.aspx?keyword={0}", keyword);
 
                 Response.Redirect(Response.ApplyAppPathModifier(url));
             }

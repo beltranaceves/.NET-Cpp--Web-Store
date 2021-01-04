@@ -15,13 +15,13 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
     {
 
         /// <summary>
-        /// lblInvalidClient control.
+        /// lblNoOrders control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblInvalidClient;
+        protected global::System.Web.UI.WebControls.Label lblNoOrders;
 
         /// <summary>
         /// gvOwnOrders control.
@@ -31,5 +31,23 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gvOwnOrders;
+
+        /// <summary>
+        /// lnkPrevious control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkPrevious;
+
+        /// <summary>
+        /// lnkNext control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkNext;
     }
 }

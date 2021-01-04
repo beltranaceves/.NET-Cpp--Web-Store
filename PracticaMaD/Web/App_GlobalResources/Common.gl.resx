@@ -132,4 +132,13 @@
   <data name="prize" xml:space="preserve">
     <value>Prezo</value>
   </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Anterior</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Seguinte</value>
+  </data>
+  <data name="productDate" xml:space="preserve">
+    <value>Data</value>
+  </data>
 </root>
