@@ -14,6 +14,7 @@ using Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService;
 using Es.Udc.DotNet.PracticaMad.Model;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.TagService;
+using Es.Udc.DotNet.PracticaMad.Model.Objetos;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
 {
@@ -85,6 +86,9 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
     /// </summary>
     public class SessionManager
     {
+
+        public static ShoppingCart shoppingCart;
+
         public static readonly String LOCALE_SESSION_ATTRIBUTE = "locale";
 
         public static readonly String CLIENT_SESSION_ATTRIBUTE =
@@ -153,6 +157,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             productCommentService = iocManager.Resolve<IProductCommentService>();
 
             tagService = iocManager.Resolve<ITagService>();
+            shoppingCart = new ShoppingCart();
         }
 
         #region Client methods

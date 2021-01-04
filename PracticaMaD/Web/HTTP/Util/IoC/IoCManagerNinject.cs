@@ -16,6 +16,7 @@ using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.TagDao;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.TagService;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Util.IoC
 {
@@ -44,6 +45,10 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Util.IoC
             /* ProductService */
             kernel.Bind<IProductService>().
                 To<ProductService>();
+
+            /* ShoppingCartService */
+            kernel.Bind<IShoppingCartService>().
+                To<ShoppingCartService>();
 
             /* ClientOrderService */
             kernel.Bind<IClientOrderService>().

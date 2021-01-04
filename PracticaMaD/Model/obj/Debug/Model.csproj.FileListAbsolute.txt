@@ -1,7 +1,5 @@
 C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\obj\Debug\Model.csprojAssemblyReference.cache
 C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
-C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\obj\Debug\Model.exe
-C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\obj\Debug\Model.pdb
 D:\PutoMad\workingOnProgress\PracticaMaD\Model\obj\Debug\Model.csprojAssemblyReference.cache
 D:\PutoMad\workingOnProgress\PracticaMaD\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 D:\PutoMad\workingOnProgress\PracticaMaD\Model\obj\Debug\Model.exe
@@ -27,9 +25,6 @@ D:\PutoMad\workingOnProgress\PracticaMaD\Model\bin\Debug\Ninject.xml
 D:\PutoMad\workingOnProgress\PracticaMaD\Model\bin\Debug\Ninject.Extensions.Interception.xml
 D:\PutoMad\workingOnProgress\PracticaMaD\Model\bin\Debug\Ninject.Extensions.Interception.DynamicProxy.xml
 D:\PutoMad\workingOnProgress\PracticaMaD\Model\obj\Debug\Model.csproj.CopyComplete
-C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\bin\Debug\Model.exe.config
-C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\bin\Debug\Model.exe
-C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\bin\Debug\Model.pdb
 C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\bin\Debug\Castle.Core.dll
 C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\bin\Debug\EntityFramework.dll
 C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\bin\Debug\EntityFramework.SqlServer.dll
@@ -147,3 +142,8 @@ C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\obj\Debug\
 C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\obj\Debug\PracticaMad.Model.exe
 C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\obj\Debug\PracticaMad.Model.pdb
 C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\bin\Debug\PracticaMad.Model.exe.config
+C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\bin\Debug\PracticaMad.Model.exe
+C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\bin\Debug\PracticaMad.Model.pdb
+C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\obj\Debug\PracticaMad.Model.exe
+C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\obj\Debug\PracticaMad.Model.pdb

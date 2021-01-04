@@ -101,6 +101,7 @@
     <Content Include="Pages\Card\AddCard.aspx" />
     <Content Include="Pages\Card\SeeClientCards.aspx" />
     <Content Include="Pages\MainPage.aspx" />
+    <Content Include="Pages\Orders\ManageOrder.aspx" />
     <Content Include="Pages\Orders\OwnOrders.aspx" />
     <Content Include="Pages\Products\AddComment.aspx" />
     <Content Include="Pages\Products\CommentAdded.aspx" />
@@ -167,6 +168,13 @@
     </Compile>
     <Compile Include="Pages\MainPage.aspx.designer.cs">
       <DependentUpon>MainPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Orders\ManageOrder.aspx.cs">
+      <DependentUpon>ManageOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Orders\ManageOrder.aspx.designer.cs">
+      <DependentUpon>ManageOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Orders\OwnOrders.aspx.cs">
       <DependentUpon>OwnOrders.aspx</DependentUpon>
@@ -397,6 +405,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\Products\App_LocalResources\ShowProducts.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Orders\App_LocalResources\ManageOrder.aspx.es.resx" />
+    <Content Include="Pages\Orders\App_LocalResources\ManageOrder.aspx.gl.resx" />
+    <Content Include="Pages\Orders\App_LocalResources\ManageOrder.aspx.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

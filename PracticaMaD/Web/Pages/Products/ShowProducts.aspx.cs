@@ -1,9 +1,16 @@
 ﻿using Es.Udc.DotNet.ModelUtil.IoC;
+using Es.Udc.DotNet.PracticaMad.Model;
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.CategoryDao;
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao;
+using Es.Udc.DotNet.PracticaMad.Model.Objetos;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
 using Es.Udc.DotNet.PracticaMad.Web.Properties;
 using System;
+using System.Linq;
 using System.Web;
+using System.Web.UI.WebControls;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 {
@@ -46,6 +53,10 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
             IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
             IProductService productService = iocManager.Resolve<IProductService>();
 
+            IProductDao productDao = (IProductDao)iocManager.Resolve<IProductDao>();
+
+            ICategoryDao categoryDao = (ICategoryDao)iocManager.Resolve<ICategoryDao>();
+
             /* Get Accounts Info */
             ProductBlock productBlock =
                 productService.FindProductByProductNameKeyword(keyword, startIndex, count);
@@ -85,6 +96,38 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
                     Response.ApplyAppPathModifier(url);
                 this.lnkNext.Visible = true;
             }
+
+        }
+
+        protected void gvProduct_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+            GridViewRow row = gvProduct.Rows[e.NewSelectedIndex];
+
+
+            string pName = row.Cells[0].Text;
+
+            IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
+
+            IShoppingCartService shoppingCartService = (IShoppingCartService)iocManager.Resolve<IShoppingCartService>();
+
+            IProductDao productDao = (IProductDao)iocManager.Resolve<IProductDao>();
+
+            Product p = productDao.FindByProductName(pName);
+
+            long productId = p.productId;
+
+
+            ShoppingCartLine cartLine1 = new ShoppingCartLine();
+            cartLine1.productId = productId;
+            cartLine1.quantity = 1;
+            cartLine1.price = cartLine1.quantity * p.price;
+            cartLine1.forGift = true;
+
+
+            shoppingCartService.AddToCart(cartLine1, SessionManager.shoppingCart);
+
+            Response.Redirect(Request.RawUrl.ToString());
+
         }
     }
 }
