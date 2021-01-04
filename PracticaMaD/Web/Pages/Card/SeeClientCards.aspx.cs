@@ -43,7 +43,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Card
             gvCardList.DataBind();
         }
 
-        protected void changeDefaultCard_DataBinding(object sender, EventArgs e)
+        protected void ChangeDefaultCard_DataBinding(object sender, EventArgs e)
         {
             CheckBox c = sender as CheckBox;
             GridViewRow row = c.NamingContainer as GridViewRow;
@@ -52,7 +52,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Card
                 c.Checked = true;
         }
 
-        protected void changeDefaultCard_CheckedChanged(object sender, EventArgs e)
+        protected void ChangeDefaultCard_CheckedChanged(object sender, EventArgs e)
         {
             CheckBox c = sender as CheckBox;
             GridViewRow row = c.NamingContainer as GridViewRow;

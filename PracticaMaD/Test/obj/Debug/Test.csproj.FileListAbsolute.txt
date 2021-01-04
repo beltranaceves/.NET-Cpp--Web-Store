@@ -150,3 +150,38 @@ D:\MAD\V 5.0\PracticaMaD\Test\bin\Debug\Ninject.Extensions.Interception.xml
 D:\MAD\V 5.0\PracticaMaD\Test\bin\Debug\Ninject.Extensions.Interception.DynamicProxy.xml
 D:\MAD\V 5.0\PracticaMaD\Test\bin\Debug\Ninject.Extensions.Xml.xml
 D:\MAD\V 5.0\PracticaMaD\Test\obj\Debug\Test.csproj.CopyComplete
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\PracticaMad.Test.dll.config
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\PracticaMad.Test.dll
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\PracticaMad.Test.pdb
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\Castle.Core.dll
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\EntityFramework.dll
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\ModelUtil.dll
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\Ninject.dll
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\Ninject.Extensions.Interception.dll
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\Ninject.Extensions.Interception.DynamicProxy.dll
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\Ninject.Extensions.Xml.dll
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\PracticaMad.Model.exe
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\PracticaMad.Model.pdb
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\PracticaMad.Model.exe.config
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\Castle.Core.xml
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\EntityFramework.xml
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\Ninject.xml
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\Ninject.Extensions.Interception.xml
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\Ninject.Extensions.Interception.DynamicProxy.xml
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\bin\Debug\Ninject.Extensions.Xml.xml
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\obj\Debug\Test.csprojAssemblyReference.cache
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\obj\Debug\Test.csproj.CopyComplete
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\obj\Debug\PracticaMad.Test.dll
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\obj\Debug\PracticaMad.Test.pdb

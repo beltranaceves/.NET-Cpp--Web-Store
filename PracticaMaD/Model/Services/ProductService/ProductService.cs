@@ -27,7 +27,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         /// </summary>
         /// <param name="keyword">The product name keyword. </param>
         /// <returns> The number of products </returns>
-        /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
         public int NumberOfProductsSearched(string keyword)
         {
@@ -64,7 +63,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         }
 
         [Transactional]
-        public List<ProductDetails> FindProductByProductNameKeyword(String keyword, int startIndex, int count)
+        public List<ProductDetails> FindProductByProductNameKeyword(string keyword, int startIndex, int count)
         {
             List<Product> products = ProductDao.FindByProductNameKeyword(keyword, startIndex, count);
             var item = new CacheItem("keyword", products.ToString());
@@ -104,6 +103,22 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
 
             List<Product> products = ProductDao.FindByCategory(category);
             var item = new CacheItem(categoryId.ToString(), products.ToString());
+            var policy = new CacheItemPolicy();
+            Cache.Add(item, policy);
+
+            List<ProductDetails> productsDetails = new List<ProductDetails>();
+            foreach (Product p in products)
+            {
+                productsDetails.Add(new ProductDetails(p.productName, p.price, p.registerDate, p.stock, p.categoryId));
+            }
+            return productsDetails;
+        }
+
+        [Transactional]
+        public List<ProductDetails> FindProductByTag(string tagName, int startIndex, int count)
+        {
+            List<Product> products = ProductDao.FindByTag(tagName, startIndex, count);
+            var item = new CacheItem(tagName, products.ToString());
             var policy = new CacheItemPolicy();
             Cache.Add(item, policy);
 

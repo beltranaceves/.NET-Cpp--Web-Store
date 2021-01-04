@@ -1,5 +1,8 @@
-﻿using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
+﻿using Es.Udc.DotNet.PracticaMad.Model;
+using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
 using System;
+using System.Collections.Generic;
+using System.Web.UI.WebControls;
 
 namespace Es.Udc.DotNet.PracticaMad.Web
 {
@@ -9,6 +12,12 @@ namespace Es.Udc.DotNet.PracticaMad.Web
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if (!IsPostBack)
+            //{
+            //    List<Tag> tags = SessionManager.GetTags();
+            //    gvTags.DataSource = tags;
+            //    gvTags.DataBind();
+            //}
             if (!SessionManager.IsClientAuthenticated(Context))
             {
                 if (lblDash2 != null)

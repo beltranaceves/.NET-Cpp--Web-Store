@@ -20,7 +20,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         /// </summary>
         /// <param name="keyword">The product name keyword. </param>
         /// <returns> The number of products </returns>
-        /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
         int NumberOfProductsSearched(string keyword);
 
@@ -50,13 +49,13 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         /// object to return.</param>
         /// <param name="count">The maximum number of objects to return.</param>
         [Transactional]
-        List<ProductDetails> FindProductByProductNameKeyword(String keyword, int startIndex, int count);
+        List<ProductDetails> FindProductByProductNameKeyword(string keyword, int startIndex, int count);
 
         /// <summary>
         /// Finds products by name keyword and category.
         /// </summary>
         /// <param name="keyword"> The product name keyword. </param>
-        /// <param name="category"> The product category. </param>
+        /// <param name="categoryId"> The product category. </param>
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
         List<ProductDetails> FindProductByProductNameKeywordAndCategory(String keyword, long categoryId);
@@ -64,9 +63,19 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         /// <summary>
         /// Finds products by category.
         /// </summary>
-        /// <param name="category"> The product category. </param>
+        /// <param name="categoryId"> The product category. </param>
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
         List<ProductDetails> FindProductByCategory(long categoryId);
+
+        /// <summary>
+        /// Finds products by tag.
+        /// </summary>
+        /// <param name="tagName"> The tag Name. </param>
+        /// <param name="startIndex"> the index (starting from 0) of the first
+        /// object to return.</param>
+        /// <param name="count">The maximum number of objects to return.</param>
+        [Transactional]
+        List<ProductDetails> FindProductByTag(string tagName, int startIndex, int count);
     }
 }

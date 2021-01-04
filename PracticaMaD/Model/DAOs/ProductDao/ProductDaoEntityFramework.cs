@@ -116,6 +116,23 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
             return product;
         }
 
+        public List<Product> FindByTag(String tag, int startIndex, int count)
+        {
+            List<Product> productList = null;
+
+            DbSet<Product> products = Context.Set<Product>();
+            DbSet<Tag> tags = Context.Set<Tag>();
+
+            var result =
+                (from p in products
+                 where p.ProductComment == (from t in tags where t.tagName == tag select t.ProductComment)
+                 select p).OrderBy(p => p.productId).Skip(startIndex).Take(count).ToList();
+
+            productList = result;
+
+            return productList;
+        }
+
         #endregion IProductDao Members. Specific Operations
     }
 }

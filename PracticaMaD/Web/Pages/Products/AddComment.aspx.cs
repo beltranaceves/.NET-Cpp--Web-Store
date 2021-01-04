@@ -1,4 +1,6 @@
-﻿using Es.Udc.DotNet.PracticaMad.Model;
+﻿using Es.Udc.DotNet.ModelUtil.Exceptions;
+using Es.Udc.DotNet.ModelUtil.IoC;
+using Es.Udc.DotNet.PracticaMad.Model;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
 using System;
 using System.Collections.Generic;
@@ -14,17 +16,56 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            lblTagError.Visible = false;
+
+            if (!IsPostBack)
+            {
+                List<Tag> tags = SessionManager.GetTags();
+                gvTagList.DataSource = tags;
+                gvTagList.DataBind();
+            }
         }
 
         protected void BtnAddCommentClick(object sender, EventArgs e)
         {
             if (Page.IsValid)
             {
+                List<Tag> tags = new List<Tag>();
+                var rows = gvTagList.Rows;
+                int count = gvTagList.Rows.Count;
+                for (int i = 0; i < count; i++)
+                {
+                    bool isChecked = ((CheckBox)rows[i].FindControl("addTag")).Checked;
+                    if (isChecked)
+                    {
+                        Tag tag = SessionManager.FindTagByName(rows[i].Cells[0].Text);
+                        tags.Add(tag);
+                    }
+                }
+
                 ProductComment createdComment = SessionManager.AddProductComment(Context,
-                    txtComment.Text);
+                        txtComment.Text, tags);
+                SessionManager.TagProductComment(createdComment.commentId, tags);
                 Context.Items.Add("commentCreated", createdComment);
                 Server.Transfer(
                     Response.ApplyAppPathModifier("./CommentAdded.aspx"));
+            }
+        }
+
+        protected void BtnAddTag(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+                try
+                {
+                    Tag tag;
+                    tag = SessionManager.CreateTag(txtTag.Text);
+                    txtTag.Text = String.Empty;
+                }
+                catch (DuplicateInstanceException)
+                {
+                    lblTagError.Visible = true;
+                }
             }
         }
     }

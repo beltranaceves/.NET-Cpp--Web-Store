@@ -15,6 +15,15 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
     {
 
         /// <summary>
+        /// lclMenuExplanation control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Localize lclMenuExplanation;
+
+        /// <summary>
         /// AddCommentForm control.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,51 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvComment;
+
+        /// <summary>
+        /// gvTagList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvTagList;
+
+        /// <summary>
+        /// lclTag control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Localize lclTag;
+
+        /// <summary>
+        /// txtTag control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtTag;
+
+        /// <summary>
+        /// lblTagError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTagError;
+
+        /// <summary>
+        /// btnAddTag control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAddTag;
 
         /// <summary>
         /// btnAddComment control.

@@ -10,14 +10,13 @@
         <asp:Label ID="lblInvalidProduct" meta:resourcekey="lblInvalidProduct" runat="server" Visible="false"></asp:Label>
     </p>
     <form runat="server">
-        <asp:ObjectDataSource ID="odsReplacementRequests" runat="server"
-            EnablePaging="true"
-            TypeName=""
-            SelectMethod="GetReplacementRequests"></asp:ObjectDataSource>
+
         <asp:GridView ID="gvProduct" runat="server"
-            AutoGenerateColumns="False"
+            AutoGenerateColumns="True"
             OnPageIndexChanging="GvProductPageIndexChanging"
             ShowHeaderWhenEmpty="True">
+            <Columns>
+            </Columns>
         </asp:GridView>
         <br />
         <!-- "Previous" and "Next" links. -->

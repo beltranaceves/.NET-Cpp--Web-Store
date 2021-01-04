@@ -26,13 +26,22 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
         /// Finds all products by keyword
         /// </summary>
         /// <param name="keyword">keyword</param>
-        /// <param name="page">page</param>
-        /// <param name="size">size</param>
+        /// <param name="startIndex">startIndex</param>
+        /// <param name="count">count</param>
         /// <returns>A list of Product</returns>
-        List<Product> FindByProductNameKeyword(String keyword, int page, int size);
+        List<Product> FindByProductNameKeyword(String keyword, int startIndex, int count);
 
         List<Product> FindByProductNameKeywordAndCategory(String keyword, Category category);
 
         Product FindByProductName(string Productname);
+
+        /// <summary>
+        /// Finds all products by tagName
+        /// </summary>
+        /// <param name="tagName">tagName</param>
+        /// <param name="startIndex">startIndex</param>
+        /// <param name="count">count</param>
+        /// <returns>A list of Product</returns>
+        List<Product> FindByTag(string tagName, int startIndex, int count);
     }
 }

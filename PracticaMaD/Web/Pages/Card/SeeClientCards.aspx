@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_MenuExplanation" runat="server">
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_BodyContent" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_BodyContent" runat="server">
     <br />
     <form runat="server">
 
@@ -22,7 +22,7 @@
                 <asp:BoundField DataField="DefaultCard" Visible="true" />
                 <asp:TemplateField HeaderText="<%$ Resources:, DefaultCard %>">
                     <ItemTemplate>
-                        <asp:CheckBox ID="changeDefaultCard" AutoPostBack="true" OnDataBinding="changeDefaultCard_DataBinding" runat="server" OnCheckedChanged="changeDefaultCard_CheckedChanged" />
+                        <asp:CheckBox ID="changeDefaultCard" AutoPostBack="true" OnDataBinding="ChangeDefaultCard_DataBinding" runat="server" OnCheckedChanged="ChangeDefaultCard_CheckedChanged" />
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:CommandField ShowSelectButton="true" SelectText="deleteCard" />

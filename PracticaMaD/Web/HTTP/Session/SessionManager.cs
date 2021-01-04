@@ -13,6 +13,7 @@ using Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService;
 using Es.Udc.DotNet.PracticaMad.Model;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService;
+using Es.Udc.DotNet.PracticaMad.Model.Services.TagService;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
 {
@@ -130,6 +131,13 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             set { productCommentService = value; }
         }
 
+        private static ITagService tagService;
+
+        public ITagService TagService
+        {
+            set { tagService = value; }
+        }
+
         static SessionManager()
         {
             IIoCManager iocManager =
@@ -143,6 +151,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             clientOrderService = iocManager.Resolve<IClientOrderService>();
 
             productCommentService = iocManager.Resolve<IProductCommentService>();
+
+            tagService = iocManager.Resolve<ITagService>();
         }
 
         #region Client methods
@@ -495,7 +505,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
         /// <param name="context"> The product and client id. </param>
         /// <param name="comment"> The text of the comment. </param>
         /// <exception cref="InstanceNotFoundException"/>
-        public static ProductComment AddProductComment(HttpContext context, string comment)
+        public static ProductComment AddProductComment(HttpContext context, string comment, List<Tag> tags)
         {
             ProductSession productSession =
                      (ProductSession)context.Session[PRODUCT_SESSION_ATTRIBUTE];
@@ -504,9 +514,54 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
 
             // productCommentService.AddProductComment(productSession.ProductId, comment, clientSession.ClientId);
             ProductComment prodComment = productCommentService.AddProductComment(1, comment, clientSession.ClientId);
+
             return prodComment;
         }
 
+        /// <summary>
+        /// Add Tags to a Comment.
+        /// </summary>
+        /// <param name="commentId"> The comment id. </param>
+        /// <param name="tags"> The tags to addd. </param>
+        public static void TagProductComment(long commentId, List<Tag> tags)
+        {
+            productCommentService.TagProductComment(commentId, tags);
+        }
+
         #endregion ProductComment Methods
+
+        #region Tag Methods
+
+        /// <summary>
+        /// Get All Tags
+        /// </summary>
+        public static List<Tag> GetTags()
+        {
+            List<Tag> tags = tagService.GetAllTags();
+            return tags;
+        }
+
+        /// <summary>
+        /// Find Tag By Name
+        /// </summary>
+        /// <param name="tagName"> The name of the tag. </param>
+        public static Tag FindTagByName(string tagName)
+        {
+            Tag tag = tagService.FindTagByName(tagName);
+            return tag;
+        }
+
+        /// <summary>
+        /// Create Tag
+        /// </summary>
+        /// <param name="tagName"> The name of the tag. </param>
+        /// <exception cref="DuplicateInstanceException"/>
+        public static Tag CreateTag(string tagName)
+        {
+            Tag tag = tagService.Create(tagName);
+            return tag;
+        }
+
+        #endregion Tag Methods
     }
 }
