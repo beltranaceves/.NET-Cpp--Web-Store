@@ -10,14 +10,14 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentDao
     public class ProductCommentDaoEntityFramework :
         GenericDaoEntityFramework<ProductComment, Int64>, IProductCommentDao
     {
-        public List<ProductCommentDetails> FindByProductId(long productId)
+        public List<ProductCommentDetails> FindByProductId(long productId, int startIndex, int count)
         {
             DbSet<ProductComment> productComment = Context.Set<ProductComment>();
             DbSet<Tag> tag = Context.Set<Tag>();
             List<ProductComment> result =
                 (from prodComm in productComment.Include("Tag")
                  where prodComm.productId == productId
-                 select prodComm).ToList();
+                 select prodComm).OrderByDescending(prodComm => prodComm.commentDate).Skip(startIndex).Take(count).ToList();
             List<ProductCommentDetails> productDetails = new List<ProductCommentDetails>();
             foreach (ProductComment product in result)
             {

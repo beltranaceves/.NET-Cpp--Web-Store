@@ -100,11 +100,11 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 productCommentService.AddProductComment(productId, productCommentText, clientId);
 
-                List<ProductCommentDetails> productComments = productCommentService.FindByProductId(productId);
+                ProductCommentBlock productComments = productCommentService.FindByProductId(productId, 0, 5);
 
-                Assert.AreEqual(productComments[0].CommentText, productCommentText);
-                Assert.AreEqual(productComments[0].ClientId, clientId);
-                Assert.AreEqual(productComments[0].ProductId, productId);
+                Assert.AreEqual(productComments.ProductComment[0].CommentText, productCommentText);
+                Assert.AreEqual(productComments.ProductComment[0].ClientId, clientId);
+                Assert.AreEqual(productComments.ProductComment[0].ProductId, productId);
 
                 //transaction.Complete() is not called, so Rollback is executed.
             }
@@ -148,7 +148,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 productCommentService.AddProductComment(productId, productCommentText, clientId);
 
-                List<ProductCommentDetails> productComments = productCommentService.FindByProductId(productId);
+                ProductCommentBlock productComments = productCommentService.FindByProductId(productId, 0, 5);
 
                 //transaction.Complete() is not called, so Rollback is executed.
             }
@@ -179,18 +179,19 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 //Add comment
                 productCommentService.AddProductComment(productId, productCommentText, clientId);
 
-                List<ProductCommentDetails> productComments = productCommentService.FindByProductId(productId);
+                ProductCommentBlock productComments = productCommentService.FindByProductId(productId, 0, 5);
 
                 Tag tag1 = new Tag();
                 tag1.tagName = "prueba";
                 List<Tag> list_tags = new List<Tag>();
                 list_tags.Add(tag1);
 
-                productCommentService.TagProductComment(productComments[0].CommentId, list_tags);
+                productCommentService.TagProductComment(productComments.ProductComment
+                    [0].CommentId, list_tags);
 
-                productComments = productCommentService.FindByProductId(productId);
+                productComments = productCommentService.FindByProductId(productId, 0, 5);
 
-                Assert.AreEqual(list_tags[0], productComments[0].Tags[0]);
+                Assert.AreEqual(list_tags[0], productComments.ProductComment[0].Tags[0]);
 
                 //transaction.Complete() is not called, so Rollback is executed.
             }

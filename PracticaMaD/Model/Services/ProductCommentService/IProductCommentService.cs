@@ -20,10 +20,12 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
         /// Find all the comments for a product.
         /// </summary>
         /// <param name="productId"> The product id. </param>
+        /// <param name="startIndex"> The product id. </param>
+        /// <param name="count"> The product id. </param>
         /// <returns> The product comments</returns>
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
-        List<ProductCommentDetails> FindByProductId(long productId);
+        ProductCommentBlock FindByProductId(long productId, int startIndex, int count);
 
         /// <summary>
         /// Find the details for a comment.

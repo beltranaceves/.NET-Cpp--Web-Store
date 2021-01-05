@@ -22,11 +22,15 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
         public ITagDao TagDao { private get; set; }
 
         [Transactional]
-        public List<ProductCommentDetails> FindByProductId(long productId)
+        public ProductCommentBlock FindByProductId(long productId, int startIndex, int count)
         {
-            List<ProductCommentDetails> productComments = ProductCommentDao.FindByProductId(productId);
+            List<ProductCommentDetails> productComments = ProductCommentDao.FindByProductId(productId, startIndex, count + 1);
+            bool existMoreProductsComments = (productComments.Count == count + 1);
 
-            return productComments;
+            if (existMoreProductsComments)
+                productComments.RemoveAt(count);
+
+            return new ProductCommentBlock(productComments, existMoreProductsComments);
         }
 
         /// <exception cref="InstanceNotFoundException"/>

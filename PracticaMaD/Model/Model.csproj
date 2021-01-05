@@ -152,6 +152,7 @@
     <Compile Include="Services\Exceptions\NotEnoughStockException.cs" />
     <Compile Include="Services\Exceptions\IncorrectPasswordException.cs" />
     <Compile Include="Services\ProductCommentService\IProductCommentService.cs" />
+    <Compile Include="Services\ProductCommentService\ProductCommentBlock.cs" />
     <Compile Include="Services\ProductCommentService\ProductCommentDetails.cs" />
     <Compile Include="Services\ProductCommentService\ProductCommentService.cs" />
     <Compile Include="Services\ProductService\IProductService.cs" />

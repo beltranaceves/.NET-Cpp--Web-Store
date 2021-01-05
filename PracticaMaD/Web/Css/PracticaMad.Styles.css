@@ -169,9 +169,32 @@ table.tagsComment {
 }
 
 /* Products*/
-table.products {
+.products {
     text-align: center;
     align-content: center;
     margin-left: auto;
     margin-right: auto;
+}
+
+.comments {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    width: 45%;
+}
+
+.oneProduct {
+    text-align: center;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
+}
+
+table.oneProduct {
+    text-align: center;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 45%;
 }

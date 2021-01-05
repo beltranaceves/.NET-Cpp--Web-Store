@@ -10,7 +10,7 @@
     <p>
         <asp:Label ID="lblInvalidProduct" meta:resourcekey="lblInvalidProduct" runat="server" Visible="false"></asp:Label>
     </p>
-    <asp:Table CssClass="productDetails" ID="TableProductInfo" runat="server">
+    <asp:Table CssClass="productDetails" CssClas="oneProduct" runat="server">
         <asp:TableRow runat="server">
             <asp:TableHeaderCell ID="cellCaptionProductName" runat="server" Text="<%$ Resources:Common, productName %>"></asp:TableHeaderCell>
             <asp:TableCell ID="cellProductName" runat="server"></asp:TableCell>
@@ -20,12 +20,32 @@
             <asp:TableCell ID="cellProductPrize" runat="server"></asp:TableCell>
         </asp:TableRow>
     </asp:Table>
+
     <form id="AddCommentForm" method="post" runat="server">
         <div class="button">
             <asp:Button ID="btnAddComment" runat="server" meta:resourcekey="btnAddComment" OnClick="BtnAddCommentClick" />
         </div>
         <div class="button">
             <asp:Button ID="btnEditComment" runat="server" meta:resourcekey="btnEditComment" OnClick="BtnEditCommentClick" />
+        </div>
+
+        <asp:GridView ID="gvComment" runat="server" CssClass="comments" GridLines="None"
+            AutoGenerateColumns="False">
+            <Columns>
+                <asp:BoundField DataField="ProductId" ItemStyle-CssClass="Hide" />
+                <asp:BoundField DataField="CommentText" HeaderText="<%$ Resources:Common, CommentText %>" />
+                <asp:BoundField DataField="CommentDate" HeaderText="<%$ Resources:Common, CommentDate %>" />
+            </Columns>
+        </asp:GridView>
+
+        <!-- "Previous" and "Next" links. -->
+        <div class="previousNextLinks">
+            <span class="previousLink">
+                <asp:HyperLink ID="lnkPrevious" Text="<%$ Resources:Common, Previous %>" runat="server"
+                    Visible="False"></asp:HyperLink>
+            </span><span class="nextLink">
+                <asp:HyperLink ID="lnkNext" Text="<%$ Resources:Common, Next %>" runat="server" Visible="False"></asp:HyperLink>
+            </span>
         </div>
     </form>
 </asp:Content>

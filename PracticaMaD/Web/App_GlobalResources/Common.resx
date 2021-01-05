@@ -141,4 +141,10 @@
   <data name="productDate" xml:space="preserve">
     <value>Date</value>
   </data>
+  <data name="CommentText" xml:space="preserve">
+    <value>Comment</value>
+  </data>
+  <data name="CommentDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
 </root>

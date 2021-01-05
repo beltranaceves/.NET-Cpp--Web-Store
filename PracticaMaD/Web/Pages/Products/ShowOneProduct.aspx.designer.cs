@@ -24,15 +24,6 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
         protected global::System.Web.UI.WebControls.Label lblInvalidProduct;
 
         /// <summary>
-        /// TableProductInfo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Table TableProductInfo;
-
-        /// <summary>
         /// cellCaptionProductName control.
         /// </summary>
         /// <remarks>
@@ -94,5 +85,32 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnEditComment;
+
+        /// <summary>
+        /// gvComment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvComment;
+
+        /// <summary>
+        /// lnkPrevious control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkPrevious;
+
+        /// <summary>
+        /// lnkNext control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkNext;
     }
 }

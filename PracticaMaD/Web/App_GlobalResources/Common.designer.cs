@@ -61,6 +61,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        internal static string CommentDate {
+            get {
+                return ResourceManager.GetString("CommentDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comment.
+        /// </summary>
+        internal static string CommentText {
+            get {
+                return ResourceManager.GetString("CommentText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Keyword.
         /// </summary>
         internal static string keyword {
