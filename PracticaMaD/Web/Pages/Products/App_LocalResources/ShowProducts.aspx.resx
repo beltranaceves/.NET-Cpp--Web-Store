@@ -100,4 +100,7 @@
   <data name="lblInvalidProduct.Text" xml:space="preserve">
     <value>Invalid Search</value>
   </data>
+  <data name="btnShowProduct.Text" xml:space="preserve">
+    <value>Show product</value>
+  </data>
 </root>

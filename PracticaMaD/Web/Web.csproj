@@ -105,6 +105,8 @@
     <Content Include="Pages\Orders\OwnOrders.aspx" />
     <Content Include="Pages\Products\AddComment.aspx" />
     <Content Include="Pages\Products\CommentAdded.aspx" />
+    <Content Include="Pages\Products\EditComment.aspx" />
+    <Content Include="Pages\Products\EditedComment.aspx" />
     <Content Include="Pages\Products\FindProducts.aspx" />
     <Content Include="Pages\Products\ShowOneProduct.aspx" />
     <Content Include="Pages\Products\ShowProductsTag.aspx" />
@@ -138,7 +140,6 @@
     </Compile>
     <Compile Include="HTTP\Session\CreditCardSession.cs" />
     <Compile Include="HTTP\Session\ClientSession.cs" />
-    <Compile Include="HTTP\Session\ProductSession.cs" />
     <Compile Include="HTTP\Session\SessionManager.cs" />
     <Compile Include="HTTP\Session\SpecificCulturePage.cs">
       <SubType>ASPXCodeBehind</SubType>
@@ -196,6 +197,20 @@
     </Compile>
     <Compile Include="Pages\Products\CommentAdded.aspx.designer.cs">
       <DependentUpon>CommentAdded.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Products\EditComment.aspx.cs">
+      <DependentUpon>EditComment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Products\EditComment.aspx.designer.cs">
+      <DependentUpon>EditComment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Products\EditedComment.aspx.cs">
+      <DependentUpon>EditedComment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Products\EditedComment.aspx.designer.cs">
+      <DependentUpon>EditedComment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Products\FindProducts.aspx.cs">
       <DependentUpon>FindProducts.aspx</DependentUpon>
@@ -410,6 +425,24 @@
     <Content Include="Pages\Orders\App_LocalResources\ManageOrder.aspx.es.resx" />
     <Content Include="Pages\Orders\App_LocalResources\ManageOrder.aspx.gl.resx" />
     <Content Include="Pages\Orders\App_LocalResources\ManageOrder.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\EditComment.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\EditComment.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\EditComment.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\EditedComment.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\EditedComment.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\EditedComment.aspx.gl.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

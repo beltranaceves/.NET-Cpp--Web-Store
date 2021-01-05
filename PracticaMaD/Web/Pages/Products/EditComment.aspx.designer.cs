@@ -11,88 +11,97 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 {
 
 
-    public partial class ShowOneProduct
+    public partial class EditComment
     {
 
         /// <summary>
-        /// lblInvalidProduct control.
+        /// UpdateUserProfileForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblInvalidProduct;
+        protected global::System.Web.UI.HtmlControls.HtmlForm UpdateUserProfileForm;
 
         /// <summary>
-        /// TableProductInfo control.
+        /// lclComment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Table TableProductInfo;
+        protected global::System.Web.UI.WebControls.Localize lclComment;
 
         /// <summary>
-        /// cellCaptionProductName control.
+        /// txtComment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableHeaderCell cellCaptionProductName;
+        protected global::System.Web.UI.WebControls.TextBox txtComment;
 
         /// <summary>
-        /// cellProductName control.
+        /// rfvComment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableCell cellProductName;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvComment;
 
         /// <summary>
-        /// cellCaptionProductPrize control.
+        /// gvTagList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableHeaderCell cellCaptionProductPrize;
+        protected global::System.Web.UI.WebControls.GridView gvTagList;
 
         /// <summary>
-        /// cellProductPrize control.
+        /// lclTag control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableCell cellProductPrize;
+        protected global::System.Web.UI.WebControls.Localize lclTag;
 
         /// <summary>
-        /// AddCommentForm control.
+        /// txtTag control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm AddCommentForm;
+        protected global::System.Web.UI.WebControls.TextBox txtTag;
 
         /// <summary>
-        /// btnAddComment control.
+        /// lblTagError control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddComment;
+        protected global::System.Web.UI.WebControls.Label lblTagError;
 
         /// <summary>
-        /// btnEditComment control.
+        /// btnAddTag control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditComment;
+        protected global::System.Web.UI.WebControls.Button btnAddTag;
+
+        /// <summary>
+        /// btnUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
     }
 }

@@ -26,6 +26,16 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
         List<ProductCommentDetails> FindByProductId(long productId);
 
         /// <summary>
+        /// Find the details for a comment.
+        /// </summary>
+        /// <param name="prodId"> The comment id. </param>
+        /// <param name="clientId"> The comment id. </param>
+        /// <returns> The comments</returns>
+        /// <exception cref="InstanceNotFoundException"/>
+        [Transactional]
+        ProductCommentDetails FindProductDetailsByProdIdAndClientID(long prodId, long clientId);
+
+        /// <summary>
         /// Adds a comment to a product.
         /// </summary>
         /// <param name="productId"> The product id. </param>

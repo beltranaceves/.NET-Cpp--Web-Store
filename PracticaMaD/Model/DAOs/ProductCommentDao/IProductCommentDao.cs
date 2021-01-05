@@ -11,5 +11,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentDao
         List<ProductCommentDetails> FindByProductId(long productId);
 
         bool ExistByProductIdAndClientId(long productId, long clientId);
+
+        ProductComment FindByProdIdAndClientId(long prodId, long clientId);
     }
 }

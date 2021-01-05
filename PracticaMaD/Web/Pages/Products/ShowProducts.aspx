@@ -14,13 +14,16 @@
 
         <asp:GridView ID="gvProduct" runat="server" CssClass="products" GridLines="None"
             AutoGenerateColumns="False"
+            OnRowCommand="ContactsGridView_RowCommand"
             OnSelectedIndexChanging="gvProduct_SelectedIndexChanging">
             <Columns>
+                <asp:BoundField DataField="ProductId" ItemStyle-CssClass="Hide" />
                 <asp:BoundField DataField="ProductName" HeaderText="<%$ Resources:Common, productName %>" />
                 <asp:BoundField DataField="RegisterDate" HeaderText="<%$ Resources:Common, productDate %>" />
                 <asp:BoundField DataField="Price" HeaderText="<%$ Resources:Common, prize %>" />
-                  
-                 <asp:CommandField ShowSelectButton="True" SelectText="Buy Product" meta:resourcekey="CommandFieldResource3"/> 
+                <asp:BoundField DataField="Price" HeaderText="<%$ Resources:Common, prize %>" />
+                <asp:ButtonField CommandName="Show" runat="server" meta:resourcekey="btnShowProduct" />
+                <asp:CommandField ShowSelectButton="True" SelectText="Buy Product" meta:resourcekey="CommandFieldResource3" />
             </Columns>
         </asp:GridView>
         <br />

@@ -12,8 +12,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentDao
     {
         public List<ProductCommentDetails> FindByProductId(long productId)
         {
-            #region Option 1: Using Linq.
-
             DbSet<ProductComment> productComment = Context.Set<ProductComment>();
             DbSet<Tag> tag = Context.Set<Tag>();
             List<ProductComment> result =
@@ -28,8 +26,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentDao
             }
 
             return productDetails;
-
-            #endregion Option 1: Using Linq.
         }
 
         public bool ExistByProductIdAndClientId(long productId, long clientId)
@@ -52,6 +48,20 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentDao
             }
 
             return true;
+        }
+
+        public ProductComment FindByProdIdAndClientId(long prodId, long clientId)
+        {
+            DbSet<ProductComment> productComment = Context.Set<ProductComment>();
+            DbSet<Tag> tag = Context.Set<Tag>();
+            var result =
+                (from prodComm in productComment.Include("Tag")
+                 where prodComm.productId == prodId &&
+                 prodComm.clientId == clientId
+                 select prodComm).ToList();
+            ProductComment product = result.FirstOrDefault();
+
+            return product;
         }
     }
 }

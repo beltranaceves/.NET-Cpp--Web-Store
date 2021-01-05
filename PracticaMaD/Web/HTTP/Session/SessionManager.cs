@@ -86,7 +86,6 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
     /// </summary>
     public class SessionManager
     {
-
         public static ShoppingCart shoppingCart;
 
         public static readonly String LOCALE_SESSION_ATTRIBUTE = "locale";
@@ -491,12 +490,9 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
         /// <param name="context"> The product id. </param>
         /// <returns> The product details </returns>
         /// <exception cref="InstanceNotFoundException"/>
-        public static ProductDetails FindProductDetails(HttpContext context)
+        public static ProductDetails FindProductDetails(HttpContext context, long productId)
         {
-            ProductSession productSession =
-                     (ProductSession)context.Session[PRODUCT_SESSION_ATTRIBUTE];
-            // ProductDetails product = productService.FindProductDetails(productSession.ProductId);
-            ProductDetails product = productService.FindProductDetails(1);
+            ProductDetails product = productService.FindProductDetails(productId);
             return product;
         }
 
@@ -510,15 +506,41 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
         /// <param name="context"> The product and client id. </param>
         /// <param name="comment"> The text of the comment. </param>
         /// <exception cref="InstanceNotFoundException"/>
-        public static ProductComment AddProductComment(HttpContext context, string comment, List<Tag> tags)
+        public static ProductComment AddProductComment(HttpContext context, long prodId, string comment, List<Tag> tags)
         {
-            ProductSession productSession =
-                     (ProductSession)context.Session[PRODUCT_SESSION_ATTRIBUTE];
             ClientSession clientSession =
                    (ClientSession)context.Session[CLIENT_SESSION_ATTRIBUTE];
 
-            // productCommentService.AddProductComment(productSession.ProductId, comment, clientSession.ClientId);
-            ProductComment prodComment = productCommentService.AddProductComment(1, comment, clientSession.ClientId);
+            ProductComment prodComment = productCommentService.AddProductComment(prodId, comment, clientSession.ClientId);
+
+            return prodComment;
+        }
+
+        /// <summary>
+        /// Find a Comment.
+        /// </summary>
+        /// <param name="context"> The client id. </param>
+        /// <param name="prodId"> The product Id. </param>
+        /// <exception cref="InstanceNotFoundException"/>
+        public static ProductCommentDetails FindProductComment(HttpContext context, long prodId)
+        {
+            ClientSession clientSession =
+                   (ClientSession)context.Session[CLIENT_SESSION_ATTRIBUTE];
+
+            ProductCommentDetails prodComment = productCommentService.FindProductDetailsByProdIdAndClientID(prodId, clientSession.ClientId);
+
+            return prodComment;
+        }
+
+        /// <summary>
+        /// Edit a Comment.
+        /// </summary>
+
+        /// <param name="prodDetails"> The comment  id. </param>
+        /// <exception cref="InstanceNotFoundException"/>
+        public static ProductCommentDetails EditProductComment(ProductCommentDetails prodDetails)
+        {
+            ProductCommentDetails prodComment = productCommentService.EditProductComment(prodDetails.CommentId, prodDetails);
 
             return prodComment;
         }
@@ -537,16 +559,13 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
         /// See if a client comment the product
         /// </summary>
         /// <param name="productId"> The product Id. </param>
-        /// <param name="clientId"> The client Id. </param>
         /// <returns> True-> exist a comment, False-> Doesnt exist the comment</returns>
 
-        public static bool ExistCommentFromClient(HttpContext context)
+        public static bool ExistCommentFromClient(HttpContext context, long productId)
         {
-            ProductSession productSession =
-                   (ProductSession)context.Session[PRODUCT_SESSION_ATTRIBUTE];
             ClientSession clientSession =
                    (ClientSession)context.Session[CLIENT_SESSION_ATTRIBUTE];
-            return productCommentService.ExistCommentFromClient(productSession.ProductId, clientSession.ClientId);
+            return productCommentService.ExistCommentFromClient(productId, clientSession.ClientId);
         }
 
         #endregion ProductComment Methods

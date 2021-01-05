@@ -1,43 +1,41 @@
 ﻿using Es.Udc.DotNet.ModelUtil.Exceptions;
-using Es.Udc.DotNet.ModelUtil.IoC;
 using Es.Udc.DotNet.PracticaMad.Model;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 {
-    public partial class AddComment : SpecificCulturePage
+    public partial class EditComment : SpecificCulturePage
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-            lblTagError.Visible = false;
+        private ProductCommentDetails prodDetails;
 
+        protected void Page_Load(object sender, EventArgs e)
+
+        {
             if (!IsPostBack)
             {
-                try
-                {
-                    long prodId = Int32.Parse(Request.Params.Get("prodId"));
-                    List<Tag> tags = SessionManager.GetTags();
-                    gvTagList.DataSource = tags;
-                    gvTagList.DataBind();
-                }
-                catch (ArgumentNullException)
-                {
-                }
+                long prodId = Int32.Parse(Request.Params.Get("prodId"));
+
+                prodDetails =
+                    SessionManager.FindProductComment(Context, prodId);
+
+                List<Tag> tags = SessionManager.GetTags();
+                txtComment.Text = prodDetails.CommentText;
+                gvTagList.DataSource = tags;
+                gvTagList.DataBind();
             }
         }
 
-        protected void BtnAddCommentClick(object sender, EventArgs e)
+        protected void BtnUpdateClick(object sender, EventArgs e)
         {
             if (Page.IsValid)
             {
-                long prodId = Int32.Parse(Request.Params.Get("prodId"));
                 List<Tag> tags = new List<Tag>();
                 var rows = gvTagList.Rows;
                 int count = gvTagList.Rows.Count;
@@ -50,13 +48,18 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
                         tags.Add(tag);
                     }
                 }
+                long prodId = Int32.Parse(Request.Params.Get("prodId"));
 
-                ProductComment createdComment = SessionManager.AddProductComment(Context, prodId,
-                        txtComment.Text, tags);
-                SessionManager.TagProductComment(createdComment.commentId, tags);
-                Context.Items.Add("commentCreated", createdComment);
+                prodDetails =
+                    SessionManager.FindProductComment(Context, prodId);
+                ProductCommentDetails prodDetails2 = new ProductCommentDetails(prodDetails.CommentId, prodDetails.ProductId,
+                                                                    txtComment.Text, System.DateTime.Now, prodDetails.ClientId, tags);
+
+                ProductCommentDetails editedComment = SessionManager.EditProductComment(prodDetails2);
+
+                Context.Items.Add("commentEdited", editedComment);
                 Server.Transfer(
-                    Response.ApplyAppPathModifier("./CommentAdded.aspx"));
+                    Response.ApplyAppPathModifier("./EditedComment.aspx"));
             }
         }
 

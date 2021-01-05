@@ -96,13 +96,11 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
                     Response.ApplyAppPathModifier(url);
                 this.lnkNext.Visible = true;
             }
-
         }
 
         protected void gvProduct_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
             GridViewRow row = gvProduct.Rows[e.NewSelectedIndex];
-
 
             string pName = row.Cells[0].Text;
 
@@ -116,18 +114,31 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 
             long productId = p.productId;
 
-
             ShoppingCartLine cartLine1 = new ShoppingCartLine();
             cartLine1.productId = productId;
             cartLine1.quantity = 1;
             cartLine1.price = cartLine1.quantity * p.price;
             cartLine1.forGift = true;
 
-
             shoppingCartService.AddToCart(cartLine1, SessionManager.shoppingCart);
 
             Response.Redirect(Request.RawUrl.ToString());
+        }
 
+        protected void ContactsGridView_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Show")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = gvProduct.Rows[index];
+                long id = Convert.ToInt32(row.Cells[0].Text);
+
+                /* Do action. */
+                String url =
+                    String.Format("./ShowOneProduct.aspx?prodId={0}", id);
+
+                Response.Redirect(Response.ApplyAppPathModifier(url));
+            }
         }
     }
 }

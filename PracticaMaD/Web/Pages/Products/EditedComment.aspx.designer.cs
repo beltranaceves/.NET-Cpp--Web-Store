@@ -11,43 +11,34 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 {
 
 
-    public partial class ShowProducts
+    public partial class EditedComment
     {
 
         /// <summary>
-        /// lblNoProduct control.
+        /// lblCommentEditedTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNoProduct;
+        protected global::System.Web.UI.WebControls.Label lblCommentEditedTitle;
 
         /// <summary>
-        /// gvProduct control.
+        /// lblCommentEdited control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvProduct;
+        protected global::System.Web.UI.WebControls.Label lblCommentEdited;
 
         /// <summary>
-        /// lnkPrevious control.
+        /// lblCommentEditedId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkPrevious;
-
-        /// <summary>
-        /// lnkNext control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkNext;
+        protected global::System.Web.UI.WebControls.Label lblCommentEditedId;
     }
 }

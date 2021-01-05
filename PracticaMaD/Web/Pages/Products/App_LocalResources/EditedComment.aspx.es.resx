@@ -97,10 +97,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.3500.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblInvalidProduct.Text" xml:space="preserve">
-    <value>Búsqueda no valida</value>
+  <data name="lblCommentEdited.Text" xml:space="preserve">
+    <value>Comentario Editado</value>
   </data>
-  <data name="btnShowProduct.Text" xml:space="preserve">
-    <value>Mostrar Producto</value>
+  <data name="lblCommentCreatedId.Text" xml:space="preserve">
+    <value>Id del Comentario</value>
   </data>
 </root>

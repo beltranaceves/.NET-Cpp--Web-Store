@@ -2,9 +2,11 @@ using Es.Udc.DotNet.ModelUtil.Exceptions;
 using Ninject;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentDao;
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.TagDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao;
+using Es.Udc.DotNet.ModelUtil.Transactions;
 
 namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
 {
@@ -19,6 +21,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
         [Inject]
         public ITagDao TagDao { private get; set; }
 
+        [Transactional]
         public List<ProductCommentDetails> FindByProductId(long productId)
         {
             List<ProductCommentDetails> productComments = ProductCommentDao.FindByProductId(productId);
@@ -26,6 +29,20 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
             return productComments;
         }
 
+        /// <exception cref="InstanceNotFoundException"/>
+        [Transactional]
+        public ProductCommentDetails FindProductDetailsByProdIdAndClientID(long prodId, long clientId)
+        {
+            ProductComment comment = ProductCommentDao.FindByProdIdAndClientId(prodId, clientId);
+            if (comment == null)
+            {
+                throw new InstanceNotFoundException(clientId, "Dont have any comment to edit");
+            }
+
+            return new ProductCommentDetails(comment.commentId, comment.productId, comment.commentText, System.DateTime.Now, comment.clientId, comment.Tag.ToList());
+        }
+
+        [Transactional]
         public ProductComment AddProductComment(long productId, String commentText, long clientId)
         {
             ProductComment productComment = new ProductComment();
@@ -40,6 +57,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
             return productComment;
         }
 
+        [Transactional]
         public void TagProductComment(long productCommentId, List<Tag> tags)
         {
             ProductComment comment = ProductCommentDao.Find(productCommentId);
@@ -55,6 +73,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
             ProductCommentDao.Update(comment);
         }
 
+        [Transactional]
         public ProductCommentDetails EditProductComment(long commentId, ProductCommentDetails productCommentDetails)
         {
             ProductComment productComment = ProductCommentDao.Find(commentId);
@@ -62,16 +81,19 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
             {
                 throw new InstanceNotFoundException(commentId, "No se encuentra el comentario que quieres editar");
             }
+            List<Tag> tags = new List<Tag>();
+            tags = productCommentDetails.Tags;
             productComment.productId = productCommentDetails.ProductId;
             productComment.commentText = productCommentDetails.CommentText;
             productComment.commentDate = System.DateTime.Now;
             productComment.clientId = productCommentDetails.ClientId;
-            productComment.Tag = productCommentDetails.Tags;
+            productComment.Tag = tags;
             ProductCommentDao.Update(productComment);
 
             return productCommentDetails;
         }
 
+        [Transactional]
         public bool ExistCommentFromClient(long productId, long clientId)
         {
             bool existComment = ProductCommentDao.ExistByProductIdAndClientId(productId, clientId);
