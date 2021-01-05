@@ -51,5 +51,16 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
         List<CreditCardDetails> GetClientCards(long clientId);
+
+
+
+        /// <summary>
+        /// Returns the card with the provided number
+        /// </summary>
+        /// <param name="cardNumber"> Id of the client owner of the card. </param>
+        /// <returns> List with all the  creditCard details </returns>
+        /// <exception cref="InstanceNotFoundException"/>
+        [Transactional]
+        CreditCard GetCardFromNumber(string cardNumber);
     }
 }

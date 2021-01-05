@@ -102,25 +102,20 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
         {
             GridViewRow row = gvProduct.Rows[e.NewSelectedIndex];
 
-            string pName = row.Cells[0].Text;
+            //string pName = row.Cells[0].Text;
 
             IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
 
             IShoppingCartService shoppingCartService = (IShoppingCartService)iocManager.Resolve<IShoppingCartService>();
 
-            IProductDao productDao = (IProductDao)iocManager.Resolve<IProductDao>();
+            //IProductService productService = (IProductService)iocManager.Resolve<IProductService>();
 
-            Product p = productDao.FindByProductName(pName);
+            //Product p = productService.productByName(pName);
 
-            long productId = p.productId;
+            long productId = (long)Convert.ToInt32(row.Cells[0].Text);
 
-            ShoppingCartLine cartLine1 = new ShoppingCartLine();
-            cartLine1.productId = productId;
-            cartLine1.quantity = 1;
-            cartLine1.price = cartLine1.quantity * p.price;
-            cartLine1.forGift = true;
 
-            shoppingCartService.AddToCart(cartLine1, SessionManager.shoppingCart);
+            shoppingCartService.AddToCart(productId, 1, SessionManager.shoppingCart);
 
             Response.Redirect(Request.RawUrl.ToString());
         }

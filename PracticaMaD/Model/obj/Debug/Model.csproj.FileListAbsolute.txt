@@ -147,3 +147,28 @@ C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\bin\Debug\PracticaMad.Mod
 C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\bin\Debug\PracticaMad.Model.pdb
 C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\obj\Debug\PracticaMad.Model.exe
 C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Model\obj\Debug\PracticaMad.Model.pdb
+D:\MAD\A subir\Model\bin\Debug\PracticaMad.Model.exe.config
+D:\MAD\A subir\Model\bin\Debug\PracticaMad.Model.exe
+D:\MAD\A subir\Model\bin\Debug\PracticaMad.Model.pdb
+D:\MAD\A subir\Model\bin\Debug\Castle.Core.dll
+D:\MAD\A subir\Model\bin\Debug\EntityFramework.dll
+D:\MAD\A subir\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\MAD\A subir\Model\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\MAD\A subir\Model\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+D:\MAD\A subir\Model\bin\Debug\ModelUtil.dll
+D:\MAD\A subir\Model\bin\Debug\Ninject.dll
+D:\MAD\A subir\Model\bin\Debug\Ninject.Extensions.Interception.dll
+D:\MAD\A subir\Model\bin\Debug\Ninject.Extensions.Interception.DynamicProxy.dll
+D:\MAD\A subir\Model\bin\Debug\Castle.Core.xml
+D:\MAD\A subir\Model\bin\Debug\EntityFramework.xml
+D:\MAD\A subir\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\MAD\A subir\Model\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+D:\MAD\A subir\Model\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+D:\MAD\A subir\Model\bin\Debug\Ninject.xml
+D:\MAD\A subir\Model\bin\Debug\Ninject.Extensions.Interception.xml
+D:\MAD\A subir\Model\bin\Debug\Ninject.Extensions.Interception.DynamicProxy.xml
+D:\MAD\A subir\Model\obj\Debug\Model.csprojAssemblyReference.cache
+D:\MAD\A subir\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+D:\MAD\A subir\Model\obj\Debug\Model.csproj.CopyComplete
+D:\MAD\A subir\Model\obj\Debug\PracticaMad.Model.exe
+D:\MAD\A subir\Model\obj\Debug\PracticaMad.Model.pdb

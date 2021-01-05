@@ -138,7 +138,10 @@ CREATE TABLE ClientOrderLine (
 	orderId BIGINT NOT NULL,
 	productId BIGINT NOT NULL,
 	quantity INT NOT NULL,
+	totalPrice FLOAT NOT NULL,
 	price FLOAT NOT NULL,
+	forGift BIT NOT NULL,
+	pName VARCHAR(60) NOT NULL,
 
 	CONSTRAINT [PK_ClientOrderLine] PRIMARY KEY (orderLineId),
 	CONSTRAINT [FK_ClientOrderLine_ClientOrder] FOREIGN KEY (orderId) REFERENCES ClientOrder (orderId),

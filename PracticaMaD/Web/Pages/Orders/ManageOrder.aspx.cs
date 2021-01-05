@@ -1,9 +1,5 @@
 ﻿using Es.Udc.DotNet.ModelUtil.IoC;
 using Es.Udc.DotNet.PracticaMad.Model;
-using Es.Udc.DotNet.PracticaMad.Model.DAOs.CategoryDao;
-using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientOrderLineDao;
-using Es.Udc.DotNet.PracticaMad.Model.DAOs.CreditCardDao;
-using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao;
 using Es.Udc.DotNet.PracticaMad.Model.Objetos;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClientService;
@@ -47,6 +43,16 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
                     string result = i.ToString().Substring(2);
                     dropYear.Items.Add(result);
                 }
+
+                double price = 0;
+
+                for (int i = 0; i < SessionManager.shoppingCart.shoppingCartLines.Count; i++)
+                {
+
+                    price += SessionManager.shoppingCart.shoppingCartLines.ElementAt(i).totalPrice;
+                }
+
+                txtPrizeTotal.Text = ((price)).ToString();
 
                 ManageLabels();
 
@@ -149,21 +155,13 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
              IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
 
              IClientOrderService orderService = (IClientOrderService)iocManager.Resolve<IClientOrderService>();
-            ICreditCardService creditCardService = (ICreditCardService)iocManager.Resolve<ICreditCardService>();
-
-            IClientOrderLineDao www = (IClientOrderLineDao)iocManager.Resolve<IClientOrderLineDao>();
-
-            //AnhadirDatos();
+             ICreditCardService creditCardService = (ICreditCardService)iocManager.Resolve<ICreditCardService>();
 
             long clientId = SessionManager.GetClientSession(Context).ClientId;
 
-            // List<ProductDetails> products = SessionManager.shoppingCart;
-
-             ICreditCardDao cardDao = (ICreditCardDao)iocManager.Resolve<ICreditCardDao>();
-
             CreditCardDetails card = creditCardService.GetClientDefaultCard(clientId);
 
-            long cardId = cardDao.FindByCreditCardNumber(card.CardNumber).cardId;
+            long cardId = creditCardService.GetCardFromNumber(card.CardNumber).cardId;
 
 
 
@@ -194,14 +192,10 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
                      SessionManager.AddCard(Context, newCard);
 
-                     cardId = cardDao.FindByCreditCardNumber(txtCreditCardNumber.Text).cardId;
+                     cardId = creditCardService.GetCardFromNumber(txtCreditCardNumber.Text).cardId;
 
                  }
 
-
-
-
-           
 
             List<ShoppingCartLine> f1 = new List<ShoppingCartLine>();
 
@@ -261,7 +255,38 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
         protected void cbForGift_CheckedChanged(object sender, EventArgs e)
         {
-            
+            CheckBox c = sender as CheckBox;
+            GridViewRow row = c.NamingContainer as GridViewRow;
+
+            long productId = (long)Convert.ToInt32(row.Cells[0].Text);
+
+            IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
+
+            IShoppingCartService shop = (IShoppingCartService)iocManager.Resolve<IShoppingCartService>();
+
+
+            for (int i = 0; i < SessionManager.shoppingCart.shoppingCartLines.Count; i++)
+            {
+                if (SessionManager.shoppingCart.shoppingCartLines.ElementAt(i).productId == productId)
+                {
+                    if (SessionManager.shoppingCart.shoppingCartLines.ElementAt(i).forGift == true)
+                         shop.UpdateForGiftStatus(SessionManager.shoppingCart.shoppingCartLines.ElementAt(i), SessionManager.shoppingCart, false);
+                    else
+                        shop.UpdateForGiftStatus(SessionManager.shoppingCart.shoppingCartLines.ElementAt(i), SessionManager.shoppingCart, true);
+
+                }
+
+
+            }
+
+            f = SessionManager.shoppingCart.shoppingCartLines;
+
+            gvShoppingCart.DataSource = f;
+
+            gvShoppingCart.DataBind();
+
+            LoadGrid2();
+
         }
 
         protected void selectPayMent_DataBinding(object sender, EventArgs e)
@@ -339,12 +364,12 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
         {
 
             {
-                var units = e.Row.Cells[4].FindControl("quantityList") as DropDownList;
+                var units = e.Row.Cells[6].FindControl("quantityList") as DropDownList;
                 if (units != null)
                 {
-                    if (Convert.ToInt32(e.Row.Cells[2].Text) <= 10)
+                    if (Convert.ToInt32(e.Row.Cells[3].Text) <= 10)
                     {
-                        units.SelectedValue = e.Row.Cells[2].Text;
+                        units.SelectedValue = e.Row.Cells[3].Text;
                     }
                     else
                     {
@@ -374,6 +399,26 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
         }
 
 
+        protected void cbForGift_DataBinding(object sender, EventArgs e)
+        {
+            CheckBox c = sender as CheckBox;
+            GridViewRow row = c.NamingContainer as GridViewRow;
+
+            long productId = (long)Convert.ToInt32(row.Cells[0].Text);
+
+
+            for (int i = 0; i < SessionManager.shoppingCart.shoppingCartLines.Count; i++)
+            {
+                if (SessionManager.shoppingCart.shoppingCartLines.ElementAt(i).productId == productId &&
+                    SessionManager.shoppingCart.shoppingCartLines.ElementAt(i).forGift == true)
+                    c.Checked = true;
+
+            }
+
+        }
+
+
+
         protected void changeDefaultCard_DataBinding(object sender, EventArgs e)
         {
             CheckBox c = sender as CheckBox;
@@ -393,9 +438,9 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
             IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
 
-            ICreditCardDao cardDao = (ICreditCardDao)iocManager.Resolve<ICreditCardDao>();
+            ICreditCardService creditCardService = (ICreditCardService)iocManager.Resolve<ICreditCardService>();
 
-            CreditCard card = cardDao.FindByCreditCardNumber(row.Cells[0].Text);
+            CreditCard card = creditCardService.GetCardFromNumber(row.Cells[0].Text);
 
             SessionManager.ChangeDefaultCard(Context, card.cardId);
 

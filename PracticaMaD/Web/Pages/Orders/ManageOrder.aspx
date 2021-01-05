@@ -51,12 +51,12 @@
             OnSelectedIndexChanging="gvCards_SelectedIndexChanging"
             ShowHeaderWhenEmpty="True"  >
             <Columns>
-               <asp:BoundField DataField="cardnumber" HeaderText="cardnumber" />
-                <asp:BoundField DataField="cardType" HeaderText="cardType" />
-                <asp:BoundField DataField="verificationCode" HeaderText="verificationCode" />
-                <asp:BoundField DataField="expeditionDate" HeaderText="expeditionDate" />
+               <asp:BoundField DataField="cardnumber" HeaderText="<%$ Resources:, cardNumber %>"  />
+                <asp:BoundField DataField="cardType" HeaderText="<%$ Resources:, cardType %>"  />
+                <asp:BoundField DataField="verificationCode" HeaderText="<%$ Resources:, verificationCode %>"  />
+                <asp:BoundField DataField="expeditionDate" HeaderText="<%$ Resources:, expeditionDate %>"  />
                 <asp:BoundField DataField="DefaultCard"  Visible="true" />
-                <asp:TemplateField HeaderText="DefaultCard">
+                <asp:TemplateField HeaderText="<%$ Resources:, DefaultCard %>" >
                     <ItemTemplate>
                         <asp:CheckBox ID="changeDefaultCard" AutoPostBack="true" OnDataBinding="changeDefaultCard_DataBinding" runat="server" OnCheckedChanged="changeDefaultCard_CheckedChanged" />
                     </ItemTemplate>
@@ -86,7 +86,7 @@
             <div id="form">
             <div class="field">
                 <span class="label">
-                    <asp:Localize ID="lclCardType" runat="server" meta:resourcekey="lclCardType" />
+                    <asp:Localize ID="lclCardType" runat="server"  meta:resourcekey="lclCardType" />
                 </span>
                 <span class="entry">
                     <asp:CheckBox ID="chBVisa" AutoPostBack="true" OnCheckedChanged="chBVisa_CheckedChanged" Text="Visa" runat="server" />
@@ -100,7 +100,7 @@
 
          <div class="field">
                 <span class="label">
-                    <asp:Localize ID="lclCardNumber" runat="server" meta:resourcekey="lclCardNumber" />
+                    <asp:Localize ID="lclCardNumber"  runat="server" meta:resourcekey="lclCardNumber" />
                 </span>
                 <span class="entry">
                     <asp:TextBox ID="txtCreditCardNumber" runat="server" Width="100px" Columns="16" meta:resourcekey="txtCreditCardNumberResource1"></asp:TextBox>
@@ -119,7 +119,7 @@
 
             <div class="field">
                 <span class="label">
-                    <asp:Localize ID="lclExpirationDate" runat="server" meta:resourcekey="lclExpirationDate" />
+                    <asp:Localize ID="lclExpirationDate"  runat="server" meta:resourcekey="lclExpirationDate" />
                 </span>
                 <span class="entry">
                     <asp:DropDownList ID="dropMonth" runat="server">
@@ -130,7 +130,7 @@
 
             <div class="field">
                 <span class="label">
-                    <asp:Localize ID="lclCV" runat="server" meta:resourcekey="lclCV" /></span><span
+                    <asp:Localize ID="lclCV" runat="server"  meta:resourcekey="lclCV" /></span><span
                         class="entry">
                         <asp:TextBox ID="txtCV" runat="server" Width="100px" Columns="16" meta:resourcekey="txtCVResource1"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="rfvCV" runat="server" ControlToValidate="txtCV"
@@ -157,16 +157,18 @@
             OnRowDataBound="gvShoppingCart_RowDataBound"
             ShowHeaderWhenEmpty="True" meta:resourcekey="gvShoppingCartResource2">
             <Columns>
-            <asp:BoundField DataField="productId" HeaderText="productId" Visible="true" meta:resourcekey="BoundFieldResource17" />
-            <asp:BoundField DataField="price" HeaderText="productPrice" meta:resourcekey="BoundFieldResource15" />
-            <asp:BoundField DataField="quantity" HeaderText="quantity" Visible="true" meta:resourcekey="BoundFieldResource17" />
+            <asp:BoundField DataField="productId" HeaderText="<%$ Resources:, productId %>"  Visible="true" meta:resourcekey="BoundFieldResource17" />
+            <asp:BoundField DataField="productName" HeaderText="<%$ Resources:, productName %>" Visible="true" meta:resourcekey="BoundFieldResource17" />
+            <asp:BoundField DataField="price" HeaderText="<%$ Resources:, price %>" meta:resourcekey="BoundFieldResource15" />
+            <asp:BoundField DataField="quantity" HeaderText="<%$ Resources:, quantity %>" Visible="true" meta:resourcekey="BoundFieldResource17" />
+            <asp:BoundField DataField="totalPrice" HeaderText="<%$ Resources:, totalPrice %>" Visible="true" meta:resourcekey="BoundFieldResource17" />
 
-             <asp:TemplateField HeaderText="forGift">
+             <asp:TemplateField HeaderText="<%$ Resources:, forGift %>">
                 <ItemTemplate>
-                    <asp:CheckBox ID="cbForGift" AutoPostBack="true" runat="server" OnCheckedChanged="cbForGift_CheckedChanged" />
+                    <asp:CheckBox ID="cbForGift" AutoPostBack="true" runat="server" OnDataBinding="cbForGift_DataBinding" OnCheckedChanged="cbForGift_CheckedChanged" />
                 </ItemTemplate>
              </asp:TemplateField>     
-            <asp:TemplateField HeaderText="quantity" meta:resourcekey="TemplateFieldResource2">
+            <asp:TemplateField HeaderText="<%$ Resources:, quantity %>" meta:resourcekey="TemplateFieldResource2">
                 <ItemTemplate>
                     <asp:DropDownList ID="quantityList"  AutoPostBack="True" runat="server"  OnSelectedIndexChanged="quantityList_SelectedIndexChanged" meta:resourcekey="quantityListResource2">
                         <asp:ListItem Value="1" meta:resourcekey="ListItemResource8">1</asp:ListItem>
@@ -211,7 +213,7 @@
         <br />
             <div class="button">
                 <span>
-                    <asp:Label ID="lclPrize" Font-Bold="true" runat="server" meta:resourcekey="lclPrizeResource1" /></span>
+                    <asp:Label ID="lclPrize" Font-Bold="true" runat="server" meta:resourcekey="lclPrize" /></span>
                 <asp:TextBox ID="txtPrizeTotal" ReadOnly="True" runat="server" meta:resourcekey="txtPrizeTotalResource2"></asp:TextBox>
             </div>
         <br />

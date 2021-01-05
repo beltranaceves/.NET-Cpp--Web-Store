@@ -185,3 +185,41 @@ C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Test\bin\Debug\PracticaMad.Mode
 C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Test\bin\Debug\PracticaMad.Model.exe.config
 C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Test\obj\Debug\PracticaMad.Test.dll
 C:\Users\diego\Documents\Git\Mad2021\PracticaMaD\Test\obj\Debug\PracticaMad.Test.pdb
+D:\MAD\A subir\Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\MAD\A subir\Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\MAD\A subir\Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\MAD\A subir\Test\bin\Debug\es\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+D:\MAD\A subir\Test\bin\Debug\es\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+D:\MAD\A subir\Test\bin\Debug\es\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+D:\MAD\A subir\Test\bin\Debug\PracticaMad.Test.dll.config
+D:\MAD\A subir\Test\bin\Debug\PracticaMad.Test.dll
+D:\MAD\A subir\Test\bin\Debug\PracticaMad.Test.pdb
+D:\MAD\A subir\Test\bin\Debug\Castle.Core.dll
+D:\MAD\A subir\Test\bin\Debug\EntityFramework.dll
+D:\MAD\A subir\Test\bin\Debug\EntityFramework.SqlServer.dll
+D:\MAD\A subir\Test\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\MAD\A subir\Test\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+D:\MAD\A subir\Test\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+D:\MAD\A subir\Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\MAD\A subir\Test\bin\Debug\ModelUtil.dll
+D:\MAD\A subir\Test\bin\Debug\Ninject.dll
+D:\MAD\A subir\Test\bin\Debug\Ninject.Extensions.Interception.dll
+D:\MAD\A subir\Test\bin\Debug\Ninject.Extensions.Interception.DynamicProxy.dll
+D:\MAD\A subir\Test\bin\Debug\Ninject.Extensions.Xml.dll
+D:\MAD\A subir\Test\bin\Debug\PracticaMad.Model.exe
+D:\MAD\A subir\Test\bin\Debug\PracticaMad.Model.pdb
+D:\MAD\A subir\Test\bin\Debug\PracticaMad.Model.exe.config
+D:\MAD\A subir\Test\bin\Debug\Castle.Core.xml
+D:\MAD\A subir\Test\bin\Debug\EntityFramework.xml
+D:\MAD\A subir\Test\bin\Debug\EntityFramework.SqlServer.xml
+D:\MAD\A subir\Test\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+D:\MAD\A subir\Test\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+D:\MAD\A subir\Test\bin\Debug\Ninject.xml
+D:\MAD\A subir\Test\bin\Debug\Ninject.Extensions.Interception.xml
+D:\MAD\A subir\Test\bin\Debug\Ninject.Extensions.Interception.DynamicProxy.xml
+D:\MAD\A subir\Test\bin\Debug\Ninject.Extensions.Xml.xml
+D:\MAD\A subir\Test\obj\Debug\Test.csprojAssemblyReference.cache
+D:\MAD\A subir\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
+D:\MAD\A subir\Test\obj\Debug\Test.csproj.CopyComplete
+D:\MAD\A subir\Test\obj\Debug\PracticaMad.Test.dll
+D:\MAD\A subir\Test\obj\Debug\PracticaMad.Test.pdb

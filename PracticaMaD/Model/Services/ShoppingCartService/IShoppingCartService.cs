@@ -5,13 +5,13 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService
 {
     public interface IShoppingCartService
     {
-        ShoppingCart AddToCart(ShoppingCartLine shoppingCartLine, ShoppingCart shoppingCart);
+        ShoppingCart AddToCart(long productId, int quantity, ShoppingCart shoppingCart);
 
         ShoppingCart RemoveFromCart(ShoppingCartLine shoppingCartLine, ShoppingCart shoppingCart);
 
-        ShoppingCart UpdateNumberOfUnits(ShoppingCartLine shoppingCart, ShoppingCart shoppingCartLine, int quantity);
+        ShoppingCart UpdateNumberOfUnits(ShoppingCartLine shoppingCartLine, ShoppingCart shoppingCart, int quantity);
 
-        ShoppingCart UpdateForGiftStatus(ShoppingCartLine shoppingCart, ShoppingCart shoppingCartLine, bool forG);
+        ShoppingCart UpdateForGiftStatus(ShoppingCartLine shoppingCartLine, ShoppingCart shoppingCart, bool forG);
 
         ShoppingCartLine GetCartLine(ShoppingCartLine shoppingCartLine, ShoppingCart shoppingCart);
     }

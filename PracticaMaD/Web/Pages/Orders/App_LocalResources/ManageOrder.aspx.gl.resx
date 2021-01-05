@@ -147,4 +147,58 @@
   <data name="lclDescrtiption.Text" xml:space="preserve">
     <value>Proporcione unha descripción</value>
   </data>
+  <data name="cardNumber" xml:space="preserve">
+    <value>Numero de tarxeta</value>
+  </data>
+  <data name="cardType" xml:space="preserve">
+    <value>Tipo de tarxeta</value>
+  </data>
+  <data name="DefaultCard" xml:space="preserve">
+    <value>Tarxeta por defecto</value>
+  </data>
+  <data name="expeditionDate" xml:space="preserve">
+    <value>Data de expadicion</value>
+  </data>
+  <data name="forGift" xml:space="preserve">
+    <value>Para regalo</value>
+  </data>
+  <data name="lclAddress.text" xml:space="preserve">
+    <value>Nova direccion </value>
+  </data>
+  <data name="lclCardType.Text" xml:space="preserve">
+    <value>Tipo de tarxeta</value>
+  </data>
+  <data name="lclCarNumber.Text" xml:space="preserve">
+    <value>Numero de tarxeta</value>
+  </data>
+  <data name="lclCV.Text" xml:space="preserve">
+    <value>CV</value>
+  </data>
+  <data name="lclExpirationDate.Text" xml:space="preserve">
+    <value>Data de expiracion</value>
+  </data>
+  <data name="lclPayMethod.Text" xml:space="preserve">
+    <value>Datos nova tarxeta</value>
+  </data>
+  <data name="lclPrize.Text" xml:space="preserve">
+    <value>Prezo total</value>
+  </data>
+  <data name="price" xml:space="preserve">
+    <value>Precio Unitario</value>
+  </data>
+  <data name="productId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="productName" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="quantity" xml:space="preserve">
+    <value>Unidades</value>
+  </data>
+  <data name="totalPrice" xml:space="preserve">
+    <value>Precio</value>
+  </data>
+  <data name="verificationCode" xml:space="preserve">
+    <value>CV</value>
+  </data>
 </root>

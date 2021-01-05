@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Es.Udc.DotNet.PracticaMad.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Es.Udc.DotNet.PracticaMad.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Category">
           <Key>
             <PropertyRef Name="categoryId" />
@@ -48,7 +48,10 @@
           <Property Name="orderId" Type="bigint" Nullable="false" />
           <Property Name="productId" Type="bigint" Nullable="false" />
           <Property Name="quantity" Type="int" Nullable="false" />
+          <Property Name="totalPrice" Type="float" Nullable="false" />
           <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="forGift" Type="bit" Nullable="false" />
+          <Property Name="pName" Type="varchar" MaxLength="60" Nullable="false" />
         </EntityType>
         <EntityType Name="CreditCard">
           <Key>
@@ -271,8 +274,7 @@
             <End Role="ProductCommentTag" EntitySet="ProductCommentTag" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Es.Udc.DotNet.PracticaMad.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -329,6 +331,9 @@
           <Property Name="price" Type="Double" Nullable="false" />
           <NavigationProperty Name="ClientOrder" Relationship="Self.FK_ClientOrderLine_ClientOrder" FromRole="ClientOrderLine" ToRole="ClientOrder" />
           <NavigationProperty Name="Product" Relationship="Self.FK_ClientOrderLine_Product" FromRole="ClientOrderLine" ToRole="Product" />
+          <Property Name="totalPrice" Type="Double" Nullable="false" />
+          <Property Name="forGift" Type="Boolean" Nullable="false" />
+          <Property Name="pName" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="CreditCard">
           <Key>
@@ -574,6 +579,9 @@
           <EntitySetMapping Name="ClientOrderLine">
             <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaMad.Model.ClientOrderLine">
               <MappingFragment StoreEntitySet="ClientOrderLine">
+                <ScalarProperty Name="pName" ColumnName="pName" />
+                <ScalarProperty Name="forGift" ColumnName="forGift" />
+                <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
                 <ScalarProperty Name="orderLineId" ColumnName="orderLineId" />
                 <ScalarProperty Name="orderId" ColumnName="orderId" />
                 <ScalarProperty Name="productId" ColumnName="productId" />

@@ -147,4 +147,58 @@
   <data name="lclDescrtiption.Text" xml:space="preserve">
     <value>Add a description </value>
   </data>
+  <data name="cardNumber" xml:space="preserve">
+    <value>Card number</value>
+  </data>
+  <data name="cardType" xml:space="preserve">
+    <value>Card type</value>
+  </data>
+  <data name="DefaultCard" xml:space="preserve">
+    <value>Default card</value>
+  </data>
+  <data name="expeditionDate" xml:space="preserve">
+    <value>Expedition date</value>
+  </data>
+  <data name="forGift" xml:space="preserve">
+    <value>For Gift</value>
+  </data>
+  <data name="lclAddress.text" xml:space="preserve">
+    <value>New addres</value>
+  </data>
+  <data name="lclCardNumber.Text" xml:space="preserve">
+    <value>Card number</value>
+  </data>
+  <data name="lclCardType.Text" xml:space="preserve">
+    <value>Card type</value>
+  </data>
+  <data name="lclCV.Text" xml:space="preserve">
+    <value>VC</value>
+  </data>
+  <data name="lclExpirationDate.Text" xml:space="preserve">
+    <value>Expiration date</value>
+  </data>
+  <data name="lclPayMethod.Text" xml:space="preserve">
+    <value>New card info</value>
+  </data>
+  <data name="lclPrize.text" xml:space="preserve">
+    <value>Total price</value>
+  </data>
+  <data name="price" xml:space="preserve">
+    <value>Unitary price</value>
+  </data>
+  <data name="productId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="productName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="quantity" xml:space="preserve">
+    <value>Units</value>
+  </data>
+  <data name="totalPrice" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="verificationCode" xml:space="preserve">
+    <value>VC</value>
+  </data>
 </root>

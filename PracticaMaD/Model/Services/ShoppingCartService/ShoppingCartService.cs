@@ -1,6 +1,8 @@
 ﻿using Es.Udc.DotNet.ModelUtil.Exceptions;
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao;
 using Es.Udc.DotNet.PracticaMad.Model.Objetos;
 using Es.Udc.DotNet.PracticaMad.Model.Services.Exceptions;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +14,27 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService
 {
     public class ShoppingCartService : IShoppingCartService
     {
+        [Inject]
+        public IProductDao ProductDao { private get; set; }
 
-       public ShoppingCart AddToCart(ShoppingCartLine shoppingCartLine, ShoppingCart shoppingCart)
+        public ShoppingCart AddToCart(long productId, int quantity, ShoppingCart shoppingCart)
         {
-             if (shoppingCart.shoppingCartLines.Contains(shoppingCartLine))
-                    throw new AlreadyAddedException(shoppingCartLine.productId);
-            
-            shoppingCart.shoppingCartLines.Add(shoppingCartLine);
+            //if (shoppingCart.shoppingCartLines.Contains(shoppingCartLine))
+            //throw new AlreadyAddedException(shoppingCartLine.productId);
+
+            ShoppingCartLine cartLine = new ShoppingCartLine();
+
+            Product p = ProductDao.Find(productId);
+
+            cartLine.forGift = false; //Por defecto se pone a false, el usuario podra despues decidir si lo quiere para regalo o no
+            cartLine.price = p.price;
+            cartLine.quantity = quantity;
+            cartLine.productName = p.productName;
+            cartLine.totalPrice = cartLine.price * cartLine.quantity;
+            cartLine.productId = productId;
+
+            shoppingCart.shoppingCartLines.Add(cartLine);
+                
 
             return shoppingCart;
         }
@@ -41,7 +57,12 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService
                     throw new InstanceNotFoundException(shoppingCartLine, typeof(ShoppingCart).FullName);
 
             int aux =  shoppingCart.shoppingCartLines.IndexOf(shoppingCartLine);
+
+            Product p = ProductDao.Find(shoppingCart.shoppingCartLines[aux].productId);
+
             shoppingCart.shoppingCartLines[aux].quantity = units;
+
+            shoppingCart.shoppingCartLines[aux].totalPrice = shoppingCart.shoppingCartLines[aux].quantity * p.price;
 
             return shoppingCart;
 

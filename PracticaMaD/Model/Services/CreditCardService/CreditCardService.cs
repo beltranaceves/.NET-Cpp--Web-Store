@@ -48,6 +48,10 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService
             newCard.expeditionDate = creditCard.ExpeditionDate;
             newCard.clientId = clientId;
             newCard.defaultCard = creditCard.DefaultCard;
+
+            if (GetClientCards(clientId).Count == 0)
+                newCard.defaultCard = true;
+
             CreditCardDao.Create(newCard);
         }
 
@@ -101,6 +105,16 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService
                 clientCards.Add(new CreditCardDetails(creditCard.cardNumber, creditCard.cardType, creditCard.verificationCode, creditCard.expeditionDate, creditCard.defaultCard, creditCard.clientId));
             }
             return clientCards;
+        }
+
+
+        [Transactional]
+        public CreditCard GetCardFromNumber(string cardNumber)
+        {
+            CreditCard card = CreditCardDao.FindByCreditCardNumber(cardNumber);
+
+            return card;
+
         }
     }
 }

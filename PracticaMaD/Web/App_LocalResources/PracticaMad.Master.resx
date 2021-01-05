@@ -153,4 +153,7 @@
   <data name="lnkFindProducts.Text" xml:space="preserve">
     <value>Find Products</value>
   </data>
+  <data name="lnkShoppingCart.Text" xml:space="preserve">
+    <value>My shopping cart</value>
+  </data>
 </root>

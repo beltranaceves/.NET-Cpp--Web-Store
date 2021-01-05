@@ -53,6 +53,9 @@
     <Property Name="price" Type="Double" Nullable="false" />
     <NavigationProperty Name="ClientOrder" Relationship="Self.FK_ClientOrderLine_ClientOrder" FromRole="ClientOrderLine" ToRole="ClientOrder" />
     <NavigationProperty Name="Product" Relationship="Self.FK_ClientOrderLine_Product" FromRole="ClientOrderLine" ToRole="Product" />
+    <Property Name="totalPrice" Type="Double" Nullable="false" />
+    <Property Name="forGift" Type="Boolean" Nullable="false" />
+    <Property Name="pName" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="CreditCard">
     <Key>

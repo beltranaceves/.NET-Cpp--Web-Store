@@ -42,6 +42,9 @@
     <EntitySetMapping Name="ClientOrderLine">
       <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaMad.Model.ClientOrderLine">
         <MappingFragment StoreEntitySet="ClientOrderLine">
+          <ScalarProperty Name="pName" ColumnName="pName" />
+          <ScalarProperty Name="forGift" ColumnName="forGift" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
           <ScalarProperty Name="orderLineId" ColumnName="orderLineId" />
           <ScalarProperty Name="orderId" ColumnName="orderId" />
           <ScalarProperty Name="productId" ColumnName="productId" />

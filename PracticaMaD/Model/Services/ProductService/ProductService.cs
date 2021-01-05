@@ -130,6 +130,13 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             return productsDetails;
         }
 
+        [Transactional]
+        public Product productByName(string productName)
+        {
+            Product p = ProductDao.FindByProductName(productName);
+            return p;
+        }
+
         #endregion IProductService Members
     }
 }

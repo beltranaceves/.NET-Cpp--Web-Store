@@ -136,61 +136,42 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 // Create the cart
 
-                //Adding product1 to the  cart
-                ShoppingCartLine cartLine1 = new ShoppingCartLine();
-                cartLine1.productId = productId;
-                cartLine1.quantity = quantity;
-                cartLine1.forGift = true;
-
-                //Adding product2 to the  cart
-                ShoppingCartLine cartLine2 = new ShoppingCartLine();
-                cartLine2.productId = productId2;
-                cartLine2.quantity = quantity2;
-                cartLine2.forGift = false;
 
                 ShoppingCart shoppingCartTest = new ShoppingCart();
 
                 //Añadimos las dos lineas al carito
-                var e = shoppingCartService.AddToCart(cartLine1, shoppingCartTest);
-                shoppingCartService.AddToCart(cartLine2, shoppingCartTest);
+                shoppingCartService.AddToCart(productId, quantity, shoppingCartTest);
+                shoppingCartService.AddToCart(productId2, quantity2, shoppingCartTest);
+                ShoppingCartLine s1 = shoppingCartTest.shoppingCartLines[0];
+                ShoppingCartLine s2 = shoppingCartTest.shoppingCartLines[1];
 
                 //Comprobamos que hay dos lineas en el carrito
                 Assert.AreEqual(2, shoppingCartTest.shoppingCartLines.Count);
 
-                //Actualizamos el numero de unidades de la linea 1
-                shoppingCartService.UpdateNumberOfUnits(cartLine1, shoppingCartTest, 5);
+               //Actualizamos el numero de unidades de la linea 1
+                shoppingCartService.UpdateNumberOfUnits(s1, shoppingCartTest, 5);
 
                 Assert.AreEqual(5, shoppingCartTest.shoppingCartLines[0].quantity);
 
-                //Actualizamos el estado de si es para regalo o no
+                 //Actualizamos el estado de si es para regalo o no
 
-                shoppingCartService.UpdateForGiftStatus(cartLine2, shoppingCartTest, true);
+                shoppingCartService.UpdateForGiftStatus(s1, shoppingCartTest, true);
 
                 Assert.IsTrue(shoppingCartTest.shoppingCartLines[0].forGift);
-
+                
                 //Buscamos por una linea en concreto
 
-                Assert.AreEqual(shoppingCartTest.shoppingCartLines[0], shoppingCartService.GetCartLine(cartLine1, shoppingCartTest));
+                Assert.AreEqual(s1, shoppingCartService.GetCartLine(shoppingCartTest.shoppingCartLines[0], shoppingCartTest));
 
                 //Eliminamos ambas lineas de carrito
 
-                shoppingCartService.RemoveFromCart(cartLine1, shoppingCartTest);
-                shoppingCartService.RemoveFromCart(cartLine2, shoppingCartTest);
+                shoppingCartService.RemoveFromCart(s1, shoppingCartTest);
+                shoppingCartService.RemoveFromCart(s2, shoppingCartTest);
 
                 Assert.AreEqual(0, shoppingCartTest.shoppingCartLines.Count);
             }
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(AlreadyAddedException))]
-        public void DuplicatedShoppingCartLine()
-        {
-            ShoppingCartLine line1 = new ShoppingCartLine();
-            ShoppingCart shoppingCart = new ShoppingCart();
-
-            shoppingCartService.AddToCart(line1, shoppingCart);
-            shoppingCartService.AddToCart(line1, shoppingCart);
-        }
 
         [TestMethod]
         [ExpectedException(typeof(InstanceNotFoundException))]

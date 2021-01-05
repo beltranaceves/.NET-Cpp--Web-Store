@@ -70,6 +70,12 @@
                     <li>
                         <asp:HyperLink ID="lnkSeeMyCards" runat="server" NavigateUrl="~/Pages/Card/SeeClientCards.aspx"
                             meta:resourcekey="lnkSeeMyCards" /></li>
+
+                     <li>
+                    <asp:HyperLink ID="lnkShoppingCart" runat="server"
+                        NavigateUrl="~/Pages/Orders/SeeShoppingCart.aspx"
+                        meta:resourcekey="lnkShoppingCart" /></li>
+
                 </ul>
             </div>
             <%-- <form runat="server">

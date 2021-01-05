@@ -103,6 +103,7 @@
     <Content Include="Pages\MainPage.aspx" />
     <Content Include="Pages\Orders\ManageOrder.aspx" />
     <Content Include="Pages\Orders\OwnOrders.aspx" />
+    <Content Include="Pages\Orders\SeeShoppingCart.aspx" />
     <Content Include="Pages\Products\AddComment.aspx" />
     <Content Include="Pages\Products\CommentAdded.aspx" />
     <Content Include="Pages\Products\EditComment.aspx" />
@@ -183,6 +184,13 @@
     </Compile>
     <Compile Include="Pages\Orders\OwnOrders.aspx.designer.cs">
       <DependentUpon>OwnOrders.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Orders\SeeShoppingCart.aspx.cs">
+      <DependentUpon>SeeShoppingCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Orders\SeeShoppingCart.aspx.designer.cs">
+      <DependentUpon>SeeShoppingCart.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Products\AddComment.aspx.cs">
       <DependentUpon>AddComment.aspx</DependentUpon>
@@ -443,6 +451,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\Products\App_LocalResources\EditedComment.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Orders\App_LocalResources\SeeShoppingCart.aspx.es.resx" />
+    <Content Include="Pages\Orders\App_LocalResources\SeeShoppingCart.aspx.gl.resx" />
+    <Content Include="Pages\Orders\App_LocalResources\SeeShoppingCart.aspx.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

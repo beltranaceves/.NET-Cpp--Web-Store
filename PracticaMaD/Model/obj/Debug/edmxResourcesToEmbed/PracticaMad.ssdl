@@ -43,7 +43,10 @@
     <Property Name="orderId" Type="bigint" Nullable="false" />
     <Property Name="productId" Type="bigint" Nullable="false" />
     <Property Name="quantity" Type="int" Nullable="false" />
+    <Property Name="totalPrice" Type="float" Nullable="false" />
     <Property Name="price" Type="float" Nullable="false" />
+    <Property Name="forGift" Type="bit" Nullable="false" />
+    <Property Name="pName" Type="varchar" MaxLength="60" Nullable="false" />
   </EntityType>
   <EntityType Name="CreditCard">
     <Key>

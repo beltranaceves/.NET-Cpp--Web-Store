@@ -18,6 +18,7 @@ using Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderLineService;
 using Es.Udc.DotNet.PracticaMad.Model.Objetos;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService;
 
 namespace Es.Udc.DotNet.PracticaMad.Test
 {
@@ -29,6 +30,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
         private static IClientService clientService;
         private static ICreditCardService creditCardService;
         private static IProductService productService;
+        private static IShoppingCartService shoppingCartService;
         private static IClientOrderService clientOrderService;
         private static ICategoryDao categoryDao;
 
@@ -58,6 +60,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             clientService = kernel.Get<IClientService>();
             creditCardService = kernel.Get<ICreditCardService>();
             productService = kernel.Get<IProductService>();
+            shoppingCartService = kernel.Get<IShoppingCartService>();
         }
 
         [ClassCleanup()]
@@ -138,28 +141,11 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 // Create the cart
 
-                //Adding product1 to the  cart
-                ShoppingCartLine cartLine1 = new ShoppingCartLine();
-                cartLine1.productId = productId;
-                cartLine1.quantity = quantity;
-                cartLine1.forGift = true;
-
-                //Adding product2 to the  cart
-                ShoppingCartLine cartLine2 = new ShoppingCartLine();
-                cartLine2.productId = productId2;
-                cartLine2.quantity = quantity2;
-                cartLine2.forGift = false;
-
-                List<ShoppingCartLine> sc = new List<ShoppingCartLine>();
-
-                sc.Add(cartLine1);
-                sc.Add(cartLine2);
-
-                //Adding the cartLines to de cart
                 ShoppingCart shoppingCart = new ShoppingCart();
-                shoppingCart.shoppingCartLines = sc;
 
-                // Add card
+                //Añadimos las dos lineas al carito
+                shoppingCartService.AddToCart(productId, quantity, shoppingCart);
+                shoppingCartService.AddToCart(productId2, quantity2, shoppingCart);
 
                 // Add a cards
                 string cardNumber = "1234567890123456";
@@ -168,6 +154,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 String expeditionDate = "01/01";
 
                 CreditCardDetails creditCardDetails = new CreditCardDetails(cardNumber, cardType, verificationCode, expeditionDate, true, clientId);
+
                 creditCardService.AddCard(clientId, creditCardDetails);
 
                 long cardId = clientDao.Find(clientId).CreditCard.ElementAt(0).cardId;
@@ -187,11 +174,11 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 Assert.AreEqual(8, clientOrder.ClientOrderLine.ElementAt(0).Product.stock);
                 Assert.AreEqual(shoppingCart.shoppingCartLines[0].productId, clientOrder.ClientOrderLine.ElementAt(0).Product.productId);
                 Assert.AreEqual(shoppingCart.shoppingCartLines[0].quantity, clientOrder.ClientOrderLine.ElementAt(0).quantity);
-                Assert.AreEqual(shoppingCart.shoppingCartLines[0].quantity * price1, clientOrder.ClientOrderLine.ElementAt(0).price);
+                Assert.AreEqual(shoppingCart.shoppingCartLines[0].quantity * price1, clientOrder.ClientOrderLine.ElementAt(0).totalPrice);
                 Assert.AreEqual(17, clientOrder.ClientOrderLine.ElementAt(1).Product.stock);
                 Assert.AreEqual(shoppingCart.shoppingCartLines[1].productId, clientOrder.ClientOrderLine.ElementAt(1).Product.productId);
                 Assert.AreEqual(shoppingCart.shoppingCartLines[1].quantity, clientOrder.ClientOrderLine.ElementAt(1).quantity);
-                Assert.AreEqual(shoppingCart.shoppingCartLines[1].quantity * price2, clientOrder.ClientOrderLine.ElementAt(1).price);
+                Assert.AreEqual(shoppingCart.shoppingCartLines[1].quantity * price2, clientOrder.ClientOrderLine.ElementAt(1).totalPrice);
             }
         }
 
@@ -218,25 +205,12 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 // Create the cart
 
                 //Adding product1 to the  cart
-                ShoppingCartLine cartLine1 = new ShoppingCartLine();
-                cartLine1.productId = productId;
-                cartLine1.quantity = quantity;
-                cartLine1.forGift = true;
 
-                //Adding product2 to the  cart
-                ShoppingCartLine cartLine2 = new ShoppingCartLine();
-                cartLine2.productId = productId2;
-                cartLine2.quantity = quantity2;
-                cartLine2.forGift = false;
-
-                List<ShoppingCartLine> sc = new List<ShoppingCartLine>();
-
-                sc.Add(cartLine1);
-                sc.Add(cartLine2);
-
-                //Adding the cartLines to de cart
                 ShoppingCart shoppingCart = new ShoppingCart();
-                shoppingCart.shoppingCartLines = sc;
+
+                //Añadimos las dos lineas al carito
+                shoppingCartService.AddToCart(productId, quantity, shoppingCart);
+                shoppingCartService.AddToCart(productId2, quantity2, shoppingCart);
 
                 // Add card
                 CreditCardDetails card = new CreditCardDetails("098765432109876", "Visa", 000, "02/21", false, 1);

@@ -117,43 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblWelcome.Hello.Text" xml:space="preserve">
-    <value>Hola</value>
+  <data name="btnPay.text" xml:space="preserve">
+    <value>Proceder al pago</value>
   </data>
-  <data name="lblWelcome.Text" xml:space="preserve">
-    <value>Bienvenido a PracticaMad</value>
-  </data>
-  <data name="lclFooter.Text" xml:space="preserve">
-    <value>Copyright &amp;copy; Departamento Ciencias de la Computación y Tecnologías de la Información - Universidade da Coruña</value>
-  </data>
-  <data name="lclPageTitle.Text" xml:space="preserve">
-    <value>PracticaMad: Ejemplo de una Aplicación Web MVC con .NET</value>
-  </data>
-  <data name="lnkAddCard.Text" xml:space="preserve">
-    <value>Añadir Tareja</value>
-  </data>
-  <data name="lnkAuthenticate.Text" xml:space="preserve">
-    <value>Autenticación</value>
-  </data>
-  <data name="lnkLogout.Text" xml:space="preserve">
-    <value>Salir</value>
-  </data>
-  <data name="lnkSeeMyCards.Text" xml:space="preserve">
-    <value>Ver mis tarjetas</value>
-  </data>
-  <data name="lnkUpdate.Text" xml:space="preserve">
-    <value>Actualizar información de usuario</value>
-  </data>
-  <data name="lnkOwnOrders.Text" xml:space="preserve">
-    <value>Mis pedidos</value>
-  </data>
-  <data name="lnkHome.Text" xml:space="preserve">
-    <value>Inicio</value>
-  </data>
-  <data name="lnkFindProducts.Text" xml:space="preserve">
-    <value>Buscar Productos</value>
-  </data>
-  <data name="lnkShoppingCart.Text" xml:space="preserve">
-    <value>Mi carrito</value>
+  <data name="lclPrize.Text" xml:space="preserve">
+    <value>Precio total</value>
   </data>
 </root>

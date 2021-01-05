@@ -52,6 +52,10 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService
 
                 line.productId = p.productId;
                 line.quantity = Sline.quantity;
+                line.forGift = Sline.forGift;
+                line.price = Sline.price;
+                line.totalPrice = 0;
+                line.pName = Sline.productName;
 
                 order.ClientOrderLine.Add(line);
             }
@@ -86,7 +90,9 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService
                 long productId = ol.productId;
 
                 Product product = ProductDao.Find(productId);
+
                 int quantity = ol.quantity;
+
                 int stock = product.stock;
 
                 if (stock < quantity)
@@ -98,7 +104,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService
 
                 double price = quantity * product.price;
 
-                ol.price = price;
+                ol.totalPrice = price;
 
                 totalPrice += price;
             }
