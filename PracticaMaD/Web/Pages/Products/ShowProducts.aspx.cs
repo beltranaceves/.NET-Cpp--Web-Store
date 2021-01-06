@@ -1,7 +1,6 @@
 ﻿using Es.Udc.DotNet.ModelUtil.IoC;
 using Es.Udc.DotNet.PracticaMad.Model;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.CategoryDao;
-using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao;
 using Es.Udc.DotNet.PracticaMad.Model.Objetos;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService;
@@ -53,8 +52,6 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
             /* Get the Service */
             IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
             IProductService productService = iocManager.Resolve<IProductService>();
-
-            IProductDao productDao = (IProductDao)iocManager.Resolve<IProductDao>();
 
             ICategoryDao categoryDao = (ICategoryDao)iocManager.Resolve<ICategoryDao>();
             ProductBlock productBlock = null;
@@ -124,9 +121,35 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
                 GridViewRow row = gvProduct.Rows[index];
                 long id = Convert.ToInt32(row.Cells[0].Text);
 
-                /* Do action. */
-                String url =
-                    String.Format("./ShowOneProduct.aspx?prodId={0}", id);
+                IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
+
+                ProductDetails productDetails = SessionManager.FindProductDetails(id);
+
+                String url = null;
+              
+                if (productDetails is BooksDetails)
+                {
+                    BooksDetails b = productDetails as BooksDetails;
+
+                    url = String.Format("./ProductBooksDetails.aspx?prodId={0}", id);
+                }
+
+                else if (productDetails is MusicDetails)
+                {
+                    MusicDetails b = productDetails as MusicDetails;
+
+                    url = String.Format("./ProductMusicDetails.aspx?prodId={0}", id);
+                }
+
+                else if (productDetails is FilmsDetails)
+                {
+                    FilmsDetails b = productDetails as FilmsDetails;
+
+                    url = String.Format("./ProductFilmsDetails.aspx?prodId={0}", id);
+                }
+
+                else
+                 url =String.Format("./ShowOneProduct.aspx?prodId={0}", id);
 
                 Response.Redirect(Response.ApplyAppPathModifier(url));
             }

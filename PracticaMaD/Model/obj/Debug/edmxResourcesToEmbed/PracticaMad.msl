@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="EsUdcDotNetPracticaMadModelStoreContainer" CdmEntityContainer="practicaMADEntities">
+  <EntityContainerMapping StorageEntityContainer="practicaMADModelStoreContainer" CdmEntityContainer="practicaMADEntities3">
     <EntitySetMapping Name="Category">
-      <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaMad.Model.Category">
+      <EntityTypeMapping TypeName="practicaMADModel.Category">
         <MappingFragment StoreEntitySet="Category">
           <ScalarProperty Name="categoryId" ColumnName="categoryId" />
           <ScalarProperty Name="categoryName" ColumnName="categoryName" />
@@ -10,7 +10,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Client">
-      <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaMad.Model.Client">
+      <EntityTypeMapping TypeName="practicaMADModel.Client">
         <MappingFragment StoreEntitySet="Client">
           <ScalarProperty Name="clientId" ColumnName="clientId" />
           <ScalarProperty Name="clientLogin" ColumnName="clientLogin" />
@@ -27,7 +27,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ClientOrder">
-      <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaMad.Model.ClientOrder">
+      <EntityTypeMapping TypeName="practicaMADModel.ClientOrder">
         <MappingFragment StoreEntitySet="ClientOrder">
           <ScalarProperty Name="orderId" ColumnName="orderId" />
           <ScalarProperty Name="orderDate" ColumnName="orderDate" />
@@ -40,21 +40,21 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ClientOrderLine">
-      <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaMad.Model.ClientOrderLine">
+      <EntityTypeMapping TypeName="practicaMADModel.ClientOrderLine">
         <MappingFragment StoreEntitySet="ClientOrderLine">
-          <ScalarProperty Name="pName" ColumnName="pName" />
-          <ScalarProperty Name="forGift" ColumnName="forGift" />
-          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
           <ScalarProperty Name="orderLineId" ColumnName="orderLineId" />
           <ScalarProperty Name="orderId" ColumnName="orderId" />
           <ScalarProperty Name="productId" ColumnName="productId" />
           <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="totalPrice" ColumnName="totalPrice" />
           <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="forGift" ColumnName="forGift" />
+          <ScalarProperty Name="pName" ColumnName="pName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CreditCard">
-      <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaMad.Model.CreditCard">
+      <EntityTypeMapping TypeName="practicaMADModel.CreditCard">
         <MappingFragment StoreEntitySet="CreditCard">
           <ScalarProperty Name="cardId" ColumnName="cardId" />
           <ScalarProperty Name="cardNumber" ColumnName="cardNumber" />
@@ -67,19 +67,46 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Product">
-      <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaMad.Model.Product">
+      <EntityTypeMapping TypeName="IsTypeOf(practicaMADModel.Product)">
         <MappingFragment StoreEntitySet="Product">
           <ScalarProperty Name="productId" ColumnName="productId" />
-          <ScalarProperty Name="productName" ColumnName="productName" />
-          <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="registerDate" ColumnName="registerDate" />
-          <ScalarProperty Name="stock" ColumnName="stock" />
           <ScalarProperty Name="categoryId" ColumnName="categoryId" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+          <ScalarProperty Name="registerDate" ColumnName="registerDate" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="productName" ColumnName="productName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(practicaMADModel.Books)">
+        <MappingFragment StoreEntitySet="Books">
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="pages" ColumnName="pages" />
+          <ScalarProperty Name="author" ColumnName="author" />
+          <ScalarProperty Name="bookName" ColumnName="bookName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(practicaMADModel.Music)">
+        <MappingFragment StoreEntitySet="Music">
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="genere" ColumnName="genere" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="artist" ColumnName="artist" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(practicaMADModel.Films)">
+        <MappingFragment StoreEntitySet="Films">
+          <ScalarProperty Name="productId" ColumnName="productId" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="filmYear" ColumnName="filmYear" />
+          <ScalarProperty Name="director" ColumnName="director" />
+          <ScalarProperty Name="title" ColumnName="title" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ProductComment">
-      <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaMad.Model.ProductComment">
+      <EntityTypeMapping TypeName="practicaMADModel.ProductComment">
         <MappingFragment StoreEntitySet="ProductComment">
           <ScalarProperty Name="commentId" ColumnName="commentId" />
           <ScalarProperty Name="productId" ColumnName="productId" />
@@ -90,14 +117,14 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Tag">
-      <EntityTypeMapping TypeName="Es.Udc.DotNet.PracticaMad.Model.Tag">
+      <EntityTypeMapping TypeName="practicaMADModel.Tag">
         <MappingFragment StoreEntitySet="Tag">
           <ScalarProperty Name="tagId" ColumnName="tagId" />
           <ScalarProperty Name="tagName" ColumnName="tagName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="ProductCommentTag" TypeName="Es.Udc.DotNet.PracticaMad.Model.ProductCommentTag" StoreEntitySet="ProductCommentTag">
+    <AssociationSetMapping Name="ProductCommentTag" TypeName="practicaMADModel.ProductCommentTag" StoreEntitySet="ProductCommentTag">
       <EndProperty Name="ProductComment">
         <ScalarProperty Name="commentId" ColumnName="commentId" />
       </EndProperty>

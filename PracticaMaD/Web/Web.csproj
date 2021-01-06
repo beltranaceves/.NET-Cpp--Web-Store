@@ -110,6 +110,9 @@
     <Content Include="Pages\Products\EditComment.aspx" />
     <Content Include="Pages\Products\EditedComment.aspx" />
     <Content Include="Pages\Products\FindProducts.aspx" />
+    <Content Include="Pages\Products\ProductFilmsDetails.aspx" />
+    <Content Include="Pages\Products\ProductMusicDetails.aspx" />
+    <Content Include="Pages\Products\ProductBooksDetails.aspx" />
     <Content Include="Pages\Products\ShowOneProduct.aspx" />
     <Content Include="Pages\Products\ShowProductsTag.aspx" />
     <Content Include="Pages\Products\ShowProducts.aspx" />
@@ -235,6 +238,27 @@
     </Compile>
     <Compile Include="Pages\Products\FindProducts.aspx.designer.cs">
       <DependentUpon>FindProducts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Products\ProductFilmsDetails.aspx.cs">
+      <DependentUpon>ProductFilmsDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Products\ProductFilmsDetails.aspx.designer.cs">
+      <DependentUpon>ProductFilmsDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Products\ProductMusicDetails.aspx.cs">
+      <DependentUpon>ProductMusicDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Products\ProductMusicDetails.aspx.designer.cs">
+      <DependentUpon>ProductMusicDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Products\ProductBooksDetails.aspx.cs">
+      <DependentUpon>ProductBooksDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Products\ProductBooksDetails.aspx.designer.cs">
+      <DependentUpon>ProductBooksDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Products\ShowOneProduct.aspx.cs">
       <DependentUpon>ShowOneProduct.aspx</DependentUpon>
@@ -490,6 +514,33 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\Orders\App_LocalResources\SeeOrderdetails.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\ProductBooksDetails.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\ProductBooksDetails.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\ProductBooksDetails.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\ProductMusicDetails.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\ProductMusicDetails.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\ProductMusicDetails.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\ProductFilmsDetails.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\ProductFilmsDetails.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\ProductFilmsDetails.aspx.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

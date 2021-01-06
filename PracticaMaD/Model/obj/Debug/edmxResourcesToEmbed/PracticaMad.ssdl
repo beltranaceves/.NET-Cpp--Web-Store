@@ -1,5 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Es.Udc.DotNet.PracticaMad.Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="practicaMADModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Books">
+    <Key>
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="bookName" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="author" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="pages" Type="int" Nullable="false" />
+    <Property Name="ISBN" Type="bigint" Nullable="false" />
+    <Property Name="productId" Type="bigint" Nullable="false" />
+  </EntityType>
   <EntityType Name="Category">
     <Key>
       <PropertyRef Name="categoryId" />
@@ -60,6 +70,26 @@
     <Property Name="defaultCard" Type="bit" Nullable="false" />
     <Property Name="clientId" Type="bigint" Nullable="false" />
   </EntityType>
+  <EntityType Name="Films">
+    <Key>
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="title" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="director" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="filmYear" Type="int" Nullable="false" />
+    <Property Name="duration" Type="int" Nullable="false" />
+    <Property Name="productId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Music">
+    <Key>
+      <PropertyRef Name="productId" />
+    </Key>
+    <Property Name="artist" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="genere" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="60" Nullable="false" />
+    <Property Name="productId" Type="bigint" Nullable="false" />
+  </EntityType>
   <EntityType Name="Product">
     <Key>
       <PropertyRef Name="productId" />
@@ -96,6 +126,18 @@
     <Property Name="tagId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="tagName" Type="varchar" MaxLength="20" Nullable="false" />
   </EntityType>
+  <Association Name="FK_Books">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Books" Type="Self.Books" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="productId" />
+      </Principal>
+      <Dependent Role="Books">
+        <PropertyRef Name="productId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ClientOrder_Client">
     <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
     <End Role="ClientOrder" Type="Self.ClientOrder" Multiplicity="*" />
@@ -182,6 +224,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Films">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Films" Type="Self.Films" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="productId" />
+      </Principal>
+      <Dependent Role="Films">
+        <PropertyRef Name="productId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Music">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="Music" Type="Self.Music" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="productId" />
+      </Principal>
+      <Dependent Role="Music">
+        <PropertyRef Name="productId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Product_Category">
     <End Role="Category" Type="Self.Category" Multiplicity="1" />
     <End Role="Product" Type="Self.Product" Multiplicity="*" />
@@ -218,16 +284,23 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="EsUdcDotNetPracticaMadModelStoreContainer">
+  <EntityContainer Name="practicaMADModelStoreContainer">
+    <EntitySet Name="Books" EntityType="Self.Books" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ClientOrder" EntityType="Self.ClientOrder" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ClientOrderLine" EntityType="Self.ClientOrderLine" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CreditCard" EntityType="Self.CreditCard" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Films" EntityType="Self.Films" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Music" EntityType="Self.Music" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductComment" EntityType="Self.ProductComment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductCommentTag" EntityType="Self.ProductCommentTag" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tag" EntityType="Self.Tag" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Books" Association="Self.FK_Books">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Books" EntitySet="Books" />
+    </AssociationSet>
     <AssociationSet Name="FK_ClientOrder_Client" Association="Self.FK_ClientOrder_Client">
       <End Role="Client" EntitySet="Client" />
       <End Role="ClientOrder" EntitySet="ClientOrder" />
@@ -255,6 +328,14 @@
     <AssociationSet Name="FK_CreditCard_Client" Association="Self.FK_CreditCard_Client">
       <End Role="Client" EntitySet="Client" />
       <End Role="CreditCard" EntitySet="CreditCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Films" Association="Self.FK_Films">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Films" EntitySet="Films" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Music" Association="Self.FK_Music">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="Music" EntitySet="Music" />
     </AssociationSet>
     <AssociationSet Name="FK_Product_Category" Association="Self.FK_Product_Category">
       <End Role="Category" EntitySet="Category" />

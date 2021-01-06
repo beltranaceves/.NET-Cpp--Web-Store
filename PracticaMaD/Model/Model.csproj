@@ -77,6 +77,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Books.cs">
+      <DependentUpon>PracticaMad.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="Category.cs">
       <DependentUpon>PracticaMad.Context.tt</DependentUpon>
     </Compile>
@@ -108,6 +111,12 @@
     <Compile Include="DAOs\ProductDao\ProductDaoEntityFramework.cs" />
     <Compile Include="DAOs\TagDao\ITagDao.cs" />
     <Compile Include="DAOs\TagDao\TagDaoEntityFramework.cs" />
+    <Compile Include="Films.cs">
+      <DependentUpon>PracticaMad.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Music.cs">
+      <DependentUpon>PracticaMad.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="Objetos\ShoppingCart.cs" />
     <Compile Include="Objetos\ShoppingCartLine.cs" />
     <Compile Include="PracticaMad.Context.cs">
@@ -157,8 +166,11 @@
     <Compile Include="Services\ProductCommentService\ProductCommentBlock.cs" />
     <Compile Include="Services\ProductCommentService\ProductCommentDetails.cs" />
     <Compile Include="Services\ProductCommentService\ProductCommentService.cs" />
+    <Compile Include="Services\ProductService\MusicDetails.cs" />
+    <Compile Include="Services\ProductService\FilmsDetails.cs" />
     <Compile Include="Services\ProductService\IProductService.cs" />
     <Compile Include="Services\ProductService\ProductBlock.cs" />
+    <Compile Include="Services\ProductService\BooksDetails.cs" />
     <Compile Include="Services\ProductService\ProductDetails.cs" />
     <Compile Include="Services\ProductService\ProductService.cs" />
     <Compile Include="Services\ShoppingCartService\IShoppingCartService.cs" />

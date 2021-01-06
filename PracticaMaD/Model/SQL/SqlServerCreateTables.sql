@@ -14,6 +14,19 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[ClientOrder]
 AND type in ('U')) DROP TABLE [ClientOrder]
 GO
 
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[Books]') 
+AND type in ('U')) DROP TABLE [Books]
+GO
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[Films]') 
+AND type in ('U')) DROP TABLE [Films]
+GO
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[Music]') 
+AND type in ('U')) DROP TABLE [Music]
+GO
+
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[Product]') 
 AND type in ('U')) DROP TABLE [Product]
 GO
@@ -34,6 +47,8 @@ GO
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID('[Tag]') 
 AND type in ('U')) DROP TABLE [Tag]
 GO
+
+
 
 
 
@@ -196,4 +211,39 @@ CREATE TABLE ProductCommentTag (
 PRINT N'Table ProductCommentTag created.'
 GO
 
+CREATE TABLE Books (
+	productId BIGINT NOT NULL,
+	bookName VARCHAR(60) NOT NULL,
+	author VARCHAR(60) NOT NULL,
+	pages INT NOT NULL,
+	ISBN BIGINT NOT NULL,
 
+	CONSTRAINT [PK_Books] PRIMARY KEY (productId),
+	CONSTRAINT [FK_Books] FOREIGN KEY (productId) REFERENCES Product (productId)
+)
+PRINT N'Table Books created.'
+
+
+CREATE TABLE Films (
+	productId BIGINT NOT NULL,
+	title VARCHAR(60) NOT NULL,
+	director VARCHAR(60) NOT NULL,
+	filmYear INT NOT NULL,
+	duration INT NOT NULL,
+
+	CONSTRAINT [PK_Films] PRIMARY KEY (productId),
+	CONSTRAINT [FK_Films] FOREIGN KEY (productId) REFERENCES Product (productId)
+)
+PRINT N'Table Films created.'
+
+CREATE TABLE Music (
+	productId BIGINT NOT NULL,
+	artist VARCHAR(60) NOT NULL,
+	title VARCHAR(60) NOT NULL,
+    genere VARCHAR(60) NOT NULL,
+	type VARCHAR(60) NOT NULL,
+
+	CONSTRAINT [PK_Music] PRIMARY KEY (productId),
+	CONSTRAINT [FK_Music] FOREIGN KEY (productId) REFERENCES Product (productId)
+)
+PRINT N'Table Music created.'

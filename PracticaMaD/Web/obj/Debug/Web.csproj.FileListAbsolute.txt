@@ -614,3 +614,283 @@ D:\MAD\V25\PracticaMaD\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
 D:\MAD\V25\PracticaMaD\Web\obj\Debug\Web.csproj.CopyComplete
 D:\MAD\V25\PracticaMaD\Web\obj\Debug\PracticaMad.Web.dll
 D:\MAD\V25\PracticaMaD\Web\obj\Debug\PracticaMad.Web.pdb
+D:\MAD\V26\Web\bin\PracticaMad.Web.dll.config
+D:\MAD\V26\Web\bin\PracticaMad.Web.dll
+D:\MAD\V26\Web\bin\PracticaMad.Web.pdb
+D:\MAD\V26\Web\bin\roslyn\csc.exe
+D:\MAD\V26\Web\bin\roslyn\csc.exe.config
+D:\MAD\V26\Web\bin\roslyn\csc.rsp
+D:\MAD\V26\Web\bin\roslyn\csi.exe
+D:\MAD\V26\Web\bin\roslyn\csi.rsp
+D:\MAD\V26\Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\MAD\V26\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\MAD\V26\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\MAD\V26\Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\MAD\V26\Web\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\MAD\V26\Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\MAD\V26\Web\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\MAD\V26\Web\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\MAD\V26\Web\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\MAD\V26\Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\MAD\V26\Web\bin\roslyn\System.AppContext.dll
+D:\MAD\V26\Web\bin\roslyn\System.Collections.Immutable.dll
+D:\MAD\V26\Web\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\MAD\V26\Web\bin\roslyn\System.IO.FileSystem.dll
+D:\MAD\V26\Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\MAD\V26\Web\bin\roslyn\System.Reflection.Metadata.dll
+D:\MAD\V26\Web\bin\roslyn\vbc.exe
+D:\MAD\V26\Web\bin\roslyn\vbc.exe.config
+D:\MAD\V26\Web\bin\roslyn\vbc.rsp
+D:\MAD\V26\Web\bin\roslyn\VBCSCompiler.exe
+D:\MAD\V26\Web\bin\roslyn\VBCSCompiler.exe.config
+D:\MAD\V26\Web\bin\Castle.Core.dll
+D:\MAD\V26\Web\bin\EntityFramework.dll
+D:\MAD\V26\Web\bin\EntityFramework.SqlServer.dll
+D:\MAD\V26\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\MAD\V26\Web\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\MAD\V26\Web\bin\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+D:\MAD\V26\Web\bin\ModelUtil.dll
+D:\MAD\V26\Web\bin\Ninject.dll
+D:\MAD\V26\Web\bin\Ninject.Extensions.Interception.dll
+D:\MAD\V26\Web\bin\Ninject.Extensions.Interception.DynamicProxy.dll
+D:\MAD\V26\Web\bin\PracticaMad.Model.exe
+D:\MAD\V26\Web\bin\PracticaMad.Model.pdb
+D:\MAD\V26\Web\bin\PracticaMad.Model.exe.config
+D:\MAD\V26\Web\bin\Castle.Core.xml
+D:\MAD\V26\Web\bin\EntityFramework.xml
+D:\MAD\V26\Web\bin\EntityFramework.SqlServer.xml
+D:\MAD\V26\Web\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
+D:\MAD\V26\Web\bin\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+D:\MAD\V26\Web\bin\Ninject.xml
+D:\MAD\V26\Web\bin\Ninject.Extensions.Interception.xml
+D:\MAD\V26\Web\bin\Ninject.Extensions.Interception.DynamicProxy.xml
+D:\MAD\V26\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\MAD\V26\Web\obj\Debug\Web.csprojAssemblyReference.cache
+D:\MAD\V26\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+D:\MAD\V26\Web\obj\Debug\Web.csproj.CopyComplete
+D:\MAD\V26\Web\obj\Debug\PracticaMad.Web.dll
+D:\MAD\V26\Web\obj\Debug\PracticaMad.Web.pdb
+D:\MAD\V26 - copia (2)\Web\obj\Debug\Web.csprojAssemblyReference.cache
+D:\MAD\V26 - copia (2)\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+D:\MAD\V26 - copia (2)\Web\obj\Debug\PracticaMad.Web.dll
+D:\MAD\V26 - copia (2)\Web\obj\Debug\PracticaMad.Web.pdb
+D:\MAD\V26 - copia (2)\Web\bin\PracticaMad.Web.dll.config
+D:\MAD\V26 - copia (2)\Web\bin\PracticaMad.Web.dll
+D:\MAD\V26 - copia (2)\Web\bin\PracticaMad.Web.pdb
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\csc.exe
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\csc.exe.config
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\csc.rsp
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\csi.exe
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\csi.rsp
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\System.AppContext.dll
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\System.Collections.Immutable.dll
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\System.IO.FileSystem.dll
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\System.Reflection.Metadata.dll
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\vbc.exe
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\vbc.exe.config
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\vbc.rsp
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\VBCSCompiler.exe
+D:\MAD\V26 - copia (2)\Web\bin\roslyn\VBCSCompiler.exe.config
+D:\MAD\V26 - copia (2)\Web\bin\Castle.Core.dll
+D:\MAD\V26 - copia (2)\Web\bin\EntityFramework.dll
+D:\MAD\V26 - copia (2)\Web\bin\EntityFramework.SqlServer.dll
+D:\MAD\V26 - copia (2)\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\MAD\V26 - copia (2)\Web\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\MAD\V26 - copia (2)\Web\bin\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+D:\MAD\V26 - copia (2)\Web\bin\ModelUtil.dll
+D:\MAD\V26 - copia (2)\Web\bin\Ninject.dll
+D:\MAD\V26 - copia (2)\Web\bin\Ninject.Extensions.Interception.dll
+D:\MAD\V26 - copia (2)\Web\bin\Ninject.Extensions.Interception.DynamicProxy.dll
+D:\MAD\V26 - copia (2)\Web\bin\PracticaMad.Model.exe
+D:\MAD\V26 - copia (2)\Web\bin\PracticaMad.Model.pdb
+D:\MAD\V26 - copia (2)\Web\bin\PracticaMad.Model.exe.config
+D:\MAD\V26 - copia (2)\Web\bin\Castle.Core.xml
+D:\MAD\V26 - copia (2)\Web\bin\EntityFramework.xml
+D:\MAD\V26 - copia (2)\Web\bin\EntityFramework.SqlServer.xml
+D:\MAD\V26 - copia (2)\Web\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
+D:\MAD\V26 - copia (2)\Web\bin\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+D:\MAD\V26 - copia (2)\Web\bin\Ninject.xml
+D:\MAD\V26 - copia (2)\Web\bin\Ninject.Extensions.Interception.xml
+D:\MAD\V26 - copia (2)\Web\bin\Ninject.Extensions.Interception.DynamicProxy.xml
+D:\MAD\V26 - copia (2)\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\MAD\V26 - copia (2)\Web\obj\Debug\Web.csproj.CopyComplete
+D:\MAD\V27\Web\bin\PracticaMad.Web.dll.config
+D:\MAD\V27\Web\bin\PracticaMad.Web.dll
+D:\MAD\V27\Web\bin\PracticaMad.Web.pdb
+D:\MAD\V27\Web\bin\roslyn\csc.exe
+D:\MAD\V27\Web\bin\roslyn\csc.exe.config
+D:\MAD\V27\Web\bin\roslyn\csc.rsp
+D:\MAD\V27\Web\bin\roslyn\csi.exe
+D:\MAD\V27\Web\bin\roslyn\csi.rsp
+D:\MAD\V27\Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\MAD\V27\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\MAD\V27\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\MAD\V27\Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\MAD\V27\Web\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\MAD\V27\Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\MAD\V27\Web\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\MAD\V27\Web\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\MAD\V27\Web\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\MAD\V27\Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\MAD\V27\Web\bin\roslyn\System.AppContext.dll
+D:\MAD\V27\Web\bin\roslyn\System.Collections.Immutable.dll
+D:\MAD\V27\Web\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\MAD\V27\Web\bin\roslyn\System.IO.FileSystem.dll
+D:\MAD\V27\Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\MAD\V27\Web\bin\roslyn\System.Reflection.Metadata.dll
+D:\MAD\V27\Web\bin\roslyn\vbc.exe
+D:\MAD\V27\Web\bin\roslyn\vbc.exe.config
+D:\MAD\V27\Web\bin\roslyn\vbc.rsp
+D:\MAD\V27\Web\bin\roslyn\VBCSCompiler.exe
+D:\MAD\V27\Web\bin\roslyn\VBCSCompiler.exe.config
+D:\MAD\V27\Web\bin\Castle.Core.dll
+D:\MAD\V27\Web\bin\EntityFramework.dll
+D:\MAD\V27\Web\bin\EntityFramework.SqlServer.dll
+D:\MAD\V27\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\MAD\V27\Web\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\MAD\V27\Web\bin\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+D:\MAD\V27\Web\bin\ModelUtil.dll
+D:\MAD\V27\Web\bin\Ninject.dll
+D:\MAD\V27\Web\bin\Ninject.Extensions.Interception.dll
+D:\MAD\V27\Web\bin\Ninject.Extensions.Interception.DynamicProxy.dll
+D:\MAD\V27\Web\bin\PracticaMad.Model.exe
+D:\MAD\V27\Web\bin\PracticaMad.Model.pdb
+D:\MAD\V27\Web\bin\PracticaMad.Model.exe.config
+D:\MAD\V27\Web\bin\Castle.Core.xml
+D:\MAD\V27\Web\bin\EntityFramework.xml
+D:\MAD\V27\Web\bin\EntityFramework.SqlServer.xml
+D:\MAD\V27\Web\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
+D:\MAD\V27\Web\bin\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+D:\MAD\V27\Web\bin\Ninject.xml
+D:\MAD\V27\Web\bin\Ninject.Extensions.Interception.xml
+D:\MAD\V27\Web\bin\Ninject.Extensions.Interception.DynamicProxy.xml
+D:\MAD\V27\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\MAD\V27\Web\obj\Debug\Web.csprojAssemblyReference.cache
+D:\MAD\V27\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+D:\MAD\V27\Web\obj\Debug\Web.csproj.CopyComplete
+D:\MAD\V27\Web\obj\Debug\PracticaMad.Web.dll
+D:\MAD\V27\Web\obj\Debug\PracticaMad.Web.pdb
+D:\MAD\V28 - Va Music Film Book\Web\bin\PracticaMad.Web.dll.config
+D:\MAD\V28 - Va Music Film Book\Web\bin\PracticaMad.Web.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\PracticaMad.Web.pdb
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\csc.exe
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\csc.exe.config
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\csc.rsp
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\csi.exe
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\csi.rsp
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\System.AppContext.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\System.Collections.Immutable.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\System.IO.FileSystem.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\System.Reflection.Metadata.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\vbc.exe
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\vbc.exe.config
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\vbc.rsp
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\VBCSCompiler.exe
+D:\MAD\V28 - Va Music Film Book\Web\bin\roslyn\VBCSCompiler.exe.config
+D:\MAD\V28 - Va Music Film Book\Web\bin\Castle.Core.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\EntityFramework.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\EntityFramework.SqlServer.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\ModelUtil.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\Ninject.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\Ninject.Extensions.Interception.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\Ninject.Extensions.Interception.DynamicProxy.dll
+D:\MAD\V28 - Va Music Film Book\Web\bin\PracticaMad.Model.exe
+D:\MAD\V28 - Va Music Film Book\Web\bin\PracticaMad.Model.pdb
+D:\MAD\V28 - Va Music Film Book\Web\bin\PracticaMad.Model.exe.config
+D:\MAD\V28 - Va Music Film Book\Web\bin\Castle.Core.xml
+D:\MAD\V28 - Va Music Film Book\Web\bin\EntityFramework.xml
+D:\MAD\V28 - Va Music Film Book\Web\bin\EntityFramework.SqlServer.xml
+D:\MAD\V28 - Va Music Film Book\Web\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
+D:\MAD\V28 - Va Music Film Book\Web\bin\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+D:\MAD\V28 - Va Music Film Book\Web\bin\Ninject.xml
+D:\MAD\V28 - Va Music Film Book\Web\bin\Ninject.Extensions.Interception.xml
+D:\MAD\V28 - Va Music Film Book\Web\bin\Ninject.Extensions.Interception.DynamicProxy.xml
+D:\MAD\V28 - Va Music Film Book\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\MAD\V28 - Va Music Film Book\Web\obj\Debug\Web.csprojAssemblyReference.cache
+D:\MAD\V28 - Va Music Film Book\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+D:\MAD\V28 - Va Music Film Book\Web\obj\Debug\Web.csproj.CopyComplete
+D:\MAD\V28 - Va Music Film Book\Web\obj\Debug\PracticaMad.Web.dll
+D:\MAD\V28 - Va Music Film Book\Web\obj\Debug\PracticaMad.Web.pdb
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\PracticaMad.Web.dll.config
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\PracticaMad.Web.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\PracticaMad.Web.pdb
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\csc.exe
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\csc.exe.config
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\csc.rsp
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\csi.exe
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\csi.rsp
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\System.AppContext.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\System.Collections.Immutable.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\System.IO.FileSystem.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\System.Reflection.Metadata.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\vbc.exe
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\vbc.exe.config
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\vbc.rsp
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\VBCSCompiler.exe
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\roslyn\VBCSCompiler.exe.config
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\Castle.Core.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\EntityFramework.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\EntityFramework.SqlServer.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\ModelUtil.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\Ninject.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\Ninject.Extensions.Interception.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\Ninject.Extensions.Interception.DynamicProxy.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\PracticaMad.Model.exe
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\PracticaMad.Model.pdb
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\PracticaMad.Model.exe.config
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\Castle.Core.xml
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\EntityFramework.xml
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\EntityFramework.SqlServer.xml
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\Microsoft.Practices.EnterpriseLibrary.Common.xml
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\Ninject.xml
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\Ninject.Extensions.Interception.xml
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\Ninject.Extensions.Interception.DynamicProxy.xml
+D:\MAD\V28 - Va Music Film Book - copia\Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\MAD\V28 - Va Music Film Book - copia\Web\obj\Debug\Web.csprojAssemblyReference.cache
+D:\MAD\V28 - Va Music Film Book - copia\Web\obj\Debug\Web.csproj.CoreCompileInputs.cache
+D:\MAD\V28 - Va Music Film Book - copia\Web\obj\Debug\Web.csproj.CopyComplete
+D:\MAD\V28 - Va Music Film Book - copia\Web\obj\Debug\PracticaMad.Web.dll
+D:\MAD\V28 - Va Music Film Book - copia\Web\obj\Debug\PracticaMad.Web.pdb

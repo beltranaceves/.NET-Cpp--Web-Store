@@ -27,9 +27,9 @@ public partial class ClientOrderLine
 
     public int quantity { get; set; }
 
-    public double price { get; set; }
-
     public double totalPrice { get; set; }
+
+    public double price { get; set; }
 
     public bool forGift { get; set; }
 
@@ -73,9 +73,9 @@ public partial class ClientOrderLine
 
 			hash = hash * multiplier + quantity.GetHashCode();
 
-			hash = hash * multiplier + price.GetHashCode();
-
 			hash = hash * multiplier + totalPrice.GetHashCode();
+
+			hash = hash * multiplier + price.GetHashCode();
 
 			hash = hash * multiplier + forGift.GetHashCode();
 
@@ -106,8 +106,8 @@ public partial class ClientOrderLine
            &&  (this.orderId == target.orderId )       
            &&  (this.productId == target.productId )       
            &&  (this.quantity == target.quantity )       
-           &&  (this.price == target.price )       
            &&  (this.totalPrice == target.totalPrice )       
+           &&  (this.price == target.price )       
            &&  (this.forGift == target.forGift )       
            &&  (this.pName == target.pName )       
            ;
@@ -151,8 +151,8 @@ public partial class ClientOrderLine
        strClientOrderLine.Append(" orderId = " + orderId + " | " );       
        strClientOrderLine.Append(" productId = " + productId + " | " );       
        strClientOrderLine.Append(" quantity = " + quantity + " | " );       
-       strClientOrderLine.Append(" price = " + price + " | " );       
        strClientOrderLine.Append(" totalPrice = " + totalPrice + " | " );       
+       strClientOrderLine.Append(" price = " + price + " | " );       
        strClientOrderLine.Append(" forGift = " + forGift + " | " );       
        strClientOrderLine.Append(" pName = " + pName + " | " );       
 
