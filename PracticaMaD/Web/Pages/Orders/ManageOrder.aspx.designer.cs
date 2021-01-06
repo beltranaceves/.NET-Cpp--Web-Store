@@ -85,24 +85,6 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders {
         protected global::System.Web.UI.WebControls.CompareValidator cvAddress;
         
         /// <summary>
-        /// Control lclPayMethod.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lclPayMethod;
-        
-        /// <summary>
-        /// Control gvCards.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvCards;
-        
-        /// <summary>
         /// Control lblSlectPayMethod.
         /// </summary>
         /// <remarks>
@@ -128,6 +110,24 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ButtonCreditCardClose;
+        
+        /// <summary>
+        /// Control lblNoCards.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNoCards;
+        
+        /// <summary>
+        /// Control gvCards.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gvCards;
         
         /// <summary>
         /// Control lclCardType.
@@ -317,6 +317,15 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lclProductList;
+        
+        /// <summary>
+        /// Control lblShoppingCartEmpty.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblShoppingCartEmpty;
         
         /// <summary>
         /// Control gvShoppingCart.

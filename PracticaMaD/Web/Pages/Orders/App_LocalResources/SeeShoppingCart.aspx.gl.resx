@@ -120,7 +120,28 @@
   <data name="btnPay.text" xml:space="preserve">
     <value>Proceder o pago</value>
   </data>
+  <data name="forGift" xml:space="preserve">
+    <value>Para regalo</value>
+  </data>
+  <data name="lblShoppingCartEmpty.text" xml:space="preserve">
+    <value>O seu carrito esta baleiro</value>
+  </data>
   <data name="lclPrize.Text" xml:space="preserve">
     <value>Precio total</value>
+  </data>
+  <data name="price" xml:space="preserve">
+    <value>Prezo unitario</value>
+  </data>
+  <data name="productId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="productName" xml:space="preserve">
+    <value>Nome</value>
+  </data>
+  <data name="quantity" xml:space="preserve">
+    <value>Unidades</value>
+  </data>
+  <data name="totalPrice" xml:space="preserve">
+    <value>Prezo total</value>
   </data>
 </root>

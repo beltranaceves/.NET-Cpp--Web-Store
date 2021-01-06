@@ -52,22 +52,22 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
                     price += SessionManager.shoppingCart.shoppingCartLines.ElementAt(i).totalPrice;
                 }
 
+                
                 txtPrizeTotal.Text = ((price)).ToString();
-
-                ManageLabels();
-
-                LoadGrid();
-
-                f = SessionManager.shoppingCart.shoppingCartLines;
-
-                //AnhadirDatos();
-
-                LoadGrid2();
 
 
                 lblClientAddres.Text = SessionManager.FindClientDetails(Context).ClientAddress;
 
                 txtAddress.Text = "Direccion";
+
+                ManageLabels();
+
+                LoadGrid();
+             
+                LoadGrid2();
+
+     
+              
             }
 
             
@@ -93,8 +93,17 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
             txtCV.Visible = false;
             txtAddress.Visible = false;
 
+            lclCardNumber.Visible = false;
+            lclCardType.Visible = false;
+            lclExpirationDate.Visible = false;
+            lclCV.Visible = false;
+
+            lclAddress.Visible = false;
             CloseAddres.Visible = false;
             ButtonCreditCardClose.Visible = false;
+
+            lblNoCards.Visible = false;
+            lblShoppingCartEmpty.Visible = false;
 
         }
 
@@ -112,13 +121,15 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
         {
             txtAddress.Visible = true;
             CloseAddres.Visible = true;
-            
+            lclAddress.Visible = true;
+
         }
 
         protected void btnCloseAddres_Click(object sender, EventArgs e)
         {
             txtAddress.Visible = false;
             CloseAddres.Visible = false;
+            lclAddress.Visible = false;
         }
 
         protected void btnCreditCard_Click(object sender, EventArgs e)
@@ -131,7 +142,14 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
             dropYear.Visible = true;
             txtCV.Visible = true;
 
+            lclCardNumber.Visible = true;
+            lclCardType.Visible = true;
+            lclExpirationDate.Visible = true;
+            lclCV.Visible = true;
+
             ButtonCreditCardClose.Visible = true;
+
+            gvCards.Visible = false;
         }
 
 
@@ -145,7 +163,15 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
             dropYear.Visible = false;
             txtCV.Visible = false;
 
+            lclCardNumber.Visible = false;
+            lclCardType.Visible = false;
+            lclExpirationDate.Visible = false;
+            lclCV.Visible = false;
+
             ButtonCreditCardClose.Visible = false;
+
+            gvCards.Visible = true;
+
 
         }
 
@@ -159,9 +185,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
             long clientId = SessionManager.GetClientSession(Context).ClientId;
 
-            CreditCardDetails card = creditCardService.GetClientDefaultCard(clientId);
-
-            long cardId = creditCardService.GetCardFromNumber(card.CardNumber).cardId;
+            long cardId = 0;
 
 
 
@@ -196,10 +220,13 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
                  }
 
+                 else
+                 {
+                    CreditCardDetails card = creditCardService.GetClientDefaultCard(clientId);
+                    cardId = creditCardService.GetCardFromNumber(card.CardNumber).cardId;
+                 }
 
-            List<ShoppingCartLine> f1 = new List<ShoppingCartLine>();
 
-            f1 = SessionManager.shoppingCart.shoppingCartLines;
 
             IShoppingCartService shop = (IShoppingCartService)iocManager.Resolve<IShoppingCartService>();
 
@@ -345,6 +372,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
                     shop.RemoveFromCart(SessionManager.shoppingCart.shoppingCartLines.ElementAt(i), SessionManager.shoppingCart);
             }
 
+
+
        
             gvShoppingCart.DataSource = SessionManager.shoppingCart.shoppingCartLines;
             gvShoppingCart.DataBind();
@@ -353,9 +382,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
                 btnPay.Visible = false;
 
-            //txtPrizeTotal.Text = SessionManager.GetTotalPrize().ToString();
 
-
+            Response.Redirect(Request.RawUrl.ToString());
 
 
         }
@@ -381,13 +409,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
                 if (forGift != null)
                 {
 
-                    //Pendiente hacer el for gift
-
-                    //long productId = Convert.ToInt32(e.Row.Cells[0].Text);
-
-                    //ProductDetails productDetails = SessionManager.GetProductFromCart(productId);
-
-                    //forGift.Checked = productDetails.forGift;
+   
                 }
             }
 
@@ -451,6 +473,12 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
         {
             List<CreditCardDetails> userCards = SessionManager.GetAllCards(Context);
 
+            if (userCards.Count == 0)
+            {
+                lblNoCards.Visible = true;
+                return;
+            }
+
             gvCards.DataSource = userCards;
             gvCards.DataBind();
 
@@ -460,7 +488,14 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
         private void LoadGrid2()
         {
 
+            if (SessionManager.shoppingCart.shoppingCartLines.Count == 0)
+            {
+                lblShoppingCartEmpty.Visible = true;
+                return;
+            }
+
             f = SessionManager.shoppingCart.shoppingCartLines;
+
 
             gvShoppingCart.DataSource = f;
             gvShoppingCart.DataBind();

@@ -6,11 +6,13 @@
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_BodyContent" runat="server">
     <br />
-    <p>
-        <asp:Label ID="lblNoProduct" meta:resourcekey="lblNoProduct" runat="server" Visible="false"></asp:Label>
-    </p>
+  
 
     <form runat="server">
+
+          <p>
+        <asp:Label ID="lblNoProduct" meta:resourcekey="lblNoProduct" runat="server" Visible="false"></asp:Label>
+            </p>
 
         <asp:GridView ID="gvProduct" runat="server" CssClass="products" GridLines="None"
             AutoGenerateColumns="False"
@@ -21,7 +23,7 @@
                 <asp:BoundField DataField="RegisterDate" HeaderText="<%$ Resources:Common, productDate %>" />
                 <asp:BoundField DataField="Price" HeaderText="<%$ Resources:Common, prize %>" />
 
-                <asp:ButtonField CommandName="Show" runat="server" meta:resourcekey="btnShowProduct" />
+                <asp:ButtonField CommandName="Show" runat="server"  meta:resourcekey="btnShowProduct" />
                 <asp:TemplateField HeaderText="<%$ Resources:Common, quantity %>">
                     <ItemTemplate>
                         <asp:DropDownList ID="quantityList" runat="server">

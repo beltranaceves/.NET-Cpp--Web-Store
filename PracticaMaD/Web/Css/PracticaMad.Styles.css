@@ -176,6 +176,7 @@ table.tagsComment {
     margin-right: auto;
 }
 
+
 .comments {
     margin-left: auto;
     margin-right: auto;
@@ -197,4 +198,29 @@ table.oneProduct {
     margin-left: auto;
     margin-right: auto;
     width: 45%;
+}
+
+
+/* Order*/
+.order {
+    text-align: center;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Order*/
+.shoppingCart {
+    text-align: center;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Order*/
+.creditCards {
+    text-align: center;
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }

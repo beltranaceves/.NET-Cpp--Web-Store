@@ -201,4 +201,13 @@
   <data name="verificationCode" xml:space="preserve">
     <value>CV</value>
   </data>
+  <data name="lblNoCards.Text" xml:space="preserve">
+    <value>No tiene ninguna tarjeta</value>
+  </data>
+  <data name="lblShoppingCartEmpty" xml:space="preserve">
+    <value>Su carrito esta vacio</value>
+  </data>
+  <data name="lclProductList.Text" xml:space="preserve">
+    <value>Productos en el carrito</value>
+  </data>
 </root>

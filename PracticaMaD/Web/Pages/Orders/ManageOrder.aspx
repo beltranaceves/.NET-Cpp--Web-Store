@@ -10,9 +10,15 @@
         <br />
         <div>
      
+
+            
+  
         <span>
             <asp:Label ID="lblThisIsYourAddres" Font-Bold="true" Font-Size="Medium" runat="server" meta:resourcekey="lblThisIsYourAddres"/>
         </span>
+
+          
+
              <span>
             <asp:Label ID="lblClientAddres" Font-Bold="true" Font-Size="Medium" runat="server" meta:resourcekey="lblClientAddres"/>
         </span>
@@ -40,13 +46,36 @@
         </div>
 
         <br />
-        <div class="button">
-        <span>
-            <asp:Label ID="lclPayMethod" Font-Bold="true" Font-Size="Medium" runat="server" meta:resourcekey="lclPayMethod"  />
-        </span>
-        </div>
+ 
         <br />
-        <asp:GridView ID="gvCards"  runat="server"
+        <br />
+        <br />
+
+
+
+         <span>
+            <asp:Label ID="lblSlectPayMethod" Font-Bold="true" Font-Size="Medium" runat="server" meta:resourcekey="lblSlectPayMethod"/>
+        </span>
+
+         <div class="button">
+                <asp:Button ID="ButtonCreditCard" runat="server" OnClick="btnCreditCard_Click" meta:resourcekey="ButtonCreditCard" />
+        </div>
+
+        
+       <div class="button">
+                <asp:Button ID="ButtonCreditCardClose" runat="server" OnClick="btnCreditCardClose_Click" meta:resourcekey="ButtonCreditCardClose" />
+       </div>
+
+
+
+
+
+          <p>
+            <asp:Label ID="lblNoCards" meta:resourcekey="lblNoCards" runat="server"></asp:Label>
+        </p>
+
+
+        <asp:GridView ID="gvCards"  runat="server" CssClass="creditCards"
             AutoGenerateColumns="False"
             OnSelectedIndexChanging="gvCards_SelectedIndexChanging"
             ShowHeaderWhenEmpty="True"  >
@@ -67,23 +96,10 @@
           
 
         
-        <span>
-            <asp:Label ID="lblSlectPayMethod" Font-Bold="true" Font-Size="Medium" runat="server" meta:resourcekey="lblSlectPayMethod"/>
-        </span>
-
-         <div class="button">
-                <asp:Button ID="ButtonCreditCard" runat="server" OnClick="btnCreditCard_Click" meta:resourcekey="ButtonCreditCard" />
-            
-            </div>
-
-        
-             <div class="button">
-                <asp:Button ID="ButtonCreditCardClose" runat="server" OnClick="btnCreditCardClose_Click" meta:resourcekey="ButtonCreditCardClose" />
-            </div>
+       
 
 
-
-            <div id="form">
+     <div id="form">
             <div class="field">
                 <span class="label">
                     <asp:Localize ID="lclCardType" runat="server"  meta:resourcekey="lclCardType" />
@@ -144,13 +160,22 @@
     </div>
         <br />
         
+        
         <div class="button">
         <span>
-            <asp:Label ID="lclProductList" Font-Bold="true" Font-Size="Medium" runat="server" meta:resourcekey="lclProductListResource1" />
+            <asp:Label ID="lclProductList" Font-Bold="true" Font-Size="Medium" runat="server" meta:resourcekey="lclProductList" />
         </span>
         </div>
+        
         <br />
-        <asp:GridView ID="gvShoppingCart"  runat="server" 
+
+          <p>
+            <asp:Label ID="lblShoppingCartEmpty" meta:resourcekey="lblShoppingCartEmpty" runat="server"></asp:Label>
+        </p>
+
+
+
+        <asp:GridView ID="gvShoppingCart"  runat="server" CssClass="shoppingCart"
             AutoGenerateColumns="False"
              OnRowCreated="gvShoppingCart_RowCreated"
              OnSelectedIndexChanging="gvShoppingCart_SelectedIndexChanging"
@@ -187,11 +212,14 @@
         <asp:CommandField ShowSelectButton="True" SelectText="deleteProduct" meta:resourcekey="CommandFieldResource3"/>           
         </Columns>
         </asp:GridView>
-        </div>
-        <br />
+          
+          <br />
+          <br />
+          <br />
+          <br />
        
         
-          </div>
+         
             <div class="field">
                 <span class="label">
                     <asp:Localize ID="lclDescrtiption" runat="server" meta:resourcekey="lclDescrtiption"  /></span><span
@@ -201,7 +229,7 @@
                             Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>" meta:resourcekey="rfvDescription" ></asp:RequiredFieldValidator>
                         <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToValidate="txtDescription" Type="String"
                          Operator="DataTypeCheck" meta:resourcekey="cvDescription"  /></span>
-        </div>
+            </div>
         
         
         
@@ -209,13 +237,16 @@
         <div class="button">
                 <span>
                     <asp:Label ID="lblError" Font-Bold="true" ForeColor="Red" runat="server" meta:resourcekey="lblError" /></span>
-            </div>
+       </div>
+       
         <br />
-            <div class="button">
+            
+       <div class="button">
                 <span>
                     <asp:Label ID="lclPrize" Font-Bold="true" runat="server" meta:resourcekey="lclPrize" /></span>
                 <asp:TextBox ID="txtPrizeTotal" ReadOnly="True" runat="server" meta:resourcekey="txtPrizeTotalResource2"></asp:TextBox>
-            </div>
+       </div>
+       
         <br />
             <div class="button">
                 <asp:Button ID="btnPay" runat="server" OnClick="btnToPay_Click" meta:resourcekey="btnPay" />

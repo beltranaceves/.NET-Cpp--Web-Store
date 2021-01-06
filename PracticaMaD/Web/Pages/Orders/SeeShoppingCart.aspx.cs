@@ -28,6 +28,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
                     price += SessionManager.shoppingCart.shoppingCartLines.ElementAt(i).totalPrice;
                 }
 
+                lblShoppingCartEmpty.Visible = false;
+
                 txtPrizeTotal.Text = ((price)).ToString();
 
                 //AnhadirDatos();
@@ -121,6 +123,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
             gvShoppingCart.DataSource = SessionManager.shoppingCart.shoppingCartLines;
             gvShoppingCart.DataBind();
+
+            Response.Redirect(Request.RawUrl.ToString());
         }
 
         protected void gvShoppingCart_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -132,23 +136,12 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
                     if (Convert.ToInt32(e.Row.Cells[3].Text) <= 10)
                     {
                         units.SelectedValue = e.Row.Cells[3].Text;
+          
                     }
                     else
                     {
                         units.SelectedValue = "1";
                     }
-                }
-
-                var forGift = e.Row.Cells[3].FindControl("cbForGift") as CheckBox;
-                if (forGift != null)
-                {
-                    //Pendiente hacer el for gift
-
-                    //long productId = Convert.ToInt32(e.Row.Cells[0].Text);
-
-                    //ProductDetails productDetails = SessionManager.GetProductFromCart(productId);
-
-                    //forGift.Checked = productDetails.forGift;
                 }
             }
         }
@@ -174,6 +167,16 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
         private void LoadGrid2()
         {
+
+            if (SessionManager.shoppingCart.shoppingCartLines.Count == 0)
+            {
+                lblShoppingCartEmpty.Visible = true;
+                lclPrize.Visible = false;
+                txtPrizeTotal.Visible = false;
+                btnPay.Visible = false;
+                return;
+            }
+
             f = SessionManager.shoppingCart.shoppingCartLines;
 
             gvShoppingCart.DataSource = f;

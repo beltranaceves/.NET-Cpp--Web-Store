@@ -11,25 +11,30 @@
         </span>
         </div>
         <br />
-        <asp:GridView ID="gvShoppingCart" runat="server"
+
+         <p>
+            <asp:Label ID="lblShoppingCartEmpty" meta:resourcekey="lblShoppingCartEmpty" runat="server"></asp:Label>
+        </p>
+
+        <asp:GridView ID="gvShoppingCart" runat="server" CssClass="shoppingCart"
             AutoGenerateColumns="False"
             OnRowCreated="gvShoppingCart_RowCreated"
             OnSelectedIndexChanging="gvShoppingCart_SelectedIndexChanging"
             OnRowDataBound="gvShoppingCart_RowDataBound"
             ShowHeaderWhenEmpty="True" meta:resourcekey="gvShoppingCartResource2">
             <Columns>
-                <asp:BoundField DataField="productId" meta:resourcekey="productId" />
-                <asp:BoundField DataField="productName" meta:resourcekey="productName" />
-                <asp:BoundField DataField="price" meta:resourcekey="price" />
-                <asp:BoundField DataField="quantity" meta:resourcekey="quantity" />
-                <asp:BoundField DataField="totalPrice" meta:resourcekey="totalPrice" />
+                <asp:BoundField DataField="productId" HeaderText="<%$ Resources:, productId %>"/>
+                <asp:BoundField DataField="productName" HeaderText="<%$ Resources:, productName %>" />
+                <asp:BoundField DataField="price" HeaderText="<%$ Resources:, price %>" />
+                <asp:BoundField DataField="quantity" HeaderText="<%$ Resources:, quantity %>" />
+                <asp:BoundField DataField="totalPrice" HeaderText="<%$ Resources:, totalPrice %>" />
 
-                <asp:TemplateField HeaderText="forGift">
+                <asp:TemplateField HeaderText="<%$ Resources:, forGift %>">
                     <ItemTemplate>
                         <asp:CheckBox ID="cbForGift" AutoPostBack="true" runat="server" OnDataBinding="cbForGift_DataBinding" OnCheckedChanged="cbForGift_CheckedChanged" />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="quantity" meta:resourcekey="TemplateFieldResource2">
+                <asp:TemplateField HeaderText="<%$ Resources:, quantity %>" meta:resourcekey="TemplateFieldResource2">
                     <ItemTemplate>
                         <asp:DropDownList ID="quantityList" AutoPostBack="True" runat="server" OnSelectedIndexChanged="quantityList_SelectedIndexChanged" meta:resourcekey="quantityListResource2">
                             <asp:ListItem Value="1" meta:resourcekey="ListItemResource8">1</asp:ListItem>
@@ -45,15 +50,17 @@
                         </asp:DropDownList>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:CommandField ShowSelectButton="True" SelectText="deleteProduct" meta:resourcekey="CommandFieldResource3" />
+                <asp:CommandField ShowSelectButton="True" SelectText="deleteProduct"/>
             </Columns>
         </asp:GridView>
         <br />
         <br />
 
-        <span>
-            <asp:Label ID="lclPrize" Font-Bold="true" runat="server" meta:resourcekey="lclPrize" /></span>
-        <asp:TextBox ID="txtPrizeTotal" ReadOnly="True" runat="server" meta:resourcekey="txtPrizeTotal"></asp:TextBox>
+       <div class="button">
+                <span>
+                    <asp:Label ID="lclPrize" Font-Bold="true" runat="server" meta:resourcekey="lclPrize" /></span>
+                <asp:TextBox ID="txtPrizeTotal" ReadOnly="True" runat="server" meta:resourcekey="txtPrizeTotalResource2"></asp:TextBox>
+            </div>
         <br />
         <br />
 

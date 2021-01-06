@@ -16,6 +16,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 {
     public partial class ShowProducts : SpecificCulturePage
     {
+        string m = "9";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             int startIndex, count;
@@ -140,13 +142,15 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 
                 long productId = Convert.ToInt32(row.Cells[0].Text);
 
-                var quantity2 = row.Cells[3].FindControl("quantityList") as DropDownList;
+                var quantity2 = row.Cells[4].FindControl("quantityList") as DropDownList;
 
                 int quantity = Convert.ToInt32(quantity2.SelectedValue);
+
                 shoppingCartService.AddToCart(productId, quantity, SessionManager.shoppingCart);
 
                 Response.Redirect(Request.RawUrl.ToString());
             }
         }
+
     }
 }

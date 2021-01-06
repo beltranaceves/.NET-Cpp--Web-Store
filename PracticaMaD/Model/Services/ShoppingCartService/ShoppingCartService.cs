@@ -19,9 +19,16 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService
 
         public ShoppingCart AddToCart(long productId, int quantity, ShoppingCart shoppingCart)
         {
-            //if (shoppingCart.shoppingCartLines.Contains(shoppingCartLine))
-            //throw new AlreadyAddedException(shoppingCartLine.productId);
-
+            for (int i = 0; i < shoppingCart.shoppingCartLines.Count; i++)
+            {
+                if (shoppingCart.shoppingCartLines.ElementAt(i).productId == productId)
+                {
+                    shoppingCart.shoppingCartLines.ElementAt(i).quantity++;
+            
+                    return shoppingCart;
+                }
+            }
+        
             ShoppingCartLine cartLine = new ShoppingCartLine();
 
             Product p = ProductDao.Find(productId);
