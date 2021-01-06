@@ -162,13 +162,13 @@
   <data name="forGift" xml:space="preserve">
     <value>Para regalo</value>
   </data>
-  <data name="lclAddress.text" xml:space="preserve">
-    <value>Nova direccion </value>
+  <data name="lclAddress.Text" xml:space="preserve">
+    <value>Nova direccion</value>
   </data>
   <data name="lclCardType.Text" xml:space="preserve">
     <value>Tipo de tarxeta</value>
   </data>
-  <data name="lclCarNumber.Text" xml:space="preserve">
+  <data name="lclCardNumber.Text" xml:space="preserve">
     <value>Numero de tarxeta</value>
   </data>
   <data name="lclCV.Text" xml:space="preserve">
@@ -205,7 +205,7 @@
     <value>Non ten ningunha tarxeta</value>
   </data>
   <data name="lblShoppingCartEmpty.Text" xml:space="preserve">
-    <value>O seu carrito esta baleiro </value>
+    <value>O seu carrito esta baleiro</value>
   </data>
   <data name="lclProductList.Text" xml:space="preserve">
     <value>Productos no carrito</value>

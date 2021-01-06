@@ -145,7 +145,7 @@
     <value>Select a payment method</value>
   </data>
   <data name="lclDescrtiption.Text" xml:space="preserve">
-    <value>Add a description </value>
+    <value>Add a description</value>
   </data>
   <data name="cardNumber" xml:space="preserve">
     <value>Card number</value>
@@ -162,7 +162,7 @@
   <data name="forGift" xml:space="preserve">
     <value>For Gift</value>
   </data>
-  <data name="lclAddress.text" xml:space="preserve">
+  <data name="lclAddress.Text" xml:space="preserve">
     <value>New addres</value>
   </data>
   <data name="lclCardNumber.Text" xml:space="preserve">
@@ -180,7 +180,7 @@
   <data name="lclPayMethod.Text" xml:space="preserve">
     <value>New card info</value>
   </data>
-  <data name="lclPrize.text" xml:space="preserve">
+  <data name="lclPrize.Text" xml:space="preserve">
     <value>Total price</value>
   </data>
   <data name="price" xml:space="preserve">

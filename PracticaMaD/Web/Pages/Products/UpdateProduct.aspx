@@ -33,14 +33,6 @@
                             ControlToValidate="txtPrice" Display="Dynamic" ValidationExpression="\d+" Text="<%$ Resources:Common, mandatoryField %>" /></span>
             </div>
 
-            <div class="field">
-                <span class="label">
-                    <asp:Localize ID="lclCategory" runat="server" meta:resourcekey="lclCategory" /></span><span class="entry">
-                        <asp:DropDownList ID="comboCategory" runat="server" AutoPostBack="True"
-                            Width="100px">
-                        </asp:DropDownList></span>
-            </div>
-
             <div class="button">
                 <asp:Button ID="btnUpdate" runat="server" OnClick="BtnUpdateClick" meta:resourcekey="btnUpdate" />
             </div>

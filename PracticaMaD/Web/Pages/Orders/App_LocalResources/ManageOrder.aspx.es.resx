@@ -139,7 +139,7 @@
     <value>Pagar</value>
   </data>
   <data name="lblThisIsYourAddres.Text" xml:space="preserve">
-    <value>Su dirección predeterminada es : </value>
+    <value>Su dirección predeterminada es :</value>
   </data>
   <data name="lblSlectPayMethod.Text" xml:space="preserve">
     <value>Seleccione un método de pago</value>
@@ -187,7 +187,7 @@
     <value>Precio unitario</value>
   </data>
   <data name="productId" xml:space="preserve">
-    <value>Id </value>
+    <value>Id</value>
   </data>
   <data name="productName" xml:space="preserve">
     <value>Nombre</value>
@@ -196,7 +196,7 @@
     <value>Unidades</value>
   </data>
   <data name="totalPrice" xml:space="preserve">
-    <value>Precio </value>
+    <value>Precio</value>
   </data>
   <data name="verificationCode" xml:space="preserve">
     <value>CV</value>
@@ -204,7 +204,7 @@
   <data name="lblNoCards.Text" xml:space="preserve">
     <value>No tiene ninguna tarjeta</value>
   </data>
-  <data name="lblShoppingCartEmpty" xml:space="preserve">
+  <data name="lblShoppingCartEmpty.Text" xml:space="preserve">
     <value>Su carrito esta vacio</value>
   </data>
   <data name="lclProductList.Text" xml:space="preserve">

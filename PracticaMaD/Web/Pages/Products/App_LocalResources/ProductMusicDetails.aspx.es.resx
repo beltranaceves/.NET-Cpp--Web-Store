@@ -126,7 +126,7 @@
   <data name="genere" xml:space="preserve">
     <value>Genero</value>
   </data>
-  <data name="lclDetails" xml:space="preserve">
+  <data name="lclDetails.Text" xml:space="preserve">
     <value>Detalles de la musica</value>
   </data>
   <data name="type" xml:space="preserve">

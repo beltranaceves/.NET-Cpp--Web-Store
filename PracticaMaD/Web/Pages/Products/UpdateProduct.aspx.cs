@@ -1,11 +1,7 @@
 ﻿using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 {
@@ -24,26 +20,11 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
                     txtProductName.Text = productDetails.ProductName;
                     txtStock.Text = productDetails.Stock.ToString();
                     txtPrice.Text = productDetails.Price.ToString();
-
-                    /* Combo box initialization */
-                    UpdateComboCategory(productDetails.CategoryName);
                 }
                 catch (ArgumentNullException)
                 {
                 }
             }
-        }
-
-        /// <summary>
-        /// Loads the categories in the comboBox in the *selectedCategory*.
-        /// Also, the selectedCategory will appear selected in the
-        /// ComboBox
-        /// </summary>
-        private void UpdateComboCategory(String selectedCategory)
-        {
-            this.comboCategory.DataSource = SessionManager.GetCategories();
-            this.comboCategory.DataBind();
-            this.comboCategory.SelectedValue = selectedCategory;
         }
 
         /// <summary>
@@ -57,8 +38,10 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
             if (Page.IsValid)
             {
                 long prodId = Int32.Parse(Request.Params.Get("prodId"));
+                ProductDetails productDetails2 =
+                    SessionManager.FindProductDetails(prodId);
                 ProductDetails productDetails =
-                    new ProductDetails(prodId, txtProductName.Text, Convert.ToDouble(txtPrice.Text), System.DateTime.Now, Convert.ToInt32(txtStock.Text), comboCategory.SelectedValue);
+                    new ProductDetails(prodId, txtProductName.Text, Convert.ToDouble(txtPrice.Text), System.DateTime.Now, Convert.ToInt32(txtStock.Text), productDetails2.CategoryName);
 
                 SessionManager.UpdateProductDetails(prodId, productDetails);
 

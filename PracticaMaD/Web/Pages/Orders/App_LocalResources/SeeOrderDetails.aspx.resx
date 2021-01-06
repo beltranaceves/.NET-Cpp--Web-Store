@@ -124,7 +124,7 @@
     <value>Order details</value>
   </data>
   <data name="lclPrize.Text" xml:space="preserve">
-    <value>Total </value>
+    <value>Total</value>
   </data>
   <data name="pName" xml:space="preserve">
     <value>Product name</value>

@@ -135,10 +135,10 @@
   <data name="btnAddComment.Text" xml:space="preserve">
     <value>Add comment</value>
   </data>
-  <data name="btnEditComment.text" xml:space="preserve">
+  <data name="btnEditComment.Text" xml:space="preserve">
     <value>Edit comment</value>
   </data>
-  <data name="btnEditProduct.Test" xml:space="preserve">
+  <data name="btnEditProduct.Text" xml:space="preserve">
     <value>Edit product</value>
   </data>
 </root>

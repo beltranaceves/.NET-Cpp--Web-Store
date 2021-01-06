@@ -126,7 +126,7 @@
   <data name="duration" xml:space="preserve">
     <value>Duracion</value>
   </data>
-  <data name="lclDetails" xml:space="preserve">
+  <data name="lclDetails.Text" xml:space="preserve">
     <value>Detalles da pelicula</value>
   </data>
   <data name="title" xml:space="preserve">
@@ -135,10 +135,10 @@
   <data name="btnAddComment.Text" xml:space="preserve">
     <value>Engadir un comentario</value>
   </data>
-  <data name="btnEditComment.text" xml:space="preserve">
+  <data name="btnEditComment.Text" xml:space="preserve">
     <value>Editar un comentario</value>
   </data>
-  <data name="btnEditProduct.text" xml:space="preserve">
+  <data name="btnEditProduct.Text" xml:space="preserve">
     <value>Editar un producto</value>
   </data>
 </root>

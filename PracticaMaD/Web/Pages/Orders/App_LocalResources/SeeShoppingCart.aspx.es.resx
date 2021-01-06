@@ -127,7 +127,7 @@
     <value>Su carrito esta vacio</value>
   </data>
   <data name="lclPrize.Text" xml:space="preserve">
-    <value>Precio total</value>
+    <value>Precio</value>
   </data>
   <data name="price" xml:space="preserve">
     <value>Precio unitario</value>

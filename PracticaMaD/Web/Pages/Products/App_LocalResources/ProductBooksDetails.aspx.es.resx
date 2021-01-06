@@ -126,9 +126,6 @@
   <data name="ISBN" xml:space="preserve">
     <value>ISBN</value>
   </data>
-  <data name="lclDetails" xml:space="preserve">
-    <value>Detalles del libro</value>
-  </data>
   <data name="pages" xml:space="preserve">
     <value>Paginas</value>
   </data>
@@ -140,5 +137,8 @@
   </data>
   <data name="btnEditProduct.Text" xml:space="preserve">
     <value>Editar producto</value>
+  </data>
+  <data name="lclDetails.Text" xml:space="preserve">
+    <value>Detalles del libro</value>
   </data>
 </root>
