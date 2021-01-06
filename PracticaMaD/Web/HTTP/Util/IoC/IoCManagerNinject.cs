@@ -17,6 +17,7 @@ using Es.Udc.DotNet.PracticaMad.Model.DAOs.TagDao;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.TagService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService;
+using Es.Udc.DotNet.PracticaMad.Model.Services.CategoryService;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Util.IoC
 {
@@ -57,6 +58,10 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Util.IoC
             /* CreditCardService */
             kernel.Bind<ICreditCardService>().
                 To<CreditCardService>();
+
+            /* CategoryService */
+            kernel.Bind<ICategoryService>().
+                To<CategoryService>();
 
             /* TagService */
             kernel.Bind<ITagService>().

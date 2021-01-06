@@ -1,5 +1,6 @@
 ﻿using Es.Udc.DotNet.ModelUtil.IoC;
 using Es.Udc.DotNet.PracticaMad.Model;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ClientService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
@@ -23,11 +24,12 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
                 {
                     int startIndex, count;
                     long prodId;
+                    string updated;
                     lnkPrevious.Visible = false;
                     lnkNext.Visible = false;
                     prodId = Int32.Parse(Request.Params.Get("prodId"));
                     ProductDetails productDetails =
-                            SessionManager.FindProductDetails(Context, prodId);
+                            SessionManager.FindProductDetails(prodId);
                     /* Get Start Index */
                     try
                     {
@@ -37,7 +39,15 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
                     {
                         startIndex = 0;
                     }
-
+                    try
+                    {
+                        updated = Request.Params.Get("prod");
+                        lblEditedProduct.Visible = true;
+                    }
+                    catch (ArgumentNullException)
+                    {
+                        lblEditedProduct.Visible = false;
+                    }
                     /* Get Count */
                     try
                     {
@@ -55,12 +65,6 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
                     /* Get Comments */
                     ProductCommentBlock productCommentBlock =
                         productCommentService.FindByProductId(prodId, startIndex, count);
-
-                    if (productCommentBlock.ProductComment.Count == 0)
-                    {
-                        lblInvalidProduct.Visible = true;
-                        return;
-                    }
 
                     this.gvComment.DataSource = productCommentBlock.ProductComment;
                     this.gvComment.DataBind();
@@ -83,7 +87,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
                     {
                         String url =
 
-                            "/Pages/Products/ShowProducts.aspx" + "?prodId=" + prodId +
+                            "/Pages/Products/ShowOneProducts.aspx" + "?prodId=" + prodId +
                             "&startIndex=" + (startIndex + count) + "&count=" +
                             count;
 
@@ -96,13 +100,32 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 
                     cellProductName.Text = productDetails.ProductName;
                     cellProductPrize.Text = productDetails.Price.ToString();
-                    if (SessionManager.ExistCommentFromClient(Context, prodId))
-                    {
-                        btnAddComment.Visible = false;
-                    }
-                    else
-                    {
-                        btnEditComment.Visible = false;
+                    cellProductCategory.Text = productDetails.CategoryName;
+
+                    if (SessionManager.IsClientAuthenticated(Context))
+                    { //If Client has a comment -> Edit
+                      //If Client doesn't have a comment -> Create
+                        if (SessionManager.ExistCommentFromClient(Context, prodId))
+                        {
+                            btnEditComment.Visible = true;
+                            btnAddComment.Visible = false;
+                        }
+                        else
+                        {
+                            btnAddComment.Visible = true;
+                            btnEditComment.Visible = false;
+                        }
+
+                        //Edit the product, only ADMIN users
+                        ClientDetails client = SessionManager.FindClientDetails(Context);
+                        if (client.Rol == "ADMIN")
+                        {
+                            btnEditProduct.Visible = true;
+                        }
+                        else
+                        {
+                            btnEditProduct.Visible = false;
+                        }
                     }
                 }
                 catch (ArgumentNullException)
@@ -143,6 +166,27 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
                     /* Do action. */
                     String url =
                         String.Format("./EditComment.aspx?prodId=" + prodId);
+
+                    Response.Redirect(Response.ApplyAppPathModifier(url));
+                }
+                catch (ArgumentNullException)
+                {
+                    lblInvalidProduct.Visible = true;
+                }
+            }
+        }
+
+        protected void BtnEditProductClick(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+                try
+                {
+                    long prodId = Int32.Parse(Request.Params.Get("prodId"));
+
+                    /* Do action. */
+                    String url =
+                        String.Format("./UpdateProduct.aspx?prodId=" + prodId);
 
                     Response.Redirect(Response.ApplyAppPathModifier(url));
                 }

@@ -112,6 +112,7 @@
     <Content Include="Pages\Products\ShowOneProduct.aspx" />
     <Content Include="Pages\Products\ShowProductsTag.aspx" />
     <Content Include="Pages\Products\ShowProducts.aspx" />
+    <Content Include="Pages\Products\UpdateProduct.aspx" />
     <Content Include="Pages\User\Authentication.aspx" />
     <Content Include="Pages\User\ChangePassword.aspx" />
     <Content Include="Pages\User\Logout.aspx" />
@@ -247,6 +248,13 @@
     </Compile>
     <Compile Include="Pages\Products\ShowProducts.aspx.designer.cs">
       <DependentUpon>ShowProducts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Products\UpdateProduct.aspx.cs">
+      <DependentUpon>UpdateProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Products\UpdateProduct.aspx.designer.cs">
+      <DependentUpon>UpdateProduct.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\User\Authentication.aspx.cs">
       <DependentUpon>Authentication.aspx</DependentUpon>
@@ -456,6 +464,15 @@
     <Content Include="Pages\Orders\App_LocalResources\SeeShoppingCart.aspx.es.resx" />
     <Content Include="Pages\Orders\App_LocalResources\SeeShoppingCart.aspx.gl.resx" />
     <Content Include="Pages\Orders\App_LocalResources\SeeShoppingCart.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\UpdateProduct.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\UpdateProduct.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\UpdateProduct.aspx.gl.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

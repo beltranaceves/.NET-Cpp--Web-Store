@@ -22,25 +22,13 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
 
         #region IProductService Members
 
-        /// <summary>
-        /// Count all the products of the search.
-        /// </summary>
-        /// <param name="keyword">The product name keyword. </param>
-        /// <returns> The number of products </returns>
-        [Transactional]
-        public int NumberOfProductsSearched(string keyword)
-        {
-            int numberOfProduct = ProductDao.CountByProductNameKeywordAndCategory(keyword);
-            return numberOfProduct;
-        }
-
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
         public ProductDetails FindProductDetails(long productId)
         {
             Product product = ProductDao.Find(productId);
-
-            ProductDetails productDetails = new ProductDetails(product.productName, product.price, product.registerDate, product.stock, product.categoryId);
+            Category category = CategoryDao.Find(product.categoryId);
+            ProductDetails productDetails = new ProductDetails(productId, product.productName, product.price, product.registerDate, product.stock, category.categoryName);
             return productDetails;
         }
 
@@ -50,16 +38,21 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         {
             Product product =
                 ProductDao.Find(productId);
+            Category category = CategoryDao.FindByCategoryName(updatedProduct.CategoryName);
 
+            if (product == null || category == null)
+            {
+                throw new InstanceNotFoundException(product, "Product not correct");
+            }
             product.productName = updatedProduct.ProductName;
             product.price = updatedProduct.Price;
             product.registerDate = updatedProduct.RegisterDate;
             product.stock = updatedProduct.Stock;
-            product.categoryId = updatedProduct.CategoryId;
-            //updatedProduct.productId = productId;
+            product.categoryId = category.categoryId;
+
             ProductDao.Update(product);
 
-            return new ProductDetails(product.productName, product.price, product.registerDate, product.stock, product.categoryId);
+            return new ProductDetails(product.productId, product.productName, product.price, product.registerDate, product.stock, updatedProduct.CategoryName);
         }
 
         [Transactional]
@@ -69,49 +62,60 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             var item = new CacheItem("keyword", products.ToString());
             var policy = new CacheItemPolicy();
             Cache.Add(item, policy);
-
+            List<ProductDetails> productsDetails = new List<ProductDetails>();
             bool existMoreProducts = (products.Count == count + 1);
-
+            foreach (Product p in products)
+            {
+                Category category = CategoryDao.Find(p.categoryId);
+                productsDetails.Add(new ProductDetails(p.productId, p.productName, p.price, p.registerDate, p.stock, category.categoryName));
+            }
             if (existMoreProducts)
                 products.RemoveAt(count);
 
-            return new ProductBlock(products, existMoreProducts);
+            return new ProductBlock(productsDetails, existMoreProducts);
         }
 
         [Transactional]
-        public List<ProductDetails> FindProductByProductNameKeywordAndCategory(String keyword, long categoryId)
+        public ProductBlock FindProductByProductNameKeywordAndCategory(String keyword, long categoryId, int startIndex, int count)
         {
             Category category = CategoryDao.Find(categoryId);
 
-            List<Product> products = ProductDao.FindByProductNameKeywordAndCategory(keyword, category);
+            List<Product> products = ProductDao.FindByProductNameKeywordAndCategory(keyword, category, startIndex, count + 1);
             var item = new CacheItem("keyword" + categoryId.ToString(), products.ToString());
             var policy = new CacheItemPolicy();
             Cache.Add(item, policy);
 
             List<ProductDetails> productsDetails = new List<ProductDetails>();
+            bool existMoreProducts = (products.Count == count + 1);
             foreach (Product p in products)
             {
-                productsDetails.Add(new ProductDetails(p.productName, p.price, p.registerDate, p.stock, p.categoryId));
+                productsDetails.Add(new ProductDetails(p.productId, p.productName, p.price, p.registerDate, p.stock, category.categoryName));
             }
-            return productsDetails;
+            if (existMoreProducts)
+                products.RemoveAt(count);
+
+            return new ProductBlock(productsDetails, existMoreProducts);
         }
 
         [Transactional]
-        public List<ProductDetails> FindProductByCategory(long categoryId)
+        public ProductBlock FindProductByCategory(long categoryId, int startIndex, int count)
         {
             Category category = CategoryDao.Find(categoryId);
 
-            List<Product> products = ProductDao.FindByCategory(category);
+            List<Product> products = ProductDao.FindByCategory(category, startIndex, count + 1);
             var item = new CacheItem(categoryId.ToString(), products.ToString());
             var policy = new CacheItemPolicy();
             Cache.Add(item, policy);
 
             List<ProductDetails> productsDetails = new List<ProductDetails>();
+            bool existMoreProducts = (products.Count == count + 1);
             foreach (Product p in products)
             {
-                productsDetails.Add(new ProductDetails(p.productName, p.price, p.registerDate, p.stock, p.categoryId));
+                productsDetails.Add(new ProductDetails(p.productId, p.productName, p.price, p.registerDate, p.stock, category.categoryName));
             }
-            return productsDetails;
+            if (existMoreProducts)
+                products.RemoveAt(count);
+            return new ProductBlock(productsDetails, existMoreProducts);
         }
 
         [Transactional]
@@ -125,13 +129,14 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             List<ProductDetails> productsDetails = new List<ProductDetails>();
             foreach (Product p in products)
             {
-                productsDetails.Add(new ProductDetails(p.productName, p.price, p.registerDate, p.stock, p.categoryId));
+                Category category = CategoryDao.Find(p.categoryId);
+                productsDetails.Add(new ProductDetails(p.productId, p.productName, p.price, p.registerDate, p.stock, category.categoryName));
             }
             return productsDetails;
         }
 
         [Transactional]
-        public Product productByName(string productName)
+        public Product ProductByName(string productName)
         {
             Product p = ProductDao.FindByProductName(productName);
             return p;

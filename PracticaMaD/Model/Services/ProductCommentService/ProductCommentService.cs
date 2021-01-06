@@ -104,5 +104,11 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
 
             return existComment;
         }
+
+        [Transactional]
+        public void RemoveComment(long commentId)
+        {
+            ProductCommentDao.Remove(commentId);
+        }
     }
 }

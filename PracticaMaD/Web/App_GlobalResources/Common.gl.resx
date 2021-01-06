@@ -147,4 +147,10 @@
   <data name="CommentDate" xml:space="preserve">
     <value>Data</value>
   </data>
+  <data name="quantity" xml:space="preserve">
+    <value>Cantidade</value>
+  </data>
+  <data name="category" xml:space="preserve">
+    <value>Categoria</value>
+  </data>
 </root>

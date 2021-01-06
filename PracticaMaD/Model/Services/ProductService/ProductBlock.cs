@@ -8,10 +8,10 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
 {
     public class ProductBlock
     {
-        public List<Product> Product { get; private set; }
+        public List<ProductDetails> Product { get; private set; }
         public bool ExistMoreProduct { get; private set; }
 
-        public ProductBlock(List<Product> product, bool existMoreProduct)
+        public ProductBlock(List<ProductDetails> product, bool existMoreProduct)
         {
             this.Product = product;
             this.ExistMoreProduct = existMoreProduct;

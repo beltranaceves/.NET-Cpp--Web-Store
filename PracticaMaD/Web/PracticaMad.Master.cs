@@ -34,6 +34,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web
                     lnkAddCard.Visible = false;
                 if (lnkSeeMyCards != null)
                     lnkSeeMyCards.Visible = false;
+                if (lnkShoppingCart != null)
+                    lnkShoppingCart.Visible = false;
             }
             else
             {

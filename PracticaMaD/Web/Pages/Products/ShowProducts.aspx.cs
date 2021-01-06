@@ -28,7 +28,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
              * the previous page
              */
             string keyword = Convert.ToString(Request.Params.Get("keyword"));
-
+            string cat = Convert.ToString(Request.Params.Get("cat"));
             /* Get Start Index */
             try
             {
@@ -56,12 +56,29 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
             IProductDao productDao = (IProductDao)iocManager.Resolve<IProductDao>();
 
             ICategoryDao categoryDao = (ICategoryDao)iocManager.Resolve<ICategoryDao>();
-
+            ProductBlock productBlock = null;
             /* Get Accounts Info */
-            ProductBlock productBlock =
-                productService.FindProductByProductNameKeyword(keyword, startIndex, count);
+            if (keyword != "" && cat == "-")
+            {
+                productBlock =
+                   productService.FindProductByProductNameKeyword(keyword, startIndex, count);
+            }
+            else if (cat != "-")
+            {
+                long catId = SessionManager.GetCategoryId(cat);
+                if (keyword != "")
+                {
+                    productBlock =
+                  productService.FindProductByProductNameKeywordAndCategory(keyword, catId, startIndex, count);
+                }
+                else
+                {
+                    productBlock =
+                  productService.FindProductByCategory(catId, startIndex, count);
+                }
+            }
 
-            if (productBlock.Product.Count == 0)
+            if (productBlock == null || productBlock.Product.Count == 0)
             {
                 lblNoProduct.Visible = true;
                 return;
@@ -76,7 +93,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
                 String url =
                     "/Pages/Products/ShowProducts.aspx" + "?keyword=" + keyword +
                     "&startIndex=" + (startIndex - count) + "&count=" +
-                    count;
+                    count + "&cat=" + cat;
 
                 this.lnkPrevious.NavigateUrl =
                     Response.ApplyAppPathModifier(url);
@@ -90,34 +107,12 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 
                     "/Pages/Products/ShowProducts.aspx" + "?keyword=" + keyword +
                     "&startIndex=" + (startIndex + count) + "&count=" +
-                    count;
+                    count + "&cat=" + cat;
 
                 this.lnkNext.NavigateUrl =
                     Response.ApplyAppPathModifier(url);
                 this.lnkNext.Visible = true;
             }
-        }
-
-        protected void gvProduct_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-            GridViewRow row = gvProduct.Rows[e.NewSelectedIndex];
-
-            //string pName = row.Cells[0].Text;
-
-            IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
-
-            IShoppingCartService shoppingCartService = (IShoppingCartService)iocManager.Resolve<IShoppingCartService>();
-
-            //IProductService productService = (IProductService)iocManager.Resolve<IProductService>();
-
-            //Product p = productService.productByName(pName);
-
-            long productId = (long)Convert.ToInt32(row.Cells[0].Text);
-
-
-            shoppingCartService.AddToCart(productId, 1, SessionManager.shoppingCart);
-
-            Response.Redirect(Request.RawUrl.ToString());
         }
 
         protected void ContactsGridView_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -133,6 +128,24 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
                     String.Format("./ShowOneProduct.aspx?prodId={0}", id);
 
                 Response.Redirect(Response.ApplyAppPathModifier(url));
+            }
+            if (e.CommandName == "Add")
+            {
+                int index = Convert.ToInt32(e.CommandArgument);
+                GridViewRow row = gvProduct.Rows[index];
+
+                IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
+
+                IShoppingCartService shoppingCartService = (IShoppingCartService)iocManager.Resolve<IShoppingCartService>();
+
+                long productId = Convert.ToInt32(row.Cells[0].Text);
+
+                var quantity2 = row.Cells[3].FindControl("quantityList") as DropDownList;
+
+                int quantity = Convert.ToInt32(quantity2.SelectedValue);
+                shoppingCartService.AddToCart(productId, quantity, SessionManager.shoppingCart);
+
+                Response.Redirect(Request.RawUrl.ToString());
             }
         }
     }

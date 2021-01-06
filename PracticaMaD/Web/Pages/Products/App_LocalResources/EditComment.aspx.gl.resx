@@ -106,4 +106,7 @@
   <data name="btnAddTag.Text" xml:space="preserve">
     <value>Engadir Etiqueta</value>
   </data>
+  <data name="btnDelete.Text" xml:space="preserve">
+    <value>Eliminar Comentario</value>
+  </data>
 </root>

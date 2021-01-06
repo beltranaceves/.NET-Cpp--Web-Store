@@ -33,7 +33,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
         /// </summary>
         /// <param name="categoryId">categoryId</param>
         /// <returns>A list of Product</returns>
-        public List<Product> FindByCategory(Category category)
+        public List<Product> FindByCategory(Category category, int startIndex, int count)
         {
             List<Product> productList = null;
 
@@ -42,26 +42,14 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
             var result =
                 (from p in products
                  where p.categoryId == category.categoryId
-                 select p).ToList();
+                 select p).OrderBy(p => p.productId).Skip(startIndex).Take(count).ToList();
 
             productList = result;
 
             return productList;
         }
 
-        public int CountByProductNameKeywordAndCategory(String keyword)
-        {
-            DbSet<Product> products = Context.Set<Product>();
-
-            var result =
-                (from p in products
-                 where p.productName.ToLower().Contains(keyword.ToLower())
-                 select p).Count();
-
-            return result;
-        }
-
-        public List<Product> FindByProductNameKeyword(String keyword, int startIndex, int count)
+        public List<Product> FindByProductNameKeyword(string keyword, int startIndex, int count)
         {
             List<Product> productList = null;
 
@@ -77,7 +65,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
             return productList;
         }
 
-        public List<Product> FindByProductNameKeywordAndCategory(String keyword, Category category)
+        public List<Product> FindByProductNameKeywordAndCategory(string keyword, Category category, int startIndex, int count)
         {
             List<Product> productList = null;
 
@@ -86,7 +74,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
             var result =
                 (from p in products
                  where (p.productName.ToLower().Contains(keyword.ToLower()) && p.categoryId == category.categoryId)
-                 select p).ToList();
+                 select p).OrderBy(p => p.productId).Skip(startIndex).Take(count).ToList();
 
             productList = result;
 
@@ -116,7 +104,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
             return product;
         }
 
-        public List<Product> FindByTag(String tag, int startIndex, int count)
+        public List<Product> FindByTag(string tag, int startIndex, int count)
         {
             List<Product> productList = null;
 

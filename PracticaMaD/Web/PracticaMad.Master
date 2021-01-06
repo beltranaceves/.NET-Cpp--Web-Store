@@ -71,22 +71,12 @@
                         <asp:HyperLink ID="lnkSeeMyCards" runat="server" NavigateUrl="~/Pages/Card/SeeClientCards.aspx"
                             meta:resourcekey="lnkSeeMyCards" /></li>
 
-                     <li>
-                    <asp:HyperLink ID="lnkShoppingCart" runat="server"
-                        NavigateUrl="~/Pages/Orders/SeeShoppingCart.aspx"
-                        meta:resourcekey="lnkShoppingCart" /></li>
-
+                    <li>
+                        <asp:HyperLink ID="lnkShoppingCart" runat="server"
+                            NavigateUrl="~/Pages/Orders/SeeShoppingCart.aspx"
+                            meta:resourcekey="lnkShoppingCart" /></li>
                 </ul>
             </div>
-            <%-- <form runat="server">
-                <asp:GridView ID="gvTags" runat="server" CssClass="tags"
-                    AutoGenerateColumns="False"
-                    ShowHeaderWhenEmpty="True">
-                    <Columns>
-                        <asp:BoundField DataField="TagName" />
-                    </Columns>
-                </asp:GridView>
-            </form>--%>
 
             <div id="content">
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder_BodyContent" runat="server">

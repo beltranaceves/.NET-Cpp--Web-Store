@@ -73,5 +73,12 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
 
         [Transactional]
         bool ExistCommentFromClient(long productId, long clientId);
+
+        /// <summary>
+        /// Remove a comment
+        /// </summary>
+        /// <param name="commentId"> The commentId id. </param>
+        [Transactional]
+        void RemoveComment(long commentId);
     }
 }

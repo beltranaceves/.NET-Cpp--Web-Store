@@ -16,14 +16,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         ICategoryDao CategoryDao { set; }
 
         /// <summary>
-        /// Count all the products of the search.
-        /// </summary>
-        /// <param name="keyword">The product name keyword. </param>
-        /// <returns> The number of products </returns>
-        [Transactional]
-        int NumberOfProductsSearched(string keyword);
-
-        /// <summary>
         /// Finds the product details.
         /// </summary>
         /// <param name="productId"> The product id. </param>
@@ -56,17 +48,21 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         /// </summary>
         /// <param name="keyword"> The product name keyword. </param>
         /// <param name="categoryId"> The product category. </param>
-        /// <exception cref="InstanceNotFoundException"/>
+        /// <param name="startIndex"> the index (starting from 0) of the first
+        /// object to return.</param>
+        /// <param name="count">The maximum number of objects to return.</param>
         [Transactional]
-        List<ProductDetails> FindProductByProductNameKeywordAndCategory(String keyword, long categoryId);
+        ProductBlock FindProductByProductNameKeywordAndCategory(String keyword, long categoryId, int startIndex, int count);
 
         /// <summary>
         /// Finds products by category.
         /// </summary>
         /// <param name="categoryId"> The product category. </param>
-        /// <exception cref="InstanceNotFoundException"/>
+        /// <param name="startIndex"> the index (starting from 0) of the first
+        /// object to return.</param>
+        /// <param name="count">The maximum number of objects to return.</param>
         [Transactional]
-        List<ProductDetails> FindProductByCategory(long categoryId);
+        ProductBlock FindProductByCategory(long categoryId, int startIndex, int count);
 
         /// <summary>
         /// Finds products by tag.
@@ -78,16 +74,12 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         [Transactional]
         List<ProductDetails> FindProductByTag(string tagName, int startIndex, int count);
 
-
-
         /// <summary>
         /// Finds products by name.
         /// </summary>
         /// <param name="productName"> The tag Name. </param>
         /// object to return.</param>
         [Transactional]
-        Product productByName(string productName);
-
-
+        Product ProductByName(string productName);
     }
 }

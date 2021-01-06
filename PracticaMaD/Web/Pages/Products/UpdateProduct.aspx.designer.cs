@@ -11,142 +11,124 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 {
 
 
-    public partial class ShowOneProduct
+    public partial class UpdateProduct
     {
 
         /// <summary>
-        /// lblInvalidProduct control.
+        /// UpdateProductForm control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblInvalidProduct;
+        protected global::System.Web.UI.HtmlControls.HtmlForm UpdateProductForm;
 
         /// <summary>
-        /// lblEditedProduct control.
+        /// lclProductName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblEditedProduct;
+        protected global::System.Web.UI.WebControls.Localize lclProductName;
 
         /// <summary>
-        /// cellCaptionProductName control.
+        /// txtProductName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableHeaderCell cellCaptionProductName;
+        protected global::System.Web.UI.WebControls.TextBox txtProductName;
 
         /// <summary>
-        /// cellProductName control.
+        /// rfvProductName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableCell cellProductName;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvProductName;
 
         /// <summary>
-        /// cellCaptionProductPrize control.
+        /// lclStock control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableHeaderCell cellCaptionProductPrize;
+        protected global::System.Web.UI.WebControls.Localize lclStock;
 
         /// <summary>
-        /// cellProductPrize control.
+        /// txtStock control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableCell cellProductPrize;
+        protected global::System.Web.UI.WebControls.TextBox txtStock;
 
         /// <summary>
-        /// cellCaptionProductCategory control.
+        /// rfvStock control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableHeaderCell cellCaptionProductCategory;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvStock;
 
         /// <summary>
-        /// cellProductCategory control.
+        /// lclPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TableCell cellProductCategory;
+        protected global::System.Web.UI.WebControls.Localize lclPrice;
 
         /// <summary>
-        /// AddCommentForm control.
+        /// txtPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm AddCommentForm;
+        protected global::System.Web.UI.WebControls.TextBox txtPrice;
 
         /// <summary>
-        /// btnAddComment control.
+        /// rfvPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddComment;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvPrice;
 
         /// <summary>
-        /// btnEditComment control.
+        /// lclCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditComment;
+        protected global::System.Web.UI.WebControls.Localize lclCategory;
 
         /// <summary>
-        /// btnEditProduct control.
+        /// comboCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditProduct;
+        protected global::System.Web.UI.WebControls.DropDownList comboCategory;
 
         /// <summary>
-        /// gvComment control.
+        /// btnUpdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvComment;
-
-        /// <summary>
-        /// lnkPrevious control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkPrevious;
-
-        /// <summary>
-        /// lnkNext control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkNext;
+        protected global::System.Web.UI.WebControls.Button btnUpdate;
     }
 }

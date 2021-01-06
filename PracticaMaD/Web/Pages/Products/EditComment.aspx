@@ -54,6 +54,10 @@
             <div class="button">
                 <asp:Button ID="btnUpdate" runat="server" OnClick="BtnUpdateClick" meta:resourcekey="btnUpdate" />
             </div>
+
+            <div class="button">
+                <asp:Button ID="btnDelete" runat="server" OnClick="BtnDeleteClick" meta:resourcekey="btnDelete" />
+            </div>
         </form>
     </div>
 </asp:Content>

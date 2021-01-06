@@ -133,6 +133,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CategoryService\CategoryService.cs" />
+    <Compile Include="Services\CategoryService\ICategoryService.cs" />
     <Compile Include="Services\ClientOrderLineService\ClientOrderLineDetails.cs" />
     <Compile Include="Services\ClientOrderLineService\ClientOrderLineService.cs" />
     <Compile Include="Services\ClientOrderLineService\IClientOrderLineService.cs" />

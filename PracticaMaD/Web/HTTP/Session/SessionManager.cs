@@ -9,7 +9,7 @@ using Es.Udc.DotNet.PracticaMad.Web.HTTP.View.ApplicationObjects;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Util;
 using Es.Udc.DotNet.ModelUtil.IoC;
 using Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService;
-using Es.Udc.DotNet.PracticaMad.Model.Services.ClienOrderService;
+using Es.Udc.DotNet.PracticaMad.Model.Services.CategoryService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService;
 using Es.Udc.DotNet.PracticaMad.Model;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService;
@@ -141,6 +141,13 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             set { tagService = value; }
         }
 
+        private static ICategoryService categoryService;
+
+        public ICategoryService CategoryService
+        {
+            set { categoryService = value; }
+        }
+
         static SessionManager()
         {
             IIoCManager iocManager =
@@ -154,7 +161,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             clientOrderService = iocManager.Resolve<IClientOrderService>();
 
             productCommentService = iocManager.Resolve<IProductCommentService>();
-
+            categoryService = iocManager.Resolve<ICategoryService>();
             tagService = iocManager.Resolve<ITagService>();
             shoppingCart = new ShoppingCart();
         }
@@ -389,15 +396,15 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
         public static void TouchSession(HttpContext context)
         {
             /* Check if "ClientSession" object is in the session. */
-            ClientSession ClientSession = null;
+            ClientSession clientSession = null;
 
             if (context.Session != null)
             {
-                ClientSession =
+                clientSession =
                     (ClientSession)context.Session[CLIENT_SESSION_ATTRIBUTE];
 
                 // If ClientSession object is in the session, nothing should be doing.
-                if (ClientSession != null)
+                if (clientSession != null)
                 {
                     return;
                 }
@@ -490,9 +497,22 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
         /// <param name="context"> The product id. </param>
         /// <returns> The product details </returns>
         /// <exception cref="InstanceNotFoundException"/>
-        public static ProductDetails FindProductDetails(HttpContext context, long productId)
+        public static ProductDetails FindProductDetails(long productId)
         {
             ProductDetails product = productService.FindProductDetails(productId);
+            return product;
+        }
+
+        /// <summary>
+        /// Update the product details.
+        /// </summary>
+        /// <param name="productId"> The product id. </param>
+        /// <param name="prodDetails"> The product details. </param>
+        /// <returns> The product details </returns>
+        /// <exception cref="InstanceNotFoundException"/>
+        public static ProductDetails UpdateProductDetails(long productId, ProductDetails prodDetails)
+        {
+            ProductDetails product = productService.UpdateProduct(productId, prodDetails);
             return product;
         }
 
@@ -603,5 +623,28 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
         }
 
         #endregion Tag Methods
+
+        #region Category Methods
+
+        /// <summary>
+        /// Get Categories
+        /// </summary>
+        public static List<string> GetCategories()
+        {
+            List<string> cats = categoryService.GetCategoryNames();
+            return cats;
+        }
+
+        /// <summary>
+        /// Get Categories
+        /// </summary>
+        /// <param name="catName">The category Name</param>
+        public static long GetCategoryId(string catName)
+        {
+            long id = categoryService.GetCategoryId(catName);
+            return id;
+        }
+
+        #endregion Category Methods
     }
 }

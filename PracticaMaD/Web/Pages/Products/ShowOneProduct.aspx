@@ -10,6 +10,9 @@
     <p>
         <asp:Label ID="lblInvalidProduct" meta:resourcekey="lblInvalidProduct" runat="server" Visible="false"></asp:Label>
     </p>
+    <p>
+        <asp:Label ID="lblEditedProduct" meta:resourcekey="lblEditedProduct" runat="server" Visible="false"></asp:Label>
+    </p>
     <asp:Table CssClass="productDetails" CssClas="oneProduct" runat="server">
         <asp:TableRow runat="server">
             <asp:TableHeaderCell ID="cellCaptionProductName" runat="server" Text="<%$ Resources:Common, productName %>"></asp:TableHeaderCell>
@@ -19,16 +22,22 @@
             <asp:TableHeaderCell ID="cellCaptionProductPrize" runat="server" Text="<%$ Resources:Common, prize %>"></asp:TableHeaderCell>
             <asp:TableCell ID="cellProductPrize" runat="server"></asp:TableCell>
         </asp:TableRow>
+        <asp:TableRow runat="server">
+            <asp:TableHeaderCell ID="cellCaptionProductCategory" runat="server" Text="<%$ Resources:Common, category %>"></asp:TableHeaderCell>
+            <asp:TableCell ID="cellProductCategory" runat="server"></asp:TableCell>
+        </asp:TableRow>
     </asp:Table>
 
     <form id="AddCommentForm" method="post" runat="server">
         <div class="button">
-            <asp:Button ID="btnAddComment" runat="server" meta:resourcekey="btnAddComment" OnClick="BtnAddCommentClick" />
+            <asp:Button ID="btnAddComment" runat="server" Visible="false" meta:resourcekey="btnAddComment" OnClick="BtnAddCommentClick" />
         </div>
         <div class="button">
-            <asp:Button ID="btnEditComment" runat="server" meta:resourcekey="btnEditComment" OnClick="BtnEditCommentClick" />
+            <asp:Button ID="btnEditComment" runat="server" Visible="false" meta:resourcekey="btnEditComment" OnClick="BtnEditCommentClick" />
         </div>
-
+        <div class="button">
+            <asp:Button ID="btnEditProduct" runat="server" Visible="false" meta:resourcekey="btnEditProduct" OnClick="BtnEditProductClick" />
+        </div>
         <asp:GridView ID="gvComment" runat="server" CssClass="comments" GridLines="None"
             AutoGenerateColumns="False">
             <Columns>

@@ -42,13 +42,22 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
         protected global::System.Web.UI.WebControls.TextBox txtKeyword;
 
         /// <summary>
-        /// rfvKeyword control.
+        /// lclCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvKeyword;
+        protected global::System.Web.UI.WebControls.Localize lclCategory;
+
+        /// <summary>
+        /// comboCategory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList comboCategory;
 
         /// <summary>
         /// btnFind control.

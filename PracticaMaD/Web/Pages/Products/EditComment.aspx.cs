@@ -1,4 +1,5 @@
 ﻿using Es.Udc.DotNet.ModelUtil.Exceptions;
+using Es.Udc.DotNet.ModelUtil.IoC;
 using Es.Udc.DotNet.PracticaMad.Model;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
@@ -30,6 +31,20 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
                 gvTagList.DataSource = tags;
                 gvTagList.DataBind();
             }
+        }
+
+        protected void BtnDeleteClick(object sender, EventArgs e)
+        {
+            long prodId = Int32.Parse(Request.Params.Get("prodId"));
+
+            ProductCommentDetails prodDetails =
+                SessionManager.FindProductComment(Context, prodId);
+
+            IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
+
+            IProductCommentService productCommentService = (IProductCommentService)iocManager.Resolve<IProductCommentService>();
+
+            productCommentService.RemoveComment(prodDetails.CommentId);
         }
 
         protected void BtnUpdateClick(object sender, EventArgs e)

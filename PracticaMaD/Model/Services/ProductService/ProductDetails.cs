@@ -11,6 +11,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
     {
         #region Properties Region
 
+        public long ProductId { get; private set; }
         public String ProductName { get; private set; }
 
         public double Price { get; private set; }
@@ -19,17 +20,18 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
 
         public int Stock { get; private set; }
 
-        public long CategoryId { get; private set; }
+        public string CategoryName { get; private set; }
 
         #endregion Properties Region
 
-        public ProductDetails(String productName, double price, DateTime registerDate, int stock, long categoryId)
+        public ProductDetails(long productId, String productName, double price, DateTime registerDate, int stock, string categoryName)
         {
+            this.ProductId = productId;
             this.ProductName = productName;
             this.Price = price;
             this.RegisterDate = registerDate;
             this.Stock = stock;
-            this.CategoryId = categoryId;
+            this.CategoryName = categoryName;
         }
     }
 }

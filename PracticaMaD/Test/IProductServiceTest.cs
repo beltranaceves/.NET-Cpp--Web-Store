@@ -89,7 +89,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 ProductDetails productDetails = productService.FindProductDetails(productId);
 
-                Assert.AreEqual(productDetails.CategoryId, categoryId);
+                Assert.AreEqual(productDetails.CategoryName, "Books");
                 Assert.AreEqual(productDetails.ProductName, productName);
                 Assert.AreEqual(productDetails.Stock, stock);
                 Assert.AreEqual(productDetails.Price, price);
@@ -124,7 +124,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 // Create a product
                 long productId = CreateProduct(categoryId, productName, stock, price);
 
-                ProductDetails p = new ProductDetails(productName, price, DateTime.Now, stock + 12, categoryId);
+                ProductDetails p = new ProductDetails(productId, productName, price, DateTime.Now, stock + 12, "Books");
 
                 productService.UpdateProduct(productId, p);
 
@@ -151,7 +151,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 // Create a product
                 long productId = 2;
 
-                ProductDetails p = new ProductDetails(productName, price, DateTime.Now, stock + 12, categoryId);
+                ProductDetails p = new ProductDetails(productId, productName, price, DateTime.Now, stock + 12, "Books");
 
                 productService.UpdateProduct(productId, p);
 
@@ -175,10 +175,10 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 ProductBlock products = productService.FindProductByProductNameKeyword("Avatar", 0, 5);
 
-                Assert.AreEqual(products.Product[0].categoryId, categoryId);
-                Assert.AreEqual(products.Product[0].productName, productName);
-                Assert.AreEqual(products.Product[0].stock, stock);
-                Assert.AreEqual(products.Product[0].price, price);
+                Assert.AreEqual(products.Product[0].CategoryName, "Books");
+                Assert.AreEqual(products.Product[0].ProductName, productName);
+                Assert.AreEqual(products.Product[0].Stock, stock);
+                Assert.AreEqual(products.Product[0].Price, price);
 
                 //transaction.Complete() is not called, so Rollback is executed.
             }
@@ -202,12 +202,12 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 long productId2 = CreateProduct(categoryId2, productName, stock + 2, price);
 
-                List<ProductDetails> products = productService.FindProductByProductNameKeywordAndCategory("Avatar", categoryId);
+                ProductBlock products = productService.FindProductByProductNameKeywordAndCategory("Avatar", categoryId, 0, 5);
 
-                Assert.AreEqual(products[0].CategoryId, categoryId);
-                Assert.AreEqual(products[0].ProductName, productName);
-                Assert.AreEqual(products[0].Stock, stock);
-                Assert.AreEqual(products[0].Price, price);
+                Assert.AreEqual(products.Product[0].CategoryName, "Books");
+                Assert.AreEqual(products.Product[0].ProductName, productName);
+                Assert.AreEqual(products.Product[0].Stock, stock);
+                Assert.AreEqual(products.Product[0].Price, price);
 
                 //transaction.Complete() is not called, so Rollback is executed.
             }
@@ -231,12 +231,12 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 long productId2 = CreateProduct(categoryId2, productName, stock + 2, price);
 
-                List<ProductDetails> products = productService.FindProductByCategory(categoryId);
+                ProductBlock products = productService.FindProductByCategory(categoryId, 0, 5);
 
-                Assert.AreEqual(products[0].CategoryId, categoryId);
-                Assert.AreEqual(products[0].ProductName, productName);
-                Assert.AreEqual(products[0].Stock, stock);
-                Assert.AreEqual(products[0].Price, price);
+                Assert.AreEqual(products.Product[0].CategoryName, "Books");
+                Assert.AreEqual(products.Product[0].ProductName, productName);
+                Assert.AreEqual(products.Product[0].Stock, stock);
+                Assert.AreEqual(products.Product[0].Price, price);
 
                 //transaction.Complete() is not called, so Rollback is executed.
             }

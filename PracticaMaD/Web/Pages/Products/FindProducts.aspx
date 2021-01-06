@@ -12,9 +12,15 @@
                     <asp:Localize ID="lclKeyword" runat="server" Text="<%$ Resources:Common, keyword %>" />
                 </span><span class="entry">
                     <asp:TextBox ID="txtKeyword" runat="server" Width="200px" Columns="16" />
-                    <asp:RequiredFieldValidator ID="rfvKeyword" runat="server" ControlToValidate="txtKeyword"
-                        Display="Dynamic" Text="<%$ Resources: Common, mandatoryField %>" CssClass="errorMessage" />
                 </span>
+            </div>
+
+            <div class="field">
+                <span class="label">
+                    <asp:Localize ID="lclCategory" runat="server" meta:resourcekey="lclCategory" /></span><span class="entry">
+                        <asp:DropDownList ID="comboCategory" runat="server" AutoPostBack="True"
+                            Width="100px">
+                        </asp:DropDownList></span>
             </div>
 
             <div class="button">
