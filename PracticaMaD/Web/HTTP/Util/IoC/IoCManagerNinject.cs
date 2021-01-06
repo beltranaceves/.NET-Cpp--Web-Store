@@ -18,6 +18,7 @@ using Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.TagService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.CategoryService;
+using Es.Udc.DotNet.PracticaMad.Model.Service.ClientOrderLineService;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Util.IoC
 {
@@ -54,6 +55,10 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Util.IoC
             /* ClientOrderService */
             kernel.Bind<IClientOrderService>().
                 To<ClientOrderService>();
+            
+            /* ClientOrderLineService */
+            kernel.Bind<IClientOrderLineService>().
+                To<ClientOrderLineService>();
 
             /* CreditCardService */
             kernel.Bind<ICreditCardService>().

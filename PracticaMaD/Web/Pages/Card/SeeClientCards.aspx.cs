@@ -1,6 +1,5 @@
 ﻿using Es.Udc.DotNet.ModelUtil.IoC;
 using Es.Udc.DotNet.PracticaMad.Model;
-using Es.Udc.DotNet.PracticaMad.Model.DAOs.CreditCardDao;
 using Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
 using System;
@@ -62,9 +61,9 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Card
 
             IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
 
-            ICreditCardDao cardDao = (ICreditCardDao)iocManager.Resolve<ICreditCardDao>();
+            ICreditCardService cardService = (ICreditCardService)iocManager.Resolve<ICreditCardService>();
 
-            CreditCard card = cardDao.FindByCreditCardNumber(row.Cells[0].Text);
+            CreditCard card = cardService.GetCardFromNumber(row.Cells[0].Text);
 
             SessionManager.ChangeDefaultCard(Context, card.cardId);
 
@@ -78,12 +77,12 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Card
 
             IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
 
-            ICreditCardDao cardDao = (ICreditCardDao)iocManager.Resolve<ICreditCardDao>();
+            ICreditCardService cardService = (ICreditCardService)iocManager.Resolve<ICreditCardService>();
 
-            CreditCard card = cardDao.FindByCreditCardNumber(row.Cells[0].Text);
+            CreditCard card = cardService.GetCardFromNumber(row.Cells[0].Text);
 
-            cardDao.Remove(card.cardId);
-
+            cardService.removeCard(card.cardId);
+            
             Response.Redirect(Request.RawUrl.ToString());
         }
     }

@@ -10,13 +10,19 @@
             <asp:Label ID="lblNoOrders" meta:resourcekey="lblNoOrders" runat="server" Visible="false"></asp:Label>
         </p>
         <form runat="server">
-            <asp:GridView ID="gvOwnOrders" runat="server" CssClass="ownOrders"
+            <asp:GridView ID="gvOwnOrders" runat="server" CssClass="order"
                 AutoGenerateColumns="False"
                 ShowHeaderWhenEmpty="True">
                 <Columns>
-                    <asp:BoundField DataField="OrderDate" HeaderText="<%$ Resources:, orderName %>" />
+                    <asp:HyperLinkField 
+                    DataNavigateUrlFields="OrderId"
+                    DataTextField="OrderId"
+                    DataNavigateUrlFormatString="./SeeOrderDetails.aspx?orderId={0}"
+                    HeaderText="<%$ Resources:, orderId %>"
+                    />
                     <asp:BoundField DataField="OrderName" HeaderText="<%$ Resources:, orderName %>" />
-                    <asp:BoundField DataField="TotalPrize" HeaderText="<%$ Resources:, orderName %>" />
+                    <asp:BoundField DataField="OrderDate" HeaderText="<%$ Resources:, orderdate %>" />
+                    <asp:BoundField DataField="TotalPrize" HeaderText="<%$ Resources:, totalPrice %>" />
                 </Columns>
             </asp:GridView>
         </form>

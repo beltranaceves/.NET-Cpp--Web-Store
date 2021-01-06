@@ -16,8 +16,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 {
     public partial class ShowProducts : SpecificCulturePage
     {
-        string m = "9";
-
+    
         protected void Page_Load(object sender, EventArgs e)
         {
             int startIndex, count;

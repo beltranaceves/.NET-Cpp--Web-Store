@@ -44,7 +44,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 
             IProductCommentService productCommentService = (IProductCommentService)iocManager.Resolve<IProductCommentService>();
 
-            //productCommentService.RemoveComment(prodDetails.CommentId);
+            productCommentService.RemoveComment(prodDetails.CommentId);
         }
 
         protected void BtnUpdateClick(object sender, EventArgs e)

@@ -123,4 +123,13 @@
   <data name="lblNoOrders" xml:space="preserve">
     <value>Vostede non fixo ningun pedido</value>
   </data>
+  <data name="orderDate" xml:space="preserve">
+    <value>Data do pedido</value>
+  </data>
+  <data name="orderId" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="totalPrice" xml:space="preserve">
+    <value>Prezo total</value>
+  </data>
 </root>

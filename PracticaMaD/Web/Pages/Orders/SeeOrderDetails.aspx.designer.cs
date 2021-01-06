@@ -10,42 +10,42 @@
 namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders {
     
     
-    public partial class OwnOrders {
+    public partial class SeeOrderDetails {
         
         /// <summary>
-        /// Control lblNoOrders.
+        /// Control lclOrderLines.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNoOrders;
+        protected global::System.Web.UI.WebControls.Label lclOrderLines;
         
         /// <summary>
-        /// Control gvOwnOrders.
+        /// Control gvOrderDetails.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gvOwnOrders;
+        protected global::System.Web.UI.WebControls.GridView gvOrderDetails;
         
         /// <summary>
-        /// Control lnkPrevious.
+        /// Control lclPrize.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkPrevious;
+        protected global::System.Web.UI.WebControls.Label lclPrize;
         
         /// <summary>
-        /// Control lnkNext.
+        /// Control txtPrizeTotal.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkNext;
+        protected global::System.Web.UI.WebControls.TextBox txtPrizeTotal;
     }
 }

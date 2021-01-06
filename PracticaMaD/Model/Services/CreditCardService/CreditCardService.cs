@@ -116,5 +116,14 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService
             return card;
 
         }
+
+
+        [Transactional]
+        public void removeCard(long cardId)
+        {
+            CreditCardDao.Remove(cardId);
+
+        }
+
     }
 }

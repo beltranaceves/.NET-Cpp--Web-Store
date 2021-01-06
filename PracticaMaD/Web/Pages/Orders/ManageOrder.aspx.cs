@@ -19,16 +19,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
     public partial class ManageOrder : SpecificCulturePage
     {
         ObjectDataSource pbpDataSource = new ObjectDataSource();
-
-        static string creditCardNumber;
-        static long creditCardId;
-        static string cardType;
-        static string expirationDate;
-        static string addres = null;
-       List<ShoppingCartLine> f = new List<ShoppingCartLine>();
        
-        //static Boolean alreadycreatedOne;
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -187,6 +178,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
             long cardId = 0;
 
+            string addres = null;
 
 
 
@@ -200,7 +192,9 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
                  //si no fuese asi el valro de cardId seria null y se cogeria la de por defecto 
                  if (chBVisa.Visible == true)
                  {
-                     if (chBVisa.Checked)
+                    string cardType = null;
+
+                    if (chBVisa.Checked)
                          cardType = "Visa";
                      else if (chBMasterCard.Checked)
                          cardType = "MasterCard";
@@ -259,8 +253,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
                     shop.UpdateNumberOfUnits(SessionManager.shoppingCart.shoppingCartLines.ElementAt(i), SessionManager.shoppingCart, units);
             }
-            
-           f = SessionManager.shoppingCart.shoppingCartLines;
+
+           List<ShoppingCartLine> f = SessionManager.shoppingCart.shoppingCartLines;
 
            gvShoppingCart.DataSource = f;
 
@@ -306,7 +300,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
             }
 
-            f = SessionManager.shoppingCart.shoppingCartLines;
+            List<ShoppingCartLine> f = SessionManager.shoppingCart.shoppingCartLines;
 
             gvShoppingCart.DataSource = f;
 
@@ -494,7 +488,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
                 return;
             }
 
-            f = SessionManager.shoppingCart.shoppingCartLines;
+            List<ShoppingCartLine> f = SessionManager.shoppingCart.shoppingCartLines;
 
 
             gvShoppingCart.DataSource = f;
