@@ -347,3 +347,28 @@ C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\obj\Debug\
 C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\obj\Debug\Model.csproj.CopyComplete
 C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\obj\Debug\PracticaMad.Model.exe
 C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\obj\Debug\PracticaMad.Model.pdb
+D:\MAD\Zombie V2\Model\bin\Debug\PracticaMad.Model.exe.config
+D:\MAD\Zombie V2\Model\bin\Debug\PracticaMad.Model.exe
+D:\MAD\Zombie V2\Model\bin\Debug\PracticaMad.Model.pdb
+D:\MAD\Zombie V2\Model\bin\Debug\Castle.Core.dll
+D:\MAD\Zombie V2\Model\bin\Debug\EntityFramework.dll
+D:\MAD\Zombie V2\Model\bin\Debug\EntityFramework.SqlServer.dll
+D:\MAD\Zombie V2\Model\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\MAD\Zombie V2\Model\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+D:\MAD\Zombie V2\Model\bin\Debug\ModelUtil.dll
+D:\MAD\Zombie V2\Model\bin\Debug\Ninject.dll
+D:\MAD\Zombie V2\Model\bin\Debug\Ninject.Extensions.Interception.dll
+D:\MAD\Zombie V2\Model\bin\Debug\Ninject.Extensions.Interception.DynamicProxy.dll
+D:\MAD\Zombie V2\Model\bin\Debug\Castle.Core.xml
+D:\MAD\Zombie V2\Model\bin\Debug\EntityFramework.xml
+D:\MAD\Zombie V2\Model\bin\Debug\EntityFramework.SqlServer.xml
+D:\MAD\Zombie V2\Model\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+D:\MAD\Zombie V2\Model\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+D:\MAD\Zombie V2\Model\bin\Debug\Ninject.xml
+D:\MAD\Zombie V2\Model\bin\Debug\Ninject.Extensions.Interception.xml
+D:\MAD\Zombie V2\Model\bin\Debug\Ninject.Extensions.Interception.DynamicProxy.xml
+D:\MAD\Zombie V2\Model\obj\Debug\Model.csprojAssemblyReference.cache
+D:\MAD\Zombie V2\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+D:\MAD\Zombie V2\Model\obj\Debug\Model.csproj.CopyComplete
+D:\MAD\Zombie V2\Model\obj\Debug\PracticaMad.Model.exe
+D:\MAD\Zombie V2\Model\obj\Debug\PracticaMad.Model.pdb

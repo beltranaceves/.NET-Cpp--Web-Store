@@ -138,4 +138,13 @@
   <data name="lclEmail.Text" xml:space="preserve">
     <value>Correo</value>
   </data>
+  <data name="credit" xml:space="preserve">
+    <value>Credito</value>
+  </data>
+  <data name="debit" xml:space="preserve">
+    <value>Debito</value>
+  </data>
+  <data name="lclSucccess.Text" xml:space="preserve">
+    <value>Tarjeta añadida correctamente</value>
+  </data>
 </root>

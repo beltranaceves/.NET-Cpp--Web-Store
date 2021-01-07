@@ -15,6 +15,7 @@ using Es.Udc.DotNet.PracticaMad.Model;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.TagService;
 using Es.Udc.DotNet.PracticaMad.Model.Objetos;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
 {
@@ -120,6 +121,12 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             set { productService = value; }
         }
 
+        private static IShoppingCartService shoppingCartService;
+        public IShoppingCartService ShoppingCartService
+        {
+            set { shoppingCartService = value; }
+        }
+
         private static IClientOrderService clientOrderService;
 
         public IClientOrderService ClientOrderService
@@ -159,6 +166,9 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             productService = iocManager.Resolve<IProductService>();
 
             clientOrderService = iocManager.Resolve<IClientOrderService>();
+
+            shoppingCartService = iocManager.Resolve<IShoppingCartService>();
+
 
             productCommentService = iocManager.Resolve<IProductCommentService>();
             categoryService = iocManager.Resolve<ICategoryService>();
@@ -487,6 +497,29 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
             creditCardService.SelectDefaultCard(clientSession.ClientId, cardId);
         }
 
+        internal static void DeleteShoppingCart()
+        {
+            for (int i = 0; i<SessionManager.shoppingCart.shoppingCartLines.Count; i++)
+            {
+              
+                 shoppingCartService.RemoveFromCart(SessionManager.shoppingCart.shoppingCartLines.ElementAt(i), SessionManager.shoppingCart);
+            }
+
+        }
+
+        internal static void DeleteShoppingCartOneRow(long productid)
+        {
+
+            for (int i = 0; i<SessionManager.shoppingCart.shoppingCartLines.Count; i++)
+            {
+                if (SessionManager.shoppingCart.shoppingCartLines.ElementAt(i).productId == productid)
+
+                    shoppingCartService.RemoveFromCart(SessionManager.shoppingCart.shoppingCartLines.ElementAt(i), SessionManager.shoppingCart);
+            }
+
+        }
+
+
         #endregion Client methods
 
         #region Product Methods
@@ -513,6 +546,24 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
         public static ProductDetails UpdateProductDetails(long productId, ProductDetails prodDetails)
         {
             ProductDetails product = productService.UpdateProduct(productId, prodDetails);
+            return product;
+        }
+
+        public static ProductDetails UpdateBooksDetails(long productId, BooksDetails prodDetails)
+        {
+            ProductDetails product = productService.UpdateBooks(productId, prodDetails);
+            return product;
+        }
+
+        public static ProductDetails UpdateFilmsDetails(long productId, FilmsDetails prodDetails)
+        {
+            ProductDetails product = productService.UpdateFilms(productId, prodDetails);
+            return product;
+        }
+
+        public static ProductDetails UpdateMusicDetails(long productId, MusicDetails prodDetails)
+        {
+            ProductDetails product = productService.UpdateMusic(productId, prodDetails);
             return product;
         }
 

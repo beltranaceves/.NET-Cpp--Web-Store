@@ -36,10 +36,10 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Card
                     string cardType;
                     bool defC;
 
-                    if (chBVisa.Checked)
-                        cardType = "Visa";
-                    else if (chBMasterCard.Checked)
-                        cardType = "MasterCard";
+                    if (chBCredit.Checked)
+                        cardType = "Credit";
+                    else if (chBDebit.Checked)
+                        cardType = "Debit";
                     else
                         throw new Exception("cardType");
 
@@ -57,6 +57,10 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Card
                     CreditCardDetails newCard = new CreditCardDetails(creditCardNumber, cardType, cv, date, defC, clientId);
 
                     SessionManager.AddCard(Context, newCard);
+
+                    Server.Transfer(Response.ApplyAppPathModifier("./CardSuccesfulyAdded.aspx"));
+
+
                 }
                 else
                 {
@@ -73,14 +77,14 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Card
         {
         }
 
-        protected void chBVisa_CheckedChanged(object sender, EventArgs e)
+        protected void chBCredit_CheckedChanged(object sender, EventArgs e)
         {
-            chBMasterCard.Checked = false;
+            chBDebit.Checked = false;
         }
 
-        protected void chBMasterCard_CheckedChanged(object sender, EventArgs e)
+        protected void chBDebit_CheckedChanged(object sender, EventArgs e)
         {
-            chBVisa.Checked = false;
+            chBCredit.Checked = false;
         }
 
         protected void chBdefCard_CheckedChanged(object sender, EventArgs e)

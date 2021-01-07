@@ -24,7 +24,10 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService
                 if (shoppingCart.shoppingCartLines.ElementAt(i).productId == productId)
                 {
                     shoppingCart.shoppingCartLines.ElementAt(i).quantity++;
-            
+
+                    shoppingCart.shoppingCartLines.ElementAt(i).totalPrice = shoppingCart.shoppingCartLines.ElementAt(i).price * shoppingCart.shoppingCartLines.ElementAt(i).quantity;
+
+
                     return shoppingCart;
                 }
             }

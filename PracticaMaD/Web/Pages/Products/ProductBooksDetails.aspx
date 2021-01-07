@@ -20,6 +20,19 @@
 
      <asp:Table CssClass="productDetails" CssClas="oneProduct" runat="server">
        
+
+         <asp:TableRow runat="server">
+            <asp:TableHeaderCell ID="cellCaptionProductName" runat="server" Text="<%$ Resources:Common, productName %>"></asp:TableHeaderCell>
+            <asp:TableCell ID="cellProductName" runat="server"></asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow runat="server">
+            <asp:TableHeaderCell ID="cellCaptionProductPrize" runat="server" Text="<%$ Resources:Common, prize %>"></asp:TableHeaderCell>
+            <asp:TableCell ID="cellProductPrize" runat="server"></asp:TableCell>
+        </asp:TableRow>
+        <asp:TableRow runat="server">
+            <asp:TableHeaderCell ID="cellCaptionProductCategory" runat="server" Text="<%$ Resources:Common, category %>"></asp:TableHeaderCell>
+            <asp:TableCell ID="cellProductCategory" runat="server"></asp:TableCell>
+        </asp:TableRow>
         <asp:TableRow runat="server">
             <asp:TableHeaderCell ID="cellCaptionAuthor" runat="server" Text="<%$ Resources: author %>"></asp:TableHeaderCell>
             <asp:TableCell ID="cellAuthor" runat="server"></asp:TableCell>

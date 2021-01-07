@@ -76,8 +76,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
             txtDescription.Text = "Descripcion";
 
 
-            chBVisa.Visible = false;
-            chBMasterCard.Visible = false;
+            chBCredit.Visible = false;
+            chBDebit.Visible = false;
             txtCreditCardNumber.Visible = false;
             dropMonth.Visible = false;
             dropYear.Visible = false;
@@ -126,8 +126,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
         protected void btnCreditCard_Click(object sender, EventArgs e)
         {
 
-            chBVisa.Visible = true;
-            chBMasterCard.Visible = true;
+            chBCredit.Visible = true;
+            chBDebit.Visible = true;
             txtCreditCardNumber.Visible = true;
             dropMonth.Visible = true;
             dropYear.Visible = true;
@@ -147,8 +147,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
         protected void btnCreditCardClose_Click(object sender, EventArgs e)
         {
 
-            chBVisa.Visible = false;
-            chBMasterCard.Visible = false;
+            chBCredit.Visible = false;
+            chBDebit.Visible = false;
             txtCreditCardNumber.Visible = false;
             dropMonth.Visible = false;
             dropYear.Visible = false;
@@ -190,14 +190,14 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
                  //Comprobamos si el cliente desea pagar con una tarejata nueva
                  //si no fuese asi el valro de cardId seria null y se cogeria la de por defecto 
-                 if (chBVisa.Visible == true)
+                 if (chBCredit.Visible == true)
                  {
                     string cardType = null;
 
-                    if (chBVisa.Checked)
-                         cardType = "Visa";
-                     else if (chBMasterCard.Checked)
-                         cardType = "MasterCard";
+                    if (chBCredit.Checked)
+                         cardType = "Credit";
+                     else if (chBDebit.Checked)
+                         cardType = "Debit";
                    
 
                      long cv = long.Parse(txtCV.Text);
@@ -226,8 +226,11 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
             orderService.CreateOrder(clientId, cardId, txtDescription.Text, addres, SessionManager.shoppingCart);
 
-                
-                 
+            SessionManager.DeleteShoppingCart();
+
+            Server.Transfer(Response.ApplyAppPathModifier("./PurchaseConfirmation.aspx"));
+
+
 
         }
 
@@ -333,14 +336,14 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
         {
         }
 
-        protected void chBVisa_CheckedChanged(object sender, EventArgs e)
+        protected void chBCredit_CheckedChanged(object sender, EventArgs e)
         {
-            chBMasterCard.Checked = false;
+            chBDebit.Checked = false;
         }
 
-        protected void chBMasterCard_CheckedChanged(object sender, EventArgs e)
+        protected void chBDebit_CheckedChanged(object sender, EventArgs e)
         {
-            chBVisa.Checked = false;
+            chBCredit.Checked = false;
         }
 
  
@@ -359,16 +362,11 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
             IShoppingCartService shop = (IShoppingCartService)iocManager.Resolve<IShoppingCartService>();
 
-            for (int i = 0; i < SessionManager.shoppingCart.shoppingCartLines.Count; i++)
-            {
-                if (SessionManager.shoppingCart.shoppingCartLines.ElementAt(i).productId == productId)
 
-                    shop.RemoveFromCart(SessionManager.shoppingCart.shoppingCartLines.ElementAt(i), SessionManager.shoppingCart);
-            }
+            SessionManager.DeleteShoppingCartOneRow(productId);
 
 
 
-       
             gvShoppingCart.DataSource = SessionManager.shoppingCart.shoppingCartLines;
             gvShoppingCart.DataBind();
 

@@ -139,22 +139,22 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders {
         protected global::System.Web.UI.WebControls.Localize lclCardType;
         
         /// <summary>
-        /// Control chBVisa.
+        /// Control chBCredit.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chBVisa;
+        protected global::System.Web.UI.WebControls.CheckBox chBCredit;
         
         /// <summary>
-        /// Control chBMasterCard.
+        /// Control chBDebit.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chBMasterCard;
+        protected global::System.Web.UI.WebControls.CheckBox chBDebit;
         
         /// <summary>
         /// Control lblCardTypeError.

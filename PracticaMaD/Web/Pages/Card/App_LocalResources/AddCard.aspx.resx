@@ -138,4 +138,10 @@
   <data name="btnAddCard.Text" xml:space="preserve">
     <value>Add card</value>
   </data>
+  <data name="credit" xml:space="preserve">
+    <value>Credit</value>
+  </data>
+  <data name="debit" xml:space="preserve">
+    <value>Debit</value>
+  </data>
 </root>

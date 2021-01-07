@@ -49,6 +49,10 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
             cellISBN.Text =   bk.ISBN.ToString();
             cellEditorial.Text = bk.Editorial;
 
+            cellProductName.Text = bk.ProductName;
+            cellProductPrize.Text = bk.Price.ToString();
+            cellProductCategory.Text = bk.CategoryName;
+
             /* Get Start Index */
             try
             {
@@ -164,7 +168,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 
                         /* Do action. */
                         String url =
-                            String.Format("./UpdateProduct.aspx?prodId=" + prodId);
+                            String.Format("./UpdateBooks.aspx?prodId=" + prodId);
 
                         Response.Redirect(Response.ApplyAppPathModifier(url));
                     }

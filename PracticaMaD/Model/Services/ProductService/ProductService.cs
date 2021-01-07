@@ -31,24 +31,25 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             Product product = ProductDao.Find(productId);
             Category category = CategoryDao.Find(product.categoryId);
 
+
             ProductDetails productDetails;
             if (product is Books)
             {
                 Books bk = product as Books;
                 productDetails = new BooksDetails(productId, product.productName, product.price, product.registerDate, product.stock, category.categoryName,
-                    bk.bookName, bk.author, bk.pages, bk.ISBN);
+                    bk.author, bk.pages, bk.ISBN, bk.editorial);
             }
             else if (product is Films)
             {
                 Films fm = product as Films;
                 productDetails = new FilmsDetails(productId, product.productName, product.price, product.registerDate, product.stock, category.categoryName,
-                    fm.title, fm.director, fm.filmYear, fm.duration);
+                    fm.director, fm.filmYear, fm.duration, fm.genere);
             }
             else if (product is Music)
             {
                 Music m = product as Music;
                 productDetails = new MusicDetails(productId, product.productName, product.price, product.registerDate, product.stock, category.categoryName,
-                    m.artist, m.title, m.genere, m.type);
+                    m.artist, m.genere, m.type);
             }
             else
                 productDetails = new ProductDetails(productId, product.productName, product.price, product.registerDate, product.stock, category.categoryName);
@@ -77,6 +78,108 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             ProductDao.Update(product);
 
             return new ProductDetails(product.productId, product.productName, product.price, product.registerDate, product.stock, updatedProduct.CategoryName);
+        }
+
+
+
+        /// <exception cref="InstanceNotFoundException"/>
+        [Transactional]
+        public ProductDetails UpdateBooks(long productId, BooksDetails updatedProduct)
+        {
+            Product product =
+                ProductDao.Find(productId);
+            Category category = CategoryDao.FindByCategoryName(updatedProduct.CategoryName);
+
+            Books bk = product as Books;
+
+            if (product == null || category == null)
+            {
+                throw new InstanceNotFoundException(product, "Product not correct");
+            }
+
+            bk.productName = updatedProduct.ProductName;
+            bk.price = updatedProduct.Price;
+            bk.registerDate = updatedProduct.RegisterDate;
+            bk.stock = updatedProduct.Stock;
+            bk.categoryId = category.categoryId;
+
+            bk.author = updatedProduct.Author;
+            bk.pages = updatedProduct.Pages;
+            bk.ISBN = updatedProduct.ISBN;
+            bk.editorial = updatedProduct.Editorial;
+
+
+            ProductDao.Update(product);
+
+            return new BooksDetails(bk.productId, bk.productName, bk.price, bk.registerDate, bk.stock, updatedProduct.CategoryName,
+                    bk.author, bk.pages, bk.ISBN, bk.editorial);
+        }
+
+
+        /// <exception cref="InstanceNotFoundException"/>
+        [Transactional]
+        public ProductDetails UpdateFilms(long productId, FilmsDetails updatedProduct)
+        {
+            Product product =
+                ProductDao.Find(productId);
+            Category category = CategoryDao.FindByCategoryName(updatedProduct.CategoryName);
+
+            Films f = product as Films;
+
+            if (product == null || category == null)
+            {
+                throw new InstanceNotFoundException(product, "Product not correct");
+            }
+
+            f.productName = updatedProduct.ProductName;
+            f.price = updatedProduct.Price;
+            f.registerDate = updatedProduct.RegisterDate;
+            f.stock = updatedProduct.Stock;
+            f.categoryId = category.categoryId;
+
+            f.director = updatedProduct.Director;
+            f.filmYear = updatedProduct.FilmYear;
+            f.duration = updatedProduct.Duration;
+            f.genere = updatedProduct.Genere;
+
+
+            ProductDao.Update(product);
+
+            return new FilmsDetails(f.productId, f.productName, f.price, f.registerDate, f.stock, updatedProduct.CategoryName,
+                    f.director, f.filmYear, f.duration, f.genere);
+        }
+
+
+        /// <exception cref="InstanceNotFoundException"/>
+        [Transactional]
+        public ProductDetails UpdateMusic(long productId, MusicDetails updatedProduct)
+        {
+            Product product =
+                ProductDao.Find(productId);
+            Category category = CategoryDao.FindByCategoryName(updatedProduct.CategoryName);
+
+            Music m = product as Music;
+
+            if (product == null || category == null)
+            {
+                throw new InstanceNotFoundException(product, "Product not correct");
+            }
+
+            m.productName = updatedProduct.ProductName;
+            m.price = updatedProduct.Price;
+            m.registerDate = updatedProduct.RegisterDate;
+            m.stock = updatedProduct.Stock;
+            m.categoryId = category.categoryId;
+
+            m.artist = updatedProduct.Artist;
+            m.genere = updatedProduct.Genere;
+            m.type = updatedProduct.Type;
+
+
+            ProductDao.Update(product);
+
+            return new MusicDetails(m.productId, m.productName, m.price, m.registerDate, m.stock, updatedProduct.CategoryName,
+                    m.artist, m.genere, m.type);
         }
 
         [Transactional]

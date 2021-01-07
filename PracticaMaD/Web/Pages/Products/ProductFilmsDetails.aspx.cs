@@ -50,6 +50,10 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
             cellDuration.Text = m.Duration.ToString();
             cellGenere.Text = m.Genere;
 
+            cellProductName.Text = m.ProductName;
+            cellProductPrize.Text = m.Price.ToString();
+            cellProductCategory.Text = m.CategoryName;
+
             /* Get Start Index */
             try
             {
@@ -165,7 +169,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 
                     /* Do action. */
                     String url =
-                        String.Format("./UpdateProduct.aspx?prodId=" + prodId);
+                        String.Format("./UpdateFilms.aspx?prodId=" + prodId);
 
                     Response.Redirect(Response.ApplyAppPathModifier(url));
                 }

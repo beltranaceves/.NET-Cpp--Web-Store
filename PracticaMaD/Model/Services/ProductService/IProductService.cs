@@ -33,6 +33,43 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         [Transactional]
         ProductDetails UpdateProduct(long productId, ProductDetails updatedProduct);
 
+
+
+
+        /// <summary>
+        /// Updates the product details.
+        /// </summary>
+        /// <param name="productId"> The product id. </param>
+        /// <param name="updatedProduct"> The updatedProduct data. </param>
+        /// <exception cref="InstanceNotFoundException"/>
+        [Transactional]
+        ProductDetails UpdateBooks(long productId, BooksDetails updatedProduct);
+
+        /// <summary>
+        /// Updates the product details.
+        /// </summary>
+        /// <param name="productId"> The product id. </param>
+        /// <param name="updatedProduct"> The updatedProduct data. </param>
+        /// <exception cref="InstanceNotFoundException"/>
+        [Transactional]
+        ProductDetails UpdateFilms(long productId, FilmsDetails updatedProduct);
+
+        /// <summary>
+        /// Updates the product details.
+        /// </summary>
+        /// <param name="productId"> The product id. </param>
+        /// <param name="updatedProduct"> The updatedProduct data. </param>
+        /// <exception cref="InstanceNotFoundException"/>
+        [Transactional]
+        ProductDetails UpdateMusic(long productId, MusicDetails updatedProduct);
+
+
+
+
+
+
+
+
         /// <summary>
         /// Finds products by name keyword.
         /// </summary>

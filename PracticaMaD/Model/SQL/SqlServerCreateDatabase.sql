@@ -1,4 +1,4 @@
-INSERT INTO Client (clientLogin,clientPassword,firstName,firstSurname,lastSurname,clientAddress,email, clientLanguage, rol) VALUES ('DigoStorm','1234','Diego','Villanueva','Farina','Mi Casa','d@udc.es','Espa�ol', 'Cliente');
+INSERT INTO Client (clientLogin,clientPassword,firstName,firstSurname,lastSurname,clientAddress,email, clientLanguage,country, rol) VALUES ('d','ypeBEsobvcr6wjGzmiPcTaeG7/gUfE5yuYB3ha/uSLs=','Diego','Villanueva','Farina','Mi Casa','d@udc.es','es','ES', 'ADMIN');
 INSERT INTO Client (clientLogin,clientPassword,firstName,firstSurname,lastSurname,clientAddress,email, clientLanguage, rol) VALUES ('Jacojh21','1234','Jacobo','Jorge','Hermida','Su Casa','j@udc.es','Espa�ol', 'Admin');
 
 INSERT INTO CreditCard (cardNumber,cardType,verificationCode,expeditionDate, defaultCard, clientId)
@@ -13,14 +13,14 @@ INSERT INTO Category (categoryName) VALUES ('DvDs');
 INSERT INTO Category (categoryName) VALUES ('Libros');
 
 
-INSERT INTO Product (productName,price,registerDate,stock,categoryId) VALUES ('Silla Gamming',999,GETDATE(),9,10);
-INSERT INTO Product (productName,price,registerDate,stock,categoryId) VALUES ( 'Artic Moneys CD',15,GETDATE(),9,11);
-INSERT INTO Product (productName,price,registerDate,stock,categoryId) VALUES ( 'Titanic',10,GETDATE(),9,12);
-INSERT INTO Product (productName,price,registerDate,stock,categoryId) VALUES ( 'Las aventuras de Pepe',10,GETDATE(),9,13);
+INSERT INTO Product (productName,price,registerDate,stock,categoryId) VALUES ('Silla Gamming',999,GETDATE(),9,1);
+INSERT INTO Product (productName,price,registerDate,stock,categoryId) VALUES ( 'Artic Moneys CD',15,GETDATE(),9,2);
+INSERT INTO Product (productName,price,registerDate,stock,categoryId) VALUES ( 'Titanic',10,GETDATE(),9,3);
+INSERT INTO Product (productName,price,registerDate,stock,categoryId) VALUES ( 'Las aventuras de Pepe',10,GETDATE(),9,4);
 
-INSERT INTO Music (artist,title,genere,type,productId) VALUES('Arctic Monkeys','AM','Rock','CD',12);
-INSERT INTO Films (title,director,filmYear,duration,productId) VALUES('Titanic','James Cameron',1997,210,13);
-INSERT INTO Books (bookName,author,pages,ISBN,productId) VALUES('Las aventuras de Pepe','Yo mismo',300,262655,14);
+INSERT INTO Music (productId,artist,genere,type) VALUES(2,'Arctic Monkeys','Rock','CD');
+INSERT INTO Films (productId,director,filmYear,duration,genere) VALUES(3,'James Cameron',1997,210,'Tragedia');
+INSERT INTO Books (productId,author,pages,ISBN,editorial) VALUES(4,'Yo mismo',300,262655,'Anaya');
 
 
 

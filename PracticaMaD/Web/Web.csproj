@@ -99,14 +99,17 @@
     <Content Include="Css\PracticaMad.Styles.css" />
     <Content Include="Global.asax" />
     <Content Include="Pages\Card\AddCard.aspx" />
+    <Content Include="Pages\Card\CardSuccesfulyAdded.aspx" />
     <Content Include="Pages\Card\SeeClientCards.aspx" />
     <Content Include="Pages\MainPage.aspx" />
     <Content Include="Pages\Orders\ManageOrder.aspx" />
     <Content Include="Pages\Orders\OwnOrders.aspx" />
+    <Content Include="Pages\Orders\PurchaseConfirmation.aspx" />
     <Content Include="Pages\Orders\SeeOrderDetails.aspx" />
     <Content Include="Pages\Orders\SeeShoppingCart.aspx" />
     <Content Include="Pages\Products\AddComment.aspx" />
     <Content Include="Pages\Products\CommentAdded.aspx" />
+    <Content Include="Pages\Products\CommentDeleted.aspx" />
     <Content Include="Pages\Products\EditComment.aspx" />
     <Content Include="Pages\Products\EditedComment.aspx" />
     <Content Include="Pages\Products\FindProducts.aspx" />
@@ -116,6 +119,9 @@
     <Content Include="Pages\Products\ShowOneProduct.aspx" />
     <Content Include="Pages\Products\ShowProductsTag.aspx" />
     <Content Include="Pages\Products\ShowProducts.aspx" />
+    <Content Include="Pages\Products\UpdateBooks.aspx" />
+    <Content Include="Pages\Products\UpdateFilms.aspx" />
+    <Content Include="Pages\Products\UpdateMusic.aspx" />
     <Content Include="Pages\Products\UpdateProduct.aspx" />
     <Content Include="Pages\User\Authentication.aspx" />
     <Content Include="Pages\User\ChangePassword.aspx" />
@@ -162,6 +168,13 @@
     <Compile Include="Pages\Card\AddCard.aspx.designer.cs">
       <DependentUpon>AddCard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Card\CardSuccesfulyAdded.aspx.cs">
+      <DependentUpon>CardSuccesfulyAdded.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Card\CardSuccesfulyAdded.aspx.designer.cs">
+      <DependentUpon>CardSuccesfulyAdded.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Card\SeeClientCards.aspx.cs">
       <DependentUpon>SeeClientCards.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -190,6 +203,13 @@
     <Compile Include="Pages\Orders\OwnOrders.aspx.designer.cs">
       <DependentUpon>OwnOrders.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Orders\PurchaseConfirmation.aspx.cs">
+      <DependentUpon>PurchaseConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Orders\PurchaseConfirmation.aspx.designer.cs">
+      <DependentUpon>PurchaseConfirmation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Orders\SeeOrderDetails.aspx.cs">
       <DependentUpon>SeeOrderDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -217,6 +237,13 @@
     </Compile>
     <Compile Include="Pages\Products\CommentAdded.aspx.designer.cs">
       <DependentUpon>CommentAdded.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Products\CommentDeleted.aspx.cs">
+      <DependentUpon>CommentDeleted.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Products\CommentDeleted.aspx.designer.cs">
+      <DependentUpon>CommentDeleted.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Products\EditComment.aspx.cs">
       <DependentUpon>EditComment.aspx</DependentUpon>
@@ -280,6 +307,27 @@
     </Compile>
     <Compile Include="Pages\Products\ShowProducts.aspx.designer.cs">
       <DependentUpon>ShowProducts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Products\UpdateBooks.aspx.cs">
+      <DependentUpon>UpdateBooks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Products\UpdateBooks.aspx.designer.cs">
+      <DependentUpon>UpdateBooks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Products\UpdateFilms.aspx.cs">
+      <DependentUpon>UpdateFilms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Products\UpdateFilms.aspx.designer.cs">
+      <DependentUpon>UpdateFilms.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Products\UpdateMusic.aspx.cs">
+      <DependentUpon>UpdateMusic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Products\UpdateMusic.aspx.designer.cs">
+      <DependentUpon>UpdateMusic.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Products\UpdateProduct.aspx.cs">
       <DependentUpon>UpdateProduct.aspx</DependentUpon>
@@ -541,6 +589,27 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\Products\App_LocalResources\ProductFilmsDetails.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Card\App_LocalResources\CardSuccesfulyAdded.aspx.es.resx" />
+    <Content Include="Pages\Card\App_LocalResources\CardSuccesfulyAdded.aspx.gl.resx" />
+    <Content Include="Pages\Card\App_LocalResources\CardSuccesfulyAdded.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\UpdateBooks.aspx.es.resx" />
+    <Content Include="Pages\Products\App_LocalResources\UpdateBooks.aspx.gl.resx" />
+    <Content Include="Pages\Products\App_LocalResources\UpdateBooks.aspx.resx" />
+    <Content Include="Pages\Products\App_LocalResources\UpdateFilms.aspx.es.resx" />
+    <Content Include="Pages\Products\App_LocalResources\UpdateFilms.aspx.gl.resx" />
+    <Content Include="Pages\Products\App_LocalResources\UpdateFilms.aspx.resx" />
+    <Content Include="Pages\Products\App_LocalResources\UpdateMusic.aspx.es.resx" />
+    <Content Include="Pages\Products\App_LocalResources\UpdateMusic.aspx.gl.resx" />
+    <Content Include="Pages\Products\App_LocalResources\UpdateMusic.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Orders\App_LocalResources\PurchaseConfirmation.aspx.es.resx" />
+    <Content Include="Pages\Orders\App_LocalResources\PurchaseConfirmation.aspx.gl.resx" />
+    <Content Include="Pages\Orders\App_LocalResources\PurchaseConfirmation.aspx.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -14,8 +14,8 @@
                     <asp:Localize ID="lclCardType" runat="server" meta:resourcekey="lclCardType" />
                 </span>
                 <span class="entry">
-                    <asp:CheckBox ID="chBVisa" AutoPostBack="true" OnCheckedChanged="chBVisa_CheckedChanged" Text="Visa" runat="server" />
-                    <asp:CheckBox ID="chBMasterCard" AutoPostBack="true" OnCheckedChanged="chBMasterCard_CheckedChanged" Text="MasterCard" runat="server" />
+                    <asp:CheckBox ID="chBCredit" AutoPostBack="true" OnCheckedChanged="chBCredit_CheckedChanged" Text="<%$ Resources: credit %>" runat="server" />
+                    <asp:CheckBox ID="chBDebit" AutoPostBack="true" OnCheckedChanged="chBDebit_CheckedChanged" Text="<%$ Resources: debit %>" runat="server" />
                     <asp:Label ID="lblCardTypeError" runat="server" ForeColor="Red" Style="position: relative"
                         Visible="False" meta:resourcekey="lblCardTypeError"></asp:Label>
                 </span>

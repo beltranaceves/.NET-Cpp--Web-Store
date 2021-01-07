@@ -91,6 +91,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
             }
 
             f = SessionManager.shoppingCart.shoppingCartLines;
+            f = SessionManager.shoppingCart.shoppingCartLines;
 
             gvShoppingCart.DataSource = f;
 
@@ -101,7 +102,13 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
         protected void btnToPay_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Pages/Orders/ManageOrder.aspx");
+            bool val1 = (System.Web.HttpContext.Current.User != null) && HttpContext.Current.User.Identity.IsAuthenticated;
+
+            if (val1 ==true)
+                Response.Redirect("~/Pages/Orders/ManageOrder.aspx");
+
+            else
+                Response.Redirect("~/Pages/User/Authentication.aspx");
         }
 
         protected void gvShoppingCart_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
@@ -114,12 +121,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
             IShoppingCartService shop = (IShoppingCartService)iocManager.Resolve<IShoppingCartService>();
 
-            for (int i = 0; i < SessionManager.shoppingCart.shoppingCartLines.Count; i++)
-            {
-                if (SessionManager.shoppingCart.shoppingCartLines.ElementAt(i).productId == productId)
-
-                    shop.RemoveFromCart(SessionManager.shoppingCart.shoppingCartLines.ElementAt(i), SessionManager.shoppingCart);
-            }
+            SessionManager.DeleteShoppingCartOneRow(productId);
 
             gvShoppingCart.DataSource = SessionManager.shoppingCart.shoppingCartLines;
             gvShoppingCart.DataBind();

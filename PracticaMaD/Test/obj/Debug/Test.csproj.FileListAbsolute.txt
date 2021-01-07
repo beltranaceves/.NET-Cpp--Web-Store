@@ -489,3 +489,41 @@ C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\obj\Debug\T
 C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\obj\Debug\Test.csproj.CopyComplete
 C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\obj\Debug\PracticaMad.Test.dll
 C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Test\obj\Debug\PracticaMad.Test.pdb
+D:\MAD\Zombie V2\Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+D:\MAD\Zombie V2\Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+D:\MAD\Zombie V2\Test\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+D:\MAD\Zombie V2\Test\bin\Debug\es\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.resources.dll
+D:\MAD\Zombie V2\Test\bin\Debug\es\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.resources.dll
+D:\MAD\Zombie V2\Test\bin\Debug\es\Microsoft.VisualStudio.TestPlatform.TestFramework.resources.dll
+D:\MAD\Zombie V2\Test\bin\Debug\PracticaMad.Test.dll.config
+D:\MAD\Zombie V2\Test\bin\Debug\PracticaMad.Test.dll
+D:\MAD\Zombie V2\Test\bin\Debug\PracticaMad.Test.pdb
+D:\MAD\Zombie V2\Test\bin\Debug\Castle.Core.dll
+D:\MAD\Zombie V2\Test\bin\Debug\EntityFramework.dll
+D:\MAD\Zombie V2\Test\bin\Debug\EntityFramework.SqlServer.dll
+D:\MAD\Zombie V2\Test\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.dll
+D:\MAD\Zombie V2\Test\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+D:\MAD\Zombie V2\Test\bin\Debug\Microsoft.Practices.ObjectBuilder.dll
+D:\MAD\Zombie V2\Test\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+D:\MAD\Zombie V2\Test\bin\Debug\ModelUtil.dll
+D:\MAD\Zombie V2\Test\bin\Debug\Ninject.dll
+D:\MAD\Zombie V2\Test\bin\Debug\Ninject.Extensions.Interception.dll
+D:\MAD\Zombie V2\Test\bin\Debug\Ninject.Extensions.Interception.DynamicProxy.dll
+D:\MAD\Zombie V2\Test\bin\Debug\Ninject.Extensions.Xml.dll
+D:\MAD\Zombie V2\Test\bin\Debug\PracticaMad.Model.exe
+D:\MAD\Zombie V2\Test\bin\Debug\PracticaMad.Model.pdb
+D:\MAD\Zombie V2\Test\bin\Debug\PracticaMad.Model.exe.config
+D:\MAD\Zombie V2\Test\bin\Debug\Castle.Core.xml
+D:\MAD\Zombie V2\Test\bin\Debug\EntityFramework.xml
+D:\MAD\Zombie V2\Test\bin\Debug\EntityFramework.SqlServer.xml
+D:\MAD\Zombie V2\Test\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Common.xml
+D:\MAD\Zombie V2\Test\bin\Debug\Microsoft.Practices.EnterpriseLibrary.Logging.xml
+D:\MAD\Zombie V2\Test\bin\Debug\Ninject.xml
+D:\MAD\Zombie V2\Test\bin\Debug\Ninject.Extensions.Interception.xml
+D:\MAD\Zombie V2\Test\bin\Debug\Ninject.Extensions.Interception.DynamicProxy.xml
+D:\MAD\Zombie V2\Test\bin\Debug\Ninject.Extensions.Xml.xml
+D:\MAD\Zombie V2\Test\obj\Debug\Test.csprojAssemblyReference.cache
+D:\MAD\Zombie V2\Test\obj\Debug\Test.csproj.CoreCompileInputs.cache
+D:\MAD\Zombie V2\Test\obj\Debug\Test.csproj.CopyComplete
+D:\MAD\Zombie V2\Test\obj\Debug\PracticaMad.Test.dll
+D:\MAD\Zombie V2\Test\obj\Debug\PracticaMad.Test.pdb
