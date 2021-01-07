@@ -50,5 +50,16 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.TagService
             TagDao.Create(tag);
             return tag;
         }
+
+        /// <summary>
+        /// Find more used tags
+        /// </summary>
+        /// <returns> The tags </returns>
+        [Transactional]
+        public List<Tag> GetMoreUsedTags()
+        {
+            List<Tag> tags = TagDao.FindMoreUsedTags();
+            return tags;
+        }
     }
 }

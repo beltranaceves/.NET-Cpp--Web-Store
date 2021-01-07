@@ -117,6 +117,7 @@
     <Compile Include="Music.cs">
       <DependentUpon>PracticaMad.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Objetos\Search.cs" />
     <Compile Include="Objetos\ShoppingCart.cs" />
     <Compile Include="Objetos\ShoppingCartLine.cs" />
     <Compile Include="PracticaMad.Context.cs">

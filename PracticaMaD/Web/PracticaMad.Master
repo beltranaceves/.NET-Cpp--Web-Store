@@ -83,7 +83,20 @@
                 </asp:ContentPlaceHolder>
             </div>
         </div>
+        <div id="tagDiv">
 
+            <span id="spanTagLinks">
+
+                <asp:ContentPlaceHolder ID="tagLinks" runat="server">
+
+                    <asp:HyperLink ID="Tag1" runat="server" />
+                    <asp:HyperLink ID="Tag2" runat="server" />
+                    <asp:HyperLink ID="Tag3" runat="server" />
+                    <asp:HyperLink ID="Tag4" runat="server" />
+                    <asp:HyperLink ID="Tag5" runat="server" />
+                </asp:ContentPlaceHolder>
+            </span>
+        </div>
         <!-- Footer. -->
         <div id="footer">
             <asp:Localize ID="lclFooter" runat="server" meta:resourcekey="lclFooter" />

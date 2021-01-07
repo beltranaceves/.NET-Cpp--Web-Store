@@ -1,7 +1,11 @@
-﻿using Es.Udc.DotNet.PracticaMad.Model;
+﻿using Es.Udc.DotNet.ModelUtil.IoC;
+using Es.Udc.DotNet.PracticaMad.Model;
+using Es.Udc.DotNet.PracticaMad.Model.Services.TagService;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.UI.WebControls;
 
 namespace Es.Udc.DotNet.PracticaMad.Web
@@ -47,6 +51,56 @@ namespace Es.Udc.DotNet.PracticaMad.Web
                     lblDash1.Visible = false;
                 if (lnkAuthenticate != null)
                     lnkAuthenticate.Visible = false;
+            }
+            if (!IsPostBack)
+            {
+                IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
+
+                ITagService tagService = (ITagService)iocManager.Resolve<ITagService>();
+                List<Tag> tags = tagService.GetMoreUsedTags();
+
+                if (tags == null)
+                {
+                    tagLinks.Visible = false;
+                }
+                else
+                {
+                    if (tags.Count() == 5)
+                    {
+                        Tag5.Text = tags.ElementAt(4).tagName;
+                        String url =
+                                    String.Format("~/Pages/Products/ShowProductsTag.aspx?tag=" + Tag5.Text);
+                        Tag5.NavigateUrl = url;
+                    }
+                    if (tags.Count() < 5)
+                    {
+                        Tag4.Text = tags.ElementAt(3).tagName;
+                        String url =
+                                    String.Format("~/Pages/Products/ShowProductsTag.aspx?tag=" + Tag4.Text);
+                        Tag5.NavigateUrl = url;
+                    }
+                    if (tags.Count() < 4)
+                    {
+                        Tag3.Text = tags.ElementAt(2).tagName;
+                        String url =
+                                    String.Format("~/Pages/Products/ShowProductsTag.aspx?tag=" + Tag3.Text);
+                        Tag5.NavigateUrl = url;
+                    }
+                    if (tags.Count() < 3)
+                    {
+                        Tag2.Text = tags.ElementAt(1).tagName;
+                        String url =
+                                    String.Format("~/Pages/Products/ShowProductsTag.aspx?tag=" + Tag2.Text);
+                        Tag5.NavigateUrl = url;
+                    }
+                    if (tags.Count() < 2)
+                    {
+                        Tag1.Text = tags.ElementAt(0).tagName;
+                        String url =
+                                    String.Format("~/Pages/Products/ShowProductsTag.aspx?tag=" + Tag1.Text);
+                        Tag5.NavigateUrl = url;
+                    }
+                }
             }
         }
     }

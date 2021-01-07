@@ -33,5 +33,12 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.TagService
         /// <exception cref="DuplicateInstanceException"/>
         [Transactional]
         Tag Create(string tagName);
+
+        /// <summary>
+        /// Find more used tags
+        /// </summary>
+        /// <returns> The tags </returns>
+        [Transactional]
+        List<Tag> GetMoreUsedTags();
     }
 }

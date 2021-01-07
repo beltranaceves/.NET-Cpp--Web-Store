@@ -1,8 +1,8 @@
 using Es.Udc.DotNet.ModelUtil.Dao;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-
 
 namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.TagDao
 {
@@ -52,8 +52,24 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.TagDao
             {
                 return tag.tagName == tagName;
             }
-
         }
 
+        /// <summary>
+        /// Finds more used tags.
+        /// </summary>
+        public List<Tag> FindMoreUsedTags()
+        {
+            List<Tag> tag = null;
+
+            DbSet<Tag> tags = Context.Set<Tag>();
+
+            var result =
+                (from t in tags
+                 select t).OrderByDescending(t => t.timesUsed).Take(5);
+
+            tag = result.ToList();
+
+            return tag;
+        }
     }
 }

@@ -1,5 +1,6 @@
 using Es.Udc.DotNet.ModelUtil.Dao;
 using System;
+using System.Collections.Generic;
 
 namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.TagDao
 {
@@ -16,5 +17,10 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.TagDao
         /// </summary>
         /// <param name="tagName"> The name tag. </param>
         Boolean existsByTagName(String tagName);
+
+        /// <summary>
+        /// Finds more used tags.
+        /// </summary>
+        List<Tag> FindMoreUsedTags();
     }
 }
