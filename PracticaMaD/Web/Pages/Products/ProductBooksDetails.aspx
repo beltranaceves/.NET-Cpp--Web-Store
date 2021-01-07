@@ -9,7 +9,6 @@
         <span>
             <asp:Label ID="lclDetails" Font-Bold="true" Font-Size="Medium" runat="server" meta:resourcekey="lclDetails" />
         </span>
-        </div>
         <br />
         <p>
         <asp:Label ID="lblInvalidProduct" meta:resourcekey="lblInvalidProduct" runat="server" Visible="false"></asp:Label>
@@ -20,10 +19,7 @@
 
 
      <asp:Table CssClass="productDetails" CssClas="oneProduct" runat="server">
-        <asp:TableRow runat="server">
-            <asp:TableHeaderCell ID="cellCaptionName" runat="server" Text="<%$ Resources: bookName %>"></asp:TableHeaderCell>
-            <asp:TableCell ID="cellName" runat="server"></asp:TableCell>
-        </asp:TableRow>
+       
         <asp:TableRow runat="server">
             <asp:TableHeaderCell ID="cellCaptionAuthor" runat="server" Text="<%$ Resources: author %>"></asp:TableHeaderCell>
             <asp:TableCell ID="cellAuthor" runat="server"></asp:TableCell>
@@ -35,6 +31,10 @@
           <asp:TableRow runat="server">
             <asp:TableHeaderCell ID="cellCaptionISBN" runat="server" Text="<%$ Resources: ISBN %>"></asp:TableHeaderCell>
             <asp:TableCell ID="cellISBN" runat="server"></asp:TableCell>
+        </asp:TableRow>
+          <asp:TableRow runat="server">
+            <asp:TableHeaderCell ID="cellCaptionEditorial" runat="server" Text="<%$ Resources: editorial %>"></asp:TableHeaderCell>
+            <asp:TableCell ID="cellEditorial" runat="server"></asp:TableCell>
         </asp:TableRow>
     </asp:Table>
 

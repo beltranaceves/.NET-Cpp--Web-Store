@@ -19,13 +19,13 @@ using System;
 public partial class Books : Product
 {
 
-    public string bookName { get; set; }
-
     public string author { get; set; }
 
     public int pages { get; set; }
 
     public long ISBN { get; set; }
+
+    public string editorial { get; set; }
 
 
 	/// <summary>
@@ -45,13 +45,13 @@ public partial class Books : Product
 			int hash = GetType().GetHashCode();
 
 
-			hash = hash * multiplier + (bookName == null ? 0 : bookName.GetHashCode());
-
 			hash = hash * multiplier + (author == null ? 0 : author.GetHashCode());
 
 			hash = hash * multiplier + pages.GetHashCode();
 
 			hash = hash * multiplier + ISBN.GetHashCode();
+
+			hash = hash * multiplier + (editorial == null ? 0 : editorial.GetHashCode());
 
 
 			return hash;
@@ -74,10 +74,10 @@ public partial class Books : Product
         Books target = obj as Books;
 
 		return true
-           &&  (this.bookName == target.bookName )       
            &&  (this.author == target.author )       
            &&  (this.pages == target.pages )       
            &&  (this.ISBN == target.ISBN )       
+           &&  (this.editorial == target.editorial )       
            ;
 
     }
@@ -115,10 +115,10 @@ public partial class Books : Product
 	    StringBuilder strBooks = new StringBuilder();
 
 		strBooks.Append("[ ");
-       strBooks.Append(" bookName = " + bookName + " | " );       
        strBooks.Append(" author = " + author + " | " );       
        strBooks.Append(" pages = " + pages + " | " );       
        strBooks.Append(" ISBN = " + ISBN + " | " );       
+       strBooks.Append(" editorial = " + editorial + " | " );       
 
         strBooks.Append("] ");    
 

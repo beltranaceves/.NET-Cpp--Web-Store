@@ -14,8 +14,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
 
         public String Artist { get; private set; }
 
-        public String Title { get; private set; }
-
         public String Genere { get; private set; }
 
         public String Type { get; private set; }
@@ -23,10 +21,9 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         #endregion Properties Region
 
         public MusicDetails(long productId, String productName, double price, DateTime registerDate, int stock, string categoryName, 
-            String artist, String title, String genere, string type) : base(productId, productName, price, registerDate, stock, categoryName)
+            String artist, String genere, string type) : base(productId, productName, price, registerDate, stock, categoryName)
         {
             this.Artist = artist;
-            this.Title = title;
             this.Genere = genere;
             this.Type = type;
         }

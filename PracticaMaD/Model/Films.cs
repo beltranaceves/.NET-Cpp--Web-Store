@@ -19,13 +19,13 @@ using System;
 public partial class Films : Product
 {
 
-    public string title { get; set; }
-
     public string director { get; set; }
 
     public int filmYear { get; set; }
 
     public int duration { get; set; }
+
+    public string genere { get; set; }
 
 
 	/// <summary>
@@ -45,13 +45,13 @@ public partial class Films : Product
 			int hash = GetType().GetHashCode();
 
 
-			hash = hash * multiplier + (title == null ? 0 : title.GetHashCode());
-
 			hash = hash * multiplier + (director == null ? 0 : director.GetHashCode());
 
 			hash = hash * multiplier + filmYear.GetHashCode();
 
 			hash = hash * multiplier + duration.GetHashCode();
+
+			hash = hash * multiplier + (genere == null ? 0 : genere.GetHashCode());
 
 
 			return hash;
@@ -74,10 +74,10 @@ public partial class Films : Product
         Films target = obj as Films;
 
 		return true
-           &&  (this.title == target.title )       
            &&  (this.director == target.director )       
            &&  (this.filmYear == target.filmYear )       
            &&  (this.duration == target.duration )       
+           &&  (this.genere == target.genere )       
            ;
 
     }
@@ -115,10 +115,10 @@ public partial class Films : Product
 	    StringBuilder strFilms = new StringBuilder();
 
 		strFilms.Append("[ ");
-       strFilms.Append(" title = " + title + " | " );       
        strFilms.Append(" director = " + director + " | " );       
        strFilms.Append(" filmYear = " + filmYear + " | " );       
        strFilms.Append(" duration = " + duration + " | " );       
+       strFilms.Append(" genere = " + genere + " | " );       
 
         strFilms.Append("] ");    
 

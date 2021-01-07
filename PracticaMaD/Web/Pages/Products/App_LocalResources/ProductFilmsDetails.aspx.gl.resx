@@ -129,8 +129,8 @@
   <data name="lclDetails.Text" xml:space="preserve">
     <value>Detalles da pelicula</value>
   </data>
-  <data name="title" xml:space="preserve">
-    <value>Titulo</value>
+  <data name="genere" xml:space="preserve">
+    <value>Xenero</value>
   </data>
   <data name="btnAddComment.Text" xml:space="preserve">
     <value>Engadir un comentario</value>

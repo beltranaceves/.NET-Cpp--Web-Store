@@ -141,4 +141,7 @@
   <data name="lclDetails.Text" xml:space="preserve">
     <value>Detalles do libro</value>
   </data>
+  <data name="editorial" xml:space="preserve">
+    <value>Editorial</value>
+  </data>
 </root>

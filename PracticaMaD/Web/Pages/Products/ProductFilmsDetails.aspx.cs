@@ -44,10 +44,11 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 
             FilmsDetails m = productDetails as FilmsDetails;
 
-           cellTitle.Text = m.Title;
+           
             cellDirector.Text = m.Director;
             cellFilmYear.Text = m.FilmYear.ToString();
             cellDuration.Text = m.Duration.ToString();
+            cellGenere.Text = m.Genere;
 
             /* Get Start Index */
             try

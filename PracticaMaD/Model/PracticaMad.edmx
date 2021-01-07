@@ -9,11 +9,11 @@
           <Key>
             <PropertyRef Name="productId" />
           </Key>
-          <Property Name="bookName" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="productId" Type="bigint" Nullable="false" />
           <Property Name="author" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="pages" Type="int" Nullable="false" />
           <Property Name="ISBN" Type="bigint" Nullable="false" />
-          <Property Name="productId" Type="bigint" Nullable="false" />
+          <Property Name="editorial" Type="varchar" MaxLength="60" Nullable="false" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -79,21 +79,20 @@
           <Key>
             <PropertyRef Name="productId" />
           </Key>
-          <Property Name="title" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="productId" Type="bigint" Nullable="false" />
           <Property Name="director" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="filmYear" Type="int" Nullable="false" />
           <Property Name="duration" Type="int" Nullable="false" />
-          <Property Name="productId" Type="bigint" Nullable="false" />
+          <Property Name="genere" Type="varchar" MaxLength="60" Nullable="false" />
         </EntityType>
         <EntityType Name="Music">
           <Key>
             <PropertyRef Name="productId" />
           </Key>
+          <Property Name="productId" Type="bigint" Nullable="false" />
           <Property Name="artist" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="title" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="genere" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="type" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="productId" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -130,6 +129,7 @@
           </Key>
           <Property Name="tagId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="tagName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="timesUsed" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Books">
           <End Role="Product" Type="Self.Product" Multiplicity="1" />
@@ -361,10 +361,10 @@
     <edmx:ConceptualModels>
       <Schema Namespace="practicaMADModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Books" BaseType="practicaMADModel.Product">
-          <Property Name="bookName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="author" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="pages" Type="Int32" Nullable="false" />
           <Property Name="ISBN" Type="Int64" Nullable="false" />
+          <Property Name="editorial" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -438,14 +438,13 @@
           <NavigationProperty Name="ClientOrder" Relationship="Self.FK_ClientOrder_CreditCard" FromRole="CreditCard" ToRole="ClientOrder" />
         </EntityType>
         <EntityType Name="Films" BaseType="practicaMADModel.Product">
-          <Property Name="title" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="director" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="filmYear" Type="Int32" Nullable="false" />
           <Property Name="duration" Type="Int32" Nullable="false" />
+          <Property Name="genere" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityType Name="Music" BaseType="practicaMADModel.Product">
           <Property Name="artist" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="title" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="genere" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="type" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
@@ -482,6 +481,7 @@
           </Key>
           <Property Name="tagId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="tagName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="timesUsed" Type="Int32" Nullable="false" />
           <NavigationProperty Name="ProductComment" Relationship="Self.ProductCommentTag" FromRole="Tag" ToRole="ProductComment" />
         </EntityType>
         <Association Name="FK_Product_Category">
@@ -586,7 +586,7 @@
           <End Role="ProductComment" Type="Self.ProductComment" Multiplicity="*" />
           <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="practicaMADEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="practicaMADEntities5" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Category" EntityType="Self.Category" />
           <EntitySet Name="Client" EntityType="Self.Client" />
           <EntitySet Name="ClientOrder" EntityType="Self.ClientOrder" />
@@ -637,7 +637,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="practicaMADModelStoreContainer" CdmEntityContainer="practicaMADEntities3">
+        <EntityContainerMapping StorageEntityContainer="practicaMADModelStoreContainer" CdmEntityContainer="practicaMADEntities5">
           <EntitySetMapping Name="Category">
             <EntityTypeMapping TypeName="practicaMADModel.Category">
               <MappingFragment StoreEntitySet="Category">
@@ -714,31 +714,30 @@
                 <ScalarProperty Name="productName" ColumnName="productName" />
               </MappingFragment>
             </EntityTypeMapping>
-            <EntityTypeMapping TypeName="IsTypeOf(practicaMADModel.Books)">
-              <MappingFragment StoreEntitySet="Books">
-                <ScalarProperty Name="productId" ColumnName="productId" />
-                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
-                <ScalarProperty Name="pages" ColumnName="pages" />
-                <ScalarProperty Name="author" ColumnName="author" />
-                <ScalarProperty Name="bookName" ColumnName="bookName" />
-              </MappingFragment>
-            </EntityTypeMapping>
             <EntityTypeMapping TypeName="IsTypeOf(practicaMADModel.Music)">
               <MappingFragment StoreEntitySet="Music">
-                <ScalarProperty Name="productId" ColumnName="productId" />
                 <ScalarProperty Name="type" ColumnName="type" />
                 <ScalarProperty Name="genere" ColumnName="genere" />
-                <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="artist" ColumnName="artist" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
               </MappingFragment>
             </EntityTypeMapping>
             <EntityTypeMapping TypeName="IsTypeOf(practicaMADModel.Films)">
               <MappingFragment StoreEntitySet="Films">
-                <ScalarProperty Name="productId" ColumnName="productId" />
+                <ScalarProperty Name="genere" ColumnName="genere" />
                 <ScalarProperty Name="duration" ColumnName="duration" />
                 <ScalarProperty Name="filmYear" ColumnName="filmYear" />
                 <ScalarProperty Name="director" ColumnName="director" />
-                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(practicaMADModel.Books)">
+              <MappingFragment StoreEntitySet="Books">
+                <ScalarProperty Name="editorial" ColumnName="editorial" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="pages" ColumnName="pages" />
+                <ScalarProperty Name="author" ColumnName="author" />
+                <ScalarProperty Name="productId" ColumnName="productId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -758,6 +757,7 @@
               <MappingFragment StoreEntitySet="Tag">
                 <ScalarProperty Name="tagId" ColumnName="tagId" />
                 <ScalarProperty Name="tagName" ColumnName="tagName" />
+                <ScalarProperty Name="timesUsed" ColumnName="timesUsed" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

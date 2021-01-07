@@ -45,7 +45,6 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
             MusicDetails m = productDetails as MusicDetails;
 
            cellArtist.Text = m.Artist;
-            cellTitle.Text = m.Title;
             cellGenere.Text = m.Genere;
             cellType.Text = m.Type;
             /* Get Start Index */

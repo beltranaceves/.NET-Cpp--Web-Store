@@ -213,10 +213,10 @@ GO
 
 CREATE TABLE Books (
 	productId BIGINT NOT NULL,
-	bookName VARCHAR(60) NOT NULL,
 	author VARCHAR(60) NOT NULL,
 	pages INT NOT NULL,
 	ISBN BIGINT NOT NULL,
+	editorial VARCHAR(60) NOT NULL,
 
 	CONSTRAINT [PK_Books] PRIMARY KEY (productId),
 	CONSTRAINT [FK_Books] FOREIGN KEY (productId) REFERENCES Product (productId)
@@ -226,10 +226,10 @@ PRINT N'Table Books created.'
 
 CREATE TABLE Films (
 	productId BIGINT NOT NULL,
-	title VARCHAR(60) NOT NULL,
 	director VARCHAR(60) NOT NULL,
 	filmYear INT NOT NULL,
 	duration INT NOT NULL,
+	genere VARCHAR(60) NOT NULL,
 
 	CONSTRAINT [PK_Films] PRIMARY KEY (productId),
 	CONSTRAINT [FK_Films] FOREIGN KEY (productId) REFERENCES Product (productId)
@@ -239,7 +239,6 @@ PRINT N'Table Films created.'
 CREATE TABLE Music (
 	productId BIGINT NOT NULL,
 	artist VARCHAR(60) NOT NULL,
-	title VARCHAR(60) NOT NULL,
     genere VARCHAR(60) NOT NULL,
 	type VARCHAR(60) NOT NULL,
 

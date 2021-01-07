@@ -35,19 +35,19 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             {
                 Books bk = product as Books;
                 productDetails = new BooksDetails(productId, product.productName, product.price, product.registerDate, product.stock, category.categoryName,
-                    bk.bookName, bk.author,bk.pages,bk.ISBN);
+                    bk.author,bk.pages,bk.ISBN,bk.editorial);
             }
             else if (product is Films)
             {
                 Films fm = product as Films;
                 productDetails = new FilmsDetails(productId, product.productName, product.price, product.registerDate, product.stock, category.categoryName,
-                    fm.title,fm.director,fm.filmYear,fm.duration);
+                    fm.director,fm.filmYear,fm.duration,fm.genere);
             }
             else if (product is Music)
             {
                 Music m = product as Music;
                 productDetails = new MusicDetails(productId, product.productName, product.price, product.registerDate, product.stock, category.categoryName,
-                    m.artist,m.title,m.genere,m.type);
+                    m.artist,m.genere,m.type);
             }
             else
              productDetails = new ProductDetails(productId, product.productName, product.price, product.registerDate, product.stock, category.categoryName);

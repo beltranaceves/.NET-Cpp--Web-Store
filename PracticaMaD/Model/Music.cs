@@ -21,8 +21,6 @@ public partial class Music : Product
 
     public string artist { get; set; }
 
-    public string title { get; set; }
-
     public string genere { get; set; }
 
     public string type { get; set; }
@@ -46,8 +44,6 @@ public partial class Music : Product
 
 
 			hash = hash * multiplier + (artist == null ? 0 : artist.GetHashCode());
-
-			hash = hash * multiplier + (title == null ? 0 : title.GetHashCode());
 
 			hash = hash * multiplier + (genere == null ? 0 : genere.GetHashCode());
 
@@ -75,7 +71,6 @@ public partial class Music : Product
 
 		return true
            &&  (this.artist == target.artist )       
-           &&  (this.title == target.title )       
            &&  (this.genere == target.genere )       
            &&  (this.type == target.type )       
            ;
@@ -116,7 +111,6 @@ public partial class Music : Product
 
 		strMusic.Append("[ ");
        strMusic.Append(" artist = " + artist + " | " );       
-       strMusic.Append(" title = " + title + " | " );       
        strMusic.Append(" genere = " + genere + " | " );       
        strMusic.Append(" type = " + type + " | " );       
 

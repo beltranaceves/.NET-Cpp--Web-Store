@@ -8,7 +8,6 @@
    
 
  
-        </div>
         <br />
         <p>
         <asp:Label ID="lblInvalidProduct" meta:resourcekey="lblInvalidProduct" runat="server" Visible="false"></asp:Label>
@@ -22,14 +21,10 @@
         <span>
             <asp:Label ID="lclDetails" Font-Bold="true" Font-Size="Medium" runat="server" meta:resourcekey="lclDetails" />
         </span>
-        </div>
         <br />
 
      <asp:Table CssClass="productDetails" CssClas="oneProduct" runat="server">
-        <asp:TableRow runat="server">
-            <asp:TableHeaderCell ID="cellCaptionTitle" runat="server" Text="<%$ Resources: title %>"></asp:TableHeaderCell>
-            <asp:TableCell ID="cellTitle" runat="server"></asp:TableCell>
-        </asp:TableRow>
+     
         <asp:TableRow runat="server">
             <asp:TableHeaderCell ID="cellCaptionDirector" runat="server" Text="<%$ Resources: director %>"></asp:TableHeaderCell>
             <asp:TableCell ID="cellDirector" runat="server"></asp:TableCell>
@@ -41,6 +36,10 @@
           <asp:TableRow runat="server">
             <asp:TableHeaderCell ID="cellCaptionDuration" runat="server" Text="<%$ Resources: duration %>"></asp:TableHeaderCell>
             <asp:TableCell ID="cellDuration" runat="server"></asp:TableCell>
+        </asp:TableRow>
+            <asp:TableRow runat="server">
+            <asp:TableHeaderCell ID="cellCaptionGenere" runat="server" Text="<%$ Resources: genere %>"></asp:TableHeaderCell>
+            <asp:TableCell ID="cellGenere" runat="server"></asp:TableCell>
         </asp:TableRow>
     </asp:Table>
 

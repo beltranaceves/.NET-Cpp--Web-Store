@@ -40,24 +40,6 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products {
         protected global::System.Web.UI.WebControls.Label lclDetails;
         
         /// <summary>
-        /// Control cellCaptionTitle.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableHeaderCell cellCaptionTitle;
-        
-        /// <summary>
-        /// Control cellTitle.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableCell cellTitle;
-        
-        /// <summary>
         /// Control cellCaptionDirector.
         /// </summary>
         /// <remarks>
@@ -110,6 +92,24 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TableCell cellDuration;
+        
+        /// <summary>
+        /// Control cellCaptionGenere.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableHeaderCell cellCaptionGenere;
+        
+        /// <summary>
+        /// Control cellGenere.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell cellGenere;
         
         /// <summary>
         /// Control AddCommentForm.

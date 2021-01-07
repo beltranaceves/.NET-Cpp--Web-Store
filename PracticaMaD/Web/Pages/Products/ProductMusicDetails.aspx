@@ -27,10 +27,6 @@
             <asp:TableCell ID="cellArtist" runat="server"></asp:TableCell>
         </asp:TableRow>
         <asp:TableRow runat="server">
-            <asp:TableHeaderCell ID="cellCaptionTitle" runat="server" Text="<%$ Resources: title %>"></asp:TableHeaderCell>
-            <asp:TableCell ID="cellTitle" runat="server"></asp:TableCell>
-        </asp:TableRow>
-        <asp:TableRow runat="server">
             <asp:TableHeaderCell ID="cellCaptionGenere" runat="server" Text="<%$ Resources: genere %>"></asp:TableHeaderCell>
             <asp:TableCell ID="cellGenere" runat="server"></asp:TableCell>
         </asp:TableRow>

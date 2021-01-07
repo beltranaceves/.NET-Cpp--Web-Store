@@ -40,24 +40,6 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products {
         protected global::System.Web.UI.WebControls.Label lblEditedProduct;
         
         /// <summary>
-        /// Control cellCaptionName.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableHeaderCell cellCaptionName;
-        
-        /// <summary>
-        /// Control cellName.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TableCell cellName;
-        
-        /// <summary>
         /// Control cellCaptionAuthor.
         /// </summary>
         /// <remarks>
@@ -110,6 +92,24 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TableCell cellISBN;
+        
+        /// <summary>
+        /// Control cellCaptionEditorial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableHeaderCell cellCaptionEditorial;
+        
+        /// <summary>
+        /// Control cellEditorial.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TableCell cellEditorial;
         
         /// <summary>
         /// Control AddCommentForm.

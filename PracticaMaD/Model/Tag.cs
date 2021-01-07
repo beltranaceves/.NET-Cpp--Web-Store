@@ -31,6 +31,8 @@ public partial class Tag
 
     public string tagName { get; set; }
 
+    public int timesUsed { get; set; }
+
 
 
     
@@ -59,6 +61,8 @@ public partial class Tag
 
 			hash = hash * multiplier + (tagName == null ? 0 : tagName.GetHashCode());
 
+			hash = hash * multiplier + timesUsed.GetHashCode();
+
 
 			return hash;
 	    }
@@ -82,6 +86,7 @@ public partial class Tag
 		return true
            &&  (this.tagId == target.tagId )       
            &&  (this.tagName == target.tagName )       
+           &&  (this.timesUsed == target.timesUsed )       
            ;
 
     }
@@ -121,6 +126,7 @@ public partial class Tag
 		strTag.Append("[ ");
        strTag.Append(" tagId = " + tagId + " | " );       
        strTag.Append(" tagName = " + tagName + " | " );       
+       strTag.Append(" timesUsed = " + timesUsed + " | " );       
 
         strTag.Append("] ");    
 

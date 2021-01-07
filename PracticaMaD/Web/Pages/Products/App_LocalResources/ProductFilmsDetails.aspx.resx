@@ -141,4 +141,7 @@
   <data name="btnEditProduct.Text" xml:space="preserve">
     <value>Edit product</value>
   </data>
+  <data name="genere" xml:space="preserve">
+    <value>Genere</value>
+  </data>
 </root>

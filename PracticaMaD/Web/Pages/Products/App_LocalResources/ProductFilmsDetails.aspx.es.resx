@@ -117,8 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="title" xml:space="preserve">
-    <value>Titulo</value>
+  <data name="genere" xml:space="preserve">
+    <value>Genero</value>
   </data>
   <data name="director" xml:space="preserve">
     <value>Director</value>

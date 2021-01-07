@@ -43,10 +43,11 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
 
             BooksDetails bk = productDetails as BooksDetails;
 
-            cellName.Text = bk.BookName;
+            
             cellAuthor.Text = bk.Author;
             cellPages.Text = bk.Pages.ToString();
             cellISBN.Text =   bk.ISBN.ToString();
+            cellEditorial.Text = bk.Editorial;
 
             /* Get Start Index */
             try
