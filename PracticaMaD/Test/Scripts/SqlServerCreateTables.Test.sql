@@ -57,7 +57,7 @@ CREATE TABLE Category (
 	categoryName VARCHAR(20) NOT NULL,
 
 	CONSTRAINT [PK_Category] PRIMARY KEY (categoryId),
-	
+	CONSTRAINT [UK_CategoryName] UNIQUE (categoryName)
 )
 
 PRINT N'Table Category created.'
@@ -173,6 +173,7 @@ GO
 CREATE TABLE Tag (
 	tagId BIGINT IDENTITY(1, 1) NOT NULL,
 	tagName VARCHAR(20) NOT NULL,
+	timesUsed int NOT NULL,
 
 	CONSTRAINT [PK_Tag] PRIMARY KEY (tagId),
 	CONSTRAINT [UK_TagName] UNIQUE (tagName)
@@ -213,10 +214,10 @@ GO
 
 CREATE TABLE Books (
 	productId BIGINT NOT NULL,
-	bookName VARCHAR(60) NOT NULL,
 	author VARCHAR(60) NOT NULL,
 	pages INT NOT NULL,
 	ISBN BIGINT NOT NULL,
+	editorial VARCHAR(60) NOT NULL,
 
 	CONSTRAINT [PK_Books] PRIMARY KEY (productId),
 	CONSTRAINT [FK_Books] FOREIGN KEY (productId) REFERENCES Product (productId)
@@ -226,10 +227,10 @@ PRINT N'Table Books created.'
 
 CREATE TABLE Films (
 	productId BIGINT NOT NULL,
-	title VARCHAR(60) NOT NULL,
 	director VARCHAR(60) NOT NULL,
 	filmYear INT NOT NULL,
 	duration INT NOT NULL,
+	genere VARCHAR(60) NOT NULL,
 
 	CONSTRAINT [PK_Films] PRIMARY KEY (productId),
 	CONSTRAINT [FK_Films] FOREIGN KEY (productId) REFERENCES Product (productId)
@@ -239,7 +240,6 @@ PRINT N'Table Films created.'
 CREATE TABLE Music (
 	productId BIGINT NOT NULL,
 	artist VARCHAR(60) NOT NULL,
-	title VARCHAR(60) NOT NULL,
     genere VARCHAR(60) NOT NULL,
 	type VARCHAR(60) NOT NULL,
 
