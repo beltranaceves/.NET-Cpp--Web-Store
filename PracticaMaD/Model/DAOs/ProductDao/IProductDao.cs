@@ -46,10 +46,10 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
         /// <summary>
         /// Finds all products by tagName
         /// </summary>
-        /// <param name="tagName">tagName</param>
+        /// <param name="tag">tag</param>
         /// <param name="startIndex">startIndex</param>
         /// <param name="count">count</param>
         /// <returns>A list of Product</returns>
-        List<Product> FindByTag(string tagName, int startIndex, int count);
+        List<Product> FindByTag(Tag tag, int startIndex, int count);
     }
 }

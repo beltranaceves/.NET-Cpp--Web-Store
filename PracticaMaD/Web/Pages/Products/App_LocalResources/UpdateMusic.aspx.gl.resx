@@ -129,13 +129,13 @@
   <data name="lclPrice.Text" xml:space="preserve">
     <value>Prezo</value>
   </data>
-  <data name="lclProductName.Text" xml:space="preserve">
-    <value>Nome </value>
-  </data>
   <data name="lclStock.Text" xml:space="preserve">
     <value>Unidades dispoñibles</value>
   </data>
   <data name="lclType.Text" xml:space="preserve">
     <value>Tipo</value>
+  </data>
+  <data name="lclProductName.Text" xml:space="preserve">
+    <value>Nome</value>
   </data>
 </root>

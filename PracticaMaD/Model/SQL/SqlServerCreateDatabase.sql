@@ -19,8 +19,8 @@ INSERT INTO Product (productName,price,registerDate,stock,categoryId) VALUES ( '
 INSERT INTO Product (productName,price,registerDate,stock,categoryId) VALUES ( 'Las aventuras de Pepe',10,GETDATE(),9,4);
 
 INSERT INTO Music (productId,artist,genere,type) VALUES(2,'Arctic Monkeys','Rock','CD');
-INSERT INTO Films (productId,director,filmYear,duration,genere) VALUES(3,'James Cameron',1997,210,'Tragedia');
-INSERT INTO Books (productId,author,pages,ISBN,editorial) VALUES(4,'Yo mismo',300,262655,'Anaya');
+INSERT INTO Films (productId,director,filmYear,duration) VALUES(3,'James Cameron',1997,210);
+INSERT INTO Books (productId,author,pages,ISBN) VALUES(4,'Yo mismo',300,262655);
 
 
 

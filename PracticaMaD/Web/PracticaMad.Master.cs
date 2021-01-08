@@ -38,7 +38,6 @@ namespace Es.Udc.DotNet.PracticaMad.Web
                     lnkAddCard.Visible = false;
                 if (lnkSeeMyCards != null)
                     lnkSeeMyCards.Visible = false;
-         
             }
             else
             {
@@ -70,34 +69,84 @@ namespace Es.Udc.DotNet.PracticaMad.Web
                         String url =
                                     String.Format("~/Pages/Products/ShowProductsTag.aspx?tag=" + Tag5.Text);
                         Tag5.NavigateUrl = url;
+                        int tamaño = tags.ElementAt(4).timesUsed;
+                        if (tamaño > 50)
+                        {
+                            tamaño = 50;
+                        }
+                        if (tamaño < 10)
+                        {
+                            tamaño = 10;
+                        }
+                        Tag5.Attributes.CssStyle.Add("font-size", tamaño.ToString() + "px");
                     }
-                    if (tags.Count() < 5)
+                    if (tags.Count() >= 4)
                     {
                         Tag4.Text = tags.ElementAt(3).tagName;
                         String url =
                                     String.Format("~/Pages/Products/ShowProductsTag.aspx?tag=" + Tag4.Text);
-                        Tag5.NavigateUrl = url;
+                        Tag4.NavigateUrl = url;
+                        int tamaño = tags.ElementAt(3).timesUsed;
+                        if (tamaño > 50)
+                        {
+                            tamaño = 50;
+                        }
+                        if (tamaño < 10)
+                        {
+                            tamaño = 10;
+                        }
+                        Tag4.Attributes.CssStyle.Add("font-size", tamaño.ToString() + "px");
                     }
-                    if (tags.Count() < 4)
+                    if (tags.Count() >= 3)
                     {
                         Tag3.Text = tags.ElementAt(2).tagName;
                         String url =
                                     String.Format("~/Pages/Products/ShowProductsTag.aspx?tag=" + Tag3.Text);
-                        Tag5.NavigateUrl = url;
+                        Tag3.NavigateUrl = url;
+                        int tamaño = tags.ElementAt(3).timesUsed;
+                        if (tamaño > 50)
+                        {
+                            tamaño = 50;
+                        }
+                        if (tamaño < 10)
+                        {
+                            tamaño = 10;
+                        }
+                        Tag3.Attributes.CssStyle.Add("font-size", tamaño.ToString() + "px");
                     }
-                    if (tags.Count() < 3)
+                    if (tags.Count() >= 2)
                     {
                         Tag2.Text = tags.ElementAt(1).tagName;
                         String url =
                                     String.Format("~/Pages/Products/ShowProductsTag.aspx?tag=" + Tag2.Text);
-                        Tag5.NavigateUrl = url;
+                        Tag2.NavigateUrl = url;
+                        int tamaño = tags.ElementAt(1).timesUsed;
+                        if (tamaño > 50)
+                        {
+                            tamaño = 50;
+                        }
+                        if (tamaño < 10)
+                        {
+                            tamaño = 10;
+                        }
+                        Tag2.Attributes.CssStyle.Add("font-size", tamaño.ToString() + "px");
                     }
-                    if (tags.Count() < 2)
+                    if (tags.Count() >= 1)
                     {
                         Tag1.Text = tags.ElementAt(0).tagName;
                         String url =
                                     String.Format("~/Pages/Products/ShowProductsTag.aspx?tag=" + Tag1.Text);
-                        Tag5.NavigateUrl = url;
+                        Tag1.NavigateUrl = url;
+                        int tamaño = tags.ElementAt(0).timesUsed;
+                        if (tamaño > 50)
+                        {
+                            tamaño = 50;
+                        }
+                        if (tamaño < 10)
+                        {
+                            tamaño = 10;
+                        }
+                        Tag1.Attributes.CssStyle.Add("font-size", tamaño.ToString() + "px");
                     }
                 }
             }

@@ -6,6 +6,7 @@ body {
     margin: 10px 20px;
     background-color: #dddde0;
 }
+
 /* Sidebar. */
 
 #sidebar {
@@ -176,7 +177,6 @@ table.tagsComment {
     margin-right: auto;
 }
 
-
 .comments {
     margin-left: auto;
     margin-right: auto;
@@ -200,7 +200,6 @@ table.oneProduct {
     width: 45%;
 }
 
-
 /* Order*/
 .order {
     text-align: center;
@@ -223,4 +222,14 @@ table.oneProduct {
     align-content: center;
     margin-left: auto;
     margin-right: auto;
+}
+
+div.tagDiv {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#spanTagLinks {
+    margin-right: auto;
+    margin-left: auto;
 }

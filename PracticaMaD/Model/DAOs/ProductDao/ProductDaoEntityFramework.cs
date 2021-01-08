@@ -104,16 +104,21 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao
             return product;
         }
 
-        public List<Product> FindByTag(string tag, int startIndex, int count)
+        public List<Product> FindByTag(Tag tag, int startIndex, int count)
         {
             List<Product> productList = null;
 
             DbSet<Product> products = Context.Set<Product>();
+            DbSet<ProductComment> prodComs = Context.Set<ProductComment>();
             DbSet<Tag> tags = Context.Set<Tag>();
 
+            var commentsR = (from pc in prodComs
+                             where pc.Tag.Select(t => t.tagId).Contains(tag.tagId)
+                             select pc.commentId);
+            List<long> comments = commentsR.ToList();
             var result =
                 (from p in products
-                 where p.ProductComment == (from t in tags where t.tagName == tag select t.ProductComment)
+                 where p.ProductComment.Select(c => c.commentId).Intersect(comments).Any()
                  select p).OrderBy(p => p.productId).Skip(startIndex).Take(count).ToList();
 
             productList = result;

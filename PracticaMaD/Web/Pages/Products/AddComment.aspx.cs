@@ -69,6 +69,9 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
                     Tag tag;
                     tag = SessionManager.CreateTag(txtTag.Text);
                     txtTag.Text = String.Empty;
+                    List<Tag> tags = SessionManager.GetTags();
+                    gvTagList.DataSource = tags;
+                    gvTagList.DataBind();
                 }
                 catch (DuplicateInstanceException)
                 {

@@ -56,10 +56,9 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
             IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
             IProductService productService = iocManager.Resolve<IProductService>();
 
-            ProductBlock productBlock = null;
             /* Get Products Info */
 
-            productBlock =
+            ProductBlock productBlock =
                productService.FindProductByTag(tag, startIndex, count);
 
             if (productBlock == null || productBlock.Product.Count == 0)

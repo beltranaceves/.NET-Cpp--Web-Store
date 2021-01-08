@@ -2,6 +2,7 @@ using Es.Udc.DotNet.ModelUtil.Exceptions;
 using Es.Udc.DotNet.ModelUtil.Transactions;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.CategoryDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao;
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.TagDao;
 using Es.Udc.DotNet.PracticaMad.Model.Objetos;
 using Ninject;
 using System;
@@ -20,6 +21,9 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         public IProductDao ProductDao { private get; set; }
 
         [Inject]
+        public ITagDao TagDao { private get; set; }
+
+        [Inject]
         public ICategoryDao CategoryDao { private get; set; }
 
         #region IProductService Members
@@ -30,7 +34,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         {
             Product product = ProductDao.Find(productId);
             Category category = CategoryDao.Find(product.categoryId);
-
 
             ProductDetails productDetails;
             if (product is Books)
@@ -80,8 +83,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             return new ProductDetails(product.productId, product.productName, product.price, product.registerDate, product.stock, updatedProduct.CategoryName);
         }
 
-
-
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
         public ProductDetails UpdateBooks(long productId, BooksDetails updatedProduct)
@@ -108,13 +109,11 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             bk.ISBN = updatedProduct.ISBN;
             bk.editorial = updatedProduct.Editorial;
 
-
             ProductDao.Update(product);
 
             return new BooksDetails(bk.productId, bk.productName, bk.price, bk.registerDate, bk.stock, updatedProduct.CategoryName,
                     bk.author, bk.pages, bk.ISBN, bk.editorial);
         }
-
 
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
@@ -142,13 +141,11 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             f.duration = updatedProduct.Duration;
             f.genere = updatedProduct.Genere;
 
-
             ProductDao.Update(product);
 
             return new FilmsDetails(f.productId, f.productName, f.price, f.registerDate, f.stock, updatedProduct.CategoryName,
                     f.director, f.filmYear, f.duration, f.genere);
         }
-
 
         /// <exception cref="InstanceNotFoundException"/>
         [Transactional]
@@ -174,7 +171,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             m.artist = updatedProduct.Artist;
             m.genere = updatedProduct.Genere;
             m.type = updatedProduct.Type;
-
 
             ProductDao.Update(product);
 
@@ -381,10 +377,8 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
         [Transactional]
         public ProductBlock FindProductByTag(string tagName, int startIndex, int count)
         {
-            List<Product> products = ProductDao.FindByTag(tagName, startIndex, count);
-            var item = new CacheItem(tagName, products.ToString());
-            var policy = new CacheItemPolicy();
-            Cache.Add(item, policy);
+            Tag tag = TagDao.FindByTagName(tagName);
+            List<Product> products = ProductDao.FindByTag(tag, startIndex, count + 1);
 
             List<ProductDetails> productsDetails = new List<ProductDetails>();
             foreach (Product p in products)

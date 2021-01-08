@@ -70,7 +70,12 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
             {
                 if (!TagDao.existsByTagName(tag.tagName))
                 {
+                    tag.timesUsed = 1;
                     TagDao.Create(tag);
+                }
+                else
+                {
+                    tag.timesUsed += 1;
                 }
                 comment.Tag.Add(tag);
             }
@@ -85,13 +90,28 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
             {
                 throw new InstanceNotFoundException(commentId, "No se encuentra el comentario que quieres editar");
             }
-            List<Tag> tags = new List<Tag>();
-            tags = productCommentDetails.Tags;
+
+            foreach (Tag t in productCommentDetails.Tags)
+            {
+                if (!productComment.Tag.Contains(t))
+                {
+                    t.timesUsed += 1;
+                }
+            }
+            foreach (Tag t in productComment.Tag)
+            {
+                if (!productCommentDetails.Tags.Contains(t))
+                {
+                    t.timesUsed -= 1;
+                }
+            }
+
             productComment.productId = productCommentDetails.ProductId;
             productComment.commentText = productCommentDetails.CommentText;
             productComment.commentDate = System.DateTime.Now;
             productComment.clientId = productCommentDetails.ClientId;
-            productComment.Tag = tags;
+            productComment.Tag = productCommentDetails.Tags;
+
             ProductCommentDao.Update(productComment);
 
             return productCommentDetails;

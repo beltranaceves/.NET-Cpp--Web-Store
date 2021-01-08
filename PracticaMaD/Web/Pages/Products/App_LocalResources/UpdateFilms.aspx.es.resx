@@ -136,7 +136,7 @@
     <value>Precio</value>
   </data>
   <data name="lclProductName.Text" xml:space="preserve">
-    <value>Nombre </value>
+    <value>Nombre</value>
   </data>
   <data name="lclStock.Text" xml:space="preserve">
     <value>Unidades disponibles</value>

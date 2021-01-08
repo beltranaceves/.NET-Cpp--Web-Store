@@ -144,4 +144,7 @@
   <data name="debit" xml:space="preserve">
     <value>Debito</value>
   </data>
+  <data name="lclSuccess.Text" xml:space="preserve">
+    <value>Tarxeta engadida correctamente</value>
+  </data>
 </root>
