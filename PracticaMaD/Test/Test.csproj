@@ -96,6 +96,7 @@
     <Compile Include="IProductCommentServiceTest.cs" />
     <Compile Include="IProductServiceTest.cs" />
     <Compile Include="IShoppingCartTest.cs" />
+    <Compile Include="ITagTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestManager.cs" />
     <Compile Include="IGenericDaoTest.cs" />

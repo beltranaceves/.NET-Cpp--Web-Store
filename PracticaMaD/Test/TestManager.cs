@@ -15,6 +15,8 @@ using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentDao;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.TagDao;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService;
+using Es.Udc.DotNet.PracticaMad.Model.Service.ClientOrderLineService;
+using Es.Udc.DotNet.PracticaMad.Model.Services.TagService;
 
 namespace Es.Udc.DotNet.PracticaMad.Test
 {
@@ -69,8 +71,14 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             kernel.Bind<ITagDao>().
                To<TagDaoEntityFramework>();
 
+            kernel.Bind<ITagService>().
+             To<TagService>();
+
             kernel.Bind<IClientOrderLineDao>().
               To<ClientOrderLineDaoEntityFramework>();
+
+            kernel.Bind<IClientOrderLineService>().
+                To<ClientOrderLineService>();
 
             string connectionString =
                 ConfigurationManager.ConnectionStrings["practicaMADEntities"].ConnectionString;

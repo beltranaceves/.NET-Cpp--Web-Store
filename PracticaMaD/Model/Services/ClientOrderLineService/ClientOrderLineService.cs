@@ -13,12 +13,11 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Service.ClientOrderLineService
         public IClientOrderLineDao ClientOrderLineDao { private get; set; }
 
         [Transactional]
-        public List<ClientOrderLine> getOrderLines(long orderId)
+        public List<ClientOrderLine> GetOrderLines(long orderId)
         {
             List<ClientOrderLine> list = ClientOrderLineDao.FindOrderLines(orderId);
 
             return list;
-
         }
     }
 }

@@ -94,7 +94,8 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
         [Transactional]
         public ProductCommentDetails EditProductComment(long commentId, ProductCommentDetails productCommentDetails)
         {
-            ProductComment productComment = ProductCommentDao.Find(commentId);
+            ProductComment productComment = ProductCommentDao.FindById(commentId);
+
             if (productComment == null)
             {
                 throw new InstanceNotFoundException(commentId, "No se encuentra el comentario que quieres editar");
@@ -112,6 +113,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
                 if (!productCommentDetails.Tags.Contains(t))
                 {
                     t.timesUsed -= 1;
+                    t.ProductComment.Remove(productComment);
                 }
             }
             Client client = ClientDao.FindByLogin(productCommentDetails.ClientName);

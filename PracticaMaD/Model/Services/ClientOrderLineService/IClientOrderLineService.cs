@@ -6,13 +6,12 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Service.ClientOrderLineService
 {
     public interface IClientOrderLineService
     {
-
         /// <summary>
         /// Get an order lines
         /// </summary>
         /// <param name="orderId"> The tag Name. </param>
         /// object to return.</param>
         [Transactional]
-        List<ClientOrderLine> getOrderLines(long orderId);
+        List<ClientOrderLine> GetOrderLines(long orderId);
     }
 }

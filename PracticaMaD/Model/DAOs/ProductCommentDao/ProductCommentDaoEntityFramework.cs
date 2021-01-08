@@ -57,5 +57,18 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentDao
 
             return product;
         }
+
+        public ProductComment FindById(long commentId)
+        {
+            DbSet<ProductComment> productComment = Context.Set<ProductComment>();
+            DbSet<Tag> tag = Context.Set<Tag>();
+            var result =
+                (from prodComm in productComment.Include("Tag")
+                 where prodComm.commentId == commentId
+                 select prodComm).ToList();
+            ProductComment product = result.FirstOrDefault();
+
+            return product;
+        }
     }
 }

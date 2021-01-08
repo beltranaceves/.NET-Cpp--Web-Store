@@ -275,5 +275,25 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 Assert.AreEqual(defaultCard, creditCardDetails2);
             }
         }
+
+        /// <summary>
+        ///A test for GetUserDefaultCardTest
+        ///</summary>
+        [TestMethod()]
+        [ExpectedException(typeof(InstanceNotFoundException))]
+        public void GetUserDefaultCardErrorTest()
+        {
+            using (TransactionScope scope = new TransactionScope())
+            {
+                // Register user and find profile
+                var clientId =
+                   clientService.RegisterClient(clientLogin, clientPassword,
+                       new ClientDetails(firstName, firstSurname, lastSurname, email, clientLanguage, clientAddress, country, rol));
+
+                var client = clientDao.Find(clientId);
+
+                CreditCardDetails defaultCard = creditCardService.GetClientDefaultCard(clientId);
+            }
+        }
     }
 }
