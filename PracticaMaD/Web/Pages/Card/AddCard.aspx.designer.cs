@@ -229,6 +229,15 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Card {
         protected global::System.Web.UI.WebControls.Label lblDefaultError;
         
         /// <summary>
+        /// Control lblRepeted.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRepeted;
+        
+        /// <summary>
         /// Control btnAddCard.
         /// </summary>
         /// <remarks>

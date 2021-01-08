@@ -228,4 +228,7 @@
   <data name="lblNoStock.Text" xml:space="preserve">
     <value>No hay ese  numero de unidades disponible</value>
   </data>
+  <data name="lblRepeted.Text" xml:space="preserve">
+    <value>Esa tarjeta ya esta añadida</value>
+  </data>
 </root>

@@ -147,4 +147,7 @@
   <data name="lclSuccess.Text" xml:space="preserve">
     <value>Tarjeta añadida correctamente</value>
   </data>
+  <data name="lblRepeted.Text" xml:space="preserve">
+    <value>Esa tarjeta ya esta añadida</value>
+  </data>
 </root>

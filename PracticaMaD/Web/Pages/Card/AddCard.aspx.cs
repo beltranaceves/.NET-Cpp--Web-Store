@@ -1,4 +1,5 @@
-﻿using Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService;
+﻿using Es.Udc.DotNet.ModelUtil.Exceptions;
+using Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
 using System;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Card
                     string result = i.ToString().Substring(2);
                     dropYear.Items.Add(result);
                 }
+                lblRepeted.Visible = false;
             }
         }
 
@@ -29,42 +31,49 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Card
         {
             if (Page.IsValid)
             {
-                if (txtCreditCardNumber.Text.Count() == 16)
+                try
                 {
-                    long clientId = Convert.ToInt32(Request.Params.Get("clientId"));
-                    string creditCardNumber = txtCreditCardNumber.Text.ToString();
-                    string cardType;
-                    bool defC;
+                        if (txtCreditCardNumber.Text.Count() == 16)
+                    {
+                        long clientId = Convert.ToInt32(Request.Params.Get("clientId"));
+                        string creditCardNumber = txtCreditCardNumber.Text.ToString();
+                        string cardType;
+                        bool defC;
 
-                    if (chBCredit.Checked)
-                        cardType = "Credit";
-                    else if (chBDebit.Checked)
-                        cardType = "Debit";
+                        if (chBCredit.Checked)
+                            cardType = "Credit";
+                        else if (chBDebit.Checked)
+                            cardType = "Debit";
+                        else
+                            throw new Exception("cardType");
+
+                        long cv = long.Parse(txtCV.Text);
+                        if (txtCV.Text.Count() != 3)
+                            throw new Exception("cv");
+
+                        string date = dropMonth.SelectedItem.Text + "/" + dropYear.SelectedItem.Text;
+
+                        if (defCard.Checked == true)
+                            defC = true;
+                        else
+                            defC = false;
+
+                        CreditCardDetails newCard = new CreditCardDetails(creditCardNumber, cardType, cv, date, defC, clientId);
+
+                        SessionManager.AddCard(Context, newCard);
+
+                        Server.Transfer(Response.ApplyAppPathModifier("./CardSuccesfulyAdded.aspx"));
+
+
+                    }
                     else
-                        throw new Exception("cardType");
-
-                    long cv = long.Parse(txtCV.Text);
-                    if (txtCV.Text.Count() != 3)
-                        throw new Exception("cv");
-
-                    string date = dropMonth.SelectedItem.Text + "/" + dropYear.SelectedItem.Text;
-
-                    if (defCard.Checked == true)
-                        defC = true;
-                    else
-                        defC = false;
-
-                    CreditCardDetails newCard = new CreditCardDetails(creditCardNumber, cardType, cv, date, defC, clientId);
-
-                    SessionManager.AddCard(Context, newCard);
-
-                    Server.Transfer(Response.ApplyAppPathModifier("./CardSuccesfulyAdded.aspx"));
-
-
+                    {
+                        lblCreditCardNumberFormat.Visible = true;
+                    }
                 }
-                else
+                catch (DuplicateInstanceException)
                 {
-                    lblCreditCardNumberFormat.Visible = true;
+                    lblRepeted.Visible = true;
                 }
             }
         }

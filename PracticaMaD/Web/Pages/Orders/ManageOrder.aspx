@@ -214,6 +214,8 @@
         <asp:Label ID="lblNoStock" runat="server" ForeColor="Red" Style="position: relative"
                         Visible="False" meta:resourcekey="lblNoStock"></asp:Label>
         
+         <asp:Label ID="lblRepeted" runat="server" ForeColor="Red" Style="position: relative"
+                        Visible="False" meta:resourcekey="lblRepeted"></asp:Label>
          
             <div class="field">
                 <span class="label">

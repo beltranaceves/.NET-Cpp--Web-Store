@@ -74,6 +74,9 @@
                 </span>
             </div>
 
+               <asp:Label ID="lblRepeted" runat="server" ForeColor="Red" Style="position: relative"
+                        Visible="False" meta:resourcekey="lblRepeted"></asp:Label>
+
             <div class="button">
                 <asp:Button ID="btnAddCard" runat="server" OnClick="btnAddCard_Click" meta:resourcekey="btnAddCard" />
             </div>

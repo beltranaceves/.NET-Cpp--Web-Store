@@ -1,4 +1,5 @@
-﻿using Es.Udc.DotNet.ModelUtil.IoC;
+﻿using Es.Udc.DotNet.ModelUtil.Exceptions;
+using Es.Udc.DotNet.ModelUtil.IoC;
 using Es.Udc.DotNet.PracticaMad.Model;
 using Es.Udc.DotNet.PracticaMad.Model.Objetos;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService;
@@ -49,6 +50,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
                     btnPay.Visible = false;
 
                 lblNoStock.Visible = false;
+
+               
 
                 txtPrizeTotal.Text = ((price)).ToString();
 
@@ -202,10 +205,11 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
             string addres = null;
 
+
             lblCVError.Visible = false;
             lblCardTypeError.Visible = false;
             lblErrorDescrtiption.Visible = false;
-
+            lblRepeted.Visible = false;
 
             //Comrpobamos si cogemos la direccion por defecto (dejando addres a null)
             //o si quiere una en concreto
@@ -222,34 +226,40 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
                     throw new Exception("desc");
 
                 if (txtCreditCardNumber.Text != "")
-                 {
+                {
+                    try
+                    {
 
-                string cardType = null;
+                            string cardType = null;
 
-                    if (chBCredit.Checked)
-                         cardType = "Credit";
-                     else if (chBDebit.Checked)
-                         cardType = "Debit";
-                    else
-                        throw new Exception("cardType");
+                        if (chBCredit.Checked)
+                             cardType = "Credit";
+                         else if (chBDebit.Checked)
+                             cardType = "Debit";
+                        else
+                            throw new Exception("cardType");
 
 
                 
-                     if (txtCV.Text.Count() != 3)
-                         throw new Exception("cv");
-                     long cv = long.Parse(txtCV.Text);
+                         if (txtCV.Text.Count() != 3)
+                             throw new Exception("cv");
+                         long cv = long.Parse(txtCV.Text);
 
-                    string date = dropMonth.SelectedItem.Text + "/" + dropYear.SelectedItem.Text;
+                        string date = dropMonth.SelectedItem.Text + "/" + dropYear.SelectedItem.Text;
 
-                     var newCard = new CreditCardDetails(txtCreditCardNumber.Text, cardType, cv, date, false, clientId);
+                         var newCard = new CreditCardDetails(txtCreditCardNumber.Text, cardType, cv, date, false, clientId);
 
-                     SessionManager.AddCard(Context, newCard);
+                         SessionManager.AddCard(Context, newCard);
 
-                     cardId = creditCardService.GetCardFromNumber(txtCreditCardNumber.Text).cardId;
+                         cardId = creditCardService.GetCardFromNumber(txtCreditCardNumber.Text).cardId;
+                    }
+                    catch (DuplicateInstanceException)
+                    {
+                        lblRepeted.Visible = true;
+                    }
+                }
 
-                 }
-
-                 else
+                else
                  {
                     CreditCardDetails card = creditCardService.GetClientDefaultCard(clientId);
                     cardId = creditCardService.GetCardFromNumber(card.CardNumber).cardId;

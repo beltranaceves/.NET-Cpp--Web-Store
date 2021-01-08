@@ -228,4 +228,7 @@
   <data name="lblNoStock.Text" xml:space="preserve">
     <value>There is not that amoun of units avaliable</value>
   </data>
+  <data name="lblRepeted.Text" xml:space="preserve">
+    <value>That card is already added</value>
+  </data>
 </root>
