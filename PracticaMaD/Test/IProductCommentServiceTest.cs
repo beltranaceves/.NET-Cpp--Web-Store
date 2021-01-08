@@ -103,7 +103,7 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 ProductCommentBlock productComments = productCommentService.FindByProductId(productId, 0, 5);
 
                 Assert.AreEqual(productComments.ProductComment[0].CommentText, productCommentText);
-                Assert.AreEqual(productComments.ProductComment[0].ClientId, clientId);
+                Assert.AreEqual(productComments.ProductComment[0].ClientName, clientLogin);
                 Assert.AreEqual(productComments.ProductComment[0].ProductId, productId);
 
                 //transaction.Complete() is not called, so Rollback is executed.

@@ -1,5 +1,6 @@
 ﻿using Es.Udc.DotNet.ModelUtil.IoC;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.CategoryDao;
+using Es.Udc.DotNet.PracticaMad.Model.Services.Exceptions;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
@@ -136,22 +137,25 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
             }
             if (e.CommandName == "Add")
             {
-                int index = Convert.ToInt32(e.CommandArgument);
-                GridViewRow row = gvProduct.Rows[index];
+                try
+                {
+                    int index = Convert.ToInt32(e.CommandArgument);
+                    GridViewRow row = gvProduct.Rows[index];
 
-                IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
+                    IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
 
-                IShoppingCartService shoppingCartService = (IShoppingCartService)iocManager.Resolve<IShoppingCartService>();
+                    IShoppingCartService shoppingCartService = (IShoppingCartService)iocManager.Resolve<IShoppingCartService>();
 
-                long productId = Convert.ToInt32(row.Cells[0].Text);
+                    long productId = Convert.ToInt32(row.Cells[0].Text);
 
-                var quantity2 = row.Cells[4].FindControl("quantityList") as DropDownList;
+                    shoppingCartService.AddToCart(productId, 1, SessionManager.shoppingCart);
 
-                int quantity = Convert.ToInt32(quantity2.SelectedValue);
-
-                shoppingCartService.AddToCart(productId, quantity, SessionManager.shoppingCart);
-
-                Response.Redirect(Request.RawUrl.ToString());
+                    Response.Redirect(Request.RawUrl.ToString());
+                }
+                catch (NotEnoughStockException)
+                {
+                    lclNoStock.Visible = true;
+                }
             }
         }
     }

@@ -42,6 +42,8 @@
             AutoGenerateColumns="False">
             <Columns>
                 <asp:BoundField DataField="ProductId" ItemStyle-CssClass="Hide" />
+
+                <asp:BoundField DataField="ClientName" HeaderText="<%$ Resources:Common, ClientLogin %>" />
                 <asp:BoundField DataField="CommentText" HeaderText="<%$ Resources:Common, CommentText %>" />
                 <asp:BoundField DataField="CommentDate" HeaderText="<%$ Resources:Common, CommentDate %>" />
             </Columns>

@@ -8,7 +8,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductCommentDao
 {
     public interface IProductCommentDao : IGenericDao<ProductComment, Int64>
     {
-        List<ProductCommentDetails> FindByProductId(long productId, int startIndex, int count);
+        List<ProductComment> FindByProductId(long productId, int startIndex, int count);
 
         bool ExistByProductIdAndClientId(long productId, long clientId);
 

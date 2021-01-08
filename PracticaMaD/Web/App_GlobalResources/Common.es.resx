@@ -142,7 +142,7 @@
     <value>Fecha</value>
   </data>
   <data name="CommentText" xml:space="preserve">
-    <value>btnEditProduct</value>
+    <value>Comentario</value>
   </data>
   <data name="CommentDate" xml:space="preserve">
     <value>Fecha</value>
@@ -152,5 +152,8 @@
   </data>
   <data name="category" xml:space="preserve">
     <value>Categoria</value>
+  </data>
+  <data name="ClientLogin" xml:space="preserve">
+    <value>Login</value>
   </data>
 </root>

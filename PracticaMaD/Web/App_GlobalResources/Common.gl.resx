@@ -153,4 +153,7 @@
   <data name="category" xml:space="preserve">
     <value>Categoria</value>
   </data>
+  <data name="ClientLogin" xml:space="preserve">
+    <value>Usuario</value>
+  </data>
 </root>

@@ -611,6 +611,15 @@
     <Content Include="Pages\Orders\App_LocalResources\PurchaseConfirmation.aspx.gl.resx" />
     <Content Include="Pages\Orders\App_LocalResources\PurchaseConfirmation.aspx.resx" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\ShowProductsTag.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\ShowProductsTag.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\ShowProductsTag.aspx.gl.resx" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

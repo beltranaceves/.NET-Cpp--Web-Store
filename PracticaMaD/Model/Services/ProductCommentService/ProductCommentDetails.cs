@@ -13,18 +13,18 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
         public long ProductId { get; set; }
         public string CommentText { get; set; }
         public DateTime CommentDate { get; set; }
-        public long ClientId { get; set; }
+        public string ClientName { get; set; }
 
         public List<Tag> Tags { get; set; }
 
         public ProductCommentDetails(long commentId, long productId, string commentText, DateTime commentDate,
-        long clientId, List<Tag> tags)
+        string clientName, List<Tag> tags)
         {
             this.CommentId = commentId;
             this.ProductId = productId;
             this.CommentText = commentText;
             this.CommentDate = commentDate;
-            this.ClientId = clientId;
+            this.ClientName = clientName;
             this.Tags = tags;
         }
     }

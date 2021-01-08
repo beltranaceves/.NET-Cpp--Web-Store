@@ -68,7 +68,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
                 prodDetails =
                     SessionManager.FindProductComment(Context, prodId);
                 ProductCommentDetails prodDetails2 = new ProductCommentDetails(prodDetails.CommentId, prodDetails.ProductId,
-                                                                    txtComment.Text, System.DateTime.Now, prodDetails.ClientId, tags);
+                                                                    txtComment.Text, System.DateTime.Now, prodDetails.ClientName, tags);
 
                 ProductCommentDetails editedComment = SessionManager.EditProductComment(prodDetails2);
 

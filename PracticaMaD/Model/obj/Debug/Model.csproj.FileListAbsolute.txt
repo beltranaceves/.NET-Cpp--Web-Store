@@ -423,3 +423,4 @@ D:\MAD\V37\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
 D:\MAD\V37\Model\obj\Debug\Model.csproj.CopyComplete
 D:\MAD\V37\Model\obj\Debug\PracticaMad.Model.exe
 D:\MAD\V37\Model\obj\Debug\PracticaMad.Model.pdb
+C:\Users\Jacobo\Desktop\FIC\Q7\MAD\PRACTICA\Mad2021\PracticaMaD\Model\obj\Debug\Model.csprojAssemblyReference.cache

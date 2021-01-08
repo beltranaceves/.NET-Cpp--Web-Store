@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.TagDao;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.ProductDao;
 using Es.Udc.DotNet.ModelUtil.Transactions;
+using Es.Udc.DotNet.PracticaMad.Model.DAOs.ClientDao;
 
 namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
 {
@@ -19,18 +20,26 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
         public IProductDao ProductDao { private get; set; }
 
         [Inject]
+        public IClientDao ClientDao { private get; set; }
+
+        [Inject]
         public ITagDao TagDao { private get; set; }
 
         [Transactional]
         public ProductCommentBlock FindByProductId(long productId, int startIndex, int count)
         {
-            List<ProductCommentDetails> productComments = ProductCommentDao.FindByProductId(productId, startIndex, count + 1);
-            bool existMoreProductsComments = (productComments.Count == count + 1);
+            List<ProductComment> productComments = ProductCommentDao.FindByProductId(productId, startIndex, count + 1);
+            List<ProductCommentDetails> productCommentsDetails = new List<ProductCommentDetails>();
+            foreach (ProductComment p in productComments)
+            {
+                productCommentsDetails.Add(new ProductCommentDetails(p.commentId, p.productId, p.commentText, p.commentDate, p.Client.clientLogin, p.Tag.ToList()));
+            }
+            bool existMoreProductsComments = (productCommentsDetails.Count == count + 1);
 
             if (existMoreProductsComments)
                 productComments.RemoveAt(count);
 
-            return new ProductCommentBlock(productComments, existMoreProductsComments);
+            return new ProductCommentBlock(productCommentsDetails, existMoreProductsComments);
         }
 
         /// <exception cref="InstanceNotFoundException"/>
@@ -42,8 +51,8 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
             {
                 throw new InstanceNotFoundException(clientId, "Dont have any comment to edit");
             }
-
-            return new ProductCommentDetails(comment.commentId, comment.productId, comment.commentText, System.DateTime.Now, comment.clientId, comment.Tag.ToList());
+            Client client = ClientDao.Find(comment.clientId);
+            return new ProductCommentDetails(comment.commentId, comment.productId, comment.commentText, System.DateTime.Now, client.clientLogin, comment.Tag.ToList());
         }
 
         [Transactional]
@@ -105,11 +114,11 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
                     t.timesUsed -= 1;
                 }
             }
-
+            Client client = ClientDao.FindByLogin(productCommentDetails.ClientName);
             productComment.productId = productCommentDetails.ProductId;
             productComment.commentText = productCommentDetails.CommentText;
             productComment.commentDate = System.DateTime.Now;
-            productComment.clientId = productCommentDetails.ClientId;
+            productComment.clientId = client.clientId;
             productComment.Tag = productCommentDetails.Tags;
 
             ProductCommentDao.Update(productComment);
