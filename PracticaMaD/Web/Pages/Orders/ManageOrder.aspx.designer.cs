@@ -67,15 +67,6 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders {
         protected global::System.Web.UI.WebControls.TextBox txtAddress;
         
         /// <summary>
-        /// Control rfvAddress.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAddress;
-        
-        /// <summary>
         /// Control cvAddress.
         /// </summary>
         /// <remarks>
@@ -184,15 +175,6 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders {
         protected global::System.Web.UI.WebControls.TextBox txtCreditCardNumber;
         
         /// <summary>
-        /// Control rfvCreditCardNumber.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCreditCardNumber;
-        
-        /// <summary>
         /// Control lblCreditCardNumberError.
         /// </summary>
         /// <remarks>
@@ -274,15 +256,6 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders {
         protected global::System.Web.UI.WebControls.TextBox txtCV;
         
         /// <summary>
-        /// Control rfvCV.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCV;
-        
-        /// <summary>
         /// Control lblCVError.
         /// </summary>
         /// <remarks>
@@ -337,6 +310,15 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders {
         protected global::System.Web.UI.WebControls.GridView gvShoppingCart;
         
         /// <summary>
+        /// Control lblNoStock.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNoStock;
+        
+        /// <summary>
         /// Control lclDescrtiption.
         /// </summary>
         /// <remarks>
@@ -355,15 +337,6 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders {
         protected global::System.Web.UI.WebControls.TextBox txtDescription;
         
         /// <summary>
-        /// Control RequiredFieldValidator1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
-        
-        /// <summary>
         /// Control CompareValidator1.
         /// </summary>
         /// <remarks>
@@ -373,13 +346,13 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders {
         protected global::System.Web.UI.WebControls.CompareValidator CompareValidator1;
         
         /// <summary>
-        /// Control lblError.
+        /// Control lblErrorDescrtiption.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
+        protected global::System.Web.UI.WebControls.Label lblErrorDescrtiption;
         
         /// <summary>
         /// Control lclPrize.

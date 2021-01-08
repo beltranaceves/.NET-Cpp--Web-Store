@@ -126,4 +126,7 @@
   <data name="btnAddToCart.Text" xml:space="preserve">
     <value>Add To Cart</value>
   </data>
+  <data name="lclNoStock.Text" xml:space="preserve">
+    <value>We are sorry theres no stock of that item</value>
+  </data>
 </root>

@@ -36,6 +36,9 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService
 
             Product p = ProductDao.Find(productId);
 
+            if (p.stock - quantity < 0)
+                throw new NotEnoughStockException(p.productName, quantity);
+
             cartLine.forGift = false; //Por defecto se pone a false, el usuario podra despues decidir si lo quiere para regalo o no
             cartLine.price = p.price;
             cartLine.quantity = quantity;
@@ -66,9 +69,14 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService
             if (!(shoppingCart.shoppingCartLines.Contains(shoppingCartLine)))
                     throw new InstanceNotFoundException(shoppingCartLine, typeof(ShoppingCart).FullName);
 
+          
+
             int aux =  shoppingCart.shoppingCartLines.IndexOf(shoppingCartLine);
 
             Product p = ProductDao.Find(shoppingCart.shoppingCartLines[aux].productId);
+
+            if (p.stock - units < 0)
+                throw new NotEnoughStockException(p.productName, units);
 
             shoppingCart.shoppingCartLines[aux].quantity = units;
 

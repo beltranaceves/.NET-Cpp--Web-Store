@@ -216,4 +216,16 @@
   <data name="debit" xml:space="preserve">
     <value>Debit</value>
   </data>
+  <data name="lblCardTypeError.Text" xml:space="preserve">
+    <value>Tiene que selecionar un tipo</value>
+  </data>
+  <data name="lblCVError.Text" xml:space="preserve">
+    <value>Valor invalido para CV</value>
+  </data>
+  <data name="lblErrorDescrtiption.Text" xml:space="preserve">
+    <value>Tiene que proporcionar una descripcion</value>
+  </data>
+  <data name="lblNoStock.Text" xml:space="preserve">
+    <value>No hay ese  numero de unidades disponible</value>
+  </data>
 </root>

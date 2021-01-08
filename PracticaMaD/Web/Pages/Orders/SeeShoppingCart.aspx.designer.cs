@@ -40,6 +40,15 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders {
         protected global::System.Web.UI.WebControls.GridView gvShoppingCart;
         
         /// <summary>
+        /// Control lblNoStock.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNoStock;
+        
+        /// <summary>
         /// Control lclPrize.
         /// </summary>
         /// <remarks>

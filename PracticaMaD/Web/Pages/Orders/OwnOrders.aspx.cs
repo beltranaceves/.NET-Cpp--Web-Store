@@ -89,7 +89,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
             {
                 String url =
 
-                    "/Pages/Products/ShowProducts.aspx" + "?clientId=" + clientId +
+                   "/Pages/Orders/OwnOrders.aspx" + "?clientId=" + clientId +
                     "&startIndex=" + (startIndex + count) + "&count=" +
                     count;
 

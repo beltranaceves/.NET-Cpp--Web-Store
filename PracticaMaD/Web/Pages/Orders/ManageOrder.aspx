@@ -39,8 +39,6 @@
                     <asp:Localize ID="lclAddress" runat="server" meta:resourcekey="lclAddress"  /></span><span
                         class="entry">
                         <asp:TextBox ID="txtAddress" runat="server" Width="100px" Columns="16" meta:resourcekey="txtAddress" ></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvAddress" runat="server" ControlToValidate="txtAddress"
-                            Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>" meta:resourcekey="rfvAddress" ></asp:RequiredFieldValidator>
                         <asp:CompareValidator ID="cvAddress" runat="server" ControlToValidate="txtAddress" Type="String"
                          Operator="DataTypeCheck" meta:resourcekey="cvAddress"  /></span>
         </div>
@@ -120,8 +118,6 @@
                 </span>
                 <span class="entry">
                     <asp:TextBox ID="txtCreditCardNumber" runat="server" Width="100px" Columns="16" meta:resourcekey="txtCreditCardNumberResource1"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvCreditCardNumber" runat="server" ControlToValidate="txtCreditCardNumber"
-                        Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>" meta:resourcekey="rfvCreditCardNumberResource1"></asp:RequiredFieldValidator>
                     <asp:Label ID="lblCreditCardNumberError" runat="server" ForeColor="Red" Style="position: relative"
                         Visible="False" meta:resourcekey="lblCreditCardNumberErrorResource1"></asp:Label>
                     <asp:Label ID="lblCreditCardNumberFormat" runat="server" ForeColor="Red" Style="position: relative"
@@ -149,8 +145,6 @@
                     <asp:Localize ID="lclCV" runat="server"  meta:resourcekey="lclCV" /></span><span
                         class="entry">
                         <asp:TextBox ID="txtCV" runat="server" Width="100px" Columns="16" meta:resourcekey="txtCVResource1"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvCV" runat="server" ControlToValidate="txtCV"
-                            Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>" meta:resourcekey="rfvCVResource1"></asp:RequiredFieldValidator>
                         <asp:Label ID="lblCVError" runat="server" ForeColor="Red" Style="position: relative"
                             Visible="False" meta:resourcekey="lblCVError"></asp:Label>
                         <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtCV" ID="RegularExpressionValidator3" ValidationExpression="^[\s\S]{3,}$" runat="server" ErrorMessage="It must be 3 characters long"></asp:RegularExpressionValidator>
@@ -217,7 +211,8 @@
           <br />
           <br />
           <br />
-       
+        <asp:Label ID="lblNoStock" runat="server" ForeColor="Red" Style="position: relative"
+                        Visible="False" meta:resourcekey="lblNoStock"></asp:Label>
         
          
             <div class="field">
@@ -225,19 +220,17 @@
                     <asp:Localize ID="lclDescrtiption" runat="server" meta:resourcekey="lclDescrtiption"  /></span><span
                         class="entry">
                         <asp:TextBox ID="txtDescription" runat="server" Width="100px" Columns="16" meta:resourcekey="txtDescription" ></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtDescription"
-                            Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>" meta:resourcekey="rfvDescription" ></asp:RequiredFieldValidator>
                         <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToValidate="txtDescription" Type="String"
-                         Operator="DataTypeCheck" meta:resourcekey="cvDescription"  /></span>
+                         Operator="DataTypeCheck" meta:resourcekey="cvDescription"  />
+                        <asp:Label ID="lblErrorDescrtiption" runat="server" ForeColor="Red" Style="position: relative"
+                        Visible="False" meta:resourcekey="lblErrorDescrtiption"></asp:Label>
+                                                                                                                   </span>
             </div>
         
         
         
         
-        <div class="button">
-                <span>
-                    <asp:Label ID="lblError" Font-Bold="true" ForeColor="Red" runat="server" meta:resourcekey="lblError" /></span>
-       </div>
+       
        
         <br />
             

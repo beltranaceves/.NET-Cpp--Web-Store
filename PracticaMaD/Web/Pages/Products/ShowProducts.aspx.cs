@@ -2,6 +2,7 @@
 using Es.Udc.DotNet.PracticaMad.Model;
 using Es.Udc.DotNet.PracticaMad.Model.DAOs.CategoryDao;
 using Es.Udc.DotNet.PracticaMad.Model.Objetos;
+using Es.Udc.DotNet.PracticaMad.Model.Services.Exceptions;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
@@ -19,6 +20,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
         protected void Page_Load(object sender, EventArgs e)
         {
             int startIndex, count;
+
+            lclNoStock.Visible = false;
 
             lnkPrevious.Visible = false;
             lnkNext.Visible = false;
@@ -155,7 +158,9 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
             }
             if (e.CommandName == "Add")
             {
-                int index = Convert.ToInt32(e.CommandArgument);
+                try
+                {
+                    int index = Convert.ToInt32(e.CommandArgument);
                 GridViewRow row = gvProduct.Rows[index];
 
                 IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
@@ -167,6 +172,13 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
                 shoppingCartService.AddToCart(productId, 1, SessionManager.shoppingCart);
 
                 Response.Redirect(Request.RawUrl.ToString());
+                }
+
+                catch (NotEnoughStockException)
+                {
+                    lclNoStock.Visible = true;
+                }
+
             }
         }
 

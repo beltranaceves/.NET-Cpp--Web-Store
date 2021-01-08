@@ -4,6 +4,7 @@ using Es.Udc.DotNet.PracticaMad.Model.Objetos;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ClientService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.CreditCardService;
+using Es.Udc.DotNet.PracticaMad.Model.Services.Exceptions;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
@@ -43,13 +44,16 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
                     price += SessionManager.shoppingCart.shoppingCartLines.ElementAt(i).totalPrice;
                 }
 
-                
+                if (SessionManager.shoppingCart.shoppingCartLines.Count <= 0)
+
+                    btnPay.Visible = false;
+
+                lblNoStock.Visible = false;
+
                 txtPrizeTotal.Text = ((price)).ToString();
 
 
                 lblClientAddres.Text = SessionManager.FindClientDetails(Context).ClientAddress;
-
-                txtAddress.Text = "Direccion";
 
                 ManageLabels();
 
@@ -57,13 +61,20 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
              
                 LoadGrid2();
 
-     
-              
+                
+
+                
+
+
             }
 
             
 
         }
+
+
+       
+
 
         private void ManageLabels()
         {
@@ -71,10 +82,10 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
             //Inicialmente escondemos los campos de la opcion de 
             //a;adir una nueva direccion o tarjeta, estos se vuelven visibles
             //cuando se hace click en sus botones
-            txtCreditCardNumber.Text = "1111111111111111";
-            txtCV.Text = "111";
-            txtDescription.Text = "Descripcion";
+         
 
+  
+            //rfvDescription.Visible = false;
 
             chBCredit.Visible = false;
             chBDebit.Visible = false;
@@ -100,7 +111,6 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
         protected void gvProductsToPay_RowCreated(object sender, GridViewRowEventArgs e)
         {
-            //e.Row.Cells[3].Visible = false;
         }
 
         protected void gvProductsToPay_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
@@ -110,6 +120,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
         protected void btnAddres_Click(object sender, EventArgs e)
         {
+
+
             txtAddress.Visible = true;
             CloseAddres.Visible = true;
             lclAddress.Visible = true;
@@ -118,6 +130,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
         protected void btnCloseAddres_Click(object sender, EventArgs e)
         {
+
             txtAddress.Visible = false;
             CloseAddres.Visible = false;
             lclAddress.Visible = false;
@@ -125,6 +138,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
         protected void btnCreditCard_Click(object sender, EventArgs e)
         {
+
 
             chBCredit.Visible = true;
             chBDebit.Visible = true;
@@ -141,11 +155,14 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
             ButtonCreditCardClose.Visible = true;
 
             gvCards.Visible = false;
+
         }
 
 
         protected void btnCreditCardClose_Click(object sender, EventArgs e)
         {
+            
+
 
             chBCredit.Visible = false;
             chBDebit.Visible = false;
@@ -169,7 +186,12 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
         protected void btnToPay_Click(object sender, EventArgs e)
         {
-             IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
+
+            
+
+            //rfvDescription.Visible = true;
+
+            IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
 
              IClientOrderService orderService = (IClientOrderService)iocManager.Resolve<IClientOrderService>();
              ICreditCardService creditCardService = (ICreditCardService)iocManager.Resolve<ICreditCardService>();
@@ -180,31 +202,44 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
             string addres = null;
 
+            lblCVError.Visible = false;
+            lblCardTypeError.Visible = false;
+            lblErrorDescrtiption.Visible = false;
 
 
             //Comrpobamos si cogemos la direccion por defecto (dejando addres a null)
             //o si quiere una en concreto
-            if (lclAddress.Visible == true)
-                     addres = txtAddress.Text;
+            if (txtAddress.Text != "")
+            {
+                addres = txtAddress.Text;
+            }
 
+            //Comprobamos si el cliente desea pagar con una tarejata nueva
+            //si no fuese asi el valro de cardId seria null y se cogeria la de por defecto 
+            try
+            {
+                if (txtDescription.Text == "")
+                    throw new Exception("desc");
 
-                 //Comprobamos si el cliente desea pagar con una tarejata nueva
-                 //si no fuese asi el valro de cardId seria null y se cogeria la de por defecto 
-                 if (chBCredit.Visible == true)
+                if (txtCreditCardNumber.Text != "")
                  {
-                    string cardType = null;
+
+                string cardType = null;
 
                     if (chBCredit.Checked)
                          cardType = "Credit";
                      else if (chBDebit.Checked)
                          cardType = "Debit";
-                   
+                    else
+                        throw new Exception("cardType");
 
-                     long cv = long.Parse(txtCV.Text);
+
+                
                      if (txtCV.Text.Count() != 3)
                          throw new Exception("cv");
+                     long cv = long.Parse(txtCV.Text);
 
-                     string date = dropMonth.SelectedItem.Text + "/" + dropYear.SelectedItem.Text;
+                    string date = dropMonth.SelectedItem.Text + "/" + dropYear.SelectedItem.Text;
 
                      var newCard = new CreditCardDetails(txtCreditCardNumber.Text, cardType, cv, date, false, clientId);
 
@@ -220,61 +255,76 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
                     cardId = creditCardService.GetCardFromNumber(card.CardNumber).cardId;
                  }
 
+               
 
+                IShoppingCartService shop = (IShoppingCartService)iocManager.Resolve<IShoppingCartService>();
 
-            IShoppingCartService shop = (IShoppingCartService)iocManager.Resolve<IShoppingCartService>();
+                  orderService.CreateOrder(clientId, cardId, txtDescription.Text, addres, SessionManager.shoppingCart);
 
-            orderService.CreateOrder(clientId, cardId, txtDescription.Text, addres, SessionManager.shoppingCart);
+                   SessionManager.DeleteShoppingCart();
 
-            SessionManager.DeleteShoppingCart();
+                    Server.Transfer(Response.ApplyAppPathModifier("./PurchaseConfirmation.aspx"));
 
-            Server.Transfer(Response.ApplyAppPathModifier("./PurchaseConfirmation.aspx"));
-
-
+            }
+            catch (Exception ex)
+            {
+                if (ex.Message.Equals("cv"))
+                    lblCVError.Visible = true;
+                if (ex.Message.Equals("cardType"))
+                    lblCardTypeError.Visible = true;
+                if (ex.Message.Equals("desc"))
+                    lblErrorDescrtiption.Visible = true;
+            }
 
         }
 
         protected void quantityList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            DropDownList drop = sender as DropDownList;
-
-            int units = Convert.ToInt32(drop.SelectedItem.Text);
-
-            GridViewRow row = drop.NamingContainer as GridViewRow;
-
-            long productId = (long)Convert.ToInt32(row.Cells[0].Text);
-
-            IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
-
-            IShoppingCartService shop = (IShoppingCartService)iocManager.Resolve<IShoppingCartService>();
-
-
-            for (int i = 0; i < SessionManager.shoppingCart.shoppingCartLines.Count; i++)
+            try
             {
-                if (SessionManager.shoppingCart.shoppingCartLines.ElementAt(i).productId == productId)
+                    DropDownList drop = sender as DropDownList;
 
-                    shop.UpdateNumberOfUnits(SessionManager.shoppingCart.shoppingCartLines.ElementAt(i), SessionManager.shoppingCart, units);
+                int units = Convert.ToInt32(drop.SelectedItem.Text);
+
+                GridViewRow row = drop.NamingContainer as GridViewRow;
+
+                long productId = (long)Convert.ToInt32(row.Cells[0].Text);
+
+                IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
+
+                IShoppingCartService shop = (IShoppingCartService)iocManager.Resolve<IShoppingCartService>();
+
+
+                for (int i = 0; i < SessionManager.shoppingCart.shoppingCartLines.Count; i++)
+                {
+                    if (SessionManager.shoppingCart.shoppingCartLines.ElementAt(i).productId == productId)
+
+                        shop.UpdateNumberOfUnits(SessionManager.shoppingCart.shoppingCartLines.ElementAt(i), SessionManager.shoppingCart, units);
+                }
+
+               List<ShoppingCartLine> f = SessionManager.shoppingCart.shoppingCartLines;
+
+               gvShoppingCart.DataSource = f;
+
+               gvShoppingCart.DataBind();
+
+
+                double price = 0;
+                for (int i = 0; i < SessionManager.shoppingCart.shoppingCartLines.Count; i++)
+                {
+
+                    price += SessionManager.shoppingCart.shoppingCartLines.ElementAt(i).price * SessionManager.shoppingCart.shoppingCartLines.ElementAt(i).quantity;
+                }
+           
+                txtPrizeTotal.Text = ((decimal)price).ToString();
+
+           
+                Response.Redirect(Request.RawUrl.ToString());
             }
-
-           List<ShoppingCartLine> f = SessionManager.shoppingCart.shoppingCartLines;
-
-           gvShoppingCart.DataSource = f;
-
-           gvShoppingCart.DataBind();
-
-
-            double price = 0;
-            for (int i = 0; i < SessionManager.shoppingCart.shoppingCartLines.Count; i++)
+            catch (NotEnoughStockException)
             {
-
-                price += SessionManager.shoppingCart.shoppingCartLines.ElementAt(i).price * SessionManager.shoppingCart.shoppingCartLines.ElementAt(i).quantity;
+                lblNoStock.Visible = true;
             }
-           
-            txtPrizeTotal.Text = ((decimal)price).ToString();
-
-           
-            Response.Redirect(Request.RawUrl.ToString());
         }
 
         protected void cbForGift_CheckedChanged(object sender, EventArgs e)
@@ -370,9 +420,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
             gvShoppingCart.DataSource = SessionManager.shoppingCart.shoppingCartLines;
             gvShoppingCart.DataBind();
 
-            if (SessionManager.shoppingCart.shoppingCartLines.Count <= 0)
-
-                btnPay.Visible = false;
+            
 
 
             Response.Redirect(Request.RawUrl.ToString());

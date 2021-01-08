@@ -144,4 +144,7 @@
   <data name="lclPrize.Text" xml:space="preserve">
     <value>Prezo</value>
   </data>
+  <data name="lblNoStock.Text" xml:space="preserve">
+    <value>Non hai  ese numero de unidades dispoñibles</value>
+  </data>
 </root>

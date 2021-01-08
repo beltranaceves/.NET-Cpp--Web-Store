@@ -126,4 +126,7 @@
   <data name="btnAddToCart.Text" xml:space="preserve">
     <value>Engadir o Carrito</value>
   </data>
+  <data name="lclNoStock.Text" xml:space="preserve">
+    <value>Sentimolo,  de ese produto  non quedan unidades</value>
+  </data>
 </root>

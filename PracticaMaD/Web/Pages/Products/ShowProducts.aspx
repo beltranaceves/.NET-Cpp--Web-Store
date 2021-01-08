@@ -22,13 +22,15 @@
                 <asp:BoundField DataField="ProductName" HeaderText="<%$ Resources:Common, productName %>" />
                 <asp:BoundField DataField="RegisterDate" HeaderText="<%$ Resources:Common, productDate %>" />
                 <asp:BoundField DataField="Price" HeaderText="<%$ Resources:Common, prize %>" />
-
                 <asp:ButtonField CommandName="Show" runat="server"  meta:resourcekey="btnShowProduct" />
                 <asp:ButtonField CommandName="Add" runat="server" meta:resourcekey="btnAddToCart" />
             </Columns>
         </asp:GridView>
         <br />
     </form>
+
+     <asp:Label ID="lclNoStock" runat="server" ForeColor="Red" Style="position: relative"
+                        Visible="False" meta:resourcekey="lclNoStock"></asp:Label>
 
     <!-- "Previous" and "Next" links. -->
     <div class="previousNextLinks">

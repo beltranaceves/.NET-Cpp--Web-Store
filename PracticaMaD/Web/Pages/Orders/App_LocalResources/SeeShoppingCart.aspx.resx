@@ -123,6 +123,9 @@
   <data name="forGift" xml:space="preserve">
     <value>For gift</value>
   </data>
+  <data name="lblNoStock.Text" xml:space="preserve">
+    <value>There is not that amoun of units avaliable</value>
+  </data>
   <data name="lblShoppingCartEmpty.Text" xml:space="preserve">
     <value>Your cart is empty</value>
   </data>

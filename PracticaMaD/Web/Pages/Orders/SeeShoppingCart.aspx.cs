@@ -1,5 +1,6 @@
 ﻿using Es.Udc.DotNet.ModelUtil.IoC;
 using Es.Udc.DotNet.PracticaMad.Model.Objetos;
+using Es.Udc.DotNet.PracticaMad.Model.Services.Exceptions;
 using Es.Udc.DotNet.PracticaMad.Model.Services.ShoppingCartService;
 using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
 using System;
@@ -19,6 +20,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
         {
             if (!Page.IsPostBack)
             {
+                lblNoStock.Visible = false;
+
                 f = SessionManager.shoppingCart.shoppingCartLines;
 
                 double price = 0;
@@ -40,32 +43,39 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
         protected void quantityList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DropDownList drop = sender as DropDownList;
-
-            int units = Convert.ToInt32(drop.SelectedItem.Text);
-
-            GridViewRow row = drop.NamingContainer as GridViewRow;
-
-            long productId = (long)Convert.ToInt32(row.Cells[0].Text);
-
-            IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
-
-            IShoppingCartService shop = (IShoppingCartService)iocManager.Resolve<IShoppingCartService>();
-
-            for (int i = 0; i < SessionManager.shoppingCart.shoppingCartLines.Count; i++)
+            try
             {
-                if (SessionManager.shoppingCart.shoppingCartLines.ElementAt(i).productId == productId)
+                DropDownList drop = sender as DropDownList;
 
-                    shop.UpdateNumberOfUnits(SessionManager.shoppingCart.shoppingCartLines.ElementAt(i), SessionManager.shoppingCart, units);
+                int units = Convert.ToInt32(drop.SelectedItem.Text);
+
+                GridViewRow row = drop.NamingContainer as GridViewRow;
+
+                long productId = (long)Convert.ToInt32(row.Cells[0].Text);
+
+                IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
+
+                IShoppingCartService shop = (IShoppingCartService)iocManager.Resolve<IShoppingCartService>();
+
+                for (int i = 0; i < SessionManager.shoppingCart.shoppingCartLines.Count; i++)
+                {
+                    if (SessionManager.shoppingCart.shoppingCartLines.ElementAt(i).productId == productId)
+
+                        shop.UpdateNumberOfUnits(SessionManager.shoppingCart.shoppingCartLines.ElementAt(i), SessionManager.shoppingCart, units);
+                }
+
+                f = SessionManager.shoppingCart.shoppingCartLines;
+
+                gvShoppingCart.DataSource = f;
+
+                gvShoppingCart.DataBind();
+
+                Response.Redirect(Request.RawUrl.ToString());
             }
-
-            f = SessionManager.shoppingCart.shoppingCartLines;
-
-            gvShoppingCart.DataSource = f;
-
-            gvShoppingCart.DataBind();
-
-            Response.Redirect(Request.RawUrl.ToString());
+            catch (NotEnoughStockException)
+            {
+                lblNoStock.Visible = true;
+            }
         }
 
         protected void cbForGift_CheckedChanged(object sender, EventArgs e)

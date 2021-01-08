@@ -56,6 +56,9 @@
         <br />
         <br />
 
+         <asp:Label ID="lblNoStock" runat="server" ForeColor="Red" Style="position: relative"
+                        Visible="False" meta:resourcekey="lblNoStock"></asp:Label>
+
        <div class="button">
                 <span>
                     <asp:Label ID="lclPrize" Font-Bold="true" runat="server" meta:resourcekey="lclPrize" /></span>
