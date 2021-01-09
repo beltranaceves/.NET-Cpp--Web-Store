@@ -12,7 +12,7 @@ using System.Web.UI.WebControls;
 
 namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 {
-    public partial class SeeShoppingCart : System.Web.UI.Page
+    public partial class SeeShoppingCart : SpecificCulturePage
     {
         private List<ShoppingCartLine> f = new List<ShoppingCartLine>();
 

@@ -126,7 +126,6 @@
     <Content Include="Pages\User\Authentication.aspx" />
     <Content Include="Pages\User\ChangePassword.aspx" />
     <Content Include="Pages\User\Logout.aspx" />
-    <Content Include="Pages\User\MyComments.aspx" />
     <Content Include="Pages\User\Register.aspx" />
     <Content Include="Pages\User\UpdateClientDetails.aspx" />
     <Content Include="Web.config" />
@@ -356,13 +355,6 @@
     </Compile>
     <Compile Include="Pages\User\Logout.aspx.designer.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\User\MyComments.aspx.cs">
-      <DependentUpon>MyComments.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\User\MyComments.aspx.designer.cs">
-      <DependentUpon>MyComments.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\User\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>

@@ -234,4 +234,10 @@
   <data name="lblNoCard.Text" xml:space="preserve">
     <value>Por favor engada unha tarxeta para completar o pedido</value>
   </data>
+  <data name="invalidCV" xml:space="preserve">
+    <value>Ten que ter 3 numeros</value>
+  </data>
+  <data name="invallidNumber" xml:space="preserve">
+    <value>Ten que ter 16 numeros</value>
+  </data>
 </root>

@@ -37,7 +37,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.View.ApplicationObjects
             countries_es.Add(new ListItem("Gran Bretaña", "GB"));
 
             countries_en.Add(new ListItem("Spain", "ES"));
-            countries_en.Add(new ListItem("Grat Britain", "GB"));
+            countries_en.Add(new ListItem("Great Britain", "GB"));
             countries_en.Add(new ListItem("United States", "US"));
 
             countries_gl.Add(new ListItem("España", "ES"));

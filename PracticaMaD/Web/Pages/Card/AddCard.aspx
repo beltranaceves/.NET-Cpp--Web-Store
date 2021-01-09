@@ -31,10 +31,10 @@
                         Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>" meta:resourcekey="rfvCreditCardNumberResource1"></asp:RequiredFieldValidator>
                     <asp:Label ID="lblCreditCardNumberError" runat="server" ForeColor="Red" Style="position: relative"
                         Visible="False" meta:resourcekey="lblCreditCardNumberError"></asp:Label>
-                    <asp:Label ID="lblCreditCardNumberFormat" runat="server" ForeColor="Red" Style="position: relative"
+                    <asp:Label ID="lblCreditCardNumberFormat" runat="server" ForeColor="Red" Style="position: relative"                                                         
                         Visible="False" meta:resourcekey="lblCardNumberFormat"></asp:Label>
-                    <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtCreditCardNumber" ID="RegularExpressionValidator1" ValidationExpression="^[\s\S]{16,}$" runat="server" ErrorMessage="It must be 16 characters long"></asp:RegularExpressionValidator>
-                    <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtCreditCardNumber" ID="RegularExpressionValidator2" ValidationExpression="^[\s\S]{0,16}$" runat="server" ErrorMessage="It must be 16 characters long"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtCreditCardNumber" ID="RegularExpressionValidator1" ValidationExpression="^[\s\S]{16,}$" runat="server" ErrorMessage="<%$ resources:invallidNumber %>"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtCreditCardNumber" ID="RegularExpressionValidator2" ValidationExpression="^[\s\S]{0,16}$" runat="server" ErrorMessage="<%$ resources:invallidNumber %>"></asp:RegularExpressionValidator>
                 </span>
             </div>
 
@@ -58,8 +58,8 @@
                             Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>" meta:resourcekey="rfvCVResource1"></asp:RequiredFieldValidator>
                         <asp:Label ID="lblCVError" runat="server" ForeColor="Red" Style="position: relative"
                             Visible="False" meta:resourcekey="lblCVError"></asp:Label>
-                        <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtCV" ID="RegularExpressionValidator3" ValidationExpression="^[\s\S]{3,}$" runat="server" ErrorMessage="It must be 3 characters long"></asp:RegularExpressionValidator>
-                        <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtCV" ID="RegularExpressionValidator4" ValidationExpression="^[\s\S]{0,3}$" runat="server" ErrorMessage="It must be 3 characters long"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtCV" ID="RegularExpressionValidator3" ValidationExpression="^[\s\S]{3,}$" runat="server" ErrorMessage="<%$ resources:invalidCV %>"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtCV" ID="RegularExpressionValidator4" ValidationExpression="^[\s\S]{0,3}$" runat="server" ErrorMessage="<%$ resources:invalidCV %>"></asp:RegularExpressionValidator>
                     </span>
             </div>
 

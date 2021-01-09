@@ -118,9 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="lclKeyword.Text" xml:space="preserve">
-    <value>palabra chave</value>
+    <value>Palabra chave</value>
   </data>
   <data name="btnFind.Text" xml:space="preserve">
     <value>Buscar</value>
+  </data>
+  <data name="lclCategory.Text" xml:space="preserve">
+    <value>Categoria</value>
   </data>
 </root>

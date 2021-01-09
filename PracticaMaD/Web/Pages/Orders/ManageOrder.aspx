@@ -2,9 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder_MenuExplanation" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_MenuLinks" runat="server">
-</asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder_BodyContent" runat="server">
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder_BodyContent" runat="server">
     <br />
     <form runat="server">
         <br />
@@ -99,8 +98,8 @@
                         Visible="False" meta:resourcekey="lblCreditCardNumberErrorResource1"></asp:Label>
                     <asp:Label ID="lblCreditCardNumberFormat" runat="server" ForeColor="Red" Style="position: relative"
                         Visible="False" meta:resourcekey="lblCardNumberFormat"></asp:Label>
-                    <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtCreditCardNumber" ID="RegularExpressionValidator1" ValidationExpression="^[\s\S]{16,}$" runat="server" ErrorMessage="It must be 16 characters long"></asp:RegularExpressionValidator>
-                    <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtCreditCardNumber" ID="RegularExpressionValidator2" ValidationExpression="^[\s\S]{0,16}$" runat="server" ErrorMessage="It must be 16 characters long"></asp:RegularExpressionValidator>
+                     <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtCreditCardNumber" ID="RegularExpressionValidator1" ValidationExpression="^[\s\S]{16,}$" runat="server" ErrorMessage="<%$ resources:invallidNumber %>"></asp:RegularExpressionValidator>
+                    <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtCreditCardNumber" ID="RegularExpressionValidator2" ValidationExpression="^[\s\S]{0,16}$" runat="server" ErrorMessage="<%$ resources:invallidNumber %>"></asp:RegularExpressionValidator>
                 </span>
             </div>
 
@@ -122,8 +121,8 @@
                         <asp:TextBox ID="txtCV" runat="server" Width="100px" Columns="16" meta:resourcekey="txtCVResource1"></asp:TextBox>
                         <asp:Label ID="lblCVError" runat="server" ForeColor="Red" Style="position: relative"
                             Visible="False" meta:resourcekey="lblCVError"></asp:Label>
-                        <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtCV" ID="RegularExpressionValidator3" ValidationExpression="^[\s\S]{3,}$" runat="server" ErrorMessage="It must be 3 characters long"></asp:RegularExpressionValidator>
-                        <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtCV" ID="RegularExpressionValidator4" ValidationExpression="^[\s\S]{0,3}$" runat="server" ErrorMessage="It must be 3 characters long"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtCV" ID="RegularExpressionValidator3" ValidationExpression="^[\s\S]{3,}$" runat="server" ErrorMessage="<%$ resources:invalidCV %>"></asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtCV" ID="RegularExpressionValidator4" ValidationExpression="^[\s\S]{0,3}$" runat="server" ErrorMessage="<%$ resources:invalidCV %>"></asp:RegularExpressionValidator>
                     </span>
             </div>
         </div>

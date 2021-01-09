@@ -156,4 +156,10 @@
   <data name="lblCVError.Text" xml:space="preserve">
     <value>CV invalido</value>
   </data>
+  <data name="invalidCV" xml:space="preserve">
+    <value>CV non valido</value>
+  </data>
+  <data name="invallidNumber" xml:space="preserve">
+    <value>Debe ter 16 numeros</value>
+  </data>
 </root>

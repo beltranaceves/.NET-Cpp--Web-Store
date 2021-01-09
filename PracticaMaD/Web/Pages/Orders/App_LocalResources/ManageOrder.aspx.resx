@@ -234,4 +234,10 @@
   <data name="lblNoCard.Text" xml:space="preserve">
     <value>Please add a card to complete the order</value>
   </data>
+  <data name="invalidCV" xml:space="preserve">
+    <value>It must have 3 numbers</value>
+  </data>
+  <data name="invallidNumber" xml:space="preserve">
+    <value>It must have 16 numbers</value>
+  </data>
 </root>
