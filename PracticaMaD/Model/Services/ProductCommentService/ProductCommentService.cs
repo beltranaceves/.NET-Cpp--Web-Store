@@ -139,6 +139,12 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
         [Transactional]
         public void RemoveComment(long commentId)
         {
+            ProductComment comment = ProductCommentDao.Find(commentId);
+            foreach (Tag t in comment.Tag)
+            {
+                t.timesUsed -= 1;
+                TagDao.Update(t);
+            }
             ProductCommentDao.Remove(commentId);
         }
     }

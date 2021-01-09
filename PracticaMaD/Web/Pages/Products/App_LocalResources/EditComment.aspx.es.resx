@@ -109,4 +109,13 @@
   <data name="btnDelete.Text" xml:space="preserve">
     <value>Eliminar Comentario</value>
   </data>
+  <data name="lclComment.Text" xml:space="preserve">
+    <value>Comentario</value>
+  </data>
+  <data name="lblTagError.Text" xml:space="preserve">
+    <value>Ya Existe Una Etiqueta Con Ese Nombre</value>
+  </data>
+  <data name="lclTag.Text" xml:space="preserve">
+    <value>Nombre de la Etiqueta</value>
+  </data>
 </root>
