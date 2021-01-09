@@ -23,9 +23,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Card
                     string result = i.ToString().Substring(2);
                     dropYear.Items.Add(result);
                 }
-                //lblCreditCardNumberError.Visible = false;
-                //lblCVError.Visible = false;
-                //lblCardTypeError.Visible = false;
+     
             }
         }
 
@@ -119,7 +117,6 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Card
 
         protected void chBdefCard_CheckedChanged(object sender, EventArgs e)
         {
-            /// defCard.Checked = false;
         }
     }
 }

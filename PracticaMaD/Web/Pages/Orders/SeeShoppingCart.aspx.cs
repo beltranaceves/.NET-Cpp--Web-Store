@@ -35,8 +35,6 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
                 txtPrizeTotal.Text = ((price)).ToString();
 
-                //AnhadirDatos();
-
                 LoadGrid2();
             }
         }
@@ -174,9 +172,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
             }
         }
 
-        protected void gvShoppingCart_RowCreated(object sender, EventArgs e)
-        {
-        }
+       
 
         private void LoadGrid2()
         {

@@ -381,14 +381,9 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
         }
 
-        protected void selectPayMent_DataBinding(object sender, EventArgs e)
-        {
-        }
+       
 
-        protected void selectPayMent_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
+ 
 
         protected void gvCards_PageIndexChanging(object sender, EventArgs e)
         {
@@ -400,9 +395,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
             gvCards.DataBind();
         }
 
-        protected void btnCredirCard_Click(object sender, EventArgs e)
-        {
-        }
+        
 
         protected void chBCredit_CheckedChanged(object sender, EventArgs e)
         {
@@ -416,9 +409,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
  
 
-        protected void gvShoppingCart_RowCreated(object sender, EventArgs e)
-        {
-        }
+       
 
         protected void gvShoppingCart_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {

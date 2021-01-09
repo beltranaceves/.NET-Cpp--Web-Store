@@ -18,7 +18,6 @@
 
         <asp:GridView ID="gvShoppingCart" runat="server" CssClass="shoppingCart"
             AutoGenerateColumns="False"
-            OnRowCreated="gvShoppingCart_RowCreated"
             OnSelectedIndexChanging="gvShoppingCart_SelectedIndexChanging"
             OnRowDataBound="gvShoppingCart_RowDataBound"
             ShowHeaderWhenEmpty="True" meta:resourcekey="gvShoppingCartResource2">
