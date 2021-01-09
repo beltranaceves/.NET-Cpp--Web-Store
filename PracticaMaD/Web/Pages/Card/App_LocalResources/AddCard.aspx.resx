@@ -147,7 +147,13 @@
   <data name="lclSuccess.Text" xml:space="preserve">
     <value>Card added succesfully</value>
   </data>
-  <data name="lblRepeted.Text" xml:space="preserve">
+  <data name="lblCreditCardNumberError.Text" xml:space="preserve">
     <value>That card is already added</value>
+  </data>
+  <data name="lblCardTypeError.Text" xml:space="preserve">
+    <value>You need to select a type</value>
+  </data>
+  <data name="lblCVError.Text" xml:space="preserve">
+    <value>Invalid CV</value>
   </data>
 </root>

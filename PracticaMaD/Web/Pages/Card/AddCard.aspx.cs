@@ -23,7 +23,9 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Card
                     string result = i.ToString().Substring(2);
                     dropYear.Items.Add(result);
                 }
-                lblRepeted.Visible = false;
+                //lblCreditCardNumberError.Visible = false;
+                //lblCVError.Visible = false;
+                //lblCardTypeError.Visible = false;
             }
         }
 
@@ -31,39 +33,50 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Card
         {
             if (Page.IsValid)
             {
+                lblCreditCardNumberError.Visible = false;
+                lblCVError.Visible = false;
+                lblCardTypeError.Visible = false;
+
                 try
                 {
-                        if (txtCreditCardNumber.Text.Count() == 16)
+                    if (txtCreditCardNumber.Text.Count() == 16)
                     {
-                        long clientId = Convert.ToInt32(Request.Params.Get("clientId"));
-                        string creditCardNumber = txtCreditCardNumber.Text.ToString();
-                        string cardType;
-                        bool defC;
+                        try
+                        {
 
-                        if (chBCredit.Checked)
-                            cardType = "Credit";
-                        else if (chBDebit.Checked)
-                            cardType = "Debit";
-                        else
-                            throw new Exception("cardType");
+                            long clientId = Convert.ToInt32(Request.Params.Get("clientId"));
+                            string creditCardNumber = txtCreditCardNumber.Text.ToString();
+                            string cardType;
+                            bool defC;
 
-                        long cv = long.Parse(txtCV.Text);
-                        if (txtCV.Text.Count() != 3)
-                            throw new Exception("cv");
+                            if (chBCredit.Checked)
+                                cardType = "Credit";
+                            else if (chBDebit.Checked)
+                                cardType = "Debit";
+                            else
+                                throw new Exception("cardType");
 
-                        string date = dropMonth.SelectedItem.Text + "/" + dropYear.SelectedItem.Text;
+                            long cv = long.Parse(txtCV.Text);
+                            if (txtCV.Text.Count() != 3)
+                                throw new Exception("cv");
 
-                        if (defCard.Checked == true)
-                            defC = true;
-                        else
-                            defC = false;
+                            string date = dropMonth.SelectedItem.Text + "/" + dropYear.SelectedItem.Text;
 
-                        CreditCardDetails newCard = new CreditCardDetails(creditCardNumber, cardType, cv, date, defC, clientId);
+                            if (defCard.Checked == true)
+                                defC = true;
+                            else
+                                defC = false;
 
-                        SessionManager.AddCard(Context, newCard);
+                            CreditCardDetails newCard = new CreditCardDetails(creditCardNumber, cardType, cv, date, defC, clientId);
 
-                        Server.Transfer(Response.ApplyAppPathModifier("./CardSuccesfulyAdded.aspx"));
+                            SessionManager.AddCard(Context, newCard);
 
+                            Server.Transfer(Response.ApplyAppPathModifier("./CardSuccesfulyAdded.aspx"));
+                        }
+                        catch (DuplicateInstanceException)
+                        {
+                            lblCreditCardNumberError.Visible = true;
+                        }
 
                     }
                     else
@@ -71,10 +84,18 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Card
                         lblCreditCardNumberFormat.Visible = true;
                     }
                 }
-                catch (DuplicateInstanceException)
+              
+     
+                catch (Exception ex)
                 {
-                    lblRepeted.Visible = true;
+                    if (ex.Message.Equals("cv"))
+                        lblCVError.Visible = true;
+                    if (ex.Message.Equals("cardType"))
+                        lblCardTypeError.Visible = true;
                 }
+                
+
+
             }
         }
 

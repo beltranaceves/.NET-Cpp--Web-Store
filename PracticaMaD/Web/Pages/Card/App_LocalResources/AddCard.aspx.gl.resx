@@ -147,7 +147,13 @@
   <data name="lclSuccess.Text" xml:space="preserve">
     <value>Tarxeta engadida correctamente</value>
   </data>
-  <data name="lblRepeted.Text" xml:space="preserve">
+  <data name="lblCreditCardNumberError.Text" xml:space="preserve">
     <value>Esa tarxeta xa esta engadida</value>
+  </data>
+  <data name="lblCardTypeError.Text" xml:space="preserve">
+    <value>Necesita selecionar un tipo</value>
+  </data>
+  <data name="lblCVError.Text" xml:space="preserve">
+    <value>CV invalido</value>
   </data>
 </root>

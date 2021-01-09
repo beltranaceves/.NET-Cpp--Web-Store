@@ -231,4 +231,7 @@
   <data name="lblRepeted.Text" xml:space="preserve">
     <value>That card is already added</value>
   </data>
+  <data name="lblNoCard.Text" xml:space="preserve">
+    <value>Please add a card to complete the order</value>
+  </data>
 </root>

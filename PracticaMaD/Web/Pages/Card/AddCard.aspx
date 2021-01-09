@@ -30,7 +30,7 @@
                     <asp:RequiredFieldValidator ID="rfvCreditCardNumber" runat="server" ControlToValidate="txtCreditCardNumber"
                         Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>" meta:resourcekey="rfvCreditCardNumberResource1"></asp:RequiredFieldValidator>
                     <asp:Label ID="lblCreditCardNumberError" runat="server" ForeColor="Red" Style="position: relative"
-                        Visible="False" meta:resourcekey="lblCreditCardNumberErrorResource1"></asp:Label>
+                        Visible="False" meta:resourcekey="lblCreditCardNumberError"></asp:Label>
                     <asp:Label ID="lblCreditCardNumberFormat" runat="server" ForeColor="Red" Style="position: relative"
                         Visible="False" meta:resourcekey="lblCardNumberFormat"></asp:Label>
                     <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtCreditCardNumber" ID="RegularExpressionValidator1" ValidationExpression="^[\s\S]{16,}$" runat="server" ErrorMessage="It must be 16 characters long"></asp:RegularExpressionValidator>
@@ -74,8 +74,6 @@
                 </span>
             </div>
 
-               <asp:Label ID="lblRepeted" runat="server" ForeColor="Red" Style="position: relative"
-                        Visible="False" meta:resourcekey="lblRepeted"></asp:Label>
 
             <div class="button">
                 <asp:Button ID="btnAddCard" runat="server" OnClick="btnAddCard_Click" meta:resourcekey="btnAddCard" />

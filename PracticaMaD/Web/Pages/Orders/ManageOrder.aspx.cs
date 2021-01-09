@@ -210,6 +210,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
             lblCardTypeError.Visible = false;
             lblErrorDescrtiption.Visible = false;
             lblRepeted.Visible = false;
+            lblNoCard.Visible = false;
 
             //Comrpobamos si cogemos la direccion por defecto (dejando addres a null)
             //o si quiere una en concreto
@@ -260,12 +261,18 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
                 }
 
                 else
-                 {
-                    CreditCardDetails card = creditCardService.GetClientDefaultCard(clientId);
-                    cardId = creditCardService.GetCardFromNumber(card.CardNumber).cardId;
-                 }
+                    try
+                    {
+                        {
+                            CreditCardDetails card = creditCardService.GetClientDefaultCard(clientId);
+                            cardId = creditCardService.GetCardFromNumber(card.CardNumber).cardId;
+                        }
+                    }
+                    catch (InstanceNotFoundException)
+                    {
+                        lblNoCard.Visible = true;
+                    }
 
-               
 
                 IShoppingCartService shop = (IShoppingCartService)iocManager.Resolve<IShoppingCartService>();
 
@@ -285,6 +292,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
                 if (ex.Message.Equals("desc"))
                     lblErrorDescrtiption.Visible = true;
             }
+            
 
         }
 

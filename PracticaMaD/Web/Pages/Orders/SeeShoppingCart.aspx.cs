@@ -114,11 +114,12 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
         {
             bool val1 = (System.Web.HttpContext.Current.User != null) && HttpContext.Current.User.Identity.IsAuthenticated;
 
-            if (val1 ==true)
-                Response.Redirect("~/Pages/Orders/ManageOrder.aspx");
+            if (val1 == true)
+                Server.Transfer(Response.ApplyAppPathModifier("~/Pages/Orders/ManageOrder.aspx"));
+
 
             else
-                Response.Redirect("~/Pages/User/Authentication.aspx");
+                Server.Transfer(Response.ApplyAppPathModifier("~/Pages/User/Authentication.aspx"));
         }
 
         protected void gvShoppingCart_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)

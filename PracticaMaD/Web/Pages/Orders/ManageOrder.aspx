@@ -189,6 +189,9 @@
         <asp:Label ID="lblRepeted" runat="server" ForeColor="Red" Style="position: relative"
             Visible="False" meta:resourcekey="lblRepeted"></asp:Label>
 
+        <asp:Label ID="lblNoCard" runat="server" ForeColor="Red" Style="position: relative"
+            Visible="False" meta:resourcekey="lblNoCard"></asp:Label>
+
         <div class="field">
             <span class="label">
                 <asp:Localize ID="lclDescrtiption" runat="server" meta:resourcekey="lclDescrtiption" /></span><span
