@@ -103,7 +103,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web
                         String url =
                                     String.Format("~/Pages/Products/ShowProductsTag.aspx?tag=" + Tag3.Text);
                         Tag3.NavigateUrl = url;
-                        int tamaño = tags.ElementAt(3).timesUsed;
+                        int tamaño = tags.ElementAt(2).timesUsed;
                         if (tamaño > 50)
                         {
                             tamaño = 50;

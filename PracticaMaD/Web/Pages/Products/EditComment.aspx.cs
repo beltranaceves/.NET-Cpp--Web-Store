@@ -45,6 +45,9 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
             IProductCommentService productCommentService = (IProductCommentService)iocManager.Resolve<IProductCommentService>();
 
             productCommentService.RemoveComment(prodDetails.CommentId);
+
+            Server.Transfer(
+                   Response.ApplyAppPathModifier("./CommentDeleted.aspx"));
         }
 
         protected void BtnUpdateClick(object sender, EventArgs e)

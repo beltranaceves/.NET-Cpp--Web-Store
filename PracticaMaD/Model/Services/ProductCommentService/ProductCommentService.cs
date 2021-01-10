@@ -144,7 +144,10 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductCommentService
             {
                 t.timesUsed -= 1;
                 TagDao.Update(t);
+                t.ProductComment.Remove(comment);
             }
+            comment.Tag = new List<Tag>();
+            ProductCommentDao.Update(comment);
             ProductCommentDao.Remove(commentId);
         }
     }
