@@ -499,11 +499,13 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
 
         internal static void DeleteShoppingCart()
         {
-            for (int i = 0; i<SessionManager.shoppingCart.shoppingCartLines.Count; i++)
+            do
             {
-              
-                 shoppingCartService.RemoveFromCart(SessionManager.shoppingCart.shoppingCartLines.ElementAt(i), SessionManager.shoppingCart);
-            }
+                int i = SessionManager.shoppingCart.shoppingCartLines.Count -1;
+                shoppingCartService.RemoveFromCart(SessionManager.shoppingCart.shoppingCartLines.ElementAt(i), SessionManager.shoppingCart);
+           
+            } while (SessionManager.shoppingCart.shoppingCartLines.Count != 0);
+            
 
         }
 

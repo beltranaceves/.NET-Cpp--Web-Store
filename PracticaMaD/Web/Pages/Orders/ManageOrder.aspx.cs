@@ -276,11 +276,12 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
                 IShoppingCartService shop = (IShoppingCartService)iocManager.Resolve<IShoppingCartService>();
 
-                  orderService.CreateOrder(clientId, cardId, txtDescription.Text, addres, SessionManager.shoppingCart);
+                orderService.CreateOrder(clientId, cardId, txtDescription.Text, addres, SessionManager.shoppingCart);
 
-                   SessionManager.DeleteShoppingCart();
+            SessionManager.DeleteShoppingCart();
 
-                    Server.Transfer(Response.ApplyAppPathModifier("./PurchaseConfirmation.aspx"));
+
+            Response.Redirect(Response.ApplyAppPathModifier("./PurchaseConfirmation.aspx"));
 
             }
             catch (Exception ex)
