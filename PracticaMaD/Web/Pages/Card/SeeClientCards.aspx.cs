@@ -69,21 +69,5 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Card
 
             LoadGrid();
         }
-
-        protected void gvAllCards_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
-        {
-            GridViewRow row = gvCardList.Rows[e.NewSelectedIndex];
-            long cardId = Convert.ToInt64(row.Cells[0].Text);
-
-            IIoCManager iocManager = (IIoCManager)HttpContext.Current.Application["managerIoC"];
-
-            ICreditCardService cardService = (ICreditCardService)iocManager.Resolve<ICreditCardService>();
-
-            CreditCard card = cardService.GetCardFromNumber(row.Cells[0].Text);
-
-            cardService.removeCard(card.cardId);
-            
-            Response.Redirect(Request.RawUrl.ToString());
-        }
     }
 }

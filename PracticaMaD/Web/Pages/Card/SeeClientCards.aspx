@@ -12,7 +12,6 @@
 
         <asp:GridView ID="gvCardList" runat="server" GridLines="None"
             AutoGenerateColumns="False"
-            OnSelectedIndexChanging="gvAllCards_SelectedIndexChanging"
             ShowHeaderWhenEmpty="True">
             <Columns>
                 <asp:BoundField DataField="cardnumber" HeaderText="<%$ Resources:, cardnumber %>" />
@@ -25,7 +24,6 @@
                         <asp:CheckBox ID="changeDefaultCard" AutoPostBack="true" OnDataBinding="ChangeDefaultCard_DataBinding" runat="server" OnCheckedChanged="ChangeDefaultCard_CheckedChanged" />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:CommandField ShowSelectButton="true" SelectText="deleteCard" />
             </Columns>
         </asp:GridView>
     </form>
