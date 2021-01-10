@@ -13,7 +13,7 @@
                 <span class="label">
                     <asp:Localize ID="lclComment" runat="server" meta:resourcekey="lclComment" /></span><span class="entry">
                         <asp:TextBox ID="txtComment" runat="server" Width="100" Columns="16"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvComment" runat="server"
+                        <asp:RequiredFieldValidator ID="rfvComment" runat="server" ValidationGroup="ValidateUpdate"
                             ControlToValidate="txtComment" Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>" /></span>
             </div>
 
@@ -38,14 +38,13 @@
                         <asp:Localize ID="lclTag" runat="server" meta:resourcekey="lclTag" />
                     </span><span class="entry">
 
-                        <asp:TextBox ID="txtTag" runat="server" ValidationGroup="ValidateAddTag" Width="200px" Columns="16" />
-                        <asp:RequiredFieldValidator ID="rfvTag" runat="server" ControlToValidate="txtTag"
-                        Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>" meta:resourcekey="rfvTag"></asp:RequiredFieldValidator>
+                        <asp:TextBox ID="txtTag" runat="server" Width="200px" Columns="16" />
+                        <asp:RequiredFieldValidator ID="rfvTag" runat="server" ControlToValidate="txtTag" ValidationGroup="ValidateAddTag"
+                            Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>" meta:resourcekey="rfvTag"></asp:RequiredFieldValidator>
                         <asp:Label ID="lblTagError" runat="server" ForeColor="Red" Style="position: relative"
                             Visible="False" meta:resourcekey="lblTagError">
                         </asp:Label>
                         <asp:RegularExpressionValidator Display="Dynamic" ControlToValidate="txtTag" ID="RegularExpressionValidator3" ValidationExpression="^[\s\S]{3,}$" runat="server" ErrorMessage="<%$ resources:invalidCV %>"></asp:RegularExpressionValidator>
-
                     </span>
                 </div>
                 <div class="button">
@@ -54,11 +53,11 @@
             </div>
 
             <div class="button">
-                <asp:Button ID="btnUpdate" runat="server" OnClick="BtnUpdateClick" meta:resourcekey="btnUpdate" />
+                <asp:Button ID="btnUpdate" runat="server" OnClick="BtnUpdateClick" ValidationGroup="ValidateUpdate" meta:resourcekey="btnUpdate" />
             </div>
 
             <div class="button">
-                <asp:Button ID="btnDelete" runat="server" OnClick="BtnDeleteClick" meta:resourcekey="btnDelete" />
+                <asp:Button ID="btnDelete" runat="server" OnClick="BtnDeleteClick" ValidationGroup="ValidatDelte" meta:resourcekey="btnDelete" />
             </div>
         </form>
     </div>

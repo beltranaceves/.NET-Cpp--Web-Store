@@ -15,8 +15,8 @@
             <div class="field">
                 <span class="label">
                     <asp:Localize ID="lclComment" runat="server" meta:resourcekey="lclComment" /></span><span class="entry">
-                        <asp:TextBox ID="txtComment" runat="server" ValidationGroup="ValidateAddComment" Width="100" Columns="16"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="rfvComment" runat="server"
+                        <asp:TextBox ID="txtComment" runat="server" Width="100" Columns="16"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="rfvComment" runat="server" ValidationGroup="ValidateAddComment"
                             ControlToValidate="txtComment" Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>" /></span>
             </div>
             <br />
@@ -30,7 +30,7 @@
                         <asp:BoundField DataField="TagName" HeaderText="<%$ Resources:, TagName %>" />
                         <asp:TemplateField>
                             <ItemTemplate>
-                                <asp:CheckBox ID="addTag" runat="server" />
+                                <asp:CheckBox ID="addTag" ValidationGroup="ValidateAddTag" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
                     </Columns>
@@ -42,6 +42,8 @@
                     </span><span class="entry">
 
                         <asp:TextBox ID="txtTag" runat="server" ValidationGroup="ValidateAddTag" Width="200px" Columns="16" />
+                        <asp:RequiredFieldValidator ID="rfvTag" runat="server" ControlToValidate="txtTag" ValidationGroup="ValidateAddTag"
+                            Display="Dynamic" Text="<%$ Resources:Common, mandatoryField %>" meta:resourcekey="rfvTag"></asp:RequiredFieldValidator>
                         <asp:Label ID="lblTagError" runat="server" ForeColor="Red" Style="position: relative"
                             Visible="False" meta:resourcekey="lblTagError">
                         </asp:Label>
