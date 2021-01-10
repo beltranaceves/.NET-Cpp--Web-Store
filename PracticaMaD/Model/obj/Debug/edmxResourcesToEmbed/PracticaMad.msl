@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="practicaMADModelStoreContainer" CdmEntityContainer="practicaMADEntities2">
+  <EntityContainerMapping StorageEntityContainer="practicaMADModelStoreContainer" CdmEntityContainer="practicaMADEntities3">
     <EntitySetMapping Name="Category">
       <EntityTypeMapping TypeName="practicaMADModel.Category">
         <MappingFragment StoreEntitySet="Category">
@@ -77,21 +77,21 @@
           <ScalarProperty Name="productName" ColumnName="productName" />
         </MappingFragment>
       </EntityTypeMapping>
-      <EntityTypeMapping TypeName="IsTypeOf(practicaMADModel.Books)">
-        <MappingFragment StoreEntitySet="Books">
-          <ScalarProperty Name="editorial" ColumnName="editorial" />
-          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
-          <ScalarProperty Name="pages" ColumnName="pages" />
-          <ScalarProperty Name="author" ColumnName="author" />
-          <ScalarProperty Name="productId" ColumnName="productId" />
-        </MappingFragment>
-      </EntityTypeMapping>
       <EntityTypeMapping TypeName="IsTypeOf(practicaMADModel.Films)">
         <MappingFragment StoreEntitySet="Films">
           <ScalarProperty Name="genere" ColumnName="genere" />
           <ScalarProperty Name="duration" ColumnName="duration" />
           <ScalarProperty Name="filmYear" ColumnName="filmYear" />
           <ScalarProperty Name="director" ColumnName="director" />
+          <ScalarProperty Name="productId" ColumnName="productId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(practicaMADModel.Books)">
+        <MappingFragment StoreEntitySet="Books">
+          <ScalarProperty Name="editorial" ColumnName="editorial" />
+          <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+          <ScalarProperty Name="pages" ColumnName="pages" />
+          <ScalarProperty Name="author" ColumnName="author" />
           <ScalarProperty Name="productId" ColumnName="productId" />
         </MappingFragment>
       </EntityTypeMapping>

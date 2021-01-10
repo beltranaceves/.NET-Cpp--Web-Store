@@ -212,7 +212,7 @@
     <End Role="ProductComment" Type="Self.ProductComment" Multiplicity="*" />
     <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
   </Association>
-  <EntityContainer Name="practicaMADEntities2" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="practicaMADEntities3" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Category" EntityType="Self.Category" />
     <EntitySet Name="Client" EntityType="Self.Client" />
     <EntitySet Name="ClientOrder" EntityType="Self.ClientOrder" />

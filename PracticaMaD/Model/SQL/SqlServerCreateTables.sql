@@ -200,8 +200,8 @@ PRINT N'Table Comment created.'
 GO
 
 CREATE TABLE ProductCommentTag (
-	commentId BIGINT NOT NULL,
-	tagId BIGINT NOT NULL,
+	commentId BIGINT,
+	tagId BIGINT,
 
 	CONSTRAINT [PK_ProductCommentTag] PRIMARY KEY (commentId, tagId),
 	CONSTRAINT [FK_ProductCommentTag_ProductComment] FOREIGN KEY (commentId) REFERENCES ProductComment (commentId),
