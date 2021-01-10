@@ -205,6 +205,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
             string addres = null;
 
+            CreditCard c = new CreditCard();
+
 
             lblCVError.Visible = false;
             lblCardTypeError.Visible = false;
@@ -252,7 +254,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
                          SessionManager.AddCard(Context, newCard);
 
-                         cardId = creditCardService.GetCardFromNumber(txtCreditCardNumber.Text).cardId;
+                          c  = creditCardService.GetCardFromNumber(txtCreditCardNumber.Text);
                     }
                     catch (DuplicateInstanceException)
                     {
@@ -265,7 +267,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
                     {
                         {
                             CreditCardDetails card = creditCardService.GetClientDefaultCard(clientId);
-                            cardId = creditCardService.GetCardFromNumber(card.CardNumber).cardId;
+                            c = creditCardService.GetCardFromNumber(card.CardNumber);
                         }
                     }
                     catch (InstanceNotFoundException)
@@ -276,9 +278,9 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Orders
 
                 IShoppingCartService shop = (IShoppingCartService)iocManager.Resolve<IShoppingCartService>();
 
-                orderService.CreateOrder(clientId, cardId, txtDescription.Text, addres, SessionManager.shoppingCart);
+                orderService.CreateOrder(clientId, c.cardNumber , txtDescription.Text, addres, SessionManager.shoppingCart);
 
-            SessionManager.DeleteShoppingCart();
+               SessionManager.DeleteShoppingCart();
 
 
             Response.Redirect(Response.ApplyAppPathModifier("./PurchaseConfirmation.aspx"));

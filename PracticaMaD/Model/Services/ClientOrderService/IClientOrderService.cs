@@ -38,6 +38,6 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService
         ClientOrderDetails FindOrder(long orderId);
 
         [Transactional]
-        long CreateOrder(long clientId, long? cardId, string orderName, string clientOrderAddress, ShoppingCart shoppingCart);
+        long CreateOrder(long clientId, string cardNumber, string orderName, string clientOrderAddress, ShoppingCart shoppingCart);
     }
 }

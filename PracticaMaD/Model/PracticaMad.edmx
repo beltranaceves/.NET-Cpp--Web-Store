@@ -45,7 +45,7 @@
           <Property Name="orderId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="orderDate" Type="datetime" Nullable="false" />
           <Property Name="orderName" Type="varchar" MaxLength="60" Nullable="false" />
-          <Property Name="creditCardId" Type="bigint" />
+          <Property Name="creditCardNumber" Type="varchar" MaxLength="16" Nullable="false" />
           <Property Name="clientOrderAddress" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="totalPrize" Type="float" Nullable="false" />
           <Property Name="clientId" Type="bigint" />
@@ -152,18 +152,6 @@
             </Principal>
             <Dependent Role="ClientOrder">
               <PropertyRef Name="clientId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ClientOrder_CreditCard">
-          <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="0..1" />
-          <End Role="ClientOrder" Type="Self.ClientOrder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CreditCard">
-              <PropertyRef Name="cardId" />
-            </Principal>
-            <Dependent Role="ClientOrder">
-              <PropertyRef Name="creditCardId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -310,10 +298,6 @@
             <End Role="Client" EntitySet="Client" />
             <End Role="ClientOrder" EntitySet="ClientOrder" />
           </AssociationSet>
-          <AssociationSet Name="FK_ClientOrder_CreditCard" Association="Self.FK_ClientOrder_CreditCard">
-            <End Role="CreditCard" EntitySet="CreditCard" />
-            <End Role="ClientOrder" EntitySet="ClientOrder" />
-          </AssociationSet>
           <AssociationSet Name="FK_ClientOrderLine_ClientOrder" Association="Self.FK_ClientOrderLine_ClientOrder">
             <End Role="ClientOrder" EntitySet="ClientOrder" />
             <End Role="ClientOrderLine" EntitySet="ClientOrderLine" />
@@ -400,12 +384,11 @@
           <Property Name="orderId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="orderDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="orderName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="creditCardId" Type="Int64" />
+          <Property Name="creditCardNumber" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="clientOrderAddress" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="totalPrize" Type="Double" Nullable="false" />
           <Property Name="clientId" Type="Int64" />
           <NavigationProperty Name="Client" Relationship="Self.FK_ClientOrder_Client" FromRole="ClientOrder" ToRole="Client" />
-          <NavigationProperty Name="CreditCard" Relationship="Self.FK_ClientOrder_CreditCard" FromRole="ClientOrder" ToRole="CreditCard" />
           <NavigationProperty Name="ClientOrderLine" Relationship="Self.FK_ClientOrderLine_ClientOrder" FromRole="ClientOrder" ToRole="ClientOrderLine" />
         </EntityType>
         <EntityType Name="ClientOrderLine">
@@ -435,7 +418,6 @@
           <Property Name="defaultCard" Type="Boolean" Nullable="false" />
           <Property Name="clientId" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Client" Relationship="Self.FK_CreditCard_Client" FromRole="CreditCard" ToRole="Client" />
-          <NavigationProperty Name="ClientOrder" Relationship="Self.FK_ClientOrder_CreditCard" FromRole="CreditCard" ToRole="ClientOrder" />
         </EntityType>
         <EntityType Name="Films" BaseType="practicaMADModel.Product">
           <Property Name="director" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
@@ -534,18 +516,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ClientOrder_CreditCard">
-          <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="0..1" />
-          <End Role="ClientOrder" Type="Self.ClientOrder" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="CreditCard">
-              <PropertyRef Name="cardId" />
-            </Principal>
-            <Dependent Role="ClientOrder">
-              <PropertyRef Name="creditCardId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_ClientOrderLine_ClientOrder">
           <End Role="ClientOrder" Type="Self.ClientOrder" Multiplicity="1" />
           <End Role="ClientOrderLine" Type="Self.ClientOrderLine" Multiplicity="*" />
@@ -586,7 +556,7 @@
           <End Role="ProductComment" Type="Self.ProductComment" Multiplicity="*" />
           <End Role="Tag" Type="Self.Tag" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="practicaMADEntities5" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="practicaMADEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Category" EntityType="Self.Category" />
           <EntitySet Name="Client" EntityType="Self.Client" />
           <EntitySet Name="ClientOrder" EntityType="Self.ClientOrder" />
@@ -611,10 +581,6 @@
             <End Role="Client" EntitySet="Client" />
             <End Role="CreditCard" EntitySet="CreditCard" />
           </AssociationSet>
-          <AssociationSet Name="FK_ClientOrder_CreditCard" Association="Self.FK_ClientOrder_CreditCard">
-            <End Role="CreditCard" EntitySet="CreditCard" />
-            <End Role="ClientOrder" EntitySet="ClientOrder" />
-          </AssociationSet>
           <AssociationSet Name="FK_ClientOrderLine_ClientOrder" Association="Self.FK_ClientOrderLine_ClientOrder">
             <End Role="ClientOrder" EntitySet="ClientOrder" />
             <End Role="ClientOrderLine" EntitySet="ClientOrderLine" />
@@ -637,7 +603,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="practicaMADModelStoreContainer" CdmEntityContainer="practicaMADEntities5">
+        <EntityContainerMapping StorageEntityContainer="practicaMADModelStoreContainer" CdmEntityContainer="practicaMADEntities2">
           <EntitySetMapping Name="Category">
             <EntityTypeMapping TypeName="practicaMADModel.Category">
               <MappingFragment StoreEntitySet="Category">
@@ -669,7 +635,7 @@
                 <ScalarProperty Name="orderId" ColumnName="orderId" />
                 <ScalarProperty Name="orderDate" ColumnName="orderDate" />
                 <ScalarProperty Name="orderName" ColumnName="orderName" />
-                <ScalarProperty Name="creditCardId" ColumnName="creditCardId" />
+                <ScalarProperty Name="creditCardNumber" ColumnName="creditCardNumber" />
                 <ScalarProperty Name="clientOrderAddress" ColumnName="clientOrderAddress" />
                 <ScalarProperty Name="totalPrize" ColumnName="totalPrize" />
                 <ScalarProperty Name="clientId" ColumnName="clientId" />
@@ -714,11 +680,12 @@
                 <ScalarProperty Name="productName" ColumnName="productName" />
               </MappingFragment>
             </EntityTypeMapping>
-            <EntityTypeMapping TypeName="IsTypeOf(practicaMADModel.Music)">
-              <MappingFragment StoreEntitySet="Music">
-                <ScalarProperty Name="type" ColumnName="type" />
-                <ScalarProperty Name="genere" ColumnName="genere" />
-                <ScalarProperty Name="artist" ColumnName="artist" />
+            <EntityTypeMapping TypeName="IsTypeOf(practicaMADModel.Books)">
+              <MappingFragment StoreEntitySet="Books">
+                <ScalarProperty Name="editorial" ColumnName="editorial" />
+                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
+                <ScalarProperty Name="pages" ColumnName="pages" />
+                <ScalarProperty Name="author" ColumnName="author" />
                 <ScalarProperty Name="productId" ColumnName="productId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -731,12 +698,11 @@
                 <ScalarProperty Name="productId" ColumnName="productId" />
               </MappingFragment>
             </EntityTypeMapping>
-            <EntityTypeMapping TypeName="IsTypeOf(practicaMADModel.Books)">
-              <MappingFragment StoreEntitySet="Books">
-                <ScalarProperty Name="editorial" ColumnName="editorial" />
-                <ScalarProperty Name="ISBN" ColumnName="ISBN" />
-                <ScalarProperty Name="pages" ColumnName="pages" />
-                <ScalarProperty Name="author" ColumnName="author" />
+            <EntityTypeMapping TypeName="IsTypeOf(practicaMADModel.Music)">
+              <MappingFragment StoreEntitySet="Music">
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="genere" ColumnName="genere" />
+                <ScalarProperty Name="artist" ColumnName="artist" />
                 <ScalarProperty Name="productId" ColumnName="productId" />
               </MappingFragment>
             </EntityTypeMapping>

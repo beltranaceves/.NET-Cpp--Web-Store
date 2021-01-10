@@ -33,7 +33,7 @@ public partial class ClientOrder
 
     public string orderName { get; set; }
 
-    public Nullable<long> creditCardId { get; set; }
+    public string creditCardNumber { get; set; }
 
     public string clientOrderAddress { get; set; }
 
@@ -48,12 +48,6 @@ public partial class ClientOrder
     /// Relationship Name (Foreign Key in ER-Model): FK_ClientOrder_Client
     /// </summary>
     public virtual Client Client { get; set; }
-
-    
-    /// <summary>
-    /// Relationship Name (Foreign Key in ER-Model): FK_ClientOrder_CreditCard
-    /// </summary>
-    public virtual CreditCard CreditCard { get; set; }
 
     
     /// <summary>
@@ -83,7 +77,7 @@ public partial class ClientOrder
 
 			hash = hash * multiplier + (orderName == null ? 0 : orderName.GetHashCode());
 
-			hash = hash * multiplier + (creditCardId == null ? 0 : creditCardId.GetHashCode());
+			hash = hash * multiplier + (creditCardNumber == null ? 0 : creditCardNumber.GetHashCode());
 
 			hash = hash * multiplier + (clientOrderAddress == null ? 0 : clientOrderAddress.GetHashCode());
 
@@ -115,7 +109,7 @@ public partial class ClientOrder
            &&  (this.orderId == target.orderId )       
            &&  (this.orderDate == target.orderDate )       
            &&  (this.orderName == target.orderName )       
-           &&  (this.creditCardId == target.creditCardId )       
+           &&  (this.creditCardNumber == target.creditCardNumber )       
            &&  (this.clientOrderAddress == target.clientOrderAddress )       
            &&  (this.totalPrize == target.totalPrize )       
            &&  (this.clientId == target.clientId )       
@@ -159,7 +153,7 @@ public partial class ClientOrder
        strClientOrder.Append(" orderId = " + orderId + " | " );       
        strClientOrder.Append(" orderDate = " + orderDate + " | " );       
        strClientOrder.Append(" orderName = " + orderName + " | " );       
-       strClientOrder.Append(" creditCardId = " + creditCardId + " | " );       
+       strClientOrder.Append(" creditCardNumber = " + creditCardNumber + " | " );       
        strClientOrder.Append(" clientOrderAddress = " + clientOrderAddress + " | " );       
        strClientOrder.Append(" totalPrize = " + totalPrize + " | " );       
        strClientOrder.Append(" clientId = " + clientId + " | " );       

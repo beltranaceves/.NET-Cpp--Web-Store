@@ -40,7 +40,7 @@
     <Property Name="orderId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="orderDate" Type="datetime" Nullable="false" />
     <Property Name="orderName" Type="varchar" MaxLength="60" Nullable="false" />
-    <Property Name="creditCardId" Type="bigint" />
+    <Property Name="creditCardNumber" Type="varchar" MaxLength="16" Nullable="false" />
     <Property Name="clientOrderAddress" Type="varchar" MaxLength="60" Nullable="false" />
     <Property Name="totalPrize" Type="float" Nullable="false" />
     <Property Name="clientId" Type="bigint" />
@@ -147,18 +147,6 @@
       </Principal>
       <Dependent Role="ClientOrder">
         <PropertyRef Name="clientId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ClientOrder_CreditCard">
-    <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="0..1" />
-    <End Role="ClientOrder" Type="Self.ClientOrder" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="CreditCard">
-        <PropertyRef Name="cardId" />
-      </Principal>
-      <Dependent Role="ClientOrder">
-        <PropertyRef Name="creditCardId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -303,10 +291,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_ClientOrder_Client" Association="Self.FK_ClientOrder_Client">
       <End Role="Client" EntitySet="Client" />
-      <End Role="ClientOrder" EntitySet="ClientOrder" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ClientOrder_CreditCard" Association="Self.FK_ClientOrder_CreditCard">
-      <End Role="CreditCard" EntitySet="CreditCard" />
       <End Role="ClientOrder" EntitySet="ClientOrder" />
     </AssociationSet>
     <AssociationSet Name="FK_ClientOrderLine_ClientOrder" Association="Self.FK_ClientOrderLine_ClientOrder">

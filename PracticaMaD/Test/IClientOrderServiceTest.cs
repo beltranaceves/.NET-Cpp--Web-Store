@@ -157,16 +157,16 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 creditCardService.AddCard(clientId, creditCardDetails);
 
-                long cardId = clientDao.Find(clientId).CreditCard.ElementAt(0).cardId;
+                CreditCard c = clientDao.Find(clientId).CreditCard.ElementAt(0);
 
                 // Generate order
-                long clientOrderId = clientOrderService.CreateOrder(clientId, cardId, "PedidoEjemplo", null, shoppingCart);
+                long clientOrderId = clientOrderService.CreateOrder(clientId, c.cardNumber, "PedidoEjemplo", null, shoppingCart);
 
                 ClientOrder clientOrder = clientOrderDao.Find(clientOrderId);
 
                 Assert.AreEqual(clientOrderId, clientOrder.orderId);
                 Assert.AreEqual(clientId, clientOrder.clientId);
-                Assert.AreEqual(cardId, clientOrder.creditCardId);
+                Assert.AreEqual(cardNumber, clientOrder.creditCardNumber);
                 Assert.AreEqual(client.ClientAddress, clientOrder.clientOrderAddress);
                 Assert.AreEqual("PedidoEjemplo", clientOrder.orderName);
                 Assert.AreEqual(8, clientOrder.ClientOrderLine.ElementAt(0).Product.stock);
@@ -214,10 +214,10 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 CreditCardDetails card = new CreditCardDetails("098765432109876", "Visa", 000, "02/21", false, 1);
                 creditCardService.AddCard(clientId, card);
 
-                long cardId = clientDao.Find(clientId).CreditCard.ElementAt(0).cardId;
+                CreditCard c = clientDao.Find(clientId).CreditCard.ElementAt(0);
 
                 // Generate order
-                long clientOrderId = clientOrderService.CreateOrder(clientId, cardId, "PedidoEjemplo", "toHome", shoppingCart);
+                long clientOrderId = clientOrderService.CreateOrder(clientId, c.cardNumber, "PedidoEjemplo", "toHome", shoppingCart);
 
                 // FindOrder
                 ClientOrderBlock clientOrders = clientOrderService.GetClientOrders(clientId, 0, 5);

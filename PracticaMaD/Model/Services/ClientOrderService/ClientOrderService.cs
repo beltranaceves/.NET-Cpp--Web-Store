@@ -36,7 +36,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService
         public IClientOrderDao ClientOrderDao { private get; set; }
 
         [Transactional]
-        public long CreateOrder(long clientId, long? cardId, string orderName, string clientOrderAddress, ShoppingCart shoppingCart)
+        public long CreateOrder(long clientId, string creditCardNumber, string orderName, string clientOrderAddress, ShoppingCart shoppingCart)
         {
             ClientOrder order = new ClientOrder();
 
@@ -66,10 +66,10 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService
 
             // Si no se nos especifican estos campos, cogemos los de por defecto del usuario
 
-            if (cardId != null)
-                order.creditCardId = cardId;
+            if (creditCardNumber != null)
+                order.creditCardNumber = creditCardNumber;
             else
-                order.creditCardId = CreditCardDao.GetDefaultCreditCardByClientId(clientId).cardId;
+                order.creditCardNumber = CreditCardDao.GetDefaultCreditCardByClientId(clientId).cardNumber;
 
             if (clientOrderAddress != null)
                 order.clientOrderAddress = clientOrderAddress;
@@ -135,7 +135,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ClientOrderService
         {
             ClientOrder order = ClientOrderDao.Find(orderId);
 
-            ClientOrderDetails orderDetails = new ClientOrderDetails(order.orderDate, order.orderName, order.CreditCard.cardId,
+            ClientOrderDetails orderDetails = new ClientOrderDetails(order.orderDate, order.orderName, order.creditCardNumber,
                 order.clientOrderAddress, order.Client.clientId);
 
             return orderDetails;

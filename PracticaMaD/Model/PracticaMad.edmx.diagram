@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1b3b2e144fb3460fbb05f360da98280c" Name="Diagram1">
+      <Diagram DiagramId="0c5c65fe9def42ff9bc909b757d70494" Name="Diagram1">
         <EntityTypeShape EntityType="practicaMADModel.Books" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="practicaMADModel.Category" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="practicaMADModel.Client" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="practicaMADModel.ClientOrder" Width="1.5" PointX="6" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="practicaMADModel.ClientOrder" Width="1.5" PointX="6" PointY="18.25" IsExpanded="true" />
         <EntityTypeShape EntityType="practicaMADModel.ClientOrderLine" Width="1.5" PointX="8.25" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="practicaMADModel.CreditCard" Width="1.5" PointX="3.75" PointY="18.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="practicaMADModel.CreditCard" Width="1.5" PointX="8.25" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="practicaMADModel.Films" Width="1.5" PointX="5.25" PointY="12.25" IsExpanded="true" />
         <EntityTypeShape EntityType="practicaMADModel.Music" Width="1.5" PointX="5.25" PointY="15.25" IsExpanded="true" />
         <EntityTypeShape EntityType="practicaMADModel.Product" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
@@ -20,14 +20,13 @@
         <AssociationConnector Association="practicaMADModel.FK_ClientOrder_Client" ManuallyRouted="false" />
         <AssociationConnector Association="practicaMADModel.FK_Comment_ClientId" ManuallyRouted="false" />
         <AssociationConnector Association="practicaMADModel.FK_CreditCard_Client" ManuallyRouted="false" />
-        <AssociationConnector Association="practicaMADModel.FK_ClientOrder_CreditCard" ManuallyRouted="false" />
         <AssociationConnector Association="practicaMADModel.FK_ClientOrderLine_ClientOrder" ManuallyRouted="false" />
         <AssociationConnector Association="practicaMADModel.FK_ClientOrderLine_Product" ManuallyRouted="false" />
         <AssociationConnector Association="practicaMADModel.FK_Comment_Product" ManuallyRouted="false" />
         <AssociationConnector Association="practicaMADModel.ProductCommentTag" ManuallyRouted="false" />
-        <InheritanceConnector EntityType="practicaMADModel.Music" />
-        <InheritanceConnector EntityType="practicaMADModel.Films" />
         <InheritanceConnector EntityType="practicaMADModel.Books" />
+        <InheritanceConnector EntityType="practicaMADModel.Films" />
+        <InheritanceConnector EntityType="practicaMADModel.Music" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

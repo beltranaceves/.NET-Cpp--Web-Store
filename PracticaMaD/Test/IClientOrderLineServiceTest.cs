@@ -160,10 +160,10 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 creditCardService.AddCard(clientId, creditCardDetails);
 
-                long cardId = clientDao.Find(clientId).CreditCard.ElementAt(0).cardId;
+                CreditCard c  = clientDao.Find(clientId).CreditCard.ElementAt(0);
 
                 // Generate order
-                long clientOrderId = clientOrderService.CreateOrder(clientId, cardId, "PedidoEjemplo", null, shoppingCart);
+                long clientOrderId = clientOrderService.CreateOrder(clientId, c.cardNumber, "PedidoEjemplo", null, shoppingCart);
 
                 ClientOrder clientOrder = clientOrderDao.Find(clientOrderId);
 

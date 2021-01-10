@@ -19,14 +19,6 @@ using System;
 public partial class CreditCard
 {
 
-    public CreditCard()
-    {
-
-        this.ClientOrder = new HashSet<ClientOrder>();
-
-    }
-
-
     public long cardId { get; set; }
 
     public string cardNumber { get; set; }
@@ -48,12 +40,6 @@ public partial class CreditCard
     /// Relationship Name (Foreign Key in ER-Model): FK_CreditCard_Client
     /// </summary>
     public virtual Client Client { get; set; }
-
-    
-    /// <summary>
-    /// Relationship Name (Foreign Key in ER-Model): FK_ClientOrder_CreditCard
-    /// </summary>
-    public virtual ICollection<ClientOrder> ClientOrder { get; set; }
 
 
 	/// <summary>
