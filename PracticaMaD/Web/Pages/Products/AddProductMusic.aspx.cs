@@ -26,11 +26,12 @@ namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
                 try
                 {
                     int price;
-                    if (!int.TryParse(lclPrice.Text, out price)) price = 0;
+                    if (!int.TryParse(TextPrice.Text, out price)) price = 0;
                     int units;
-                    if (!int.TryParse(lclUnits.Text, out units)) units = 0;
+                    if (!int.TryParse(TextUnits.Text, out units)) units = 0;
 
-                    SessionManager.AddProductMusic(lclProductName.Text, price, DateTime.Now, units, "Libros", lclArtist.Text, lclGenre.Text, lclType.Text);
+                    ProductDetails createdProduct = SessionManager.AddProductMusic(TextProductName.Text, price, DateTime.Now, units, "Libros", TextArtist.Text, TextGenre.Text, TextType.Text);
+                    Response.Redirect("~/Pages/MainPage.aspx");
                 }
                 catch (DuplicateInstanceException)
                 {
