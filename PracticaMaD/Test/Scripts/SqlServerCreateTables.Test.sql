@@ -111,7 +111,7 @@ CREATE TABLE ClientOrder (
 	orderId BIGINT IDENTITY(1,1) NOT NULL, 
 	orderDate DATETIME NOT NULL,
 	orderName VARCHAR(60) NOT NULL,
-	creditCardId BIGINT,
+	creditCardNumber VARCHAR(16) NOT NULL ,
 	clientOrderAddress VARCHAR(60) NOT NULL,
 	totalPrize FLOAT NOT NULL,
 	clientId BIGINT,
@@ -119,7 +119,6 @@ CREATE TABLE ClientOrder (
 
 	CONSTRAINT [PK_ClientOrder] PRIMARY KEY (orderId),
 	CONSTRAINT [FK_ClientOrder_Client] FOREIGN KEY (clientId) REFERENCES Client (clientId),
-	CONSTRAINT [FK_ClientOrder_CreditCard] FOREIGN KEY (creditCardId) REFERENCES CreditCard (cardId)
 )
 
 CREATE NONCLUSTERED INDEX [IX_ClientOrderIndexByClientId] ON ClientOrder (orderId ASC, clientId ASC);
@@ -201,8 +200,8 @@ PRINT N'Table Comment created.'
 GO
 
 CREATE TABLE ProductCommentTag (
-	commentId BIGINT NOT NULL,
-	tagId BIGINT NOT NULL,
+	commentId BIGINT,
+	tagId BIGINT,
 
 	CONSTRAINT [PK_ProductCommentTag] PRIMARY KEY (commentId, tagId),
 	CONSTRAINT [FK_ProductCommentTag_ProductComment] FOREIGN KEY (commentId) REFERENCES ProductComment (commentId),

@@ -178,6 +178,90 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
                     m.artist, m.genere, m.type);
         }
 
+
+
+        [Transactional]
+        public ProductDetails CreateBooks(BooksDetails createdProduct) {
+
+            Category category = CategoryDao.FindByCategoryName(createdProduct.CategoryName);
+
+            Books bk = new Books();
+
+            bk.productName = createdProduct.ProductName;
+            bk.price = createdProduct.Price;
+            bk.registerDate = createdProduct.RegisterDate;
+            bk.stock = createdProduct.Stock;
+            bk.categoryId = category.categoryId;
+
+            bk.author = createdProduct.Author;
+            bk.pages = createdProduct.Pages;
+            bk.ISBN = createdProduct.ISBN;
+            bk.editorial = createdProduct.Editorial;
+
+            ProductDao.Create(bk);
+
+            return new BooksDetails(bk.productId, bk.productName, bk.price, bk.registerDate, bk.stock, createdProduct.CategoryName,
+                    bk.author, bk.pages, bk.ISBN, bk.editorial);
+        }
+
+
+        [Transactional]
+        public ProductDetails CreateFilms(FilmsDetails createdProduct) {
+
+            Category category = CategoryDao.FindByCategoryName(createdProduct.CategoryName);
+
+            Films f = new Films();
+
+            f.productName = createdProduct.ProductName;
+            f.price = createdProduct.Price;
+            f.registerDate = createdProduct.RegisterDate;
+            f.stock = createdProduct.Stock;
+            f.categoryId = category.categoryId;
+
+            f.director = createdProduct.Director;
+            f.filmYear = createdProduct.FilmYear;
+            f.duration = createdProduct.Duration;
+            f.genere = createdProduct.Genere;
+
+            ProductDao.Update(f);
+
+            return new FilmsDetails(f.productId, f.productName, f.price, f.registerDate, f.stock, createdProduct.CategoryName,
+                    f.director, f.filmYear, f.duration, f.genere);
+
+        }
+
+
+        [Transactional]
+        public ProductDetails CreateMusic(MusicDetails createdProduct) {
+           
+            Category category = CategoryDao.FindByCategoryName(createdProduct.CategoryName);
+
+            Music m = new Music();
+
+            m.productName = createdProduct.ProductName;
+            m.price = createdProduct.Price;
+            m.registerDate = createdProduct.RegisterDate;
+            m.stock = createdProduct.Stock;
+            m.categoryId = category.categoryId;
+
+            m.artist = createdProduct.Artist;
+            m.genere = createdProduct.Genere;
+            m.type = createdProduct.Type;
+
+            ProductDao.Update(m);
+
+            return new MusicDetails(m.productId, m.productName, m.price, m.registerDate, m.stock, createdProduct.CategoryName,
+                    m.artist, m.genere, m.type);
+
+        }
+
+
+
+
+
+
+
+
         [Transactional]
         public ProductBlock FindProductByProductNameKeyword(string keyword, int startIndex, int count)
         {

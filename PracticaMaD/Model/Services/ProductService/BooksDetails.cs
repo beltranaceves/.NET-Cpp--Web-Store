@@ -30,5 +30,14 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             this.ISBN = ISBN;
             this.Editorial = editorial;
         }
+
+        public BooksDetails(String productName, double price, DateTime registerDate, int stock, string categoryName,
+           String author, int pages, long ISBN, String editorial) : base(productName, price, registerDate, stock, categoryName)
+        {
+            this.Author = author;
+            this.Pages = pages;
+            this.ISBN = ISBN;
+            this.Editorial = editorial;
+        }
     }
 }

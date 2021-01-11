@@ -33,5 +33,14 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             this.Stock = stock;
             this.CategoryName = categoryName;
         }
+
+        public ProductDetails(String productName, double price, DateTime registerDate, int stock, string categoryName)
+        {
+            this.ProductName = productName;
+            this.Price = price;
+            this.RegisterDate = registerDate;
+            this.Stock = stock;
+            this.CategoryName = categoryName;
+        }
     }
 }

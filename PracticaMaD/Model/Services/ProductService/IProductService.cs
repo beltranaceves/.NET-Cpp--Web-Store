@@ -70,6 +70,42 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
 
 
 
+
+
+
+
+
+        /// <summary>
+        /// Creates the product details.
+        /// </summary>
+        /// <param name="productId"> The product id. </param>
+        /// <param name="createdProduct"> The updatedProduct data. </param>
+        [Transactional]
+        ProductDetails CreateBooks(BooksDetails createdProduct);
+
+        /// <summary>
+        /// Creates the product details.
+        /// </summary>
+        /// <param name="productId"> The product id. </param>
+        /// <param name="createdProduct"> The updatedProduct data. </param>
+        [Transactional]
+        ProductDetails CreateFilms(FilmsDetails createdProduct);
+
+        /// <summary>
+        /// Creates the product details.
+        /// </summary>
+        /// <param name="productId"> The product id. </param>
+        /// <param name="createdProduct"> The updatedProduct data. </param>
+        [Transactional]
+        ProductDetails CreateMusic(MusicDetails createdProduct);
+
+
+
+
+
+
+
+
         /// <summary>
         /// Finds products by name keyword.
         /// </summary>

@@ -224,6 +224,8 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 long categoryId2 = CreateCategory("Comics");
 
                 String productName = "Avatar la leyenda de Aang";
+
+                String productName2 = "El Señor De Los Anillos";
                 int stock = 10;
                 float price = 10;
                 // Create a product
@@ -231,6 +233,12 @@ namespace Es.Udc.DotNet.PracticaMad.Test
 
                 long productId2 = CreateProduct(categoryId2, productName, stock + 2, price);
 
+                BooksDetails bookDetails = new BooksDetails(productName2,
+                    20.0, DateTime.Now,
+                    10, "Books", "J.R. Tolkien", 2000, (long)1239874, "OCO");
+
+                ProductDetails product3 = productService.CreateBooks(bookDetails);
+                    
                 ProductBlock products = productService.FindProductByCategory(categoryId, 0, 5);
 
                 Assert.AreEqual(products.Product[0].CategoryName, "Books");
@@ -238,6 +246,9 @@ namespace Es.Udc.DotNet.PracticaMad.Test
                 Assert.AreEqual(products.Product[0].Stock, stock);
                 Assert.AreEqual(products.Product[0].Price, price);
 
+                Assert.AreEqual(products.Product[1].Price, 20.0);
+
+                Console.WriteLine(products);
                 //transaction.Complete() is not called, so Rollback is executed.
             }
         }
