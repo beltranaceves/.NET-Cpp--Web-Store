@@ -1,0 +1,43 @@
+﻿using Es.Udc.DotNet.ModelUtil.Exceptions;
+using Es.Udc.DotNet.ModelUtil.IoC;
+using Es.Udc.DotNet.PracticaMad.Model;
+using Es.Udc.DotNet.PracticaMad.Model.Services.ProductService;
+using Es.Udc.DotNet.PracticaMad.Web.HTTP.Session;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Remoting.Contexts;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace Es.Udc.DotNet.PracticaMad.Web.Pages.Products
+{
+    public partial class AddProductMusic : SpecificCulturePage
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+        }
+
+        protected void BtnAddProductClick(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+                try
+                {
+                    int price;
+                    if (!int.TryParse(lclPrice.Text, out price)) price = 0;
+                    int units;
+                    if (!int.TryParse(lclUnits.Text, out units)) units = 0;
+
+                    SessionManager.AddProductMusic(lclProductName.Text, price, DateTime.Now, units, "Libros", lclArtist.Text, lclGenre.Text, lclType.Text);
+                }
+                catch (DuplicateInstanceException)
+                {
+                    
+                }
+            }
+        }
+
+    }
+}

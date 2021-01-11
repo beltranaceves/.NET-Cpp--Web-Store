@@ -38,6 +38,8 @@ namespace Es.Udc.DotNet.PracticaMad.Web
                     lnkAddCard.Visible = false;
                 if (lnkSeeMyCards != null)
                     lnkSeeMyCards.Visible = false;
+                if (lnkAddProduct != null)
+                    lnkAddProduct.Visible = false;
             }
             else
             {
@@ -61,8 +63,7 @@ namespace Es.Udc.DotNet.PracticaMad.Web
                 {
                     tagLinks.Visible = false;
                 }
-                else
-                {
+                else {  
                     if (tags.Count() == 5)
                     {
                         Tag5.Text = tags.ElementAt(4).tagName;

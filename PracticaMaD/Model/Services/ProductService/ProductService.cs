@@ -223,7 +223,9 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             f.duration = createdProduct.Duration;
             f.genere = createdProduct.Genere;
 
-            ProductDao.Update(f);
+            ProductDao.Create(f);
+
+
 
             return new FilmsDetails(f.productId, f.productName, f.price, f.registerDate, f.stock, createdProduct.CategoryName,
                     f.director, f.filmYear, f.duration, f.genere);
@@ -248,7 +250,7 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             m.genere = createdProduct.Genere;
             m.type = createdProduct.Type;
 
-            ProductDao.Update(m);
+            ProductDao.Create(m);
 
             return new MusicDetails(m.productId, m.productName, m.price, m.registerDate, m.stock, createdProduct.CategoryName,
                     m.artist, m.genere, m.type);

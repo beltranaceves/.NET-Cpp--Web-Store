@@ -590,6 +590,20 @@ namespace Es.Udc.DotNet.PracticaMad.Web.HTTP.Session
         }
 
         /// <summary>
+        /// Add Product Music.
+        /// </summary>
+        /// <param name="context"> The product and client id. </param>
+        /// <param name="comment"> The text of the comment. </param>
+        /// <exception cref="InstanceNotFoundException"/>
+        public static void AddProductMusic(String productName, int price, DateTime registerDate, int stock, String categoryName,
+            String genre, String artist, String type)
+        {
+
+            productService.CreateMusic(new MusicDetails(productName, price, registerDate, stock, categoryName, genre, artist, type));
+
+        }
+
+        /// <summary>
         /// Find a Comment.
         /// </summary>
         /// <param name="context"> The client id. </param>

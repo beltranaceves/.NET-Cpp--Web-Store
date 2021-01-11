@@ -108,10 +108,13 @@
     <Content Include="Pages\Orders\SeeOrderDetails.aspx" />
     <Content Include="Pages\Orders\SeeShoppingCart.aspx" />
     <Content Include="Pages\Products\AddComment.aspx" />
+    <Content Include="Pages\Products\AddProduct.aspx" />
+    <Content Include="Pages\Products\AddProductMusic.aspx" />
     <Content Include="Pages\Products\CommentAdded.aspx" />
     <Content Include="Pages\Products\CommentDeleted.aspx" />
     <Content Include="Pages\Products\EditComment.aspx" />
     <Content Include="Pages\Products\EditedComment.aspx" />
+    <Content Include="Pages\Products\FeatureNotImplemented.aspx" />
     <Content Include="Pages\Products\FindProducts.aspx" />
     <Content Include="Pages\Products\ProductFilmsDetails.aspx" />
     <Content Include="Pages\Products\ProductMusicDetails.aspx" />
@@ -232,6 +235,20 @@
     <Compile Include="Pages\Products\AddComment.aspx.designer.cs">
       <DependentUpon>AddComment.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Products\AddProduct.aspx.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Products\AddProduct.aspx.designer.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Products\AddProductMusic.aspx.cs">
+      <DependentUpon>AddProductMusic.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Products\AddProductMusic.aspx.designer.cs">
+      <DependentUpon>AddProductMusic.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Products\CommentAdded.aspx.cs">
       <DependentUpon>CommentAdded.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -259,6 +276,13 @@
     </Compile>
     <Compile Include="Pages\Products\EditedComment.aspx.designer.cs">
       <DependentUpon>EditedComment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Products\FeatureNotImplemented.aspx.cs">
+      <DependentUpon>FeatureNotImplemented.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Products\FeatureNotImplemented.aspx.designer.cs">
+      <DependentUpon>FeatureNotImplemented.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Products\FindProducts.aspx.cs">
       <DependentUpon>FindProducts.aspx</DependentUpon>
@@ -622,6 +646,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Pages\Products\App_LocalResources\CommentDeleted.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\AddProduct.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\AddProduct.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\AddProduct.aspx.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\AddProductMusic.aspx.gl.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\AddProductMusic.aspx.es.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Products\App_LocalResources\AddProductMusic.aspx.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

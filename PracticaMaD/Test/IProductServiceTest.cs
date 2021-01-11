@@ -253,6 +253,46 @@ namespace Es.Udc.DotNet.PracticaMad.Test
             }
         }
 
+        [TestMethod()]
+        public void FindProductByCategoryTest2()
+        {
+            using (TransactionScope scope = new TransactionScope())
+            {
+                // Create a category
+                long categoryId = CreateCategory("Books");
+
+                long categoryId2 = CreateCategory("Comics");
+
+                String productName = "Avatar la leyenda de Aang";
+
+                String productName2 = "El Señor De Los Anillos";
+                int stock = 10;
+                float price = 10;
+                // Create a product
+                long productId = CreateProduct(categoryId, productName, stock, price);
+
+                long productId2 = CreateProduct(categoryId2, productName, stock + 2, price);
+
+                MusicDetails bookDetails = new MusicDetails(productName2,
+                    20.0, DateTime.Now,
+                    10, "Books", "Rolling Stones", "Rock", "CD");
+
+                ProductDetails product3 = productService.CreateMusic(bookDetails);
+
+                ProductBlock products = productService.FindProductByCategory(categoryId, 0, 5);
+
+                Assert.AreEqual(products.Product[0].CategoryName, "Books");
+                Assert.AreEqual(products.Product[0].ProductName, productName);
+                Assert.AreEqual(products.Product[0].Stock, stock);
+                Assert.AreEqual(products.Product[0].Price, price);
+
+                Assert.AreEqual(products.Product[1].Price, 20.0);
+
+                Console.WriteLine(products);
+                //transaction.Complete() is not called, so Rollback is executed.
+            }
+        }
+
         #region Additional test attributes
 
         //Use ClassInitialize to run code before running the first test in the class

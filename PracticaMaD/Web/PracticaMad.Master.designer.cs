@@ -130,6 +130,15 @@ namespace Es.Udc.DotNet.PracticaMad.Web {
         protected global::System.Web.UI.WebControls.HyperLink lnkHome;
         
         /// <summary>
+        /// Control lnkAddProduct.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink lnkAddProduct;
+        
+        /// <summary>
         /// Control lnkFindProducts.
         /// </summary>
         /// <remarks>
@@ -236,6 +245,15 @@ namespace Es.Udc.DotNet.PracticaMad.Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink Tag5;
+        
+        /// <summary>
+        /// Control Tag6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink Tag6;
         
         /// <summary>
         /// Control lclFooter.

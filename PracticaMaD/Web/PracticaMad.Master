@@ -54,9 +54,12 @@
 
                 <ul>
 
-                    <li>
+                    <li dir="ltr">
                         <asp:HyperLink ID="lnkHome" runat="server"
                             meta:resourcekey="lnkHome" NavigateUrl="~/Pages/MainPage.aspx" /></li>
+                    <li>
+                        <asp:HyperLink ID="lnkAddProduct" runat="server"
+                            meta:resourcekey="lnkAddProduct" NavigateUrl="~/Pages/Products/AddProduct.aspx" /></li>
                     <li>
                         <asp:HyperLink ID="lnkFindProducts" runat="server"
                             meta:resourcekey="lnkFindProducts" NavigateUrl="~/Pages/Products/FindProducts.aspx" /></li>
@@ -66,7 +69,6 @@
                     <li>
                         <asp:HyperLink ID="lnkAddCard" runat="server" NavigateUrl="~/Pages/Card/AddCard.aspx"
                             meta:resourcekey="lnkAddCard" /></li>
-
                     <li>
                         <asp:HyperLink ID="lnkSeeMyCards" runat="server" NavigateUrl="~/Pages/Card/SeeClientCards.aspx"
                             meta:resourcekey="lnkSeeMyCards" /></li>
@@ -94,6 +96,7 @@
                     <asp:HyperLink ID="Tag3" runat="server" />
                     <asp:HyperLink ID="Tag4" runat="server" />
                     <asp:HyperLink ID="Tag5" runat="server" />
+                    <asp:HyperLink ID="Tag6" runat="server" />
                 </asp:ContentPlaceHolder>
             </span>
         </div>

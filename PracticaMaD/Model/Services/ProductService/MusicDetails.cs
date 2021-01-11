@@ -27,5 +27,13 @@ namespace Es.Udc.DotNet.PracticaMad.Model.Services.ProductService
             this.Genere = genere;
             this.Type = type;
         }
+
+        public MusicDetails(String productName, double price, DateTime registerDate, int stock, string categoryName,
+            String artist, String genere, string type) : base(productName, price, registerDate, stock, categoryName)
+        {
+            this.Artist = artist;
+            this.Genere = genere;
+            this.Type = type;
+        }
     }
 }
